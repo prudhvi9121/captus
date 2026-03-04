@@ -75,15 +75,15 @@ export default function Hero() {
             </div>
 
             {/* Content */}
-            <div className="relative z-10 w-full max-w-[1280px] mx-auto px-8 md:px-20 lg:px-32 flex flex-col lg:flex-row items-center gap-16 pt-32 pb-24">
+            <div className="relative z-10 w-full max-w-[1400px] mx-auto px-8 md:px-16 lg:px-20 flex flex-col lg:flex-row items-center gap-12 lg:gap-24 pt-40 pb-24">
                 {/* Left Column: Text */}
-                <div className="flex-1 flex flex-col items-start text-left gap-6">
+                <div className="flex-[0.8] flex flex-col items-start text-left gap-8">
                     {/* Headline */}
-                    <h1
+                    <h3
                         ref={heroSubRef}
                         className="font-display"
                         style={{
-                            fontSize: "clamp(32px, 4vw, 56px)",
+                            fontSize: "clamp(24px, 3vw, 40px)",
                             color: "var(--text-primary)",
                             lineHeight: 1.1,
                             letterSpacing: "-0.01em",
@@ -96,7 +96,7 @@ export default function Hero() {
                     >
                         Identify Financial & Operational Risk <br />
                         <span style={{ color: "#CC5500" }}>Before It Materializes.</span>
-                    </h1>
+                    </h3>
 
                     {/* Sub-headline */}
                     <p
@@ -159,7 +159,7 @@ export default function Hero() {
                 {/* Right Column: Video Placeholder */}
                 <div
                     ref={heroRef}
-                    className="flex-1 w-full"
+                    className="flex-[1.2] w-full"
                     style={{
                         position: "relative",
                         aspectRatio: "16/9",
