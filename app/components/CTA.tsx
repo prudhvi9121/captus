@@ -6,7 +6,7 @@ export default function CTA() {
     return (
         <section
             style={{
-                padding: "100px 24px",
+                padding: "clamp(60px, 8vw, 100px) clamp(16px, 5vw, 24px)",
                 background: "#FFFFFF",
                 textAlign: "center",
             }}

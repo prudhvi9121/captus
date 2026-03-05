@@ -7,7 +7,7 @@ export default function Investors() {
     return (
         <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "var(--bg)" }}>
             <Navbar />
-            <main style={{ flex: 1, padding: "180px 24px 100px", display: "flex", justifyContent: "center" }}>
+            <main className="px-5 sm:px-6" style={{ flex: 1, paddingTop: "120px", paddingBottom: "80px", display: "flex", justifyContent: "center" }}>
                 <div style={{ width: "100%", maxWidth: "600px" }}>
                     <div style={{ textAlign: "center", marginBottom: "48px" }}>
                         <h1 className="font-display" style={{ fontSize: "clamp(32px, 5vw, 48px)", color: "var(--text-primary)", marginBottom: "16px" }}>
@@ -25,7 +25,7 @@ export default function Investors() {
                         method="POST"
                         encType="text/plain"
                     >
-                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "24px" }}>
                             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                                 <label style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-primary)" }}>Name<span style={{ color: "#CC5500" }}>*</span></label>
                                 <input required type="text" name="Name" style={{ padding: "12px 16px", borderRadius: "6px", border: "1px solid var(--border)", background: "var(--surface-1)", fontSize: "16px", color: "var(--text-primary)" }} />

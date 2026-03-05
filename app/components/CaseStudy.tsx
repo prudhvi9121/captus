@@ -1,16 +1,24 @@
 "use client";
 
+import { useScrollReveal } from "../hooks/useScrollReveal";
+
 export default function CaseStudy() {
+    const ref = useScrollReveal<HTMLDivElement>({ threshold: 0.15 });
+
     return (
         <section
             style={{
-                padding: "100px 24px",
+                padding: "clamp(60px, 8vw, 100px) clamp(16px, 5vw, 24px)",
                 background: "#111827",
                 color: "#FFFFFF",
             }}
         >
             <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
-                <div style={{ borderLeft: "4px solid #CC5500", paddingLeft: "32px" }}>
+                <div
+                    ref={ref}
+                    className="reveal"
+                    style={{ borderLeft: "4px solid #CC5500", paddingLeft: "32px" }}
+                >
                     <span style={{ color: "#FF7B1A", fontSize: "14px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
                         Current Engagement
                     </span>
@@ -25,7 +33,7 @@ export default function CaseStudy() {
                     >
                         $500M+ Portfolio Design Partner
                     </h2>
-                    <p style={{ color: "#9CA3AF", fontSize: "18px", lineHeight: 1.6 }}>
+                    <p style={{ color: "#9CA3AF", fontSize: "clamp(15px, 1.8vw, 18px)", lineHeight: 1.6 }}>
                         Captus is actively utilized by a major strategic design partner to coordinate risk and exposure across sustainable life sciences and LEED-certified developments. We are validating predictive intelligence across institutional-grade capital projects.
                     </p>
                 </div>

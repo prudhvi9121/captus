@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function Footer() {
     return (
-        <footer style={{ background: '#111827', color: '#FFFFFF', padding: '80px 24px 40px', borderTop: '1px solid #374151' }}>
+        <footer style={{ background: '#111827', color: '#FFFFFF', padding: 'clamp(48px, 7vw, 80px) clamp(16px, 5vw, 24px) 40px', borderTop: '1px solid #374151' }}>
             <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', flexWrap: 'wrap', gap: '60px', justifyContent: 'space-between' }}>
                 <div style={{ maxWidth: '340px' }}>
                     <div className="font-display" style={{ fontSize: '24px', color: '#CC5500', marginBottom: '16px', letterSpacing: '0.05em' }}>
@@ -15,7 +15,7 @@ export default function Footer() {
                     </p>
                 </div>
 
-                <div style={{ display: 'flex', gap: '80px', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', gap: 'clamp(32px, 6vw, 80px)', flexWrap: 'wrap' }}>
                     <div>
                         <h4 style={{ fontWeight: 700, marginBottom: '20px', fontSize: '14px', letterSpacing: '0.05em', color: '#FFFFFF', textTransform: 'uppercase' }}>Company</h4>
                         <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>

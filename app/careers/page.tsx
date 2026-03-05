@@ -7,7 +7,7 @@ export default function Careers() {
     return (
         <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "var(--bg)" }}>
             <Navbar />
-            <main style={{ flex: 1, padding: "180px 24px 100px", display: "flex", justifyContent: "center" }}>
+            <main className="px-5 sm:px-8 md:px-12" style={{ flex: 1, paddingTop: "120px", paddingBottom: "80px", display: "flex", justifyContent: "center" }}>
                 <div style={{ width: "100%", maxWidth: "800px" }}>
                     <div style={{ textAlign: "center", marginBottom: "64px" }}>
                         <h1 className="font-display" style={{ fontSize: "clamp(32px, 5vw, 48px)", color: "var(--text-primary)", marginBottom: "16px" }}>

@@ -29,11 +29,11 @@ export default function Hero() {
             id="hero"
             style={{
                 position: "relative",
+                paddingTop: "86px",
                 minHeight: "100vh",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                justifyContent: "center",
                 overflow: "hidden",
                 background: "#FFFFFF",
             }}
@@ -74,24 +74,26 @@ export default function Hero() {
                 </svg>
             </div>
 
-            {/* Content */}
-            <div className="relative z-10 w-full max-w-[1400px] mx-auto px-8 md:px-16 lg:px-20 flex flex-col lg:flex-row items-center gap-12 lg:gap-24 pt-40 pb-24">
+            {/* Content — starts directly below the fixed navbar */}
+            <div
+                className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 lg:px-20 flex flex-col lg:flex-row items-center gap-10 lg:gap-20"
+                style={{ paddingTop: "40px", paddingBottom: "60px", flex: 1 }}
+            >
                 {/* Left Column: Text */}
-                <div className="flex-[0.8] flex flex-col items-start text-left gap-8">
+                <div className="flex-[0.8] flex flex-col items-center lg:items-start text-center lg:text-left gap-6 lg:gap-8 w-full">
                     {/* Headline */}
                     <h3
                         ref={heroSubRef}
                         className="font-display"
                         style={{
-                            fontSize: "clamp(24px, 3vw, 40px)",
+                            fontSize: "clamp(22px, 3.5vw, 40px)",
                             color: "var(--text-primary)",
-                            lineHeight: 1.1,
+                            lineHeight: 1.15,
                             letterSpacing: "-0.01em",
                             opacity: 0,
                             transform: "translateY(20px)",
                             transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
                             transitionDelay: "100ms",
-                            maxWidth: "600px"
                         }}
                     >
                         Identify Financial & Operational Risk <br />
@@ -103,7 +105,7 @@ export default function Hero() {
                         ref={heroCtaRef}
                         style={{
                             color: "var(--text-secondary)",
-                            fontSize: "clamp(15px, 1.2vw, 17px)",
+                            fontSize: "clamp(14px, 1.3vw, 17px)",
                             maxWidth: "480px",
                             lineHeight: 1.6,
                             fontWeight: 400,
@@ -159,7 +161,7 @@ export default function Hero() {
                 {/* Right Column: Video Placeholder */}
                 <div
                     ref={heroRef}
-                    className="flex-[1.2] w-full"
+                    className="flex-[1.2] w-full max-w-[560px] lg:max-w-none"
                     style={{
                         position: "relative",
                         aspectRatio: "16/9",

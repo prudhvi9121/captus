@@ -7,7 +7,7 @@ export default function BookDemo() {
     return (
         <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "var(--bg)" }}>
             <Navbar />
-            <main style={{ flex: 1, padding: "180px 24px 100px", display: "flex", justifyContent: "center" }}>
+            <main className="px-5 sm:px-6" style={{ flex: 1, paddingTop: "120px", paddingBottom: "80px", display: "flex", justifyContent: "center" }}>
                 <div style={{ width: "100%", maxWidth: "600px" }}>
                     <div style={{ textAlign: "center", marginBottom: "48px" }}>
                         <h1 className="font-display" style={{ fontSize: "clamp(32px, 5vw, 48px)", color: "var(--text-primary)", marginBottom: "16px" }}>
@@ -20,12 +20,12 @@ export default function BookDemo() {
 
                     <form
                         className="glass"
-                        style={{ padding: "40px", borderRadius: "12px", border: "1px solid var(--border)", display: "flex", flexDirection: "column", gap: "24px" }}
+                        style={{ padding: "clamp(24px, 5vw, 40px)", borderRadius: "12px", border: "1px solid var(--border)", display: "flex", flexDirection: "column", gap: "24px" }}
                         action="mailto:info@captus.ai"
                         method="POST"
                         encType="text/plain"
                     >
-                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "24px" }}>
                             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                                 <label style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-primary)" }}>Name<span style={{ color: "#CC5500" }}>*</span></label>
                                 <input required type="text" name="Name" style={{ padding: "12px 16px", borderRadius: "6px", border: "1px solid var(--border)", background: "var(--surface-1)", fontSize: "16px", color: "var(--text-primary)" }} />
@@ -36,7 +36,7 @@ export default function BookDemo() {
                             </div>
                         </div>
 
-                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "24px" }}>
                             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                                 <label style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-primary)" }}>Company<span style={{ color: "#CC5500" }}>*</span></label>
                                 <input required type="text" name="Company" style={{ padding: "12px 16px", borderRadius: "6px", border: "1px solid var(--border)", background: "var(--surface-1)", fontSize: "16px", color: "var(--text-primary)" }} />
@@ -47,7 +47,7 @@ export default function BookDemo() {
                             </div>
                         </div>
 
-                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "24px" }}>
                             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                                 <label style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-primary)" }}>Phone (optional)</label>
                                 <input type="tel" name="Phone" style={{ padding: "12px 16px", borderRadius: "6px", border: "1px solid var(--border)", background: "var(--surface-1)", fontSize: "16px", color: "var(--text-primary)" }} />
