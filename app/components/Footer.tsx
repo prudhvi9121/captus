@@ -4,48 +4,68 @@ import Link from 'next/link';
 
 export default function Footer() {
     return (
-        <footer style={{ background: '#111827', color: '#FFFFFF', padding: 'clamp(48px, 7vw, 80px) clamp(16px, 5vw, 24px) 40px', borderTop: '1px solid #374151' }}>
-            <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', flexWrap: 'wrap', gap: '60px', justifyContent: 'space-between' }}>
-                <div style={{ maxWidth: '340px' }}>
-                    <div className="font-display" style={{ fontSize: '24px', color: '#CC5500', marginBottom: '16px', letterSpacing: '0.05em' }}>
+        <footer className="relative bg-[#0A0A0A] text-white overflow-hidden pt-32 sm:pt-40 lg:pt-56 pb-16 sm:pb-24 border-t border-white/10">
+            {/* ── Main Content Container ── */}
+            <div className="max-w-[1240px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10 flex flex-col lg:flex-row justify-between mb-32 sm:mb-40 lg:mb-56 gap-16 sm:gap-24 lg:gap-32">
+
+                {/* ── Left Column: Branding & Mission ── */}
+                <div className="max-w-md lg:max-w-[400px]">
+                    <div className="font-display text-4xl sm:text-5xl font-bold tracking-wider text-orange-500 mb-6 sm:mb-8">
                         CAPTUS.AI
                     </div>
-                    <p style={{ color: '#9CA3AF', fontSize: '15px', lineHeight: 1.6 }}>
-                        Predictive risk intelligence platform for construction owners.
+                    <p className="text-gray-400 text-base sm:text-lg leading-relaxed max-w-sm">
+                        Predictive risk intelligence platform for construction owners. Intercepting financial exposure before it materializes in the field.
                     </p>
                 </div>
 
-                <div style={{ display: 'flex', gap: 'clamp(32px, 6vw, 80px)', flexWrap: 'wrap' }}>
-                    <div>
-                        <h4 style={{ fontWeight: 700, marginBottom: '20px', fontSize: '14px', letterSpacing: '0.05em', color: '#FFFFFF', textTransform: 'uppercase' }}>Company</h4>
-                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                            <li><Link href="/founder" style={{ color: '#9CA3AF', textDecoration: 'none', fontSize: '15px', transition: 'color 0.2s' }}>Founder</Link></li>
-                            <li><Link href="/team" style={{ color: '#9CA3AF', textDecoration: 'none', fontSize: '15px', transition: 'color 0.2s' }}>Team</Link></li>
-                            <li><Link href="/careers" style={{ color: '#9CA3AF', textDecoration: 'none', fontSize: '15px', transition: 'color 0.2s' }}>Careers</Link></li>
-                            <li><Link href="/investors" style={{ color: '#9CA3AF', textDecoration: 'none', fontSize: '15px', transition: 'color 0.2s' }}>Investors</Link></li>
-                        </ul>
+                {/* ── Right Column: Navigation Links ── */}
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-12 sm:gap-16 lg:gap-24 w-full lg:w-auto">
+                    {/* Navigation Group: Company */}
+                    <div className="flex flex-col gap-5">
+                        <span className="text-xs font-bold tracking-[0.2em] text-white/40 uppercase">Company</span>
+                        <Link href="/founder" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">Founder</Link>
+                        <Link href="/team" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">Team</Link>
+                        <Link href="/careers" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">Careers</Link>
+                        <Link href="/investors" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">Investors</Link>
                     </div>
-                    <div>
-                        <h4 style={{ fontWeight: 700, marginBottom: '20px', fontSize: '14px', letterSpacing: '0.05em', color: '#FFFFFF', textTransform: 'uppercase' }}>Legal</h4>
-                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                            <li><Link href="/privacy-policy" style={{ color: '#9CA3AF', textDecoration: 'none', fontSize: '15px', transition: 'color 0.2s' }}>Privacy Policy</Link></li>
-                            <li><Link href="/terms-of-service" style={{ color: '#9CA3AF', textDecoration: 'none', fontSize: '15px', transition: 'color 0.2s' }}>Terms of Service</Link></li>
-                        </ul>
+
+                    {/* Navigation Group: Legal */}
+                    <div className="flex flex-col gap-5">
+                        <span className="text-xs font-bold tracking-[0.2em] text-white/40 uppercase">Legal</span>
+                        <Link href="/privacy-policy" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">Privacy Policy</Link>
+                        <Link href="/terms-of-service" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">Terms of Service</Link>
                     </div>
-                    <div>
-                        <h4 style={{ fontWeight: 700, marginBottom: '20px', fontSize: '14px', letterSpacing: '0.05em', color: '#FFFFFF', textTransform: 'uppercase' }}>Contact</h4>
-                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                            <li><a href="mailto:info@captus.ai" style={{ color: '#CC5500', textDecoration: 'none', fontSize: '15px', transition: 'color 0.2s' }}>info@captus.ai</a></li>
-                            <li><Link href="/book-demo" style={{ color: '#CC5500', textDecoration: 'none', fontSize: '15px', transition: 'color 0.2s' }}>Book a Demo</Link></li>
-                        </ul>
+
+                    {/* Navigation Group: Contact */}
+                    <div className="flex flex-col gap-5">
+                        <span className="text-xs font-bold tracking-[0.2em] text-white/40 uppercase">Contact</span>
+                        <a href="mailto:info@captus.ai" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">info@captus.ai</a>
+                        <Link href="/book-demo" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">Book a Demo</Link>
                     </div>
                 </div>
+
             </div>
 
-            <div style={{ maxWidth: '1200px', margin: '60px auto 0', paddingTop: '32px', borderTop: '1px solid #374151', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
-                <p style={{ color: '#6B7280', fontSize: '14px' }}>© {new Date().getFullYear()} Captus AI. All rights reserved.</p>
-                <div style={{ display: 'flex', gap: '24px' }}>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style={{ color: '#9CA3AF', textDecoration: 'none', fontSize: '14px', transition: 'color 0.2s' }}>LinkedIn</a>
+            {/* ── Massive Edge-to-Edge Typography ── */}
+            <div className="w-full flex justify-center items-center overflow-hidden pointer-events-none select-none my-24 sm:my-32 lg:my-48 opacity-[0.15] mix-blend-plus-lighter">
+                <h1 className="font-display font-black leading-none text-transparent bg-clip-text bg-gradient-to-b from-white to-[#0A0A0A] tracking-tighter"
+                    style={{ fontSize: "clamp(3rem, 22vw, 24rem)" }}>
+                    CAPTUS
+                </h1>
+            </div>
+
+            {/* ── Bottom Bar ── */}
+            <div className="max-w-[1240px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10 flex flex-col sm:flex-row justify-between items-center gap-6 pt-8 border-t border-white/[0.05]">
+                <p className="text-white/40 text-sm">
+                    © {new Date().getFullYear()} Captus AI. All rights reserved.
+                </p>
+                <div className="flex gap-6">
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white transition-colors duration-300 text-sm">
+                        LinkedIn
+                    </a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white transition-colors duration-300 text-sm">
+                        Twitter (X)
+                    </a>
                 </div>
             </div>
         </footer>
