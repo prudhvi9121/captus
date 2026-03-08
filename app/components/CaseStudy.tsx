@@ -55,7 +55,7 @@ export default function CaseStudy() {
                 >
                     <div className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-[pulse_2s_ease-in-out_infinite] shadow-[0_0_8px_#CC5500]" />
                     <span className="text-[10px] sm:text-xs font-bold tracking-[0.2em] text-orange-500 uppercase font-display">
-                        Current Engagement
+                        $500M Engagement
                     </span>
                 </div>
 
@@ -91,7 +91,7 @@ export default function CaseStudy() {
                     className="text-sm sm:text-base lg:text-lg text-gray-400 leading-relaxed max-w-[600px] opacity-0 translate-y-8"
                     style={{ transition: "all 1s cubic-bezier(0.16,1,0.3,1)" }}
                 >
-                    Captus is actively utilized by a major strategic design partner to coordinate risk and exposure across sustainable life sciences and LEED-certified developments. We are validating predictive intelligence across institutional-grade capital projects.
+                    Captus is actively used by a major strategic design partner to coordinate risk and exposure across sustainable life sciences and LEED-certified developments. We are validating predictive intelligence across institutional-grade capital projects.
                 </p>
 
             </div>

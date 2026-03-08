@@ -5,11 +5,12 @@ import { useScrollReveal } from "../hooks/useScrollReveal";
 const testimonials = [
     {
         quote:
-            "Captus fundamentally changed how we approach financial oversight on capital projects. The ability to surface conflicts before they escalate is unlike anything we've seen in the market.",
-        name: "Strategic Design Partner",
-        title: "Owner — $500M+ Portfolio",
-        initial: "S",
+            "Captist has become an essential tool across our development and construction projects. It helps us stay on top of meetings, documentation, and reporting 24/7 so nothing slips through the cracks. The platform gives our team real visibility into risk, timing, and budget, and the reporting has been incredibly valuable when communicating with lenders, investors, and stakeholders. It has improved our efficiency, decision-making, and overall project oversight.",
+        name: "Anthony Meer",
+        title: "Owner and Developer, University Place Associates",
+        initial: "A",
     },
+
 ];
 
 export default function Testimonial() {
@@ -54,9 +55,10 @@ export default function Testimonial() {
                     ref={ref}
                     className="reveal"
                     style={{
-                        display: "flex",
-                        flexDirection: "column",
+                        display: "grid",
+                        gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 380px), 1fr))",
                         gap: "24px",
+                        alignItems: "stretch",
                     }}
                 >
                     {testimonials.map((t, i) => (
@@ -70,6 +72,8 @@ export default function Testimonial() {
                                 borderLeft: "4px solid #CC5500",
                                 position: "relative",
                                 overflow: "hidden",
+                                display: "flex",
+                                flexDirection: "column",
                                 animationDelay: `${i * 150}ms`,
                             }}
                         >
@@ -99,12 +103,13 @@ export default function Testimonial() {
                                     marginBottom: "32px",
                                     position: "relative",
                                     zIndex: 1,
+                                    flexGrow: 1,
                                 }}
                             >
                                 &ldquo;{t.quote}&rdquo;
                             </p>
 
-                            <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                            <div style={{ display: "flex", alignItems: "center", gap: "16px", marginTop: "auto" }}>
                                 {/* Avatar initial */}
                                 <div
                                     style={{

@@ -7,7 +7,7 @@ const STEPS = [
         number: "01",
         label: "Step One",
         title: "Automated\nIngestion",
-        desc: "Captus ingests and connects project data across documents, drawings, specifications, emails, models, and external systems like Procore and Autodesk. No manual configuration required.",
+        desc: "Captus ingests and connects project data across documents, drawings, specifications, emails, models, and external systems like Procore and Autodesk.",
         stat: "40+",
         statLabel: "Data Sources Connected",
         color: "#CC5500",
@@ -73,14 +73,14 @@ const STEPS = [
         number: "02",
         label: "Step Two",
         title: "Delta\nDetection",
-        desc: "We map relationships between scope, trades, schedule dependencies, and communication records to surface inconsistencies instantly — before they become claims.",
+        desc: "We map relationships between scope, trades, schedule dependencies, and communication records to surface inconsistencies instantly - before they become claims.",
         stat: "100K+",
         statLabel: "Document Relationships Mapped",
         color: "#FF7B1A",
         dim: "#8A4000",
         illustration: (active: boolean) => (
             <svg viewBox="0 0 400 280" fill="none" width="100%" height="100%" style={{ maxWidth: "420px" }}>
-                {/* Left stack — front card at x=8, shadow cards fan LEFT (x decreases) */}
+                {/* Left stack - front card at x=8, shadow cards fan LEFT (x decreases) */}
                 {[0, 1, 2].map(i => (
                     <rect key={i} x={8 - i * 7} y={58 + i * 7} width="155" height="165" rx="6"
                         fill="rgba(204,85,0,0.05)" stroke="#FF7B1A" strokeWidth="1.5"
@@ -89,7 +89,7 @@ const STEPS = [
                     />
                 ))}
 
-                {/* Right stack — front card right edge at ~392, shadow cards fan RIGHT (x increases) */}
+                {/* Right stack - front card right edge at ~392, shadow cards fan RIGHT (x increases) */}
                 {[0, 1, 2].map(i => (
                     <rect key={i} x={237 + i * 7} y={58 + i * 7} width="155" height="165" rx="6"
                         fill="rgba(204,85,0,0.05)" stroke="#FF7B1A" strokeWidth="1.5"
@@ -98,7 +98,7 @@ const STEPS = [
                     />
                 ))}
 
-                {/* Conflict zone — centered at x=200, in the gap between stacks */}
+                {/* Conflict zone - centered at x=200, in the gap between stacks */}
                 <line x1="163" y1="140" x2="237" y2="140" stroke="#FF7B1A" strokeWidth="2" strokeDasharray="4 3"
                     opacity={active ? 1 : 0} style={{ transition: "opacity 0.6s ease 0.4s" }} />
                 <circle cx="200" cy="140" r="18" fill="rgba(255,123,26,0.15)"
@@ -124,7 +124,7 @@ const STEPS = [
                         style={{ transition: `opacity 0.5s ease ${i * 0.05}s` }} />
                 ))}
 
-                {/* Alert badge — centred at x=200 */}
+                {/* Alert badge - centred at x=200 */}
                 <rect x="144" y="18" width="112" height="26" rx="13"
                     fill="rgba(255,123,26,0.15)" stroke="#FF7B1A" strokeWidth="1"
                     opacity={active ? 1 : 0}
@@ -142,9 +142,9 @@ const STEPS = [
         number: "03",
         label: "Step Three",
         title: "Risk\nHeat Map",
-        desc: "The platform visualizes risk and forecasts potential financial and scheduling consequences before they impact downstream trades. Monte Carlo simulations predict exposure with 92% accuracy.",
-        stat: "92%",
-        statLabel: "Financial Exposure Accuracy",
+        desc: "The platform visualizes risk and forecasts potential financial and scheduling consequences before they impact downstream trades.",
+        stat: "Predictive",
+        statLabel: "Financial Exposure Forecast",
         color: "#CC5500",
         dim: "#7A3300",
         illustration: (active: boolean) => (
@@ -201,7 +201,7 @@ const STEPS = [
     //     number: "04",
     //     label: "Step Four",
     //     title: "Accelerated\nDecisions",
-    //     desc: "Route the identified conflict directly to the appropriate stakeholder with full context attached. Raw documentation transformed into intelligence — resolved before it cascades.",
+    //     desc: "Route the identified conflict directly to the appropriate stakeholder with full context attached. Raw documentation transformed into intelligence - resolved before it cascades.",
     //     stat: "3×",
     //     statLabel: "Faster Resolution Speed",
     //     color: "#FF7B1A",
@@ -411,7 +411,7 @@ export default function Solution() {
                     }
                 }
 
-                /* Desktop: 1024px+ — restore two-column layout with side decorators */
+                /* Desktop: 1024px+ - restore two-column layout with side decorators */
                 @media (min-width: 1024px) {
                     .sol-header {
                         padding: 28px 48px;
@@ -478,7 +478,7 @@ export default function Solution() {
                 }
             `}</style>
 
-            {/* Scroll driver — tall enough for 4 steps */}
+            {/* Scroll driver - tall enough for 4 steps */}
             <div
                 ref={wrapperRef}
                 style={{ height: `${STEPS.length * 100}vh`, position: "relative" }}
@@ -512,7 +512,7 @@ export default function Solution() {
                         </div>
                     </div>
 
-                    {/* ── LEFT SPINE: Vertical progress (desktop only) ── */}
+                    {/* - LEFT SPINE: Vertical progress (desktop only) - */}
                     <div className="sol-left-spine">
                         {STEPS.map((s, i) => (
                             <div key={i} style={{ display: "flex", alignItems: "center", gap: "12px" }}>
@@ -698,7 +698,7 @@ export default function Solution() {
                         transition: "background 0.8s ease",
                     }} />
 
-                    {/* Grid lines */}
+                    {/* Background grid lines */}
                     <div style={{
                         position: "absolute",
                         inset: 0,
@@ -710,7 +710,7 @@ export default function Solution() {
                         pointerEvents: "none",
                     }} />
 
-                    {/* Step progress bar — right side (desktop only) */}
+                    {/* Step progress bar - right side (desktop only) */}
                     <div className="sol-right-bar">
                         <div style={{
                             width: "100%",

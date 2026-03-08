@@ -226,7 +226,7 @@ const PROBLEMS = [
         id: "rework",
         headline: "5–20%",
         title: "Value Lost to Rework",
-        body: "Between 5% and 20% of every contract bleeds away through preventable rework, miscommunication, and broken data handoffs — silently, relentlessly, at scale.",
+        body: "Between 5% and 20% of every contract bleeds away through preventable rework, miscommunication, and broken data handoffs, silently, relentlessly, at scale.",
         accentColor: "#FF7B1A",
         viz: (active: boolean) => <ReworkMeter active={active} />,
     },
@@ -240,7 +240,7 @@ const PROBLEMS = [
     },
     {
         id: "visibility",
-        headline: "0",
+        headline: <span style={{ fontSize: "clamp(36px, 4vw, 52px)" }}>0</span>,
         title: "Predictive Visibility",
         body: "Traditional tools are rearview mirrors. They log what happened, not what's about to. By the time the data is entered, the damage is already in motion.",
         accentColor: "#FF7B1A",
@@ -315,7 +315,7 @@ function ProblemCard({ prob, index, parentVisible }: { prob: typeof PROBLEMS[0];
             {/* Big stat */}
             <div style={{
                 fontFamily: "'Good Times', sans-serif",
-                fontSize: "clamp(48px, 6vw, 72px)",
+                fontSize: "clamp(36px, 4vw, 52px)",
                 lineHeight: 1,
                 color: prob.accentColor,
                 marginBottom: "12px",
@@ -502,7 +502,7 @@ export default function Problem() {
                         transition: "all 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s",
                     }}>
                         Construction inefficiency continues to erode owner returns at scale.
-                        Wait-and-see approaches drain contingency budgets — silently.
+                        Wait-and-see approaches drain contingency budgets silently.
                     </p>
                 </div>
 
@@ -521,7 +521,7 @@ export default function Problem() {
                 </div>
 
                 {/* ── Bottom CTA strip ── */}
-                <div style={{
+                {/* <div style={{
                     textAlign: "center",
                     marginTop: "clamp(48px, 6vw, 80px)",
                     opacity: bodyVisible ? 1 : 0,
@@ -562,7 +562,7 @@ export default function Problem() {
                             <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
                     </a>
-                </div>
+                </div> */}
             </div>
         </section>
     );

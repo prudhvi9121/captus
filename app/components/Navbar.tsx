@@ -148,7 +148,30 @@ export default function Navbar() {
                 </div>
 
                 {/* CTA Desktop */}
-                <div className="hidden md:block">
+                <div className="hidden md:flex items-center gap-6">
+                    <a
+                        href="https://app.captus.ai/login"
+                        style={{
+                            color: "#CC5500",
+                            fontSize: "14px",
+                            fontWeight: 600,
+                            textDecoration: "none",
+                            padding: "8px 20px",
+                            border: "1px solid #CC5500",
+                            borderRadius: "50px",
+                            transition: "all 0.2s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                            (e.target as HTMLElement).style.backgroundColor = "#CC5500";
+                            (e.target as HTMLElement).style.color = "#FFFFFF";
+                        }}
+                        onMouseLeave={(e) => {
+                            (e.target as HTMLElement).style.backgroundColor = "transparent";
+                            (e.target as HTMLElement).style.color = "#CC5500";
+                        }}
+                    >
+                        Login
+                    </a>
                     <Link href="/book-demo" style={{ textDecoration: 'none' }}>
                         <button
                             className="btn-primary"
@@ -283,6 +306,27 @@ export default function Navbar() {
                             {link.label}
                         </Link>
                     ))}
+                    <a
+                        href="https://app.captus.ai/login"
+                        onClick={() => setIsMenuOpen(false)}
+                        style={{
+                            display: "inline-block",
+                            color: "#CC5500",
+                            fontSize: "16px",
+                            fontWeight: 600,
+                            textDecoration: "none",
+                            padding: "14px",
+                            marginTop: "8px",
+                            border: "1px solid #CC5500",
+                            borderRadius: "50px",
+                            width: "100%",
+                            maxWidth: "280px",
+                            textAlign: "center",
+                            transition: "all 0.2s ease",
+                        }}
+                    >
+                        Login
+                    </a>
                     <Link href="/book-demo" onClick={() => setIsMenuOpen(false)} style={{ textDecoration: 'none', marginTop: '16px', width: "100%", maxWidth: "280px" }}>
                         <button
                             className="btn-primary"

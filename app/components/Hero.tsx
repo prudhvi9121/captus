@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-/* ─── Tiny hook: animate-in on mount ─── */
+/* - Tiny hook: animate-in on mount - */
 function useFadeUp(delay = 0) {
     const ref = useRef<HTMLDivElement>(null);
     useEffect(() => {
@@ -74,7 +74,7 @@ export default function Hero() {
                 </svg>
             </div>
 
-            {/* Content — starts directly below the fixed navbar */}
+            {/* Content - starts directly below the fixed navbar */}
             <div
                 className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 lg:px-20 flex flex-col lg:flex-row items-center gap-10 lg:gap-20"
                 style={{ paddingTop: "40px", paddingBottom: "60px", flex: 1 }}

@@ -10,9 +10,11 @@ export default function Footer() {
 
                 {/* ── Left Column: Branding & Mission ── */}
                 <div className="max-w-md lg:max-w-[400px]">
-                    <div className="font-display text-4xl sm:text-5xl font-bold tracking-wider text-orange-500 mb-6 sm:mb-8">
-                        CAPTUS.AI
-                    </div>
+                    <img
+                        src="/Captus Logo_A7.png"
+                        alt="Captus Logo"
+                        className="h-10 sm:h-12 w-auto object-contain mb-6 sm:mb-8"
+                    />
                     <p className="text-gray-400 text-base sm:text-lg leading-relaxed max-w-sm">
                         Predictive risk intelligence platform for construction owners. Intercepting financial exposure before it materializes in the field.
                     </p>

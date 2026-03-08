@@ -14,7 +14,7 @@ export default function Investors() {
                             Investor Relations
                         </h1>
                         <p style={{ color: "var(--text-secondary)", fontSize: "18px", lineHeight: 1.6 }}>
-                            Drive the future of predictive risk intelligence. Connect with our capital and strategy team.
+                            Connect with our capital and strategy team.
                         </p>
                     </div>
 

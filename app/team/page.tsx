@@ -3,11 +3,13 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import Image from "next/image";
 
 const teamMembers = [
-    { name: "Mentor & Advisor", role: "Strategic Advisor", type: "advisor" },
-    { name: "Founding AI Engineer", role: "AI Engineering & Architecture", type: "founding" },
-    { name: "AI Engineers", role: "Platform Development", type: "engineer" },
+    { name: "Jonathan Kruljac", role: "Mentor & Advisor", type: "advisor" },
+    { name: "Alley (Tong) Wu", role: "Founding AI Engineer", type: "founding" },
+    { name: "Khanak Agrawal", role: "AI Engineer", type: "engineer" },
+    { name: "Youssef Benaouda", role: "AI Engineer", type: "engineer" },
 ];
 
 function Section({ children }: { children: React.ReactNode }) {
@@ -62,7 +64,7 @@ export default function Team() {
                                 {/* Left: portrait + name */}
                                 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
                                     <div
-                                        className="w-full sm:w-2/3 md:w-full mx-auto md:mx-0"
+                                        className="w-full sm:w-2/3 md:w-full mx-auto md:mx-0 relative"
                                         style={{
                                             aspectRatio: "1/1",
                                             background: "var(--surface-2)",
@@ -73,9 +75,15 @@ export default function Team() {
                                             justifyContent: "center",
                                             color: "var(--text-muted)",
                                             fontSize: "13px",
+                                            overflow: "hidden",
                                         }}
                                     >
-                                        [Founder Headshot]
+                                        <Image
+                                            src="/Anatoly-51 - Anatoly Khen.jpg"
+                                            alt="Anatoly Khen - Founder & CEO"
+                                            fill
+                                            style={{ objectFit: "cover" }}
+                                        />
                                     </div>
                                     <div className="text-center md:text-left">
                                         <h2 className="font-display" style={{ fontSize: "clamp(18px, 2.5vw, 24px)", color: "var(--text-primary)" }}>
@@ -90,7 +98,7 @@ export default function Team() {
                                 {/* Right: bio */}
                                 <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
                                     <p style={{ color: "var(--text-secondary)", fontSize: "clamp(15px, 1.5vw, 17px)", lineHeight: 1.75 }}>
-                                        Captus is led by Anatoly Khen, Founder and CEO, with a proven background in product and go-to-market execution across leading AI and technology organizations. He brings deep experience from past roles at innovative companies including Revelen.ai, Axon, Paylocity, and VIEVU.
+                                        Captus is led by Anatoly Khen, Founder and CEO, with a proven background in product and go-to-market strategy across leading AI and technology organizations. He brings deep experience from past roles at innovative companies including Revelen.ai, Axon, Paylocity, and VIEVU.
                                     </p>
                                     <p style={{ color: "var(--text-secondary)", fontSize: "clamp(15px, 1.5vw, 17px)", lineHeight: 1.75 }}>
                                         With an Executive MBA from MIT, Anatoly blends rigorous academic frameworks with practical operational expertise to solve complex systemic issues within the construction industry. He recognizes that owner returns are fundamentally eroded by preventable risk and has focused Captus exclusively on solving this upstream visibility problem.
@@ -117,16 +125,16 @@ export default function Team() {
                                                 gap: "6px",
                                             }}
                                         >
-                                            <li><strong>MIT</strong> — Executive MBA</li>
-                                            <li><strong>Revelen.ai</strong> — Leadership &amp; Strategy</li>
-                                            <li><strong>Axon</strong> — Product &amp; Market Execution</li>
-                                            <li><strong>Paylocity</strong> — Technology &amp; Scale</li>
-                                            <li><strong>VIEVU</strong> — Go-to-Market Expansion</li>
+                                            <li><strong>MIT</strong> - Executive MBA</li>
+                                            <li><strong>Revelen.ai</strong> - Leadership &amp; Strategy</li>
+                                            <li><strong>Axon</strong> - Product &amp; Market Growth</li>
+                                            <li><strong>Paylocity</strong> - Technology &amp; Scale</li>
+                                            <li><strong>VIEVU</strong> - Go-to-Market Expansion</li>
                                         </ul>
                                     </div>
-                                    <p style={{ color: "var(--text-secondary)", fontSize: "clamp(14px, 1.4vw, 15px)", lineHeight: 1.7, fontStyle: "italic" }}>
+                                    {/* <p style={{ color: "var(--text-secondary)", fontSize: "clamp(14px, 1.4vw, 15px)", lineHeight: 1.7, fontStyle: "italic" }}>
                                         Outside of building Captus and working with strategic design partners, Anatoly prioritizes spending quality time with his family.
-                                    </p>
+                                    </p> */}
                                 </div>
                             </div>
                         </div>

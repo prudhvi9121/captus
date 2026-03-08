@@ -14,7 +14,7 @@ export default function Careers() {
                             Careers
                         </h1>
                         <p style={{ color: "var(--text-secondary)", fontSize: "18px", lineHeight: 1.6, maxWidth: "600px", margin: "0 auto" }}>
-                            Join us in building predictive risk intelligence for the construction industry.
+                            Join our team.
                         </p>
                     </div>
 
@@ -29,7 +29,7 @@ export default function Careers() {
                         </div>
                         <h2 className="font-display" style={{ fontSize: "24px", color: "var(--text-primary)" }}>We are currently hiring</h2>
                         <p style={{ color: "var(--text-secondary)", fontSize: "16px", lineHeight: 1.6, maxWidth: "400px" }}>
-                            We are consistently looking for exceptional engineers, AI specialists, and construction industry experts.
+                            We are actively looking to expand our team.
                         </p>
                         <div style={{ padding: "24px", background: "var(--surface-1)", borderRadius: "8px", border: "1px solid var(--border)", width: "100%", marginTop: "16px" }}>
                             <h3 style={{ fontSize: "16px", fontWeight: 700, color: "var(--text-primary)", marginBottom: "8px" }}>Apply via Email</h3>
