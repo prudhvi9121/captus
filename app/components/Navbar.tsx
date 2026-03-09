@@ -152,22 +152,24 @@ export default function Navbar() {
                     <a
                         href="https://app.captus.ai/login"
                         style={{
-                            color: "#CC5500",
+                            color: "#1F1F1F",
+                            fontFamily: '"Good Times", system-ui, sans-serif',
                             fontSize: "14px",
-                            fontWeight: 600,
+                            fontWeight: "normal",
+                            letterSpacing: "0.02em",
                             textDecoration: "none",
-                            padding: "8px 20px",
-                            border: "1px solid #CC5500",
+                            padding: "10px 24px",
+                            border: "1px solid #1F1F1F",
                             borderRadius: "50px",
                             transition: "all 0.2s ease",
                         }}
                         onMouseEnter={(e) => {
-                            (e.target as HTMLElement).style.backgroundColor = "#CC5500";
+                            (e.target as HTMLElement).style.backgroundColor = "#1F1F1F";
                             (e.target as HTMLElement).style.color = "#FFFFFF";
                         }}
                         onMouseLeave={(e) => {
                             (e.target as HTMLElement).style.backgroundColor = "transparent";
-                            (e.target as HTMLElement).style.color = "#CC5500";
+                            (e.target as HTMLElement).style.color = "#1F1F1F";
                         }}
                     >
                         Login
@@ -311,13 +313,15 @@ export default function Navbar() {
                         onClick={() => setIsMenuOpen(false)}
                         style={{
                             display: "inline-block",
-                            color: "#CC5500",
+                            color: "#1F1F1F",
+                            fontFamily: '"Good Times", system-ui, sans-serif',
                             fontSize: "16px",
-                            fontWeight: 600,
+                            fontWeight: "normal",
+                            letterSpacing: "0.02em",
                             textDecoration: "none",
                             padding: "14px",
                             marginTop: "8px",
-                            border: "1px solid #CC5500",
+                            border: "1px solid #1F1F1F",
                             borderRadius: "50px",
                             width: "100%",
                             maxWidth: "280px",

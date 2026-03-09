@@ -36,21 +36,21 @@ function EscalationBar({ active }: { active: boolean }) {
                             fontFamily: "'Good Times', sans-serif",
                             fontSize: "10px",
                             letterSpacing: "1.5px",
-                            color: active ? "#111111" : "rgba(0,0,0,0.3)",
+                            color: active ? "#FFFFFF" : "rgba(255,255,255,0.3)",
                             textTransform: "uppercase",
                             transition: `color 0.5s ease ${i * 0.1}s`,
                         }}>{s.label}</span>
                         <span style={{
                             fontFamily: "'Good Times', sans-serif",
                             fontSize: "11px",
-                            color: active ? s.color : "rgba(0,0,0,0.1)",
+                            color: active ? s.color : "rgba(255,255,255,0.1)",
                             transition: `color 0.5s ease ${i * 0.15 + 0.4}s`,
                             textShadow: active ? `0 0 12px ${s.color}80` : "none",
                         }}>{s.cost}</span>
                     </div>
                     <div style={{
                         height: "6px",
-                        background: "rgba(0,0,0,0.06)",
+                        background: "rgba(255,255,255,0.06)",
                         borderRadius: "99px",
                         overflow: "hidden",
                     }}>
@@ -94,7 +94,7 @@ function ReworkMeter({ active }: { active: boolean }) {
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px" }}>
             <div style={{ position: "relative", width: "180px", height: "180px" }}>
                 <svg width="180" height="180" viewBox="0 0 180 180" style={{ transform: "rotate(-90deg)" }}>
-                    <circle cx="90" cy="90" r={radius} fill="none" stroke="rgba(0,0,0,0.04)" strokeWidth="10" />
+                    <circle cx="90" cy="90" r={radius} fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="10" />
                     <circle cx="90" cy="90" r={radius} fill="none"
                         stroke="#FF7B1A" strokeWidth="10"
                         strokeDasharray={`${dash} ${circumference}`}
@@ -120,7 +120,7 @@ function ReworkMeter({ active }: { active: boolean }) {
                     }}>
                         {pct.toFixed(0)}%
                     </span>
-                    <span style={{ fontFamily: "Nexa, sans-serif", fontSize: "10px", color: "rgba(0,0,0,0.5)", marginTop: "4px" }}>
+                    <span style={{ fontFamily: "Nexa, sans-serif", fontSize: "10px", color: "rgba(255,255,255,0.5)", marginTop: "4px" }}>
                         lost to rework
                     </span>
                 </div>
@@ -128,12 +128,12 @@ function ReworkMeter({ active }: { active: boolean }) {
             <div style={{
                 display: "flex", gap: "6px", alignItems: "center",
                 fontFamily: "Nexa, sans-serif", fontSize: "11px",
-                color: "rgba(0,0,0,0.5)",
+                color: "rgba(255,255,255,0.5)",
             }}>
                 <span style={{ color: "#4ade80" }}>5%</span>
-                <div style={{ width: "60px", height: "1px", background: "rgba(0,0,0,0.1)" }} />
+                <div style={{ width: "60px", height: "1px", background: "rgba(255,255,255,0.1)" }} />
                 <span style={{ color: "#FF7B1A" }}>20%</span>
-                <span style={{ color: "rgba(0,0,0,0.4)", marginLeft: "4px" }}>contract value</span>
+                <span style={{ color: "rgba(255,255,255,0.4)", marginLeft: "4px" }}>contract value</span>
             </div>
         </div>
     );
@@ -156,10 +156,10 @@ function BlindSpotViz({ active }: { active: boolean }) {
         <div style={{
             position: "relative",
             height: "160px",
-            background: "rgba(0,0,0,0.02)",
+            background: "rgba(255,255,255,0.02)",
             borderRadius: "12px",
             overflow: "hidden",
-            border: "1px solid rgba(0,0,0,0.06)",
+            border: "1px solid rgba(255,255,255,0.06)",
             marginTop: "24px",
         }}>
             {/* Scan line */}
@@ -186,7 +186,7 @@ function BlindSpotViz({ active }: { active: boolean }) {
                         width: "6px",
                         height: "6px",
                         borderRadius: "2px",
-                        background: active && isInPast ? "rgba(255,123,26,0.5)" : "rgba(0,0,0,0.08)",
+                        background: active && isInPast ? "rgba(255,123,26,0.5)" : "rgba(255,255,255,0.08)",
                         transition: `background 0.3s ease ${i * 0.04}s`,
                     }} />
                 );
@@ -199,7 +199,7 @@ function BlindSpotViz({ active }: { active: boolean }) {
                 fontFamily: "'Good Times', sans-serif",
                 fontSize: "8px",
                 letterSpacing: "2px",
-                color: "rgba(255,123,26,0.6)",
+                color: "rgba(255,123,26,0.8)",
                 textTransform: "uppercase",
             }}>
                 Documenting the Past →
@@ -212,7 +212,7 @@ function BlindSpotViz({ active }: { active: boolean }) {
                 fontFamily: "'Good Times', sans-serif",
                 fontSize: "8px",
                 letterSpacing: "1.5px",
-                color: "rgba(0,0,0,0.3)",
+                color: "rgba(255,255,255,0.3)",
                 textTransform: "uppercase",
             }}>
                 Zero Foresight
@@ -261,9 +261,9 @@ function ProblemCard({ prob, index, parentVisible }: { prob: typeof PROBLEMS[0];
             style={{
                 position: "relative",
                 background: hovered
-                    ? `linear-gradient(135deg, rgba(255,123,26,0.06) 0%, rgba(255,255,255,0) 100%)`
-                    : "#FFFFFF",
-                border: `1px solid ${hovered ? prob.accentColor + "40" : "rgba(0,0,0,0.05)"}`,
+                    ? `linear-gradient(135deg, rgba(255,123,26,0.12) 0%, rgba(10,10,10,0.5) 100%)`
+                    : "rgba(255,255,255,0.02)",
+                border: `1px solid ${hovered ? prob.accentColor + "40" : "rgba(255,255,255,0.08)"}`,
                 borderRadius: "24px",
                 padding: "clamp(28px, 4vw, 44px)",
                 overflow: "hidden",
@@ -271,8 +271,8 @@ function ProblemCard({ prob, index, parentVisible }: { prob: typeof PROBLEMS[0];
                 transform: active ? "translateY(0px)" : "translateY(50px)",
                 transition: `opacity 0.9s ease ${index * 0.18}s, transform 0.9s cubic-bezier(0.16,1,0.3,1) ${index * 0.18}s, border-color 0.3s ease, background 0.3s ease`,
                 boxShadow: hovered
-                    ? `0 24px 80px rgba(0,0,0,0.1), 0 0 0 1px ${prob.accentColor}15, inset 0 1px 0 rgba(255,255,255,0.5)`
-                    : "0 4px 24px rgba(0,0,0,0.04)",
+                    ? `0 24px 80px rgba(0,0,0,0.4), 0 0 0 1px ${prob.accentColor}20, inset 0 1px 0 rgba(255,255,255,0.05)`
+                    : "0 4px 24px rgba(0,0,0,0.2)",
             }}
         >
             {/* Corner accent */}
@@ -286,31 +286,7 @@ function ProblemCard({ prob, index, parentVisible }: { prob: typeof PROBLEMS[0];
                 transition: "opacity 0.4s ease",
             }} />
 
-            {/* Step indicator */}
-            <div style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                marginBottom: "24px",
-                background: `${prob.accentColor}12`,
-                border: `1px solid ${prob.accentColor}25`,
-                borderRadius: "999px",
-                padding: "5px 14px",
-            }}>
-                <div style={{
-                    width: "5px", height: "5px",
-                    borderRadius: "50%",
-                    background: prob.accentColor,
-                    boxShadow: `0 0 6px ${prob.accentColor}`,
-                }} />
-                <span style={{
-                    fontFamily: "'Good Times', sans-serif",
-                    fontSize: "9px",
-                    letterSpacing: "2px",
-                    color: prob.accentColor,
-                    textTransform: "uppercase",
-                }}>Problem {String(index + 1).padStart(2, "0")}</span>
-            </div>
+
 
             {/* Big stat */}
             <div style={{
@@ -330,7 +306,7 @@ function ProblemCard({ prob, index, parentVisible }: { prob: typeof PROBLEMS[0];
             <h3 style={{
                 fontFamily: "'Good Times', sans-serif",
                 fontSize: "clamp(16px, 2vw, 22px)",
-                color: "#111111",
+                color: "#FFFFFF",
                 marginBottom: "16px",
                 letterSpacing: "0.5px",
             }}>
@@ -341,7 +317,7 @@ function ProblemCard({ prob, index, parentVisible }: { prob: typeof PROBLEMS[0];
             <p style={{
                 fontFamily: "Nexa, sans-serif",
                 fontSize: "clamp(13px, 1.3vw, 15px)",
-                color: "rgba(0,0,0,0.6)",
+                color: "rgba(255,255,255,0.5)",
                 lineHeight: 1.75,
                 marginBottom: "0",
             }}>
@@ -372,7 +348,7 @@ export default function Problem() {
         <section style={{
             position: "relative",
             overflow: "hidden",
-            background: "#FFFFFF",
+            background: "#0A0A0A",
             padding: "clamp(80px, 10vw, 140px) clamp(16px, 5vw, 48px)",
         }}>
             <style>{`
@@ -401,14 +377,14 @@ export default function Problem() {
             <div style={{
                 position: "absolute", inset: 0,
                 backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`,
-                opacity: 0.5,
+                opacity: 0.15,
                 pointerEvents: "none",
             }} />
 
             {/* Radial vignette */}
             <div style={{
                 position: "absolute", inset: 0,
-                background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(204,85,0,0.07) 0%, transparent 70%)",
+                background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(204,85,0,0.15) 0%, transparent 70%)",
                 pointerEvents: "none",
             }} />
 
@@ -419,7 +395,7 @@ export default function Problem() {
                 width: "500px", height: "500px",
                 marginTop: "-250px", marginLeft: "-250px",
                 borderRadius: "50%",
-                border: "1px solid rgba(255,123,26,0.04)",
+                border: "1px solid rgba(255,123,26,0.1)",
                 pointerEvents: "none",
             }}>
                 <div style={{
@@ -470,7 +446,7 @@ export default function Problem() {
                     <h2 style={{
                         fontFamily: "'Good Times', sans-serif",
                         fontSize: "clamp(32px, 5vw, 64px)",
-                        color: "#111111",
+                        color: "#FFFFFF",
                         lineHeight: 1.05,
                         letterSpacing: "-1px",
                         marginBottom: "20px",
@@ -493,7 +469,7 @@ export default function Problem() {
                     <p style={{
                         fontFamily: "Nexa, sans-serif",
                         fontSize: "clamp(15px, 1.6vw, 19px)",
-                        color: "rgba(0,0,0,0.6)",
+                        color: "rgba(255,255,255,0.55)",
                         maxWidth: "560px",
                         margin: "0 auto",
                         lineHeight: 1.7,

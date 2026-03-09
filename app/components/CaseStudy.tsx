@@ -48,7 +48,7 @@ export default function CaseStudy() {
             <div className="w-full max-w-[1000px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10 flex flex-col items-center text-center">
 
                 {/* ── Eyebrow Badge ── */}
-                <div
+                {/* <div
                     ref={badgeRef}
                     className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-orange-500/20 bg-orange-500/5 backdrop-blur-sm mb-6 sm:mb-8 opacity-0 translate-y-8"
                     style={{ transition: "all 0.8s cubic-bezier(0.16,1,0.3,1)" }}
@@ -57,7 +57,7 @@ export default function CaseStudy() {
                     <span className="text-[10px] sm:text-xs font-bold tracking-[0.2em] text-orange-500 uppercase font-display">
                         $500M Engagement
                     </span>
-                </div>
+                </div> */}
 
                 {/* ── Main Cinematic Title ── */}
                 <h2

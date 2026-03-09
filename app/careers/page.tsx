@@ -21,10 +21,8 @@ export default function Careers() {
                     <div className="glass" style={{ padding: "48px", borderRadius: "12px", border: "1px solid var(--border)", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", gap: "24px" }}>
                         <div style={{ width: "64px", height: "64px", background: "rgba(204, 85, 0, 0.1)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", color: "#CC5500", marginBottom: "8px" }}>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                                <circle cx="9" cy="7" r="4" />
-                                <line x1="19" y1="8" x2="19" y2="14" />
-                                <line x1="22" y1="11" x2="16" y2="11" />
+                                <rect x="2" y="7" width="20" height="14" rx="2" />
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
                             </svg>
                         </div>
                         <h2 className="font-display" style={{ fontSize: "24px", color: "var(--text-primary)" }}>We are currently hiring</h2>

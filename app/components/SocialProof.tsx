@@ -145,8 +145,8 @@ function StatCard({ stat, index, visible }: { stat: typeof STATS[0]; index: numb
                 overflow: "hidden",
                 background: hovered
                     ? `linear-gradient(135deg, rgba(255,123,26,0.08) 0%, rgba(204,85,0,0.04) 100%)`
-                    : "rgba(255,255,255,0.02)",
-                border: `1px solid ${hovered ? stat.color + "50" : "rgba(255,255,255,0.07)"}`,
+                    : "#FFFFFF",
+                border: `1px solid ${hovered ? stat.color + "50" : "rgba(0,0,0,0.08)"}`,
                 borderRadius: "20px",
                 padding: "clamp(28px, 4vw, 44px)",
                 cursor: "default",
@@ -154,8 +154,8 @@ function StatCard({ stat, index, visible }: { stat: typeof STATS[0]; index: numb
                 opacity: visible ? 1 : 0,
                 transition: `transform 0.15s ease, opacity 0.8s ease ${index * 0.15}s, border-color 0.3s ease, background 0.3s ease`,
                 boxShadow: hovered
-                    ? `0 20px 60px rgba(204,85,0,0.15), 0 0 0 1px ${stat.color}20, inset 0 1px 0 rgba(255,255,255,0.05)`
-                    : "0 4px 24px rgba(0,0,0,0.3)",
+                    ? `0 20px 60px rgba(0,0,0,0.08), 0 0 0 1px ${stat.color}15, inset 0 1px 0 rgba(255,255,255,0.8)`
+                    : "0 4px 24px rgba(0,0,0,0.04)",
             }}
         >
             <ParticleField color={stat.color} />
@@ -229,7 +229,7 @@ function StatCard({ stat, index, visible }: { stat: typeof STATS[0]; index: numb
             <div style={{
                 fontFamily: "'Good Times', sans-serif",
                 fontSize: "clamp(12px, 1.2vw, 14px)",
-                color: "rgba(255,255,255,0.9)",
+                color: "#111111",
                 letterSpacing: "1.5px",
                 textTransform: "uppercase",
                 marginBottom: "8px",
@@ -240,7 +240,7 @@ function StatCard({ stat, index, visible }: { stat: typeof STATS[0]; index: numb
             {/* Sublabel */}
             <div style={{
                 fontSize: "13px",
-                color: "rgba(255,255,255,0.35)",
+                color: "rgba(0,0,0,0.5)",
                 fontFamily: "Nexa, sans-serif",
                 lineHeight: 1.5,
             }}>
@@ -279,7 +279,7 @@ export default function SocialProof() {
         <section
             ref={sectionRef}
             style={{
-                background: "#0A0A0A",
+                background: "#FAFAFA",
                 position: "relative",
                 overflow: "hidden",
                 padding: "clamp(40px, 6vw, 80px) clamp(16px, 5vw, 48px)",
@@ -289,8 +289,8 @@ export default function SocialProof() {
             <div style={{
                 position: "absolute", inset: 0,
                 backgroundImage: `
-                    linear-gradient(rgba(255,123,26,0.03) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255,123,26,0.03) 1px, transparent 1px)
+                    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)
                 `,
                 backgroundSize: "60px 60px",
                 pointerEvents: "none",
@@ -302,7 +302,7 @@ export default function SocialProof() {
                 position: "absolute", top: "-100px", left: "20%",
                 width: "400px", height: "400px",
                 borderRadius: "50%",
-                background: "radial-gradient(circle, rgba(204,85,0,0.08) 0%, transparent 70%)",
+                background: "radial-gradient(circle, rgba(204,85,0,0.04) 0%, transparent 70%)",
                 pointerEvents: "none",
                 animation: "blobFloat 8s ease-in-out infinite",
             }} />
@@ -310,7 +310,7 @@ export default function SocialProof() {
                 position: "absolute", bottom: "-80px", right: "15%",
                 width: "300px", height: "300px",
                 borderRadius: "50%",
-                background: "radial-gradient(circle, rgba(255,123,26,0.06) 0%, transparent 70%)",
+                background: "radial-gradient(circle, rgba(255,123,26,0.03) 0%, transparent 70%)",
                 pointerEvents: "none",
                 animation: "blobFloat 10s ease-in-out 2s infinite reverse",
             }} />
@@ -369,12 +369,12 @@ export default function SocialProof() {
                 <h2 style={{
                     fontFamily: "'Good Times', sans-serif",
                     fontSize: "clamp(28px, 3.5vw, 44px)",
-                    color: "#FFFFFF",
+                    color: "#111111",
                     letterSpacing: "-0.5px",
                 }}>
-                    Numbers That{" "}
-                    <span style={{ color: "#FF7B1A", textShadow: "0 0 40px rgba(255,123,26,0.5)" }}>
-                        Don't Lie
+                    Measurable{" "}
+                    <span style={{ color: "#FF7B1A", textShadow: "0 0 40px rgba(255,123,26,0.2)" }}>
+                        Impact
                     </span>
                 </h2>
             </div>

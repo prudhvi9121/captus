@@ -5,7 +5,7 @@ import { useScrollReveal } from "../hooks/useScrollReveal";
 const testimonials = [
     {
         quote:
-            "Captist has become an essential tool across our development and construction projects. It helps us stay on top of meetings, documentation, and reporting 24/7 so nothing slips through the cracks. The platform gives our team real visibility into risk, timing, and budget, and the reporting has been incredibly valuable when communicating with lenders, investors, and stakeholders. It has improved our efficiency, decision-making, and overall project oversight.",
+            "Captus has become an essential tool across our development and construction projects. It helps us stay on top of meetings, documentation, and reporting 24/7 so nothing slips through the cracks. The platform gives our team real visibility into risk, timing, and budget, and the reporting has been incredibly valuable when communicating with lenders, investors, and stakeholders. It has improved our efficiency, decision-making, and overall project oversight.",
         name: "Anthony Meer",
         title: "Owner and Developer, University Place Associates",
         initial: "A",

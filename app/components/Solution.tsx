@@ -14,7 +14,29 @@ const STEPS = [
         dim: "#7A3300",
         illustration: (active: boolean) => (
             <svg viewBox="0 0 360 280" fill="none" width="100%" height="100%" style={{ maxWidth: "420px" }}>
-                {/* Hub */}
+                {/* Connectors (Render first so they are underneath) */}
+                {[
+                    { cx: 180, cy: 56 },
+                    { cx: 264, cy: 96 },
+                    { cx: 264, cy: 184 },
+                    { cx: 180, cy: 224 },
+                    { cx: 96, cy: 184 },
+                    { cx: 96, cy: 96 },
+                ].map((node, i) => (
+                    <line
+                        key={`line-${i}`}
+                        x1="180" y1="140"
+                        x2={node.cx} y2={node.cy}
+                        stroke="#CC5500"
+                        strokeWidth="1"
+                        strokeDasharray="4 3"
+                        opacity={active ? 0.5 : 0.1}
+                        style={{ transition: `opacity 0.6s ease ${i * 0.1}s` }}
+                    />
+                ))}
+
+                {/* Hub (Rendered after connectors to hide the center intersection) */}
+                <circle cx="180" cy="140" r="36" fill="#0A0A0A" />
                 <circle cx="180" cy="140" r="36" fill="rgba(204,85,0,0.12)" stroke="#CC5500" strokeWidth="2" />
                 <circle cx="180" cy="140" r="18" fill="#CC5500" opacity={active ? 1 : 0.3}
                     style={{ transition: "opacity 0.8s ease 0.3s" }} />
@@ -29,15 +51,10 @@ const STEPS = [
                     { cx: 96, cy: 184, label: "CAD" },
                     { cx: 96, cy: 96, label: "SPEC" },
                 ].map((node, i) => (
-                    <g key={i}>
-                        <line
-                            x1="180" y1="140"
-                            x2={node.cx} y2={node.cy}
-                            stroke="#CC5500"
-                            strokeWidth="1"
-                            strokeDasharray="4 3"
-                            opacity={active ? 0.5 : 0.1}
-                            style={{ transition: `opacity 0.6s ease ${i * 0.1}s` }}
+                    <g key={`node-${i}`}>
+                        <circle
+                            cx={node.cx} cy={node.cy} r="22"
+                            fill="#0A0A0A"
                         />
                         <circle
                             cx={node.cx} cy={node.cy} r="22"
@@ -101,6 +118,9 @@ const STEPS = [
                 {/* Conflict zone - centered at x=200, in the gap between stacks */}
                 <line x1="163" y1="140" x2="237" y2="140" stroke="#FF7B1A" strokeWidth="2" strokeDasharray="4 3"
                     opacity={active ? 1 : 0} style={{ transition: "opacity 0.6s ease 0.4s" }} />
+                <circle cx="200" cy="140" r="18" fill="#0A0A0A"
+                    opacity={active ? 1 : 0}
+                    style={{ transition: "opacity 0.6s ease 0.5s" }} />
                 <circle cx="200" cy="140" r="18" fill="rgba(255,123,26,0.15)"
                     stroke="#FF7B1A" strokeWidth="2"
                     opacity={active ? 1 : 0}
@@ -125,7 +145,7 @@ const STEPS = [
                 ))}
 
                 {/* Alert badge - centred at x=200 */}
-                <rect x="144" y="18" width="112" height="26" rx="13"
+                <rect x="120" y="18" width="160" height="26" rx="13"
                     fill="rgba(255,123,26,0.15)" stroke="#FF7B1A" strokeWidth="1"
                     opacity={active ? 1 : 0}
                     style={{ transition: "opacity 0.8s ease 0.7s" }} />
@@ -498,18 +518,7 @@ export default function Solution() {
                         <div className="sol-header-label">
                             HOW CAPTUS WORKS
                         </div>
-                        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                            {STEPS.map((_, i) => (
-                                <div key={i} style={{
-                                    height: "2px",
-                                    width: i === stepIndex ? "32px" : "16px",
-                                    borderRadius: "2px",
-                                    background: i === stepIndex ? STEPS[i].color : "rgba(255,255,255,0.15)",
-                                    transition: "all 0.5s cubic-bezier(0.16,1,0.3,1)",
-                                    boxShadow: i === stepIndex ? `0 0 8px ${STEPS[i].color}` : "none",
-                                }} />
-                            ))}
-                        </div>
+
                     </div>
 
                     {/* - LEFT SPINE: Vertical progress (desktop only) - */}
@@ -521,7 +530,7 @@ export default function Solution() {
                                     height: "28px",
                                     borderRadius: "50%",
                                     border: `1.5px solid ${i === stepIndex ? s.color : "rgba(255,255,255,0.15)"}`,
-                                    background: i === stepIndex ? `${s.color}20` : "transparent",
+                                    background: i === stepIndex ? `linear-gradient(${s.color}20, ${s.color}20), #0A0A0A` : "#0A0A0A",
                                     display: "flex",
                                     alignItems: "center",
                                     justifyContent: "center",
@@ -552,9 +561,9 @@ export default function Solution() {
                         }}>
                             <div style={{
                                 width: "100%",
-                                height: `${((stepIndex / (STEPS.length - 1)) * 100)}%`,
+                                height: `${progress * 100}%`,
                                 background: step.color,
-                                transition: "height 0.6s cubic-bezier(0.16,1,0.3,1)",
+                                transition: "background 0.4s ease",
                                 boxShadow: `0 0 8px ${step.color}`,
                             }} />
                         </div>
@@ -718,14 +727,14 @@ export default function Solution() {
                             background: step.color,
                             borderRadius: "2px",
                             boxShadow: `0 0 8px ${step.color}`,
-                            transition: "height 0.05s linear",
+                            transition: "background 0.4s ease",
                         }} />
                     </div>
 
                     {/* Step fraction label (desktop only) */}
-                    <div className="sol-fraction">
+                    {/* <div className="sol-fraction">
                         {String(stepIndex + 1).padStart(2, "0")} / {String(STEPS.length).padStart(2, "0")}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>

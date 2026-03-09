@@ -38,39 +38,46 @@ export default function Hero() {
                 background: "#FFFFFF",
             }}
         >
-            {/* Background grid */}
+            <style>{`
+                @keyframes float {
+                    0%, 100% { transform: translateY(0px) rotate(0deg); }
+                    50% { transform: translateY(-20px) rotate(0.5deg); }
+                }
+                @keyframes mesh {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                }
+            `}</style>
+
+            {/* Premium Mesh Background */}
             <div
                 style={{
                     position: "absolute",
                     inset: 0,
-                    opacity: 0.04,
-                    backgroundImage:
-                        "linear-gradient(#000000 1px, transparent 1px), linear-gradient(90deg, #000000 1px, transparent 1px)",
-                    backgroundSize: "80px 80px",
+                    opacity: 0.4,
+                    background: "radial-gradient(at 0% 0%, rgba(204,85,0,0.08) 0, transparent 50%), radial-gradient(at 100% 0%, rgba(255,123,26,0.05) 0, transparent 50%), radial-gradient(at 100% 100%, rgba(204,85,0,0.08) 0, transparent 50%), radial-gradient(at 0% 100%, rgba(255,123,26,0.05) 0, transparent 50%)",
+                    animation: "mesh 20s ease infinite",
+                    backgroundSize: "200% 200%",
                 }}
             />
 
-            {/* Radial glow */}
+            {/* Subtle Grid Overlay */}
             <div
                 style={{
                     position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    width: "900px",
-                    height: "900px",
-                    borderRadius: "50%",
-                    pointerEvents: "none",
-                    background: "radial-gradient(circle, rgba(204,85,0,0.05) 0%, transparent 65%)",
+                    inset: 0,
+                    opacity: 0.03,
+                    backgroundImage: "linear-gradient(#000000 1px, transparent 1px), linear-gradient(90deg, #000000 1px, transparent 1px)",
+                    backgroundSize: "60px 60px",
                 }}
             />
 
             {/* Decorative triangle */}
             <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none", userSelect: "none" }}>
-                <svg width="680" height="680" viewBox="0 0 680 680" fill="none" style={{ opacity: 0.035 }}>
-                    <polygon points="340,50 630,590 50,590" fill="none" stroke="#CC5500" strokeWidth="2.5" />
-                    <polygon points="340,110 580,560 100,560" fill="none" stroke="#CC5500" strokeWidth="1" />
-                    <polygon points="340,170 530,530 150,530" fill="#CC5500" opacity="0.05" />
+                <svg width="800" height="800" viewBox="0 0 800 800" fill="none" style={{ opacity: 0.02 }}>
+                    <circle cx="400" cy="400" r="300" stroke="#CC5500" strokeWidth="1" strokeDasharray="4 8" />
+                    <circle cx="400" cy="400" r="380" stroke="#CC5500" strokeWidth="0.5" opacity="0.5" />
                 </svg>
             </div>
 
@@ -158,61 +165,72 @@ export default function Hero() {
                     </div>
                 </div>
 
-                {/* Right Column: Video Placeholder */}
+                {/* Right Column: Premium Mockup */}
                 <div
                     ref={heroRef}
-                    className="flex-[1.2] w-full max-w-[560px] lg:max-w-none"
+                    className="flex-[1.2] w-full max-w-[640px] lg:max-w-none"
                     style={{
                         position: "relative",
-                        aspectRatio: "16/9",
-                        background: "var(--surface-2)",
-                        borderRadius: "20px",
-                        border: "1px solid var(--border)",
-                        boxShadow: "0 24px 50px -12px rgba(0,0,0,0.1)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        overflow: "hidden",
                         opacity: 0,
                         transform: "translateY(20px)",
-                        transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
-                        transitionDelay: "400ms"
+                        transition: "all 0.9s cubic-bezier(0.16, 1, 0.3, 1)",
+                        transitionDelay: "400ms",
+                        animation: "float 6s ease-in-out infinite"
                     }}
                 >
-                    {/* Subtle graphic inside placeholder */}
-                    <div style={{ position: "absolute", inset: 0, opacity: 0.15, backgroundImage: "url('/risk-heatmap.png')", backgroundSize: "cover", backgroundPosition: "center", transition: "transform 2s ease" }}
-                        className="hover:scale-105"
-                    />
+                    {/* Shadow layers for depth */}
+                    <div style={{
+                        position: "absolute",
+                        inset: "20px",
+                        background: "rgba(0,0,0,0.2)",
+                        filter: "blur(60px)",
+                        borderRadius: "24px",
+                        zIndex: -1
+                    }} />
 
-                    {/* Video Play overlay placeholder */}
-                    <div
-                        style={{
-                            position: "relative",
-                            zIndex: 2,
-                            display: "inline-flex",
+                    <div style={{
+                        position: "relative",
+                        background: "#fff",
+                        borderRadius: "24px",
+                        padding: "12px",
+                        border: "1px solid rgba(0,0,0,0.08)",
+                        boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06), 0 20px 40px -10px rgba(0,0,0,0.1)",
+                        overflow: "hidden"
+                    }}>
+                        {/* Chrome bar deco */}
+                        <div style={{
+                            height: "32px",
+                            background: "#F9FAFB",
+                            borderBottom: "1px solid rgba(0,0,0,0.05)",
+                            display: "flex",
                             alignItems: "center",
-                            gap: "10px",
-                            padding: "12px 24px",
-                            background: "rgba(0,0,0,0.55)",
-                            backdropFilter: "blur(12px)",
-                            borderRadius: "9999px",
-                            cursor: "pointer",
-                            border: "1px solid rgba(255,255,255,0.1)",
-                            transition: "all 0.3s ease"
-                        }}
-                        onMouseEnter={(e) => {
-                            (e.target as HTMLElement).style.background = "rgba(0,0,0,0.75)";
-                            (e.target as HTMLElement).style.transform = "scale(1.02)";
-                        }}
-                        onMouseLeave={(e) => {
-                            (e.target as HTMLElement).style.background = "rgba(0,0,0,0.55)";
-                            (e.target as HTMLElement).style.transform = "scale(1)";
-                        }}
-                    >
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFFFFF">
-                            <path d="M8 5v14l11-7z" />
-                        </svg>
-                        <span style={{ color: "#FFFFFF", fontSize: "14px", fontWeight: 500 }}>Play with sound</span>
+                            gap: "6px",
+                            padding: "0 16px",
+                            marginBottom: "8px"
+                        }}>
+                            <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#E5E7EB" }} />
+                            <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#E5E7EB" }} />
+                            <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#E5E7EB" }} />
+                        </div>
+
+                        <img
+                            src="/Mockup.jpeg"
+                            alt="Captus Platform Mockup"
+                            style={{
+                                width: "100%",
+                                height: "auto",
+                                borderRadius: "12px",
+                                display: "block"
+                            }}
+                        />
+
+                        {/* Glossy overlay */}
+                        <div style={{
+                            position: "absolute",
+                            inset: 0,
+                            background: "linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%)",
+                            pointerEvents: "none"
+                        }} />
                     </div>
                 </div>
             </div>

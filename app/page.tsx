@@ -25,8 +25,9 @@ export default function Home() {
 
       <main style={{ flex: 1, display: "flex", flexDirection: "column" }}>
         <Hero />
-        <SocialProof />
+
         <Problem />
+        <SocialProof />
         <Solution />
         <OwnerValue />
         <CaseStudy />
