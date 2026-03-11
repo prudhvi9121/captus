@@ -305,7 +305,7 @@ function ProblemCard({ prob, index, parentVisible }: { prob: typeof PROBLEMS[0];
             {/* Title */}
             <h3 style={{
                 fontFamily: "'Good Times', sans-serif",
-                fontSize: "clamp(16px, 2vw, 22px)",
+                fontSize: "clamp(15px, 1.8vw, 18px)",
                 color: "#FFFFFF",
                 marginBottom: "16px",
                 letterSpacing: "0.5px",
@@ -349,7 +349,7 @@ export default function Problem() {
             position: "relative",
             overflow: "hidden",
             background: "#0A0A0A",
-            padding: "clamp(80px, 10vw, 140px) clamp(16px, 5vw, 48px)",
+            padding: "clamp(60px, 7vw, 100px) clamp(16px, 5vw, 48px)",
         }}>
             <style>{`
                 @keyframes glitchFlicker {
@@ -413,7 +413,7 @@ export default function Problem() {
             <div style={{ maxWidth: "1280px", margin: "0 auto", position: "relative", zIndex: 1 }}>
 
                 {/* ── Header ── */}
-                <div ref={headerRef} style={{ textAlign: "center", marginBottom: "clamp(48px, 7vw, 88px)" }}>
+                <div ref={headerRef} style={{ textAlign: "center", marginBottom: "clamp(32px, 5vw, 64px)" }}>
                     {/* Pill tag */}
                     <div style={{
                         display: "inline-flex",
@@ -445,7 +445,7 @@ export default function Problem() {
                     {/* Headline */}
                     <h2 style={{
                         fontFamily: "'Good Times', sans-serif",
-                        fontSize: "clamp(32px, 5vw, 64px)",
+                        fontSize: "clamp(28px, 4vw, 48px)",
                         color: "#FFFFFF",
                         lineHeight: 1.05,
                         letterSpacing: "-1px",

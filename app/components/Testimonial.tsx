@@ -19,14 +19,14 @@ export default function Testimonial() {
     return (
         <section
             style={{
-                padding: "clamp(60px, 8vw, 100px) clamp(16px, 5vw, 24px)",
+                padding: "clamp(40px, 5vw, 80px) clamp(16px, 5vw, 24px)",
                 background: "#FFFFFF",
                 borderTop: "1px solid var(--border)",
             }}
         >
             <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
                 {/* Header */}
-                <div style={{ textAlign: "center", marginBottom: "clamp(40px, 6vw, 64px)" }}>
+                <div style={{ textAlign: "center", marginBottom: "clamp(32px, 4vw, 48px)" }}>
                     <p
                         style={{
                             fontSize: "13px",
@@ -42,7 +42,7 @@ export default function Testimonial() {
                     <h2
                         className="font-display"
                         style={{
-                            fontSize: "clamp(24px, 4vw, 38px)",
+                            fontSize: "clamp(22px, 3vw, 32px)",
                             color: "var(--text-primary)",
                         }}
                     >

@@ -473,13 +473,13 @@ export default function Solution() {
                     }
                     .sol-main {
                         flex-direction: row;
-                        padding: 80px 130px 80px 130px;
-                        gap: 80px;
+                        padding: 60px 80px 60px 80px;
+                        gap: 60px;
                         overflow-y: hidden;
                     }
                     .sol-text {
                         flex: 0 0 45%;
-                        max-width: 480px;
+                        max-width: 440px;
                         order: 1;
                     }
                     .sol-illus {
@@ -492,8 +492,8 @@ export default function Solution() {
                 /* Large Desktop: 1280px+ */
                 @media (min-width: 1280px) {
                     .sol-main {
-                        padding: 80px 160px;
-                        gap: 100px;
+                        padding: 60px 100px;
+                        gap: 80px;
                     }
                 }
             `}</style>
@@ -579,10 +579,10 @@ export default function Solution() {
                                 key={`title-${stepIndex}`}
                                 style={{
                                     fontFamily: "'Good Times', sans-serif",
-                                    fontSize: "clamp(26px, 5vw, 60px)",
+                                    fontSize: "clamp(24px, 4vw, 44px)",
                                     color: "#FFFFFF",
                                     lineHeight: 1.1,
-                                    marginBottom: "20px",
+                                    marginBottom: "16px",
                                     whiteSpace: "pre-line",
                                     animation: "slideUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.05s both",
                                     position: "relative",

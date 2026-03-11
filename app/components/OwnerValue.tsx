@@ -11,7 +11,7 @@ export default function OwnerValue() {
             style={{
                 position: "relative",
                 overflow: "hidden",
-                padding: "clamp(60px, 8vw, 100px) clamp(16px, 5vw, 24px)",
+                padding: "clamp(40px, 5vw, 80px) clamp(16px, 5vw, 24px)",
                 background: "#FFFFFF",
             }}
         >
@@ -20,7 +20,7 @@ export default function OwnerValue() {
                 <h2
                     className="font-display"
                     style={{
-                        fontSize: "clamp(28px, 4vw, 42px)",
+                        fontSize: "clamp(24px, 3vw, 36px)",
                         color: "var(--text-primary)",
                         marginBottom: "24px",
                     }}

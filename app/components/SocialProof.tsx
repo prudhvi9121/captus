@@ -282,7 +282,7 @@ export default function SocialProof() {
                 background: "#FAFAFA",
                 position: "relative",
                 overflow: "hidden",
-                padding: "clamp(40px, 6vw, 80px) clamp(16px, 5vw, 48px)",
+                padding: "clamp(40px, 5vw, 60px) clamp(16px, 5vw, 48px)",
             }}
         >
             {/* Animated background grid */}
@@ -335,7 +335,7 @@ export default function SocialProof() {
             {/* Header */}
             <div style={{
                 textAlign: "center",
-                marginBottom: "clamp(40px, 6vw, 64px)",
+                marginBottom: "clamp(32px, 4vw, 48px)",
                 opacity: visible ? 1 : 0,
                 transform: visible ? "translateY(0)" : "translateY(30px)",
                 transition: "all 0.8s cubic-bezier(0.16,1,0.3,1)",
@@ -368,7 +368,7 @@ export default function SocialProof() {
                 </div>
                 <h2 style={{
                     fontFamily: "'Good Times', sans-serif",
-                    fontSize: "clamp(28px, 3.5vw, 44px)",
+                    fontSize: "clamp(24px, 3vw, 36px)",
                     color: "#111111",
                     letterSpacing: "-0.5px",
                 }}>

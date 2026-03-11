@@ -29,8 +29,8 @@ export default function Hero() {
             id="hero"
             style={{
                 position: "relative",
-                paddingTop: "86px",
-                minHeight: "100vh",
+                paddingTop: "160px",
+                paddingBottom: "80px",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -83,8 +83,8 @@ export default function Hero() {
 
             {/* Content - starts directly below the fixed navbar */}
             <div
-                className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 lg:px-20 flex flex-col lg:flex-row items-center gap-10 lg:gap-20"
-                style={{ paddingTop: "40px", paddingBottom: "60px", flex: 1 }}
+                className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 lg:px-20 flex flex-col lg:flex-row items-center gap-10 lg:gap-12"
+                style={{ paddingTop: "20px", paddingBottom: "20px", flex: 1 }}
             >
                 {/* Left Column: Text */}
                 <div className="flex-[0.8] flex flex-col items-center lg:items-start text-center lg:text-left gap-6 lg:gap-8 w-full">
@@ -93,7 +93,7 @@ export default function Hero() {
                         ref={heroSubRef}
                         className="font-display"
                         style={{
-                            fontSize: "clamp(22px, 3.5vw, 40px)",
+                            fontSize: "clamp(20px, 3vw, 36px)",
                             color: "var(--text-primary)",
                             lineHeight: 1.15,
                             letterSpacing: "-0.01em",
@@ -214,7 +214,7 @@ export default function Hero() {
                         </div>
 
                         <img
-                            src="/Mockup.jpeg"
+                            src="/admin.png"
                             alt="Captus Platform Mockup"
                             style={{
                                 width: "100%",

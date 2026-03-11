@@ -29,12 +29,16 @@ export default function CaseStudy() {
     return (
         <section
             id="case-study"
-            className="relative overflow-hidden bg-[#0A0A0A] py-16 sm:py-24 lg:py-32 flex items-center justify-center min-h-[60vh]"
+            className="relative overflow-hidden bg-[#0A0A0A] py-24 sm:py-32 lg:py-40 min-h-[60vh] flex items-center justify-center"
         >
             {/* ── Ambient Background Animations ── */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                {/* Background Image */}
+                <div className="absolute inset-0 bg-[url('/500image.png')] bg-cover bg-center bg-no-repeat opacity-30 mix-blend-luminosity" />
+                <div className="absolute inset-0 bg-[#0A0A0A]/60" />
+
                 {/* Slow rotating large glow */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] sm:w-[800px] sm:h-[800px] bg-[#CC5500]/10 rounded-full blur-[120px] animate-[pulse_8s_ease-in-out_infinite]" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] sm:w-[800px] sm:h-[800px] bg-[#CC5500]/15 rounded-full blur-[120px] animate-[pulse_8s_ease-in-out_infinite]" />
 
                 {/* Secondary cool glow for depth */}
                 <div className="absolute -top-1/4 -right-1/4 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[100px] animate-[pulse_10s_ease-in-out_infinite_reverse]" />
@@ -62,7 +66,7 @@ export default function CaseStudy() {
                 {/* ── Main Cinematic Title ── */}
                 <h2
                     ref={titleRef}
-                    className="font-display text-3xl sm:text-4xl lg:text-[40px] tracking-tight leading-[1.05] mb-6 opacity-0 translate-y-8"
+                    className="font-display text-2xl sm:text-3xl lg:text-[36px] tracking-tight leading-[1.05] mb-6 opacity-0 translate-y-8"
                     style={{ transition: "all 1s cubic-bezier(0.16,1,0.3,1)" }}
                 >
                     <span className="text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-gray-500">
@@ -88,7 +92,7 @@ export default function CaseStudy() {
                 {/* ── Elegant Body Text ── */}
                 <p
                     ref={textRef}
-                    className="text-sm sm:text-base lg:text-lg text-gray-400 leading-relaxed max-w-[600px] opacity-0 translate-y-8"
+                    className="text-sm sm:text-base lg:text-lg text-gray-300 leading-relaxed max-w-[700px] opacity-0 translate-y-8 drop-shadow-md"
                     style={{ transition: "all 1s cubic-bezier(0.16,1,0.3,1)" }}
                 >
                     Captus is actively used by a major strategic design partner to coordinate risk and exposure across sustainable life sciences and LEED-certified developments. We are validating predictive intelligence across institutional-grade capital projects.
@@ -97,8 +101,8 @@ export default function CaseStudy() {
             </div>
 
             {/* Top/Bottom Fade Borders for seamless blending */}
-            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#0A0A0A] to-transparent pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#0A0A0A] to-transparent pointer-events-none" />
+            <div className="absolute top-0 left-0 w-full h-32 sm:h-48 bg-gradient-to-b from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-full h-32 sm:h-48 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent pointer-events-none" />
         </section>
     );
 }
