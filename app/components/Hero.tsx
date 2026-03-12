@@ -150,7 +150,7 @@ export default function Hero() {
                     >
                         <a
                             href="/book-demo"
-                            className="w-full sm:w-auto text-center"
+                            className="w-fit sm:w-auto text-center"
                             style={{
                                 padding: "16px 32px",
                                 background: "#1F1F1F",
