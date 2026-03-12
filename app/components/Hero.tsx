@@ -150,16 +150,18 @@ export default function Hero() {
                     >
                         <a
                             href="/book-demo"
-                            className="w-fit sm:w-auto text-center"
+                            className="w-fit sm:w-auto text-center font-display transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(204,85,0,0.6)] active:scale-95 active:shadow-[0_0_10px_rgba(204,85,0,0.4)]"
                             style={{
-                                padding: "16px 32px",
-                                background: "#1F1F1F",
+                                padding: "clamp(12px, 3vw, 16px) clamp(20px, 5vw, 32px)", /* Smaller padding on mobile */
+                                background: "linear-gradient(135deg, #CC5500 0%, #111111 100%)",
                                 color: "#fff",
                                 borderRadius: "12px",
                                 fontWeight: 600,
-                                fontSize: "15px",
+                                fontSize: "clamp(13px, 3.5vw, 16px)", /* Smaller font on mobile */
                                 textDecoration: "none",
-                                boxShadow: "0 8px 24px rgba(0,0,0,0.15)",
+                                boxShadow: "0 4px 14px rgba(0,0,0,0.25)",
+                                border: "1px solid rgba(204,85,0,0.5)",
+                                letterSpacing: "0.05em",
                             }}
                         >
                             Schedule a Demo
@@ -211,8 +213,8 @@ export default function Hero() {
                         style={{
                             borderRadius: "clamp(12px, 2vw, 24px)",
                             overflow: "hidden",
-                            border: "1px solid rgba(0,0,0,0.08)",
-                            boxShadow: "0 20px 50px rgba(0,0,0,0.1)",
+                            border: "1px solid rgba(204,85,0,0.5)",
+                            boxShadow: "0 20px 50px rgba(0,0,0,0.1), 0 0 0 2px rgba(204,85,0,0.2), 0 0 40px rgba(204,85,0,0.3)",
                             background: "#fff",
                         }}
                     >
