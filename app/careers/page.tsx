@@ -64,9 +64,11 @@ export default function Careers() {
                         style={{
                             borderRadius: "16px",
                             border: "1px solid var(--border)",
-                            padding: "clamp(28px, 5vw, 48px)",
+                            padding: "clamp(20px, 5vw, 48px)",
                             position: "relative",
                             overflow: "hidden",
+                            marginLeft: "20px",
+                            marginRight: "20px",
                         }}
                     >
 
@@ -116,7 +118,7 @@ export default function Careers() {
                         <h2
                             className="font-display"
                             style={{
-                                fontSize: "26px",
+                                fontSize: "clamp(22px, 5vw, 26px)",
                                 textAlign: "center",
                                 color: "var(--text-primary)",
                                 marginBottom: "12px",
@@ -129,7 +131,7 @@ export default function Careers() {
                             style={{
                                 textAlign: "center",
                                 color: "var(--text-secondary)",
-                                fontSize: "16px",
+                                fontSize: "clamp(14px, 3vw, 16px)",
                                 lineHeight: 1.6,
                                 maxWidth: "520px",
                                 margin: "0 auto 32px auto",
@@ -145,7 +147,7 @@ export default function Careers() {
                                 background: "var(--surface-1)",
                                 borderRadius: "12px",
                                 border: "1px solid var(--border)",
-                                padding: "28px",
+                                padding: "clamp(20px, 4vw, 28px)",
                                 display: "flex",
                                 flexDirection: "column",
                                 alignItems: "center",
@@ -155,7 +157,7 @@ export default function Careers() {
                         >
                             <h3
                                 style={{
-                                    fontSize: "18px",
+                                    fontSize: "clamp(16px, 4vw, 18px)",
                                     fontWeight: 700,
                                     color: "var(--text-primary)",
                                 }}
@@ -166,7 +168,7 @@ export default function Careers() {
                             <p
                                 style={{
                                     color: "var(--text-secondary)",
-                                    fontSize: "15px",
+                                    fontSize: "clamp(14px, 3vw, 15px)",
                                     lineHeight: 1.6,
                                     maxWidth: "420px",
                                 }}

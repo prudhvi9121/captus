@@ -255,6 +255,8 @@ export default function Team() {
 
                             <div
                                 style={{
+                                    paddingLeft: "clamp(40px, 4vw, 20px)",
+                                    paddingRight: "clamp(40px, 4vw, 20px)",
                                     display: "grid",
                                     gridTemplateColumns:
                                         "repeat(auto-fit, minmax(240px, 1fr))",
