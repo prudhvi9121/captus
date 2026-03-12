@@ -40,7 +40,6 @@ export default function Footer() {
                                 Company
                             </span>
                             <div className="flex flex-col items-center lg:items-start space-y-2">
-                                <Link href="/founder" className="text-sm text-gray-400 hover:text-orange-500 transition">Founder</Link>
                                 <Link href="/team" className="text-sm text-gray-400 hover:text-orange-500 transition">Team</Link>
                                 <Link href="/careers" className="text-sm text-gray-400 hover:text-orange-500 transition">Careers</Link>
                                 <Link href="/investors" className="text-sm text-gray-400 hover:text-orange-500 transition">Investors</Link>

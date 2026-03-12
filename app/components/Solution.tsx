@@ -376,7 +376,16 @@ export default function Solution() {
                     display: none;
                 }
                 .sol-right-bar {
-                    display: none;
+                    display: block;
+                    position: absolute;
+                    right: 12px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    height: 120px;
+                    width: 2px;
+                    background: rgba(255,255,255,0.07);
+                    border-radius: 2px;
+                    z-index: 10;
                 }
                 .sol-fraction {
                     display: none;
@@ -450,15 +459,8 @@ export default function Solution() {
                         z-index: 10;
                     }
                     .sol-right-bar {
-                        display: block;
-                        position: absolute;
                         right: 48px;
-                        top: 50%;
-                        transform: translateY(-50%);
                         height: 160px;
-                        width: 2px;
-                        background: rgba(255,255,255,0.07);
-                        border-radius: 2px;
                     }
                     .sol-fraction {
                         display: block;
