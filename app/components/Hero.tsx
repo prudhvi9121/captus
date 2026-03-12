@@ -2,241 +2,232 @@
 
 import { useEffect, useRef } from "react";
 
-/* - Tiny hook: animate-in on mount - */
+/* Animation Hook */
 function useFadeUp(delay = 0) {
     const ref = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
         const el = ref.current;
         if (!el) return;
+
         const t = setTimeout(() => {
-            if (el) {
-                el.style.opacity = "1";
-                el.style.transform = "translateY(0)";
-            }
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
         }, delay);
+
         return () => clearTimeout(t);
     }, [delay]);
+
     return ref;
 }
 
 export default function Hero() {
-    const heroRef = useFadeUp(100);
-    const heroSubRef = useFadeUp(250);
-    const heroCtaRef = useFadeUp(400);
+    const titleRef = useFadeUp(100);
+    const subRef = useFadeUp(250);
+    const ctaRef = useFadeUp(350);
+    const mockRef = useFadeUp(500);
 
     return (
         <section
-            id="hero"
             style={{
                 position: "relative",
-                paddingTop: "160px",
-                paddingBottom: "80px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                overflow: "hidden",
+                // Reduced top padding from 180px to move heading up
+                paddingTop: "clamp(100px, 12vh, 140px)",
+                paddingBottom: "clamp(60px, 10vh, 120px)",
                 background: "#FFFFFF",
+                overflow: "hidden",
             }}
         >
-            <style>{`
-                @keyframes float {
-                    0%, 100% { transform: translateY(0px) rotate(0deg); }
-                    50% { transform: translateY(-20px) rotate(0.5deg); }
-                }
-                @keyframes mesh {
-                    0% { background-position: 0% 50%; }
-                    50% { background-position: 100% 50%; }
-                    100% { background-position: 0% 50%; }
-                }
-            `}</style>
-
-            {/* Premium Mesh Background */}
+            {/* Soft Gradient Atmosphere */}
             <div
                 style={{
                     position: "absolute",
                     inset: 0,
-                    opacity: 0.4,
-                    background: "radial-gradient(at 0% 0%, rgba(204,85,0,0.08) 0, transparent 50%), radial-gradient(at 100% 0%, rgba(255,123,26,0.05) 0, transparent 50%), radial-gradient(at 100% 100%, rgba(204,85,0,0.08) 0, transparent 50%), radial-gradient(at 0% 100%, rgba(255,123,26,0.05) 0, transparent 50%)",
-                    animation: "mesh 20s ease infinite",
-                    backgroundSize: "200% 200%",
+                    background:
+                        "radial-gradient(circle at 20% 20%, rgba(204,85,0,0.08), transparent 40%), radial-gradient(circle at 80% 30%, rgba(255,123,26,0.05), transparent 40%)",
+                    pointerEvents: "none",
                 }}
             />
 
-            {/* Subtle Grid Overlay */}
+            {/* Grid pattern */}
             <div
+                className="absolute inset-0 opacity-[0.04]"
                 style={{
-                    position: "absolute",
-                    inset: 0,
-                    opacity: 0.03,
-                    backgroundImage: "linear-gradient(#000000 1px, transparent 1px), linear-gradient(90deg, #000000 1px, transparent 1px)",
-                    backgroundSize: "60px 60px",
+                    backgroundImage:
+                        "linear-gradient(#000000 1px, transparent 1px), linear-gradient(90deg, #000000 1px, transparent 1px)",
+                    backgroundSize: "80px 80px",
+                }}
+            />
+
+            {/* Radial glow */}
+            <div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full pointer-events-none"
+                style={{
+                    background:
+                        "radial-gradient(circle, rgba(204,85,0,0.05) 0%, transparent 65%)",
                 }}
             />
 
             {/* Decorative triangle */}
-            <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none", userSelect: "none" }}>
-                <svg width="800" height="800" viewBox="0 0 800 800" fill="none" style={{ opacity: 0.02 }}>
-                    <circle cx="400" cy="400" r="300" stroke="#CC5500" strokeWidth="1" strokeDasharray="4 8" />
-                    <circle cx="400" cy="400" r="380" stroke="#CC5500" strokeWidth="0.5" opacity="0.5" />
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+                <svg width="680" height="680" viewBox="0 0 680 680" fill="none" className="opacity-[0.035]">
+                    <polygon points="340,50 630,590 50,590" fill="none" stroke="#CC5500" strokeWidth="2.5" />
+                    <polygon points="340,110 580,560 100,560" fill="none" stroke="#CC5500" strokeWidth="1" />
+                    <polygon points="340,170 530,530 150,530" fill="#CC5500" opacity="0.05" />
                 </svg>
             </div>
 
-            {/* Content - starts directly below the fixed navbar */}
+            {/* CONTAINER */}
             <div
-                className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 lg:px-20 flex flex-col lg:flex-row items-center gap-10 lg:gap-12"
-                style={{ paddingTop: "20px", paddingBottom: "20px", flex: 1 }}
+                className=" mx-auto px-4 sm:px-8 md:px-12 lg:px-16"
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    // Responsive gap: smaller on mobile, larger on desktop
+                    gap: "clamp(40px, 8vw, 80px)",
+                }}
             >
-                {/* Left Column: Text */}
-                <div className="flex-[0.8] flex flex-col items-center lg:items-start text-center lg:text-left gap-6 lg:gap-8 w-full">
-                    {/* Headline */}
-                    <h3
-                        ref={heroSubRef}
-                        className="font-display"
+                {/* TEXT AREA */}
+                <div
+                    style={{
+                        textAlign: "center",
+                        maxWidth: "900px",
+                        width: "100%",
+                    }}
+                >
+                    {/* HEADLINE */}
+                    <h1
+                        ref={titleRef as any}
                         style={{
-                            fontSize: "clamp(20px, 3vw, 36px)",
-                            color: "var(--text-primary)",
-                            lineHeight: 1.15,
-                            letterSpacing: "-0.01em",
-                            opacity: 0,
-                            transform: "translateY(20px)",
-                            transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
-                            transitionDelay: "100ms",
-                        }}
-                    >
-                        Identify Financial & Operational Risk <br />
-                        <span style={{ color: "#CC5500" }}>Before It Materializes.</span>
-                    </h3>
-
-                    {/* Sub-headline */}
-                    <p
-                        ref={heroCtaRef}
-                        style={{
-                            color: "var(--text-secondary)",
-                            fontSize: "clamp(14px, 1.3vw, 17px)",
-                            maxWidth: "480px",
-                            lineHeight: 1.6,
+                            fontSize: "clamp(28px, 6vw, 52px)", // Fluid typography
+                            lineHeight: 1.1,
                             fontWeight: 400,
+                            letterSpacing: "-0.03em",
+                            color: "var(--text-primary, #111)",
                             opacity: 0,
                             transform: "translateY(20px)",
-                            transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
-                            transitionDelay: "200ms"
+                            transition: "all .8s cubic-bezier(.16,1,.3,1)",
                         }}
                     >
-                        Captus is built for construction owners and developers who carry financial exposure across complex projects. We protect capital by connecting fragmented data to surface conflicts early.
+                        Identify Financial & Operational Risk{" "}
+                        <span style={{ color: "#CC5500", display: "inline-block" }}>
+                            Before It Materializes
+                        </span>
+                    </h1>
+
+                    {/* SUBTEXT */}
+                    <p
+                        ref={subRef as any}
+                        className="text-sm sm:text-base md:text-lg lg:text-xl"
+                        style={{
+                            marginTop: "24px",
+                            color: "var(--text-secondary, #444)",
+                            lineHeight: 1.6,
+                            maxWidth: "680px",
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                            opacity: 0,
+                            transform: "translateY(20px)",
+                            transition: "all .8s cubic-bezier(.16,1,.3,1)",
+                        }}
+                    >
+                        Captus connects fragmented project data to surface early signals of
+                        financial and operational risk — helping construction owners
+                        intervene before exposure impacts the project.
                     </p>
 
                     {/* CTA */}
                     <div
+                        ref={ctaRef as any}
+                        className="flex flex-col sm:flex-row items-center justify-center gap-4"
                         style={{
+                            marginTop: "40px",
                             opacity: 0,
                             transform: "translateY(20px)",
-                            transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
-                            transitionDelay: "300ms",
-                            marginTop: "8px"
+                            transition: "all .8s cubic-bezier(.16,1,.3,1)",
                         }}
                     >
                         <a
                             href="/book-demo"
+                            className="w-full sm:w-auto text-center"
                             style={{
-                                display: "inline-flex",
-                                alignItems: "center",
                                 padding: "16px 32px",
-                                backgroundColor: "#1F1F1F",
-                                color: "#FFFFFF",
-                                fontSize: "15px",
+                                background: "#1F1F1F",
+                                color: "#fff",
+                                borderRadius: "12px",
                                 fontWeight: 600,
-                                letterSpacing: "0.01em",
-                                borderRadius: "8px",
+                                fontSize: "15px",
                                 textDecoration: "none",
-                                boxShadow: "0 4px 14px rgba(0,0,0,0.1)",
-                                transition: "all 0.2s ease"
-                            }}
-                            onMouseEnter={(e) => {
-                                (e.target as HTMLElement).style.backgroundColor = "#0A0A0A";
-                                (e.target as HTMLElement).style.transform = "translateY(-1px)";
-                            }}
-                            onMouseLeave={(e) => {
-                                (e.target as HTMLElement).style.backgroundColor = "#1F1F1F";
-                                (e.target as HTMLElement).style.transform = "translateY(0)";
+                                boxShadow: "0 8px 24px rgba(0,0,0,0.15)",
                             }}
                         >
-                            Schedule a call
+                            Schedule a Demo
                         </a>
+
+                        {/* <a
+                            href="/product"
+                            className="w-full sm:w-auto text-center"
+                            style={{
+                                padding: "16px 32px",
+                                border: "1px solid rgba(0,0,0,0.15)",
+                                borderRadius: "12px",
+                                color: "#111",
+                                fontWeight: 500,
+                                fontSize: "15px",
+                                textDecoration: "none",
+                            }}
+                        >
+                            View Platform
+                        </a> */}
                     </div>
                 </div>
 
-                {/* Right Column: Premium Mockup */}
+                {/* PRODUCT MOCKUP */}
                 <div
-                    ref={heroRef}
-                    className="flex-[1.2] w-full max-w-[640px] lg:max-w-none"
+                    ref={mockRef as any}
                     style={{
+                        width: "100%",
+                        maxWidth: "1100px",
                         position: "relative",
                         opacity: 0,
-                        transform: "translateY(20px)",
-                        transition: "all 0.9s cubic-bezier(0.16, 1, 0.3, 1)",
-                        transitionDelay: "400ms",
-                        animation: "float 6s ease-in-out infinite"
+                        transform: "translateY(30px)",
+                        transition: "all .9s cubic-bezier(.16,1,.3,1)",
                     }}
                 >
-                    {/* Shadow layers for depth */}
-                    <div style={{
-                        position: "absolute",
-                        inset: "20px",
-                        background: "rgba(0,0,0,0.2)",
-                        filter: "blur(60px)",
-                        borderRadius: "24px",
-                        zIndex: -1
-                    }} />
+                    {/* Glow Effect */}
+                    <div
+                        style={{
+                            position: "absolute",
+                            inset: "-5%",
+                            background: "radial-gradient(circle, rgba(204,85,0,0.12), transparent 70%)",
+                            filter: "blur(40px)",
+                            zIndex: -1,
+                        }}
+                    />
 
-                    <div style={{
-                        position: "relative",
-                        background: "#fff",
-                        borderRadius: "24px",
-                        padding: "12px",
-                        border: "1px solid rgba(0,0,0,0.08)",
-                        boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06), 0 20px 40px -10px rgba(0,0,0,0.1)",
-                        overflow: "hidden"
-                    }}>
-                        {/* Chrome bar deco */}
-                        <div style={{
-                            height: "32px",
-                            background: "#F9FAFB",
-                            borderBottom: "1px solid rgba(0,0,0,0.05)",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "6px",
-                            padding: "0 16px",
-                            marginBottom: "8px"
-                        }}>
-                            <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#E5E7EB" }} />
-                            <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#E5E7EB" }} />
-                            <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#E5E7EB" }} />
-                        </div>
-
+                    {/* Card Container */}
+                    <div
+                        style={{
+                            borderRadius: "clamp(12px, 2vw, 24px)",
+                            overflow: "hidden",
+                            border: "1px solid rgba(0,0,0,0.08)",
+                            boxShadow: "0 20px 50px rgba(0,0,0,0.1)",
+                            background: "#fff",
+                        }}
+                    >
                         <img
                             src="/Admin.png"
-                            alt="Captus Platform Mockup"
+                            alt="Captus Platform"
                             style={{
                                 width: "100%",
                                 height: "auto",
-                                borderRadius: "12px",
-                                display: "block"
+                                display: "block",
                             }}
                         />
-
-                        {/* Glossy overlay */}
-                        <div style={{
-                            position: "absolute",
-                            inset: 0,
-                            background: "linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%)",
-                            pointerEvents: "none"
-                        }} />
                     </div>
                 </div>
             </div>
-
-            {/* Bottom vignette */}
-            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "160px", background: "linear-gradient(to top, #FFFFFF, transparent)", pointerEvents: "none" }} />
         </section>
     );
 }

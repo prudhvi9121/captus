@@ -25,8 +25,10 @@ export default function Team() {
     return (
         <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "var(--bg)" }}>
             <Navbar />
+
+            {/* FIX 1: Increased mobile padding from px-5 to px-8 for more breathing room */}
             <main
-                className="px-5 sm:px-8 md:px-12"
+                className="px-8 sm:px-10 md:px-12"
                 style={{ flex: 1, paddingTop: "120px", paddingBottom: "80px", display: "flex", justifyContent: "center" }}
             >
                 <div style={{ width: "100%", maxWidth: "1000px" }}>
@@ -39,7 +41,7 @@ export default function Team() {
                         >
                             Our Team
                         </h1>
-                        <p style={{ color: "var(--text-secondary)", fontSize: "clamp(15px, 1.5vw, 18px)", lineHeight: 1.6, maxWidth: "600px", margin: "0 auto" }}>
+                        <p className="px-2 sm:px-0" style={{ color: "var(--text-secondary)", fontSize: "clamp(15px, 1.5vw, 18px)", lineHeight: 1.6, maxWidth: "600px", margin: "0 auto" }}>
                             Captus is led by experienced industry operators with deep expertise in AI, data systems, and complex construction workflows.
                         </p>
                     </div>
@@ -48,6 +50,7 @@ export default function Team() {
                     <Section>
                         <div style={{ marginBottom: "clamp(56px, 8vw, 80px)" }}>
                             <p
+                                className="text-center md:text-left"
                                 style={{
                                     fontSize: "12px",
                                     fontWeight: 700,
@@ -62,9 +65,9 @@ export default function Team() {
 
                             <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 md:gap-12 items-start">
                                 {/* Left: portrait + name */}
-                                <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                                <div className="flex flex-col items-center md:items-start gap-4">
                                     <div
-                                        className="w-full sm:w-2/3 md:w-full mx-auto md:mx-0 relative"
+                                        className="w-[85%] sm:w-2/3 md:w-full mx-auto md:mx-0 relative"
                                         style={{
                                             aspectRatio: "1/1",
                                             background: "var(--surface-2)",
@@ -96,7 +99,7 @@ export default function Team() {
                                 </div>
 
                                 {/* Right: bio */}
-                                <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+                                <div className="px-1 sm:px-4 md:px-0 text-left md:text-left" style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
                                     <p style={{ color: "var(--text-secondary)", fontSize: "clamp(15px, 1.5vw, 17px)", lineHeight: 1.75 }}>
                                         Captus is led by Anatoly Khen, Founder and CEO, with a proven background in product and go-to-market strategy across leading AI and technology organizations. He brings deep experience from past roles at innovative companies including Revelen.ai, Axon, Paylocity, and VIEVU.
                                     </p>
@@ -104,11 +107,13 @@ export default function Team() {
                                         With an Executive MBA from MIT, Anatoly blends rigorous academic frameworks with practical operational expertise to solve complex systemic issues within the construction industry. He recognizes that owner returns are fundamentally eroded by preventable risk and has focused Captus exclusively on solving this upstream visibility problem.
                                     </p>
                                     <div
+                                        className="text-left"
                                         style={{
                                             padding: "clamp(16px, 3vw, 24px)",
                                             background: "var(--surface-1)",
                                             borderRadius: "10px",
                                             border: "1px solid var(--border)",
+                                            marginTop: "8px"
                                         }}
                                     >
                                         <h3 className="font-display" style={{ fontSize: "clamp(14px, 1.8vw, 16px)", color: "var(--text-primary)", marginBottom: "12px" }}>
@@ -132,9 +137,6 @@ export default function Team() {
                                             <li><strong>VIEVU</strong> - Go-to-Market Expansion</li>
                                         </ul>
                                     </div>
-                                    {/* <p style={{ color: "var(--text-secondary)", fontSize: "clamp(14px, 1.4vw, 15px)", lineHeight: 1.7, fontStyle: "italic" }}>
-                                        Outside of building Captus and working with strategic design partners, Anatoly prioritizes spending quality time with his family.
-                                    </p> */}
                                 </div>
                             </div>
                         </div>
@@ -147,6 +149,7 @@ export default function Team() {
                     <Section>
                         <div>
                             <p
+                                className="text-center md:text-left"
                                 style={{
                                     fontSize: "12px",
                                     fontWeight: 700,
@@ -168,7 +171,7 @@ export default function Team() {
                                 {teamMembers.map((member, i) => (
                                     <div
                                         key={i}
-                                        className="glass reveal-child"
+                                        className="glass reveal-child mx-auto w-full max-w-[320px] md:max-w-none"
                                         style={{
                                             padding: "clamp(24px, 4vw, 32px)",
                                             borderRadius: "14px",
