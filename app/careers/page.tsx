@@ -16,11 +16,12 @@ export default function Careers() {
             <Navbar />
 
             <main
-                className="px-6 sm:px-10 md:px-12"
                 style={{
                     flex: 1,
                     paddingTop: "clamp(90px, 10vw, 120px)",
                     paddingBottom: "80px",
+                    paddingLeft: "clamp(20px, 5vw, 48px)",
+                    paddingRight: "clamp(20px, 5vw, 48px)",
                     display: "flex",
                     justifyContent: "center",
                 }}
@@ -31,15 +32,15 @@ export default function Careers() {
                     <div
                         style={{
                             textAlign: "center",
-                            marginBottom: "clamp(48px, 6vw, 72px)",
+                            marginBottom: "clamp(32px, 6vw, 72px)",
                         }}
                     >
                         <h1
                             className="font-display"
                             style={{
-                                fontSize: "clamp(32px, 5vw, 48px)",
+                                fontSize: "clamp(22px, 5vw, 48px)",
                                 color: "var(--text-primary)",
-                                marginBottom: "16px",
+                                marginBottom: "12px",
                             }}
                         >
                             Careers
@@ -48,7 +49,7 @@ export default function Careers() {
                         <p
                             style={{
                                 color: "var(--text-secondary)",
-                                fontSize: "clamp(16px, 1.6vw, 18px)",
+                                fontSize: "clamp(14px, 3vw, 18px)",
                                 lineHeight: 1.6,
                                 maxWidth: "560px",
                                 margin: "0 auto",
@@ -67,8 +68,6 @@ export default function Careers() {
                             padding: "clamp(20px, 5vw, 48px)",
                             position: "relative",
                             overflow: "hidden",
-                            marginLeft: "20px",
-                            marginRight: "20px",
                         }}
                     >
 
@@ -88,8 +87,8 @@ export default function Careers() {
                         {/* icon */}
                         <div
                             style={{
-                                width: "64px",
-                                height: "64px",
+                                width: "clamp(48px, 8vw, 64px)",
+                                height: "clamp(48px, 8vw, 64px)",
                                 background: "rgba(204,85,0,0.1)",
                                 borderRadius: "50%",
                                 display: "flex",
@@ -118,7 +117,7 @@ export default function Careers() {
                         <h2
                             className="font-display"
                             style={{
-                                fontSize: "clamp(22px, 5vw, 26px)",
+                                fontSize: "clamp(18px, 4vw, 26px)",
                                 textAlign: "center",
                                 color: "var(--text-primary)",
                                 marginBottom: "12px",
@@ -131,10 +130,10 @@ export default function Careers() {
                             style={{
                                 textAlign: "center",
                                 color: "var(--text-secondary)",
-                                fontSize: "clamp(14px, 3vw, 16px)",
+                                fontSize: "clamp(13px, 2.5vw, 16px)",
                                 lineHeight: 1.6,
                                 maxWidth: "520px",
-                                margin: "0 auto 32px auto",
+                                margin: "0 auto clamp(20px, 4vw, 32px) auto",
                             }}
                         >
                             We are actively looking for talented individuals to join our
@@ -147,17 +146,17 @@ export default function Careers() {
                                 background: "var(--surface-1)",
                                 borderRadius: "12px",
                                 border: "1px solid var(--border)",
-                                padding: "clamp(20px, 4vw, 28px)",
+                                padding: "clamp(16px, 4vw, 28px)",
                                 display: "flex",
                                 flexDirection: "column",
                                 alignItems: "center",
                                 textAlign: "center",
-                                gap: "16px",
+                                gap: "clamp(12px, 2vw, 16px)",
                             }}
                         >
                             <h3
                                 style={{
-                                    fontSize: "clamp(16px, 4vw, 18px)",
+                                    fontSize: "clamp(15px, 3.5vw, 18px)",
                                     fontWeight: 700,
                                     color: "var(--text-primary)",
                                 }}
@@ -168,7 +167,7 @@ export default function Careers() {
                             <p
                                 style={{
                                     color: "var(--text-secondary)",
-                                    fontSize: "clamp(14px, 3vw, 15px)",
+                                    fontSize: "clamp(13px, 2.5vw, 15px)",
                                     lineHeight: 1.6,
                                     maxWidth: "420px",
                                 }}
@@ -180,8 +179,8 @@ export default function Careers() {
                                 <button
                                     className="btn-primary"
                                     style={{
-                                        padding: "12px 26px",
-                                        fontSize: "15px",
+                                        padding: "clamp(10px, 2vw, 12px) clamp(18px, 4vw, 26px)",
+                                        fontSize: "clamp(13px, 2.5vw, 15px)",
                                     }}
                                 >
                                     <span>info@captus.ai</span>
