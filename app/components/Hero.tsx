@@ -30,8 +30,8 @@ export default function Hero() {
             id="hero"
             style={{
                 position: "relative",
-                paddingTop: "86px",
-                minHeight: "100vh",
+                paddingTop: "clamp(60px, 6vw, 86px)",
+                minHeight: "unset",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -90,10 +90,10 @@ export default function Hero() {
                     width: "100%",
                     maxWidth: "1400px",
                     margin: "0 auto",
-                    paddingTop: "40px",
-                    paddingBottom: "60px",
-                    paddingLeft: "clamp(20px, 5vw, 96px)",
-                    paddingRight: "clamp(20px, 5vw, 96px)",
+                    paddingTop: "clamp(20px, 4vw, 40px)",
+                    paddingBottom: "clamp(48px, 6vw, 60px)",
+                    paddingLeft: "clamp(28px, 5vw, 96px)",
+                    paddingRight: "clamp(28px, 5vw, 96px)",
                     flex: 1,
                     display: "flex",
                     flexDirection: "row",
@@ -110,7 +110,7 @@ export default function Hero() {
                         flexDirection: "column",
                         alignItems: "flex-start",
                         textAlign: "left",
-                        gap: "clamp(16px, 3vw, 32px)",
+                        gap: "clamp(20px, 3vw, 32px)",
                         width: "100%",
                     }}
                 >
@@ -232,7 +232,7 @@ export default function Hero() {
                         </div>
 
                         <img
-                            src="/Admin.png"
+                            src="/Mockup.jpeg"
                             alt="Captus Platform Mockup"
                             style={{
                                 width: "100%",

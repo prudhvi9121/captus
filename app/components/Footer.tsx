@@ -67,7 +67,6 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-
             {/* BACKGROUND BRAND TEXT */}
             <div className="w-full flex justify-center mt-20 sm:mt-28 mb-[-12px] pointer-events-none select-none opacity-[0.05]">
                 <h1
@@ -86,13 +85,9 @@ export default function Footer() {
                     borderBottom: "1px solid rgba(204,85,0,0.25)",
                     background: "linear-gradient(90deg, rgba(204,85,0,0.08) 0%, rgba(255,123,26,0.04) 50%, rgba(204,85,0,0.08) 100%)",
                     padding: "18px clamp(24px, 6vw, 64px)",
-                    display: "flex",
-                    flexDirection: "row",
-                    flexWrap: "wrap",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    gap: "16px",
+                    gap: "12px",
                 }}
+                className="flex flex-col items-center sm:flex-row sm:justify-between sm:items-center"
             >
                 {/* Copyright */}
                 <p
@@ -103,6 +98,7 @@ export default function Footer() {
                         textTransform: "uppercase",
                         fontFamily: "inherit",
                     }}
+                    className="text-center sm:text-left"
                 >
                     © {new Date().getFullYear()} Captus AI.&nbsp;&nbsp;All rights reserved.
                 </p>

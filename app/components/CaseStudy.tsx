@@ -22,8 +22,7 @@ function useFadeUp(delay = 0) {
 
 export default function CaseStudy() {
     const leftRef = useFadeUp(200);
-    const dividerRef = useFadeUp(350);
-    const rightRef = useFadeUp(450);
+    const rightRef = useFadeUp(400);
 
     return (
         <section
@@ -31,20 +30,9 @@ export default function CaseStudy() {
             className="relative overflow-hidden bg-[#0A0A0A] min-h-[50vh] flex items-center justify-center"
             style={{ padding: "clamp(40px, 8vw, 120px) 0" }}
         >
-            <style>{`
-                @media (max-width: 640px) {
-                    .case-divider {
-                        width: 80px !important;
-                        height: 1px !important;
-                        min-height: unset !important;
-                        align-self: auto !important;
-                        background: linear-gradient(to right, transparent, rgba(204,85,0,0.5), transparent) !important;
-                    }
-                }
-            `}</style>
             {/* ── Ambient Background ── */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute inset-0 bg-[url('/500image.png')] bg-cover bg-center bg-no-repeat opacity-10 mix-blend-luminosity" />
+                <div className="absolute inset-0 bg-[url('/500image.png')] bg-cover bg-center bg-no-repeat opacity-30 mix-blend-luminosity" />
                 <div className="absolute inset-0 bg-[#0A0A0A]/60" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] sm:w-[800px] sm:h-[800px] bg-[#CC5500]/15 rounded-full blur-[120px] animate-[pulse_8s_ease-in-out_infinite]" />
                 <div className="absolute -top-1/4 -right-1/4 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[100px] animate-[pulse_10s_ease-in-out_infinite_reverse]" />
@@ -128,21 +116,6 @@ export default function CaseStudy() {
                         </span>
                     </h2>
                 </div>
-
-                {/* ── DIVIDER: vertical on desktop, horizontal on mobile ── */}
-                <div
-                    ref={dividerRef}
-                    className="case-divider"
-                    style={{
-                        width: "1px",
-                        alignSelf: "stretch",
-                        minHeight: "120px",
-                        background: "linear-gradient(to bottom, transparent, rgba(204,85,0,0.5), transparent)",
-                        opacity: 0,
-                        transition: "all 0.9s cubic-bezier(0.16,1,0.3,1)",
-                        flexShrink: 0,
-                    }}
-                />
 
                 {/* ── RIGHT: Paragraph ── */}
                 <div
