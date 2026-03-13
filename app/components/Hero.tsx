@@ -232,7 +232,7 @@ export default function Hero() {
                         </div>
 
                         <img
-                            src="/Mockup.jpeg"
+                            src="/admin.png"
                             alt="Captus Platform Mockup"
                             style={{
                                 width: "100%",
