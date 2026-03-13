@@ -12,10 +12,6 @@ export default function Footer() {
             {/* MAIN FOOTER */}
             <div className=" mx-auto px-6 sm:px-10 lg:px-12 relative z-10 flex  justify-center">
 
-                {/* THE FIX: Use flex-col (mobile) and flex-row (desktop).
-                  w-fit ensures the container doesn't stretch to 100% width,
-                  allowing justify-center on the parent to actually work.
-                */}
                 <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-16 lg:gap-100 w-fit">
 
                     {/* LEFT SECTION - Logo & Pitch */}
@@ -73,7 +69,7 @@ export default function Footer() {
             </div>
 
             {/* BACKGROUND BRAND TEXT */}
-            <div className="w-full flex justify-center mt-16 sm:mt-20 lg:mt-24 mb-12 sm:mb-16 pointer-events-none select-none opacity-[0.05]">
+            <div className="w-full flex justify-center mt-20 sm:mt-28 mb-[-12px] pointer-events-none select-none opacity-[0.05]">
                 <h1
                     className="font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-transparent tracking-tighter text-center"
                     style={{ fontSize: "clamp(5rem, 18vw, 18rem)" }}
@@ -82,17 +78,77 @@ export default function Footer() {
                 </h1>
             </div>
 
-            {/* BOTTOM BAR */}
-            <div className="mx-auto px-6 sm:px-10 lg:px-12 pb-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-6">
-                <p className="text-white/40 text-[11px] text-center sm:text-left uppercase tracking-wider">
-                    © {new Date().getFullYear()} Captus AI. All rights reserved.
+            {/* BOTTOM BAR — sits above brand text */}
+            <div
+                style={{
+                    margin: "0",
+                    borderTop: "1px solid rgba(204,85,0,0.25)",
+                    borderBottom: "1px solid rgba(204,85,0,0.25)",
+                    background: "linear-gradient(90deg, rgba(204,85,0,0.08) 0%, rgba(255,123,26,0.04) 50%, rgba(204,85,0,0.08) 100%)",
+                    padding: "18px clamp(24px, 6vw, 64px)",
+                    display: "flex",
+                    flexDirection: "row",
+                    flexWrap: "wrap",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    gap: "16px",
+                }}
+            >
+                {/* Copyright */}
+                <p
+                    style={{
+                        color: "rgba(255,255,255,0.75)",
+                        fontSize: "11px",
+                        letterSpacing: "0.12em",
+                        textTransform: "uppercase",
+                        fontFamily: "inherit",
+                    }}
+                >
+                    © {new Date().getFullYear()} Captus AI.&nbsp;&nbsp;All rights reserved.
                 </p>
 
-                <div className="flex items-center gap-8">
-                    <a href="https://linkedin.com" className="text-white/40 hover:text-white text-[11px] uppercase tracking-wider transition">LinkedIn</a>
-                    <a href="https://twitter.com" className="text-white/40 hover:text-white text-[11px] uppercase tracking-wider transition">Twitter (X)</a>
+                {/* Social links */}
+                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                    {[
+                        { label: "LinkedIn", href: "https://linkedin.com" },
+                        { label: "Twitter (X)", href: "https://twitter.com" },
+                    ].map(({ label, href }) => (
+                        <a
+                            key={label}
+                            href={href}
+                            style={{
+                                color: "#CC5500",
+                                fontSize: "11px",
+                                padding: "7px 16px",
+                                borderRadius: "9999px",
+                                border: "1px solid rgba(204,85,0,0.45)",
+                                background: "rgba(204,85,0,0.08)",
+                                transition: "all 0.2s ease",
+                                textDecoration: "none",
+                                letterSpacing: "0.12em",
+                                textTransform: "uppercase" as const,
+                                fontWeight: 600,
+                            }}
+                            onMouseEnter={e => {
+                                const el = e.currentTarget as HTMLElement;
+                                el.style.background = "#CC5500";
+                                el.style.color = "#fff";
+                                el.style.borderColor = "#CC5500";
+                            }}
+                            onMouseLeave={e => {
+                                const el = e.currentTarget as HTMLElement;
+                                el.style.background = "rgba(204,85,0,0.08)";
+                                el.style.color = "#CC5500";
+                                el.style.borderColor = "rgba(204,85,0,0.45)";
+                            }}
+                        >
+                            {label}
+                        </a>
+                    ))}
                 </div>
             </div>
+
+
         </footer>
     );
 }

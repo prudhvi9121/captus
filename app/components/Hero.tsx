@@ -31,9 +31,8 @@ export default function Hero() {
         <section
             style={{
                 position: "relative",
-                // Reduced top padding from 180px to move heading up
-                paddingTop: "clamp(100px, 12vh, 140px)",
-                paddingBottom: "clamp(60px, 10vh, 120px)",
+                paddingTop: "clamp(120px, 10vh, 220px)",
+                paddingBottom: "clamp(120px, 10vh, 200px)",
                 background: "#FFFFFF",
                 overflow: "hidden",
             }}
@@ -77,30 +76,38 @@ export default function Hero() {
                 </svg>
             </div>
 
-            {/* CONTAINER */}
+            {/* CONTAINER — two-column on desktop, stacked on mobile */}
             <div
-                className=" mx-auto px-4 sm:px-8 md:px-12 lg:px-16"
                 style={{
                     display: "flex",
-                    flexDirection: "column",
+                    flexDirection: "row",
+                    flexWrap: "wrap",
                     alignItems: "center",
-                    // Responsive gap: smaller on mobile, larger on desktop
-                    gap: "clamp(40px, 8vw, 80px)",
+                    gap: "clamp(32px, 5vw, 64px)",
+                    maxWidth: "1280px",
+                    width: "100%",
+                    margin: "0 auto",
+                    paddingLeft: "clamp(24px, 6vw, 96px)",
+                    paddingRight: "clamp(24px, 6vw, 96px)",
                 }}
             >
-                {/* TEXT AREA */}
+                {/* LEFT — TEXT AREA */}
                 <div
                     style={{
-                        textAlign: "center",
-                        maxWidth: "900px",
-                        width: "100%",
+                        flex: "1 1 320px",
+                        minWidth: "280px",
+                        maxWidth: "520px",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                        textAlign: "left",
                     }}
                 >
                     {/* HEADLINE */}
                     <h1
                         ref={titleRef as any}
                         style={{
-                            fontSize: "clamp(28px, 6vw, 52px)", // Fluid typography
+                            fontSize: "clamp(23px, 5vw, 38px)",
                             lineHeight: 1.1,
                             fontWeight: 400,
                             letterSpacing: "-0.03em",
@@ -108,6 +115,7 @@ export default function Hero() {
                             opacity: 0,
                             transform: "translateY(20px)",
                             transition: "all .8s cubic-bezier(.16,1,.3,1)",
+                            margin: 0,
                         }}
                     >
                         Identify Financial & Operational Risk{" "}
@@ -119,28 +127,24 @@ export default function Hero() {
                     {/* SUBTEXT */}
                     <p
                         ref={subRef as any}
-                        className="text-sm sm:text-base md:text-lg lg:text-xl"
+                        className="text-sm sm:text-sm md:text-md lg:text-lg"
                         style={{
                             marginTop: "24px",
                             color: "var(--text-secondary, #444)",
                             lineHeight: 1.6,
-                            maxWidth: "680px",
-                            marginLeft: "auto",
-                            marginRight: "auto",
                             opacity: 0,
                             transform: "translateY(20px)",
                             transition: "all .8s cubic-bezier(.16,1,.3,1)",
                         }}
                     >
                         Captus connects fragmented project data to surface early signals of
-                        financial and operational risk — helping construction owners
-                        intervene before exposure impacts the project.
+                        financial and operational risk helping construction owners intervene
+                        before exposure impacts the project.
                     </p>
 
                     {/* CTA */}
                     <div
                         ref={ctaRef as any}
-                        className="flex flex-col sm:flex-row items-center justify-center gap-4"
                         style={{
                             marginTop: "40px",
                             opacity: 0,
@@ -150,14 +154,15 @@ export default function Hero() {
                     >
                         <a
                             href="/book-demo"
-                            className="w-fit sm:w-auto text-center font-display transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(204,85,0,0.6)] active:scale-95 active:shadow-[0_0_10px_rgba(204,85,0,0.4)]"
+                            className="font-display transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(204,85,0,0.6)] active:scale-95 active:shadow-[0_0_10px_rgba(204,85,0,0.4)]"
                             style={{
-                                padding: "clamp(12px, 3vw, 16px) clamp(20px, 5vw, 32px)", /* Smaller padding on mobile */
+                                display: "inline-block",
+                                padding: "clamp(12px, 3vw, 16px) clamp(20px, 5vw, 32px)",
                                 background: "linear-gradient(135deg, #CC5500 0%, #111111 100%)",
                                 color: "#fff",
                                 borderRadius: "12px",
                                 fontWeight: 600,
-                                fontSize: "clamp(13px, 3.5vw, 16px)", /* Smaller font on mobile */
+                                fontSize: "clamp(8px, 3.5vw, 10px)",
                                 textDecoration: "none",
                                 boxShadow: "0 4px 14px rgba(0,0,0,0.25)",
                                 border: "1px solid rgba(204,85,0,0.5)",
@@ -166,34 +171,18 @@ export default function Hero() {
                         >
                             Schedule a Demo
                         </a>
-
-                        {/* <a
-                            href="/product"
-                            className="w-full sm:w-auto text-center"
-                            style={{
-                                padding: "16px 32px",
-                                border: "1px solid rgba(0,0,0,0.15)",
-                                borderRadius: "12px",
-                                color: "#111",
-                                fontWeight: 500,
-                                fontSize: "15px",
-                                textDecoration: "none",
-                            }}
-                        >
-                            View Platform
-                        </a> */}
                     </div>
                 </div>
 
-                {/* PRODUCT MOCKUP */}
+                {/* RIGHT — PRODUCT MOCKUP */}
                 <div
                     ref={mockRef as any}
                     style={{
-                        width: "100%",
-                        maxWidth: "1100px",
+                        flex: "1 1 400px",
+                        minWidth: "280px",
                         position: "relative",
                         opacity: 0,
-                        transform: "translateY(30px)",
+                        transform: "translateY(10px)",
                         transition: "all .9s cubic-bezier(.16,1,.3,1)",
                     }}
                 >

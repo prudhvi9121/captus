@@ -240,7 +240,7 @@ export default function Team() {
                     <Section>
                         <div>
                             <p
-                                className="text-center md:text-left"
+                                className="text-center md:text-center"
                                 style={{
                                     fontSize: "12px",
                                     fontWeight: 700,
@@ -255,19 +255,23 @@ export default function Team() {
 
                             <div
                                 style={{
-                                    paddingLeft: "clamp(40px, 4vw, 20px)",
-                                    paddingRight: "clamp(40px, 4vw, 20px)",
+                                    paddingLeft: "clamp(20px, 5vw, 60px)",
+                                    paddingRight: "clamp(20px, 5vw, 60px)",
                                     display: "grid",
-                                    gridTemplateColumns:
-                                        "repeat(auto-fit, minmax(240px, 1fr))",
+                                    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
                                     gap: "24px",
+                                    width: "100%",
+                                    maxWidth: "1100px",
+                                    margin: "0 auto",
+                                    justifyItems: "center",
                                 }}
                             >
                                 {teamMembers.map((member, i) => (
                                     <div
                                         key={i}
-                                        className="glass reveal-child mx-auto w-full max-w-[320px] md:max-w-none"
+                                        className="glass reveal-child w-full"
                                         style={{
+                                            maxWidth: "320px",
                                             padding: "clamp(24px, 4vw, 32px)",
                                             borderRadius: "14px",
                                             border: "1px solid var(--border)",
