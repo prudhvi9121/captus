@@ -90,16 +90,16 @@ export default function Hero() {
                     width: "100%",
                     maxWidth: "1400px",
                     margin: "0 auto",
-                    paddingTop: "clamp(20px, 4vw, 40px)",
-                    paddingBottom: "clamp(48px, 6vw, 60px)",
-                    paddingLeft: "clamp(28px, 5vw, 96px)",
-                    paddingRight: "clamp(28px, 5vw, 96px)",
+                    paddingTop: "clamp(36px, 5vw, 40px)",
+                    paddingBottom: "clamp(64px, 8vw, 80px)",
+                    paddingLeft: "clamp(36px, 6vw, 96px)",
+                    paddingRight: "clamp(36px, 6vw, 96px)",
                     flex: 1,
                     display: "flex",
                     flexDirection: "row",
                     flexWrap: "wrap",
                     alignItems: "center",
-                    gap: "clamp(32px, 5vw, 80px)",
+                    gap: "clamp(48px, 6vw, 80px)",
                 }}
             >
                 {/* Left Column: Text */}
@@ -110,7 +110,7 @@ export default function Hero() {
                         flexDirection: "column",
                         alignItems: "flex-start",
                         textAlign: "left",
-                        gap: "clamp(20px, 3vw, 32px)",
+                        gap: "clamp(28px, 4vw, 32px)",
                         width: "100%",
                     }}
                 >
@@ -119,7 +119,7 @@ export default function Hero() {
                         ref={heroSubRef}
                         className="font-display"
                         style={{
-                            fontSize: "clamp(20px, 3.5vw, 40px)",
+                            fontSize: "clamp(24px, 3.5vw, 40px)",
                             color: "var(--text-primary)",
                             lineHeight: 1.15,
                             letterSpacing: "-0.01em",
@@ -138,7 +138,7 @@ export default function Hero() {
                         ref={heroParaRef}
                         style={{
                             color: "var(--text-secondary)",
-                            fontSize: "clamp(13px, 1.3vw, 17px)",
+                            fontSize: "clamp(15px, 1.3vw, 17px)",
                             maxWidth: "480px",
                             lineHeight: 1.6,
                             fontWeight: 400,
@@ -170,7 +170,7 @@ export default function Hero() {
                                 color: "#fff",
                                 borderRadius: "12px",
                                 fontWeight: 600,
-                                fontSize: "clamp(11px, 1.5vw, 14px)",
+                                fontSize: "clamp(13px, 1.5vw, 14px)",
                                 textDecoration: "none",
                                 boxShadow: "0 4px 14px rgba(0,0,0,0.25)",
                                 border: "1px solid rgba(255,255,255,0.1)",
