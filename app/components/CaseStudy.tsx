@@ -61,6 +61,7 @@ export default function CaseStudy() {
                 {/* ── LEFT: Title ── */}
                 <div
                     ref={leftRef}
+                    className="text-center sm:text-left"
                     style={{
                         flex: "1 1 260px",
                         opacity: 0,
@@ -120,6 +121,7 @@ export default function CaseStudy() {
                 {/* ── RIGHT: Paragraph ── */}
                 <div
                     ref={rightRef}
+                    className="text-center sm:text-left"
                     style={{
                         flex: "1.4 1 280px",
                         opacity: 0,
