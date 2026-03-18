@@ -106,8 +106,8 @@ export default function Footer() {
                 {/* Social links */}
                 <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                     {[
-                        { label: "LinkedIn", href: "https://linkedin.com" },
-                        { label: "Twitter (X)", href: "https://twitter.com" },
+                        { label: "LinkedIn", href: "https://www.linkedin.com/company/captus-ai/about/", target: "_blank", rel: "noopener noreferrer" },
+                        // { label: "Twitter (X)", href: "https://twitter.com" },
                     ].map(({ label, href }) => (
                         <a
                             key={label}
