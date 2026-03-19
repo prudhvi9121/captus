@@ -418,7 +418,7 @@ export default function Team() {
                                         </div>
 
                                         <h3
-                                            className="font-display"
+                                            className="font-display whitespace-nowrap"
                                             style={{
                                                 fontSize: "clamp(14px, 2vw, 16px)",
                                                 color: "var(--text-primary)",
