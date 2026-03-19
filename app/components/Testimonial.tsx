@@ -5,11 +5,12 @@ import { useScrollReveal } from "../hooks/useScrollReveal";
 const testimonials = [
     {
         quote:
-            "Captus has become an essential tool across our development and construction projects. It helps us stay on top of meetings, documentation, and reporting 24/7 so nothing slips through the cracks. The platform gives our team real visibility into risk, timing, and budget, and the reporting has been incredibly valuable when communicating with lenders, investors, and stakeholders. It has improved our efficiency, decision-making, and overall project oversight.",
-        name: "Anthony Meer",
+            "We're doing about half a billion dollars of development and construction. I had the best data at my fingertips, especially when it came to risk, timing and budget.",
+        name: "Anthony Maher",
         title: "Owner and Developer, University Place Associates",
         initial: "A",
     },
+
 
 ];
 

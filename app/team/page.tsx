@@ -6,9 +6,9 @@ import { useScrollReveal } from "../hooks/useScrollReveal";
 import Image from "next/image";
 
 const teamMembers = [
-    { name: "Jonathan Kruljac", role: "Mentor & Advisor", type: "advisor" },
+    // { name: "Jonathan Kruljac", role: "Mentor & Advisor", type: "advisor" },
     { name: "Alley (Tong) Wu", role: "Founding AI Engineer", type: "founding" },
-    { name: "Khanak Agrawal", role: "AI Engineer", type: "engineer" },
+    { name: "Khanak Agrawal", role: "Founding AI Engineer", type: "engineer" },
     { name: "Youssef Benaouda", role: "AI Engineer", type: "engineer" },
 ];
 
@@ -138,6 +138,112 @@ export default function Team() {
                                         >
                                             Founder & CEO
                                         </p>
+
+                                        <div
+                                            style={{
+                                                display: "flex",
+                                                alignItems: "center",
+                                                flexWrap: "wrap",
+                                                gap: "10px",
+                                                marginTop: "24px",
+                                            }}
+                                            className="justify-center md:justify-start"
+                                        >
+                                            <a
+                                                href="https://www.linkedin.com/in/anatolykhen/"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                style={{
+                                                    padding: "8px 16px",
+                                                    borderRadius: "50px",
+                                                    background: "#CC5500",
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                    gap: "8px",
+                                                    color: "#FFFFFF",
+                                                    textDecoration: "none",
+                                                    fontSize: "11px",
+                                                    fontFamily: '"Good Times", system-ui, sans-serif',
+                                                    letterSpacing: "0.03em",
+                                                    transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+                                                    boxShadow: "0 4px 12px rgba(204, 85, 0, 0.12)",
+                                                }}
+                                                onMouseEnter={(e) => {
+                                                    e.currentTarget.style.transform = "translateY(-2px)";
+                                                    e.currentTarget.style.backgroundColor = "#A34400";
+                                                    e.currentTarget.style.boxShadow = "0 6px 16px rgba(204, 85, 0, 0.2)";
+                                                }}
+                                                onMouseLeave={(e) => {
+                                                    e.currentTarget.style.transform = "translateY(0)";
+                                                    e.currentTarget.style.backgroundColor = "#CC5500";
+                                                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(204, 85, 0, 0.12)";
+                                                }}
+                                                title="LinkedIn"
+                                            >
+                                                <svg
+                                                    width="14"
+                                                    height="14"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    strokeWidth="2.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                >
+                                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                                    <rect x="2" y="9" width="4" height="12"></rect>
+                                                    <circle cx="4" cy="4" r="2"></circle>
+                                                </svg>
+                                                <span style={{ paddingTop: "1px" }}>LINKEDIN</span>
+                                            </a>
+                                            <a
+                                                href="https://anatoly.ai/"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                style={{
+                                                    padding: "8px 16px",
+                                                    borderRadius: "50px",
+                                                    background: "#CC5500",
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                    gap: "8px",
+                                                    color: "#FFFFFF",
+                                                    textDecoration: "none",
+                                                    fontSize: "11px",
+                                                    fontFamily: '"Good Times", system-ui, sans-serif',
+                                                    letterSpacing: "0.03em",
+                                                    transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+                                                    boxShadow: "0 4px 12px rgba(204, 85, 0, 0.12)",
+                                                }}
+                                                onMouseEnter={(e) => {
+                                                    e.currentTarget.style.transform = "translateY(-2px)";
+                                                    e.currentTarget.style.backgroundColor = "#A34400";
+                                                    e.currentTarget.style.boxShadow = "0 6px 16px rgba(204, 85, 0, 0.2)";
+                                                }}
+                                                onMouseLeave={(e) => {
+                                                    e.currentTarget.style.transform = "translateY(0)";
+                                                    e.currentTarget.style.backgroundColor = "#CC5500";
+                                                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(204, 85, 0, 0.12)";
+                                                }}
+                                                title="Personal Website"
+                                            >
+                                                <svg
+                                                    width="14"
+                                                    height="14"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    strokeWidth="2.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                >
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                                </svg>
+                                                <span style={{ paddingTop: "1px" }}>ANATOLY.AI</span>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -184,7 +290,7 @@ export default function Team() {
                                         problem.
                                     </p>
 
-                                    <div
+                                    {/* <div
                                         style={{
                                             padding: "clamp(16px, 3vw, 24px)",
                                             background: "var(--surface-1)",
@@ -221,7 +327,7 @@ export default function Team() {
                                             <li><strong>Paylocity</strong> - Technology & Scale</li>
                                             <li><strong>VIEVU</strong> - Go-to-Market Expansion</li>
                                         </ul>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>
@@ -314,7 +420,7 @@ export default function Team() {
                                         <h3
                                             className="font-display"
                                             style={{
-                                                fontSize: "clamp(16px, 2vw, 18px)",
+                                                fontSize: "clamp(14px, 2vw, 16px)",
                                                 color: "var(--text-primary)",
                                                 marginBottom: "6px",
                                             }}
