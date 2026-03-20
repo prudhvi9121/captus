@@ -49,7 +49,7 @@ export default function TermsAndConditions() {
 
                         <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>5. Intellectual Property</h2>
                         <ul style={{ paddingLeft: "20px", listStyleType: "none", display: "flex", flexDirection: "column", gap: "8px" }}>
-                            <li>5.1. All content, designs, and AI algorithms provided by Captus are the intellectual property of Captus.</li>
+                            <li>5.1. All AI models, algorithms, and underlying technology provided by Captus remain the intellectual property of Captus.</li>
                             <li>5.2. You may not duplicate, copy, distribute, or exploit any part of our services without prior written consent.</li>
                         </ul>
 
@@ -57,14 +57,18 @@ export default function TermsAndConditions() {
                         <ul style={{ paddingLeft: "20px", listStyleType: "none", display: "flex", flexDirection: "column", gap: "8px" }}>
                             <li>6.1. Captus is provided &quot;as is&quot; without warranties of any kind.</li>
                             <li>6.2. We are not responsible for any losses, damages, or liabilities arising from the use of our services.</li>
-                            <li>6.3. While we strive for accuracy, our AI outputs are not guaranteed to be error-free or appropriate for all use cases.</li>
+                            {/* <li>6.3. While we strive for accuracy, our AI outputs are not guaranteed to be error-free or appropriate for all use cases.</li> */}
                         </ul>
 
                         <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>7. Content Ownership</h2>
                         <ul style={{ paddingLeft: "20px", listStyleType: "none", display: "flex", flexDirection: "column", gap: "8px" }}>
-                            <li>7.1. You retain ownership of any original content you upload.</li>
-                            <li>7.2. By using Captus, you grant us a license to use your content solely to provide and improve the Service.</li>
-                            <li>7.3. All software, branding, and technology within Captus belong to us or our licensors.</li>
+                            <li>7.1. You keep full ownership of any content you upload to Captus.</li>
+                            <li>7.2. You give Captus permission to use your content only to run and improve the platform.</li>
+                            <li>7.3. Captus does not sell or share your content outside of providing the service.</li>
+                            <li>7.4. Captus may analyze your content to identify risks and generate insights.</li>
+                            <li>7.5. Any anonymized or aggregated data does not identify you or your projects.</li>
+                            <li>7.6. All Captus software, technology, and systems remain the property of Captus.</li>
+                            <li>7.7. Feedback you provide can be used by Captus without restriction.</li>
                         </ul>
 
                         <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>8. Termination</h2>

@@ -26,9 +26,11 @@ export default function PrivacyPolicy() {
                         <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>1. Information We Collect</h2>
                         <p>We collect the following types of data when you use Captus:</p>
                         <ul style={{ paddingLeft: "20px", listStyleType: "disc", display: "flex", flexDirection: "column", gap: "8px" }}>
-                            <li><strong>Personal Info:</strong> Name, email, business details</li>
-                            <li><strong>User Input:</strong> Content you provide for AI suggestions (e.g., brand messaging, target audience)</li>
-                            <li><strong>Usage Data:</strong> Interactions within the app, feature usage, and performance logs</li>
+                            <li>Personal information such as name, email, company, and role</li>
+                            <li><strong>User input:</strong> Information you provide for AI suggestions</li>
+                            <li>Data generated from platform use such as interactions, feature usage, and system logs</li>
+                            <li>Information from connected tools or integrations if you choose to link them</li>
+                            <li>Technical data such as device, browser, and basic usage analytics</li>
                         </ul>
 
                         <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>2. How We Use Your Data</h2>
