@@ -49,7 +49,7 @@ export default function Footer() {
                             </span>
                             <div className="flex flex-col items-center lg:items-start space-y-2">
                                 <Link href="/privacy-policy" className="text-sm text-gray-400 hover:text-orange-500 transition">Privacy Policy</Link>
-                                <Link href="/terms-of-service" className="text-sm text-gray-400 hover:text-orange-500 transition">Terms of Service</Link>
+                                <Link href="/terms-and-conditions" className="text-sm text-gray-400 hover:text-orange-500 transition">Terms and Conditions</Link>
                             </div>
                         </div>
 

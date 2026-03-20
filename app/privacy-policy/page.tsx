@@ -20,27 +20,71 @@ export default function PrivacyPolicy() {
 
                     <div style={{ display: "flex", flexDirection: "column", gap: "24px", color: "var(--text-secondary)", fontSize: "16px", lineHeight: 1.7 }}>
                         <p>
-                            Captus ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how your personal information is collected, used, and disclosed by Captus when you visit our website (captus.ai) and use our predictive risk intelligence platform.
+                            At Captus, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy outlines how we collect, use, and safeguard your data when you interact with our website, services, and products. By using our platform, you consent to the practices described in this policy.
                         </p>
 
                         <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>1. Information We Collect</h2>
+                        <p>We collect the following types of data when you use Captus:</p>
+                        <ul style={{ paddingLeft: "20px", listStyleType: "disc", display: "flex", flexDirection: "column", gap: "8px" }}>
+                            <li><strong>Personal Info:</strong> Name, email, business details</li>
+                            <li><strong>User Input:</strong> Content you provide for AI suggestions (e.g., brand messaging, target audience)</li>
+                            <li><strong>Usage Data:</strong> Interactions within the app, feature usage, and performance logs</li>
+                        </ul>
+
+                        <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>2. How We Use Your Data</h2>
+                        <p>We use your information to:</p>
+                        <ul style={{ paddingLeft: "20px", listStyleType: "disc", display: "flex", flexDirection: "column", gap: "8px" }}>
+                            <li>Provide personalized content and recommendations using AI</li>
+                            <li>Improve the Service based on usage patterns</li>
+                            <li>Communicate with you about updates, features, or support</li>
+                            <li>Ensure security and prevent misuse</li>
+                        </ul>
+
+                        <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>3. AI & Automated Processing</h2>
                         <p>
-                            We collect information from you when you interact with our website, request a demo, or use our services. This may include your name, email address, company name, professional title, and project scale data necessary for establishing connectivity to our platform.
+                            Your data may be processed through AI systems to generate customized content suggestions. These outputs are generated automatically and are intended to assist you, not replace human judgment.
                         </p>
 
-                        <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>2. How We Use Your Information</h2>
+                        <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>4. Data Sharing</h2>
                         <p>
-                            We use the information we collect to operate, maintain, and provide the features of our platform, to communicate with you, and to personalize your experience. We do not sell your personal data to third parties.
+                            We do not sell your data. We may share it with trusted service providers (e.g., cloud hosting, analytics tools) strictly to support the operation of Captus, and only under confidentiality agreements.
                         </p>
 
-                        <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>3. Data Security</h2>
+                        <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>5. Data Retention</h2>
                         <p>
-                            We implement enterprise-grade security measures to protect your data. Given the sensitive nature of construction documentation and financial risk data, we employ industry-standard encryption protocols both in transit and at rest.
+                            We keep your data as long as your account is active or as needed to provide services. You may request deletion at any time by contacting us.
                         </p>
 
-                        <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>4. Contact Us</h2>
+                        <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>6. Your Rights</h2>
+                        <p>You can:</p>
+                        <ul style={{ paddingLeft: "20px", listStyleType: "disc", display: "flex", flexDirection: "column", gap: "8px" }}>
+                            <li>Request access to the data we hold about you</li>
+                            <li>Ask for corrections or updates</li>
+                            <li>Delete your account and associated data</li>
+                            <li>Withdraw consent for data processing</li>
+                        </ul>
                         <p>
-                            If you have any questions about this Privacy Policy, please contact us at <a href="mailto:info@captus.ai" style={{ color: "#CC5500", textDecoration: "none" }}>info@captus.ai</a>.
+                            To exercise any of these rights, email us at <a href="mailto:info@captus.ai" style={{ color: "#CC5500", textDecoration: "none" }}>info@captus.ai</a>.
+                        </p>
+
+                        <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>7. Security</h2>
+                        <p>
+                            We use industry-standard encryption and security measures to protect your data.
+                        </p>
+
+                        <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>8. Children&apos;s Privacy</h2>
+                        <p>
+                            Captus is not intended for children under 13. We do not knowingly collect data from anyone under this age.
+                        </p>
+
+                        <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>9. Updates to This Policy</h2>
+                        <p>
+                            We may update this Privacy Policy. If changes are made, you&apos;ll be notified through the app or email.
+                        </p>
+
+                        <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>10. Contact</h2>
+                        <p>
+                            For questions or concerns, contact us at: <a href="mailto:info@captus.ai" style={{ color: "#CC5500", textDecoration: "none" }}>info@captus.ai</a>
                         </p>
                     </div>
                 </div>
