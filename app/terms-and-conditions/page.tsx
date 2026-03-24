@@ -14,13 +14,13 @@ export default function TermsAndConditions() {
                             Terms and Conditions
                         </h1>
                         <p style={{ color: "var(--text-secondary)", fontSize: "16px", lineHeight: 1.6 }}>
-                            Last updated: {new Date().toLocaleDateString()}
+                            Last updated: 24/3/2026
                         </p>
                     </div>
 
                     <div style={{ display: "flex", flexDirection: "column", gap: "24px", color: "var(--text-secondary)", fontSize: "16px", lineHeight: 1.7 }}>
                         <p>
-                            Welcome to Captus. By accessing or using our website, products, or services, you agree to be bound by the following Terms and Conditions. If you do not agree to these terms, please refrain from using our platform.
+                            Welcome to Captus. By accessing or using our website, products, or services, you agree to be bound by the following Terms and Conditions.
                         </p>
 
                         <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>1. Who can use Captus</h2>
@@ -60,13 +60,12 @@ export default function TermsAndConditions() {
                             {/* <li>6.3. While we strive for accuracy, our AI outputs are not guaranteed to be error-free or appropriate for all use cases.</li> */}
                         </ul>
 
-                        <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>7. Content Ownership</h2>
+                        <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>7. Data Ownership</h2>
                         <ul style={{ paddingLeft: "20px", listStyleType: "none", display: "flex", flexDirection: "column", gap: "8px" }}>
-                            <li>7.1. You keep full ownership of any content you upload to Captus.</li>
-                            <li>7.2. You give Captus permission to use your content only to run and improve the platform.</li>
-                            <li>7.3. Captus does not sell or share your content outside of providing the service.</li>
-                            <li>7.4. Captus may analyze your content to identify risks and generate insights.</li>
-                            <li>7.5. Any anonymized or aggregated data does not identify you or your projects.</li>
+                            <li>7.1. You keep full ownership of any data you upload to Captus.</li>
+                            <li>7.2. You give Captus permission to use your data for the platform.</li>
+                            <li>7.3. Captus does not sell or share your data outside of providing the service.</li>
+                            <li>7.4. Captus may analyze your data to identify risks and generate insights.</li>
                             <li>7.6. All Captus software, technology, and systems remain the property of Captus.</li>
                             <li>7.7. Feedback you provide can be used by Captus without restriction.</li>
                         </ul>
@@ -90,7 +89,7 @@ export default function TermsAndConditions() {
 
                         <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>11. Contact Us</h2>
                         <p>
-                            If you have questions or concerns about these Terms and Conditions, please contact us at <a href="mailto:info@captus.ai" style={{ color: "#CC5500", textDecoration: "none" }}>info@captus.ai</a>.
+                            If you have questions or concerns about these Terms and Conditions, please contact us at: <a href="mailto:info@captus.ai" style={{ color: "#CC5500", textDecoration: "none" }}>info@captus.ai</a>
                         </p>
                     </div>
                 </div>

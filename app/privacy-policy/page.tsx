@@ -14,7 +14,7 @@ export default function PrivacyPolicy() {
                             Privacy Policy
                         </h1>
                         <p style={{ color: "var(--text-secondary)", fontSize: "16px", lineHeight: 1.6 }}>
-                            Last updated: {new Date().toLocaleDateString()}
+                            Last updated: 24/03/2026
                         </p>
                     </div>
 
@@ -26,8 +26,8 @@ export default function PrivacyPolicy() {
                         <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>1. Information We Collect</h2>
                         <p>We collect the following types of data when you use Captus:</p>
                         <ul style={{ paddingLeft: "20px", listStyleType: "disc", display: "flex", flexDirection: "column", gap: "8px" }}>
-                            <li>Personal information such as name, email, company, and role</li>
-                            <li><strong>User input:</strong> Information you provide for AI suggestions</li>
+                            <li>Personal information such as name, email, company, and role, etc.</li>
+                            <li>User input: Information you provide for AI modeling and output</li>
                             <li>Data generated from platform use such as interactions, feature usage, and system logs</li>
                             <li>Information from connected tools or integrations if you choose to link them</li>
                             <li>Technical data such as device, browser, and basic usage analytics</li>
@@ -36,15 +36,13 @@ export default function PrivacyPolicy() {
                         <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>2. How We Use Your Data</h2>
                         <p>We use your information to:</p>
                         <ul style={{ paddingLeft: "20px", listStyleType: "disc", display: "flex", flexDirection: "column", gap: "8px" }}>
-                            <li>Provide personalized content and recommendations using AI</li>
+                            <li>Do predictive analysis</li>
                             <li>Improve the Service based on usage patterns</li>
-                            <li>Communicate with you about updates, features, or support</li>
-                            <li>Ensure security and prevent misuse</li>
                         </ul>
 
                         <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>3. AI & Automated Processing</h2>
                         <p>
-                            Your data may be processed through AI systems to generate customized content suggestions. These outputs are generated automatically and are intended to assist you, not replace human judgment.
+                            Your data may be processed through AI systems to generate recommendations. These outputs are generated automatically and are intended to assist you, not replace human judgment.
                         </p>
 
                         <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>4. Data Sharing</h2>
@@ -72,6 +70,7 @@ export default function PrivacyPolicy() {
                         <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>7. Security</h2>
                         <p>
                             We use industry-standard encryption and security measures to protect your data.
+
                         </p>
 
                         <h2 className="font-display" style={{ fontSize: "20px", color: "var(--text-primary)", marginTop: "16px" }}>8. Children&apos;s Privacy</h2>
@@ -88,6 +87,7 @@ export default function PrivacyPolicy() {
                         <p>
                             For questions or concerns, contact us at: <a href="mailto:info@captus.ai" style={{ color: "#CC5500", textDecoration: "none" }}>info@captus.ai</a>
                         </p>
+
                     </div>
                 </div>
             </main>
