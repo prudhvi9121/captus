@@ -389,7 +389,7 @@ export default function Problem() {
             }} />
 
             {/* Large orbital decoration */}
-            <div style={{
+            {/* <div style={{
                 position: "absolute",
                 top: "50%", left: "50%",
                 width: "500px", height: "500px",
@@ -408,7 +408,7 @@ export default function Problem() {
                     boxShadow: "0 0 12px #FF7B1A",
                     animation: "orbitSpin 12s linear infinite",
                 }} />
-            </div>
+            </div> */}
 
             <div style={{ maxWidth: "1280px", margin: "0 auto", position: "relative", zIndex: 1 }}>
 
@@ -453,7 +453,7 @@ export default function Problem() {
                         opacity: headerVisible ? 1 : 0,
                         transform: headerVisible ? "translateY(0)" : "translateY(30px)",
                         transition: "all 0.8s cubic-bezier(0.16,1,0.3,1) 0.1s",
-                        animation: headerVisible ? "glitchFlicker 8s ease-in-out 2s infinite" : "none",
+                        // animation: headerVisible ? "glitchFlicker 8s ease-in-out 2s infinite" : "none",
                     }}>
                         The Cost of{" "}
                         <span style={{
