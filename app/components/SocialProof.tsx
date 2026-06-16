@@ -37,6 +37,7 @@ const STATS = [
         image: "/socialProofImages/socialProof1.png",
         icon: (
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="7" width="20" height="14" rx="2" />
                 <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
             </svg>
@@ -51,6 +52,7 @@ const STATS = [
         color: "#CC5500",
         image: "/socialProofImages/socialProof2.png",
         icon: (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
                 <polyline points="16 7 22 7 22 13" />
@@ -105,6 +107,7 @@ function StatTab({ stat, index, isActive, visible, onClick }: StatTabProps) {
                 overflow: "hidden",
                 opacity: visible ? 1 : 0,
                 transform: visible ? "translateY(0)" : "translateY(24px)",
+                transform: visible ? "translateY(0)" : "translateY(24px)",
             }}
             className="group hover:bg-[rgba(0,0,0,0.015)]"
         >
@@ -157,6 +160,8 @@ function StatTab({ stat, index, isActive, visible, onClick }: StatTabProps) {
                 fontSize: "12px",
                 color: isActive ? "rgba(0,0,0,0.55)" : "rgba(0,0,0,0.4)",
                 fontFamily: "Nexa, sans-serif",
+                lineHeight: 1.4,
+                transition: "color 0.3s ease",
                 lineHeight: 1.4,
                 transition: "color 0.3s ease",
             }}>
