@@ -59,7 +59,14 @@ export default function Problem() {
         <section
             style={{
                 position: "relative",
-                background: "#FFFFFF",
+                backgroundColor: "#FFFFFF",
+                backgroundImage: `
+                    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 0, 0, 0.012) 1px, transparent 1px),
+                    linear-gradient(rgba(0, 0, 0, 0.012) 1px, transparent 1px)
+                `,
+                backgroundSize: "80px 80px, 80px 80px, 20px 20px, 20px 20px",
                 overflow: "hidden",
                 paddingBottom: "clamp(80px, 10vw, 140px)",
             }}
