@@ -34,8 +34,9 @@ const STATS = [
         sublabel: "Capital deployed across active portfolios",
         isNumeric: true,
         color: "#FF7B1A",
-        image: "/socialProof1.jfif",
+        image: "/socialProofImages/socialProof1.png",
         icon: (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="7" width="20" height="14" rx="2" />
                 <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
@@ -49,8 +50,9 @@ const STATS = [
         sublabel: "Before issues reach the field",
         isNumeric: true,
         color: "#CC5500",
-        image: "/socialProof2.jfif",
+        image: "/socialProofImages/socialProof2.png",
         icon: (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
                 <polyline points="16 7 22 7 22 13" />
@@ -65,7 +67,7 @@ const STATS = [
         isNumeric: false,
         displayText: "Early",
         color: "#FF7B1A",
-        image: "/socialProof3.jfif",
+        image: "/socialProofImages/socialProof3.png",
         icon: (
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10" />
@@ -96,27 +98,28 @@ function StatTab({ stat, index, isActive, visible, onClick }: StatTabProps) {
                 flexDirection: "column",
                 padding: "22px 26px",
                 borderRadius: "8px",
-                background: isActive ? "rgba(22, 22, 22, 0.47)" : "rgba(134, 134, 134, 0.16)",
+                background: isActive ? "#FFFFFF" : "rgba(209, 209, 209, 0.65)",
                 border: "1px solid",
-                borderColor: isActive ? "rgba(255, 123, 26, 0.22)" : "rgba(255, 255, 255, 0.05)",
-                boxShadow: isActive ? "0 10px 30px rgba(204, 85, 0, 0.06), inset 0 1px 0 rgba(255,255,255,0.03)" : "none",
+                borderColor: isActive ? "rgba(255, 123, 26, 0.22)" : "rgba(0, 0, 0, 0.05)",
+                boxShadow: isActive ? "0 10px 30px rgba(204, 85, 0, 0.06), inset 0 1px 0 rgba(255,255,255,0.8)" : "none",
                 cursor: "pointer",
                 transition: "background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
                 overflow: "hidden",
                 opacity: visible ? 1 : 0,
                 transform: visible ? "translateY(0)" : "translateY(24px)",
+                transform: visible ? "translateY(0)" : "translateY(24px)",
             }}
-            className="group hover:bg-[rgba(255,255,255,0.015)]"
+            className="group hover:bg-[rgba(0,0,0,0.015)]"
         >
             <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "12px" }}>
                 {/* Icon Box */}
                 <div style={{
                     width: "38px", height: "38px",
                     borderRadius: "6px",
-                    background: isActive ? `${stat.color}20` : "rgba(255,255,255,0.02)",
-                    border: `1px solid ${isActive ? `${stat.color}35` : "rgba(255,255,255,0.06)"}`,
+                    background: isActive ? `${stat.color}20` : "rgba(0,0,0,0.02)",
+                    border: `1px solid ${isActive ? `${stat.color}35` : "rgba(0,0,0,0.06)"}`,
                     display: "flex", alignItems: "center", justifyContent: "center",
-                    color: isActive ? stat.color : "rgba(255,255,255,0.35)",
+                    color: isActive ? stat.color : "rgba(0,0,0,0.35)",
                     transition: "all 0.3s ease",
                 }}>
                     {stat.icon}
@@ -127,7 +130,7 @@ function StatTab({ stat, index, isActive, visible, onClick }: StatTabProps) {
                     fontFamily: "'Good Times', sans-serif",
                     fontSize: "clamp(26px, 3.2vw, 38px)",
                     lineHeight: 1,
-                    color: isActive ? stat.color : "rgba(255,255,255,0.65)",
+                    color: isActive ? stat.color : "rgba(0,0,0,0.65)",
                     letterSpacing: "-1px",
                     transition: "color 0.3s ease",
                 }}>
@@ -142,7 +145,7 @@ function StatTab({ stat, index, isActive, visible, onClick }: StatTabProps) {
             <div style={{
                 fontFamily: "'Good Times', sans-serif",
                 fontSize: "11px",
-                color: isActive ? "#FFFFFF" : "rgba(255,255,255,0.75)",
+                color: isActive ? "#111111" : "rgba(0,0,0,0.75)",
                 letterSpacing: "0.06em",
                 textTransform: "uppercase",
                 marginBottom: "4px",
@@ -155,8 +158,10 @@ function StatTab({ stat, index, isActive, visible, onClick }: StatTabProps) {
             {/* Sublabel */}
             <div style={{
                 fontSize: "12px",
-                color: isActive ? "rgba(255,255,255,0.45)" : "rgba(255,255,255,0.3)",
+                color: isActive ? "rgba(0,0,0,0.55)" : "rgba(0,0,0,0.4)",
                 fontFamily: "Nexa, sans-serif",
+                lineHeight: 1.4,
+                transition: "color 0.3s ease",
                 lineHeight: 1.4,
                 transition: "color 0.3s ease",
             }}>
@@ -214,12 +219,12 @@ export default function SocialProof() {
         <section
             ref={sectionRef}
             style={{
-                backgroundColor: "#1d1d1dff",
+                backgroundColor: "#FFFFFF",
                 backgroundImage: `
-                    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-                    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px),
-                    linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px)
+                    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 0, 0, 0.012) 1px, transparent 1px),
+                    linear-gradient(rgba(0, 0, 0, 0.012) 1px, transparent 1px)
                 `,
                 backgroundSize: "80px 80px, 80px 80px, 20px 20px, 20px 20px",
                 position: "relative",
@@ -254,11 +259,11 @@ export default function SocialProof() {
                     transform: visible ? "translateY(0)" : "translateY(20px)",
                     transition: "all 0.7s cubic-bezier(0.16,1,0.3,1)",
                 }}>
-                    <span className="section-tag-light">Proven at Scale</span>
+                    <span className="section-tag">Proven at Scale</span>
                     <h2 style={{
                         fontFamily: "'Good Times', sans-serif",
                         fontSize: "clamp(26px, 3.5vw, 44px)",
-                        color: "#FFFFFF",
+                        color: "#111111",
                         letterSpacing: "-0.5px",
                         lineHeight: 1.05,
                     }}>
