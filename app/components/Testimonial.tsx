@@ -10,150 +10,122 @@ const testimonials = [
         title: "Owner and Developer, University Place Associates",
         initial: "A",
     },
-
-
 ];
 
 export default function Testimonial() {
-    const ref = useScrollReveal<HTMLDivElement>({ threshold: 0.15 });
+    const ref = useScrollReveal<HTMLDivElement>({ threshold: 0.1 });
 
     return (
         <section
             style={{
-                padding: "clamp(40px, 5vw, 80px) clamp(16px, 5vw, 24px)",
-                background: "#FFFFFF",
-                borderTop: "1px solid var(--border)",
+                padding: "clamp(80px, 10vw, 140px) clamp(20px, 6vw, 96px)",
+                background: "var(--surface-1)",
+                position: "relative",
+                overflow: "hidden",
             }}
         >
-            <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
-                {/* Header */}
-                <div style={{ textAlign: "center", marginBottom: "clamp(32px, 4vw, 48px)" }}>
-                    <p
-                        style={{
-                            fontSize: "13px",
-                            fontWeight: 700,
-                            letterSpacing: "0.12em",
-                            textTransform: "uppercase",
-                            color: "#CC5500",
-                            marginBottom: "12px",
-                        }}
-                    >
-                        What Partners Say
-                    </p>
-                    <h2
-                        className="font-display"
-                        style={{
-                            fontSize: "clamp(22px, 3vw, 32px)",
-                            color: "var(--text-primary)",
-                        }}
-                    >
-                        Built on Real Outcomes
-                    </h2>
-                </div>
+            {/* Large decorative quote mark */}
+            <div style={{
+                position: "absolute",
+                top: "-20px",
+                left: "clamp(20px, 6vw, 96px)",
+                fontFamily: "Georgia, serif",
+                fontSize: "clamp(200px, 22vw, 320px)",
+                lineHeight: 1,
+                color: "rgba(204,85,0,0.06)",
+                pointerEvents: "none",
+                userSelect: "none",
+                zIndex: 0,
+            }}>
+                &ldquo;
+            </div>
 
-                {/* Testimonial Cards */}
-                <div
-                    ref={ref}
-                    className="reveal"
-                    style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 380px), 1fr))",
-                        gap: "24px",
-                        alignItems: "stretch",
-                    }}
-                >
-                    {testimonials.map((t, i) => (
-                        <div
-                            key={i}
-                            className="reveal-child"
+            <div
+                ref={ref}
+                className="reveal"
+                style={{
+                    maxWidth: "900px",
+                    margin: "0 auto",
+                    position: "relative",
+                    zIndex: 1,
+                    textAlign: "center",
+                }}
+            >
+                {/* Eyebrow */}
+                <span className="section-tag">What Partners Say</span>
+
+                {/* Orange divider line */}
+                <div style={{
+                    width: "40px",
+                    height: "3px",
+                    background: "#CC5500",
+                    margin: "0 auto 48px",
+                }} />
+
+                {testimonials.map((t, i) => (
+                    <div key={i} className="reveal-child">
+                        {/* The quote itself — large editorial style */}
+                        <blockquote
                             style={{
-                                background: "#111827",
-                                borderRadius: "16px",
-                                padding: "clamp(28px, 5vw, 48px)",
-                                borderLeft: "4px solid #CC5500",
-                                position: "relative",
-                                overflow: "hidden",
-                                display: "flex",
-                                flexDirection: "column",
-                                animationDelay: `${i * 150}ms`,
+                                fontFamily: "Nexa, sans-serif",
+                                fontSize: "clamp(20px, 2.8vw, 32px)",
+                                lineHeight: 1.5,
+                                fontWeight: 300,
+                                color: "#111111",
+                                fontStyle: "italic",
+                                marginBottom: "48px",
+                                letterSpacing: "-0.2px",
                             }}
                         >
-                            {/* Large quote mark */}
-                            <div
-                                style={{
-                                    position: "absolute",
-                                    top: "16px",
-                                    right: "24px",
-                                    fontSize: "120px",
-                                    lineHeight: 1,
-                                    color: "rgba(204,85,0,0.08)",
-                                    fontFamily: "Georgia, serif",
-                                    pointerEvents: "none",
-                                    userSelect: "none",
-                                }}
-                            >
-                                &ldquo;
+                            &ldquo;{t.quote}&rdquo;
+                        </blockquote>
+
+                        {/* Attribution */}
+                        <div style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: "20px",
+                        }}>
+                            {/* Avatar */}
+                            <div style={{
+                                width: "52px",
+                                height: "52px",
+                                borderRadius: "50%",
+                                background: "rgba(204,85,0,0.12)",
+                                border: "2px solid rgba(204,85,0,0.3)",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                color: "#CC5500",
+                                fontFamily: "'Good Times', sans-serif",
+                                fontSize: "18px",
+                                flexShrink: 0,
+                            }}>
+                                {t.initial}
                             </div>
-
-                            <p
-                                style={{
-                                    color: "#E5E7EB",
-                                    fontSize: "clamp(16px, 2vw, 20px)",
-                                    lineHeight: 1.7,
-                                    fontStyle: "italic",
-                                    marginBottom: "32px",
-                                    position: "relative",
-                                    zIndex: 1,
-                                    flexGrow: 1,
-                                }}
-                            >
-                                &ldquo;{t.quote}&rdquo;
-                            </p>
-
-                            <div style={{ display: "flex", alignItems: "center", gap: "16px", marginTop: "auto" }}>
-                                {/* Avatar initial */}
-                                <div
-                                    style={{
-                                        width: "44px",
-                                        height: "44px",
-                                        borderRadius: "50%",
-                                        background: "rgba(204,85,0,0.2)",
-                                        border: "1px solid rgba(204,85,0,0.4)",
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                        color: "#FF7B1A",
-                                        fontWeight: 700,
-                                        fontSize: "16px",
-                                        flexShrink: 0,
-                                    }}
-                                >
-                                    {t.initial}
+                            <div style={{ textAlign: "left" }}>
+                                <div style={{
+                                    fontFamily: "'Good Times', sans-serif",
+                                    fontSize: "12px",
+                                    letterSpacing: "0.06em",
+                                    textTransform: "uppercase" as const,
+                                    color: "#111111",
+                                    marginBottom: "4px",
+                                }}>
+                                    {t.name}
                                 </div>
-                                <div>
-                                    <div
-                                        style={{
-                                            color: "#FFFFFF",
-                                            fontWeight: 700,
-                                            fontSize: "15px",
-                                        }}
-                                    >
-                                        {t.name}
-                                    </div>
-                                    <div
-                                        style={{
-                                            color: "#9CA3AF",
-                                            fontSize: "13px",
-                                            marginTop: "2px",
-                                        }}
-                                    >
-                                        {t.title}
-                                    </div>
+                                <div style={{
+                                    fontFamily: "Nexa, sans-serif",
+                                    fontSize: "13px",
+                                    color: "#6B7280",
+                                }}>
+                                    {t.title}
                                 </div>
                             </div>
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
         </section>
     );

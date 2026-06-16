@@ -32,7 +32,13 @@ export default function Footer() {
 
                         {/* COMPANY */}
                         <div className="flex flex-col items-center lg:items-start space-y-4">
-                            <span className="text-[10px] tracking-[0.2em] text-white/30 uppercase font-semibold">
+                            <span style={{
+                                fontFamily: "'Good Times', sans-serif",
+                                fontSize: "9px",
+                                letterSpacing: "0.22em",
+                                color: "rgba(255,255,255,0.25)",
+                                textTransform: "uppercase",
+                            }}>
                                 Company
                             </span>
                             <div className="flex flex-col items-center lg:items-start space-y-2">
@@ -44,7 +50,13 @@ export default function Footer() {
 
                         {/* LEGAL */}
                         <div className="flex flex-col items-center lg:items-start space-y-4">
-                            <span className="text-[10px] tracking-[0.2em] text-white/30 uppercase font-semibold">
+                            <span style={{
+                                fontFamily: "'Good Times', sans-serif",
+                                fontSize: "9px",
+                                letterSpacing: "0.22em",
+                                color: "rgba(255,255,255,0.25)",
+                                textTransform: "uppercase",
+                            }}>
                                 Legal
                             </span>
                             <div className="flex flex-col items-center lg:items-start space-y-2">
@@ -55,7 +67,13 @@ export default function Footer() {
 
                         {/* CONTACT */}
                         <div className="flex flex-col items-center lg:items-start space-y-4 col-span-2 sm:col-span-1">
-                            <span className="text-[10px] tracking-[0.2em] text-white/30 uppercase font-semibold">
+                            <span style={{
+                                fontFamily: "'Good Times', sans-serif",
+                                fontSize: "9px",
+                                letterSpacing: "0.22em",
+                                color: "rgba(255,255,255,0.25)",
+                                textTransform: "uppercase",
+                            }}>
                                 Contact
                             </span>
                             <div className="flex flex-col items-center lg:items-start space-y-2">

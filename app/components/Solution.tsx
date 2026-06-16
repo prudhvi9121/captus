@@ -336,6 +336,43 @@ export default function Solution() {
 
     return (
         <>
+            {/* ── Section Entry Header ── */}
+            <div
+                id="how-it-works"
+                style={{
+                    background: "#0A0A0A",
+                    padding: "clamp(72px, 9vw, 120px) clamp(20px, 6vw, 96px) clamp(40px, 5vw, 64px)",
+                    textAlign: "center",
+                    borderBottom: "1px solid rgba(255,255,255,0.06)",
+                }}
+            >
+                <span className="section-tag-light">Platform</span>
+                <h2
+                    style={{
+                        fontFamily: "'Good Times', sans-serif",
+                        fontSize: "clamp(32px, 5vw, 64px)",
+                        color: "#FFFFFF",
+                        lineHeight: 1.0,
+                        letterSpacing: "-1px",
+                        marginBottom: "20px",
+                    }}
+                >
+                    HOW{" "}
+                    <span style={{ color: "#CC5500" }}>CAPTUS</span>
+                    {" "}WORKS
+                </h2>
+                <p style={{
+                    fontFamily: "Nexa, sans-serif",
+                    fontSize: "clamp(14px, 1.4vw, 17px)",
+                    color: "rgba(255,255,255,0.45)",
+                    maxWidth: "500px",
+                    margin: "0 auto",
+                    lineHeight: 1.7,
+                }}>
+                    Three steps from fragmented data to financial protection.
+                    Scroll to explore.
+                </p>
+            </div>
             <style>{`
                 @keyframes pingRing {
                     0%   { transform-origin: center; transform: scale(1); opacity: 0.6; }
@@ -520,7 +557,15 @@ export default function Solution() {
                         <div className="sol-header-label">
                             HOW CAPTUS WORKS
                         </div>
-
+                        <div style={{
+                            fontFamily: "'Good Times', sans-serif",
+                            fontSize: "9px",
+                            letterSpacing: "2px",
+                            textTransform: "uppercase",
+                            color: "rgba(255,255,255,0.2)",
+                        }}>
+                            Step {stepIndex + 1} / {STEPS.length}
+                        </div>
                     </div>
 
                     {/* - LEFT SPINE: Vertical progress (desktop only) - */}
@@ -576,25 +621,39 @@ export default function Solution() {
 
                         {/* Left / Top: Text block */}
                         <div className="sol-text">
+                            {/* Step number */}
+                            <div style={{
+                                fontFamily: "'Good Times', sans-serif",
+                                fontSize: "11px",
+                                letterSpacing: "0.2em",
+                                textTransform: "uppercase",
+                                color: step.color,
+                                marginBottom: "16px",
+                                opacity: 0.8,
+                                animation: "slideUp 0.6s cubic-bezier(0.16,1,0.3,1) 0s both",
+                            }}>
+                                {step.label}
+                            </div>
                             {/* Title */}
                             <h2
                                 key={`title-${stepIndex}`}
                                 style={{
                                     fontFamily: "'Good Times', sans-serif",
-                                    fontSize: "clamp(24px, 4vw, 44px)",
+                                    fontSize: "clamp(28px, 4.5vw, 56px)",
                                     color: "#FFFFFF",
-                                    lineHeight: 1.1,
-                                    marginBottom: "16px",
+                                    lineHeight: 1.0,
+                                    marginBottom: "20px",
                                     whiteSpace: "pre-line",
                                     animation: "slideUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.05s both",
                                     position: "relative",
                                     zIndex: 1,
+                                    letterSpacing: "-0.5px",
                                 }}
                             >
                                 {step.title.split("\n")[0]}{" "}
                                 <span style={{
                                     color: step.color,
-                                    textShadow: `0 0 40px ${step.color}60`,
+                                    textShadow: `0 0 40px ${step.color}40`,
                                 }}>
                                     {step.title.split("\n")[1]}
                                 </span>

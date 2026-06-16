@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import GridBlueprint from "./vectors/GridBlueprint";
+import Image from "next/image";
 
-/* ── Hooks ── */
 function useFadeUp(delay = 0) {
     const ref = useRef<HTMLDivElement>(null);
     useEffect(() => {
@@ -27,125 +26,167 @@ export default function CaseStudy() {
     return (
         <section
             id="case-study"
-            className="relative overflow-hidden bg-[#0A0A0A] min-h-[50vh] flex items-center justify-center"
-            style={{ padding: "clamp(40px, 8vw, 120px) 0" }}
+            style={{
+                position: "relative",
+                overflow: "hidden",
+                minHeight: "560px",
+                display: "flex",
+            }}
         >
-            {/* ── Ambient Background ── */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute inset-0 bg-[url('/500image.png')] bg-cover bg-center bg-no-repeat opacity-30 mix-blend-luminosity" />
-                <div className="absolute inset-0 bg-[#0A0A0A]/60" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] sm:w-[800px] sm:h-[800px] bg-[#CC5500]/15 rounded-full blur-[120px] animate-[pulse_8s_ease-in-out_infinite]" />
-                <div className="absolute -top-1/4 -right-1/4 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[100px] animate-[pulse_10s_ease-in-out_infinite_reverse]" />
-                <div className="absolute inset-0 opacity-[0.03] text-white">
-                    <GridBlueprint />
-                </div>
+            {/* ── Full-bleed background ── */}
+            <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+                <Image
+                    src="/500image.png"
+                    alt="Construction site"
+                    fill
+                    style={{ objectFit: "cover", objectPosition: "center 40%" }}
+                />
+                {/* Dark overlay — heavier on the left */}
+                <div style={{
+                    position: "absolute", inset: 0,
+                    background: "linear-gradient(100deg, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.60) 60%, rgba(10,10,10,0.35) 100%)",
+                }} />
+                {/* Top + bottom fade */}
+                <div style={{
+                    position: "absolute", top: 0, left: 0, right: 0,
+                    height: "120px",
+                    background: "linear-gradient(to bottom, #0A0A0A 0%, transparent 100%)",
+                }} />
+                <div style={{
+                    position: "absolute", bottom: 0, left: 0, right: 0,
+                    height: "120px",
+                    background: "linear-gradient(to top, #0A0A0A 0%, transparent 100%)",
+                }} />
             </div>
 
-            {/* ── Content ── */}
+            {/* ── Content layer ── */}
             <div
                 style={{
                     position: "relative",
                     zIndex: 10,
                     width: "100%",
-                    maxWidth: "1100px",
+                    maxWidth: "1400px",
                     margin: "0 auto",
-                    paddingLeft: "clamp(20px, 6vw, 96px)",
-                    paddingRight: "clamp(20px, 6vw, 96px)",
                     display: "flex",
-                    flexDirection: "row",
-                    flexWrap: "wrap",
-                    alignItems: "center",
-                    gap: "clamp(16px, 4vw, 64px)",
+                    flexDirection: "row" as const,
+                    flexWrap: "wrap" as const,
+                    alignItems: "stretch",
+                    minHeight: "560px",
                 }}
             >
-                {/* ── LEFT: Title ── */}
+                {/* ── LEFT: Main content ── */}
                 <div
                     ref={leftRef}
-                    className="text-center sm:text-left"
                     style={{
-                        flex: "1 1 260px",
+                        flex: "1 1 320px",
+                        padding: "clamp(72px, 9vw, 120px) clamp(32px, 6vw, 96px)",
+                        display: "flex",
+                        flexDirection: "column" as const,
+                        justifyContent: "center",
                         opacity: 0,
                         transform: "translateY(20px)",
                         transition: "all 0.9s cubic-bezier(0.16,1,0.3,1)",
                     }}
                 >
-                    {/* Eyebrow */}
-                    <p style={{
-                        fontSize: "10px",
-                        letterSpacing: "0.25em",
-                        textTransform: "uppercase",
-                        color: "#CC5500",
-                        fontWeight: 700,
-                        marginBottom: "16px",
-                    }}>
-                        Case Study
-                    </p>
+                    <span className="section-tag-light">Case Study</span>
 
                     <h2
-                        className="font-display"
                         style={{
-                            fontSize: "clamp(28px, 4vw, 48px)",
-                            lineHeight: 1.05,
-                            letterSpacing: "-0.01em",
+                            fontFamily: "'Good Times', sans-serif",
+                            fontSize: "clamp(40px, 6vw, 80px)",
+                            lineHeight: 1.0,
+                            letterSpacing: "-2px",
+                            marginBottom: "28px",
+                            color: "#FFFFFF",
                         }}
                     >
-                        <span style={{
-                            background: "linear-gradient(135deg, #ffffff 0%, #cccccc 100%)",
-                            WebkitBackgroundClip: "text",
-                            WebkitTextFillColor: "transparent",
-                            backgroundClip: "text",
-                        }}>
-                            $500M+
-                        </span>
+                        <span style={{ color: "#CC5500" }}>$500M+</span>
                         <br />
-                        <span style={{
-                            background: "linear-gradient(135deg, #aaaaaa 0%, #555555 100%)",
-                            WebkitBackgroundClip: "text",
-                            WebkitTextFillColor: "transparent",
-                            backgroundClip: "text",
-                        }}>
-                            Portfolio
-                        </span>
+                        PORTFOLIO
                         <br />
-                        <span style={{
-                            background: "linear-gradient(135deg, #aaaaaa 0%, #555555 100%)",
-                            WebkitBackgroundClip: "text",
-                            WebkitTextFillColor: "transparent",
-                            backgroundClip: "text",
-                        }}>
-                            Design Partner
-                        </span>
+                        <span style={{ color: "rgba(255,255,255,0.5)" }}>DESIGN PARTNER</span>
                     </h2>
+
+                    <p
+                        style={{
+                            fontFamily: "Nexa, sans-serif",
+                            color: "rgba(255,255,255,0.65)",
+                            fontSize: "clamp(14px, 1.4vw, 17px)",
+                            lineHeight: 1.75,
+                            maxWidth: "480px",
+                        }}
+                    >
+                        Captus is actively used by a major strategic design partner to coordinate
+                        risk and exposure across sustainable life sciences and LEED-certified developments.
+                        We are validating predictive intelligence across institutional-grade capital projects.
+                    </p>
                 </div>
 
-                {/* ── RIGHT: Paragraph ── */}
+                {/* ── RIGHT: Dark CTA panel ── */}
                 <div
                     ref={rightRef}
-                    className="text-center sm:text-left"
                     style={{
-                        flex: "1.4 1 280px",
+                        flex: "0 0 clamp(280px, 32vw, 420px)",
+                        background: "rgba(10,10,10,0.85)",
+                        backdropFilter: "blur(12px)",
+                        WebkitBackdropFilter: "blur(12px)",
+                        borderLeft: "1px solid rgba(255,255,255,0.08)",
+                        display: "flex",
+                        flexDirection: "column" as const,
+                        justifyContent: "center",
+                        alignItems: "flex-start",
+                        padding: "clamp(40px, 5vw, 72px) clamp(28px, 4vw, 56px)",
                         opacity: 0,
                         transform: "translateY(20px)",
                         transition: "all 0.9s cubic-bezier(0.16,1,0.3,1)",
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "20px",
                     }}
                 >
-                    <p style={{
-                        color: "#D1D5DB",
-                        fontSize: "clamp(14px, 1.4vw, 17px)",
-                        lineHeight: 1.75,
-                        fontWeight: 400,
+                    <div style={{
+                        fontFamily: "'Good Times', sans-serif",
+                        fontSize: "9px",
+                        letterSpacing: "0.22em",
+                        textTransform: "uppercase" as const,
+                        color: "#CC5500",
+                        marginBottom: "20px",
                     }}>
-                        Captus is actively used by a major strategic design partner to coordinate risk and exposure across sustainable life sciences and LEED-certified developments. We are validating predictive intelligence across institutional-grade capital projects.
+                        Evaluate Our Platform
+                    </div>
+
+                    <h3
+                        style={{
+                            fontFamily: "'Good Times', sans-serif",
+                            fontSize: "clamp(18px, 2.5vw, 28px)",
+                            color: "#FFFFFF",
+                            lineHeight: 1.15,
+                            marginBottom: "20px",
+                            letterSpacing: "-0.3px",
+                        }}
+                    >
+                        READY TO PROTECT YOUR CAPITAL?
+                    </h3>
+
+                    <p
+                        style={{
+                            fontFamily: "Nexa, sans-serif",
+                            color: "rgba(255,255,255,0.5)",
+                            fontSize: "14px",
+                            lineHeight: 1.7,
+                            marginBottom: "36px",
+                        }}
+                    >
+                        Qualified owners and developers can request a private demo
+                        to evaluate predictive risk intelligence.
                     </p>
+
+                    <a
+                        href="/book-demo"
+                        className="btn-enterprise"
+                        style={{ padding: "14px 28px", fontSize: "10px" }}
+                    >
+                        Request a Demo
+                    </a>
                 </div>
             </div>
-
-            {/* Top/Bottom Fade */}
-            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#0A0A0A] to-transparent pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#0A0A0A] to-transparent pointer-events-none" />
         </section>
     );
 }

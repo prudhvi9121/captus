@@ -1,260 +1,374 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
-/* - Tiny hook: animate-in on mount - */
-function useFadeUp(delay = 0) {
+function useInView(threshold = 0.1) {
     const ref = useRef<HTMLDivElement>(null);
+    const [visible, setVisible] = useState(false);
     useEffect(() => {
         const el = ref.current;
         if (!el) return;
-        const t = setTimeout(() => {
-            if (el) {
-                el.style.opacity = "1";
-                el.style.transform = "translateY(0)";
-            }
-        }, delay);
-        return () => clearTimeout(t);
-    }, [delay]);
-    return ref;
+        const obs = new IntersectionObserver(
+            ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
+            { threshold }
+        );
+        obs.observe(el);
+        return () => obs.disconnect();
+    }, [threshold]);
+    return [ref, visible] as const;
 }
 
 export default function Hero() {
-    const heroRef = useFadeUp(100);
-    const heroSubRef = useFadeUp(250);
-    const heroParaRef = useFadeUp(350);
-    const heroCtaRef = useFadeUp(500);
+    const [ref, visible] = useInView(0.01);
 
     return (
         <section
             id="hero"
+            ref={ref}
             style={{
                 position: "relative",
-                paddingTop: "clamp(60px, 6vw, 86px)",
-                minHeight: "unset",
+                width: "100%",
+                minHeight: "100vh",
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "center",
                 overflow: "hidden",
-                background: "#FFFFFF",
+                background: "#080808",
             }}
         >
-            <style>{`
-                @keyframes float {
-                    0%, 100% { transform: translateY(0px) rotate(0deg); }
-                    50% { transform: translateY(-20px) rotate(0.5deg); }
-                }
-                @keyframes mesh {
-                    0% { background-position: 0% 50%; }
-                    50% { background-position: 100% 50%; }
-                    100% { background-position: 0% 50%; }
-                }
-            `}</style>
-
-            {/* Premium Mesh Background */}
-            <div
-                style={{
-                    position: "absolute",
-                    inset: 0,
-                    opacity: 0.4,
-                    background: "radial-gradient(at 0% 0%, rgba(204,85,0,0.08) 0, transparent 50%), radial-gradient(at 100% 0%, rgba(255,123,26,0.05) 0, transparent 50%), radial-gradient(at 100% 100%, rgba(204,85,0,0.08) 0, transparent 50%), radial-gradient(at 0% 100%, rgba(255,123,26,0.05) 0, transparent 50%)",
-                    animation: "mesh 20s ease infinite",
-                    backgroundSize: "200% 200%",
-                }}
-            />
-
-            {/* Subtle Grid Overlay */}
-            <div
-                style={{
-                    position: "absolute",
-                    inset: 0,
-                    opacity: 0.03,
-                    backgroundImage: "linear-gradient(#000000 1px, transparent 1px), linear-gradient(90deg, #000000 1px, transparent 1px)",
-                    backgroundSize: "60px 60px",
-                }}
-            />
-
-            {/* Decorative triangle */}
-            <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none", userSelect: "none" }}>
-                <svg width="800" height="800" viewBox="0 0 800 800" fill="none" style={{ opacity: 0.02 }}>
-                    <circle cx="400" cy="400" r="300" stroke="#CC5500" strokeWidth="1" strokeDasharray="4 8" />
-                    <circle cx="400" cy="400" r="380" stroke="#CC5500" strokeWidth="0.5" opacity="0.5" />
-                </svg>
+            {/* ── Background ── */}
+            <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+                <Image
+                    src="/500image.png"
+                    alt="Construction site"
+                    fill
+                    style={{ objectFit: "cover", objectPosition: "60% 30%" }}
+                    priority
+                    quality={90}
+                />
+                {/* Dark-left gradient — keeps left text always legible */}
+                <div style={{
+                    position: "absolute", inset: 0,
+                    background: "linear-gradient(108deg, rgba(8,8,8,0.97) 0%, rgba(8,8,8,0.92) 35%, rgba(8,8,8,0.65) 58%, rgba(8,8,8,0.22) 100%)",
+                }} />
+                {/* Subtle noise grain for depth */}
+                <div style={{
+                    position: "absolute", inset: 0,
+                    backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E\")",
+                    backgroundSize: "128px 128px",
+                    opacity: 0.5,
+                    mixBlendMode: "overlay",
+                    pointerEvents: "none",
+                }} />
+                {/* Bottom page transition */}
+                <div style={{
+                    position: "absolute", bottom: 0, left: 0, right: 0,
+                    height: "200px",
+                    background: "linear-gradient(to top, #080808 0%, transparent 100%)",
+                }} />
+                {/* Orange ambient — bottom-left */}
+                <div style={{
+                    position: "absolute", bottom: "-100px", left: "-100px",
+                    width: "700px", height: "700px",
+                    background: "radial-gradient(circle, rgba(204,85,0,0.09) 0%, transparent 65%)",
+                    pointerEvents: "none",
+                }} />
             </div>
 
-            {/* Content */}
+            {/* ══════════════════════════════════════════════
+                Content — true 50/50 grid, vertically centred
+            ══════════════════════════════════════════════ */}
             <div
                 style={{
                     position: "relative",
                     zIndex: 10,
-                    width: "100%",
-                    maxWidth: "1400px",
-                    margin: "0 auto",
-                    paddingTop: "clamp(36px, 5vw, 40px)",
-                    paddingBottom: "clamp(64px, 8vw, 80px)",
-                    paddingLeft: "clamp(36px, 6vw, 96px)",
-                    paddingRight: "clamp(36px, 6vw, 96px)",
                     flex: 1,
-                    display: "flex",
-                    flexDirection: "row",
-                    flexWrap: "wrap",
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",   /* perfect 50 / 50 */
                     alignItems: "center",
-                    gap: "clamp(48px, 6vw, 80px)",
+                    maxWidth: "1440px",
+                    width: "100%",
+                    margin: "0 auto",
+                    paddingLeft: "clamp(24px, 6vw, 96px)",
+                    paddingRight: "clamp(24px, 6vw, 96px)",
+                    paddingTop: "clamp(100px, 11vw, 140px)",
+                    paddingBottom: "clamp(60px, 7vw, 100px)",
+                    columnGap: "clamp(48px, 6vw, 96px)",
                 }}
             >
-                {/* Left Column: Text */}
-                <div
-                    style={{
-                        flex: "0.8 1 280px",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "flex-start",
-                        textAlign: "left",
-                        gap: "clamp(28px, 4vw, 32px)",
-                        width: "100%",
-                    }}
-                >
-                    {/* Headline */}
-                    <h3
-                        ref={heroSubRef}
-                        className="font-display"
-                        style={{
-                            fontSize: "clamp(24px, 3.5vw, 40px)",
-                            color: "var(--text-primary)",
-                            lineHeight: 1.15,
-                            letterSpacing: "-0.01em",
-                            opacity: 0,
-                            transform: "translateY(20px)",
-                            transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
-                            transitionDelay: "100ms",
-                        }}
-                    >
-                        Identify Financial & Operational Risk{" "}
-                        <span style={{ color: "#CC5500" }}>Before It Materializes.</span>
-                    </h3>
+                {/* ════════════════════════════
+                    LEFT — text
+                ════════════════════════════ */}
+                <div style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                }}>
 
-                    {/* Sub-headline */}
-                    <p
-                        ref={heroParaRef}
-                        style={{
-                            color: "var(--text-secondary)",
-                            fontSize: "clamp(15px, 1.3vw, 17px)",
-                            maxWidth: "480px",
-                            lineHeight: 1.6,
-                            fontWeight: 400,
-                            opacity: 0,
-                            transform: "translateY(20px)",
-                            transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
-                            transitionDelay: "200ms",
-                        }}
-                    >
-                        Captus is built for construction owners and developers who carry financial exposure across complex projects. We protect capital by connecting fragmented data to surface conflicts early.
+                    {/* Headline */}
+                    <h1 style={{
+                        fontFamily: "'Good Times', sans-serif",
+                        fontSize: "clamp(22px, 2.8vw, 46px)",
+                        lineHeight: 1.1,
+                        letterSpacing: "0.01em",
+                        color: "#FFFFFF",
+                        margin: 0,
+                        marginBottom: "28px",
+                        opacity: visible ? 1 : 0,
+                        transform: visible ? "translateY(0)" : "translateY(24px)",
+                        transition: "all 0.8s cubic-bezier(0.16,1,0.3,1) 0.1s",
+                    }}>
+                        <span style={{ display: "block" }}>Identify Financial</span>
+                        <span style={{ display: "block" }}>&amp; Operational Risk</span>
+
+                        {/* Highlighted line */}
+                        <span style={{ display: "block", position: "relative", paddingBottom: "10px", marginTop: "2px" }}>
+                            {/* Animated underline */}
+                            <span style={{
+                                position: "absolute",
+                                bottom: 0, left: 0,
+                                width: visible ? "60%" : "0%",
+                                height: "2px",
+                                background: "linear-gradient(90deg, #CC5500 0%, #FF7B1A 55%, rgba(255,123,26,0.25) 100%)",
+                                borderRadius: "2px",
+                                transition: "width 1.1s cubic-bezier(0.16,1,0.3,1) 0.85s",
+                                pointerEvents: "none",
+                            }} />
+                            <span style={{
+                                background: "linear-gradient(90deg, #FF7B1A 0%, #CC5500 100%)",
+                                WebkitBackgroundClip: "text",
+                                WebkitTextFillColor: "transparent",
+                                backgroundClip: "text",
+                            }}>
+                                Before It Materializes.
+                            </span>
+                        </span>
+                    </h1>
+
+                    {/* Body */}
+                    <p style={{
+                        fontFamily: "Nexa, sans-serif",
+                        color: "rgba(255,255,255,0.55)",
+                        fontSize: "clamp(13px, 1.05vw, 16px)",
+                        lineHeight: 1.85,
+                        fontWeight: 300,
+                        marginBottom: "44px",
+                        maxWidth: "460px",
+                        opacity: visible ? 1 : 0,
+                        transform: visible ? "translateY(0)" : "translateY(14px)",
+                        transition: "all 0.75s cubic-bezier(0.16,1,0.3,1) 0.28s",
+                    }}>
+                        Captus connects fragmented project data to surface financial and
+                        operational conflicts before they become costly problems. Protect
+                        your capital with AI-powered early warning intelligence.
                     </p>
 
-                    {/* CTA */}
-                    <div
-                        ref={heroCtaRef}
-                        style={{
-                            opacity: 0,
-                            transform: "translateY(20px)",
-                            transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
-                        }}
-                    >
-                        <a
-                            href="/book-demo"
-                            className="font-display transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(204,85,0,0.6)] active:scale-95 active:shadow-[0_0_10px_rgba(204,85,0,0.4)]"
-                            style={{
+                    {/* CTAs */}
+                    <div style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: "16px",
+                        alignItems: "center",
+                        opacity: visible ? 1 : 0,
+                        transform: visible ? "translateY(0)" : "translateY(14px)",
+                        transition: "all 0.75s cubic-bezier(0.16,1,0.3,1) 0.42s",
+                    }}>
+                        <Link href="/book-demo" style={{ textDecoration: "none" }}>
+                            <span className="btn-enterprise" style={{
+                                padding: "15px 36px",
+                                fontSize: "10px",
+                                letterSpacing: "0.16em",
                                 display: "inline-block",
-                                padding: "clamp(12px, 3vw, 16px) clamp(20px, 5vw, 32px)",
-                                background: "#111111",
-                                color: "#fff",
-                                borderRadius: "12px",
-                                fontWeight: 600,
-                                fontSize: "clamp(13px, 1.5vw, 14px)",
-                                textDecoration: "none",
-                                boxShadow: "0 4px 14px rgba(0,0,0,0.25)",
-                                border: "1px solid rgba(255,255,255,0.1)",
-                                letterSpacing: "0.05em",
+                            }}>
+                                Schedule a Demo
+                            </span>
+                        </Link>
+                        <a
+                            href="#how-it-works"
+                            className="btn-enterprise-ghost"
+                            style={{
+                                padding: "15px 36px",
+                                fontSize: "10px",
+                                letterSpacing: "0.16em",
+                                display: "inline-block",
                             }}
                         >
-                            Schedule a Demo
+                            See How It Works
                         </a>
                     </div>
                 </div>
 
-                {/* Right Column: Premium Mockup */}
+                {/* ════════════════════════════
+                    RIGHT — platform mockup
+                    Full-width of its grid cell
+                ════════════════════════════ */}
                 <div
-                    ref={heroRef}
+                    className="hidden lg:flex"
                     style={{
-                        flex: "1.6 1 380px",
-                        width: "100%",
-                        position: "relative",
-                        opacity: 0,
-                        transform: "translateY(20px)",
-                        transition: "all 0.9s cubic-bezier(0.16, 1, 0.3, 1)",
-                        transitionDelay: "400ms",
-                        animation: "float 6s ease-in-out infinite",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        opacity: visible ? 1 : 0,
+                        transition: "opacity 1s cubic-bezier(0.16,1,0.3,1) 0.5s",
                     }}
                 >
-                    {/* Shadow layers for depth */}
-                    <div style={{
-                        position: "absolute",
-                        inset: "20px",
-                        background: "rgba(0,0,0,0.2)",
-                        filter: "blur(60px)",
-                        borderRadius: "24px",
-                        zIndex: -1,
-                    }} />
-
                     <div style={{
                         position: "relative",
-                        background: "#fff",
-                        borderRadius: "24px",
-                        padding: "12px",
-                        border: "1px solid rgba(0,0,0,0.08)",
-                        boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06), 0 20px 40px -10px rgba(0,0,0,0.1)",
-                        overflow: "hidden",
+                        width: "100%",           /* fills 50% grid column */
+                        transform: visible
+                            ? "perspective(1400px) rotateY(-5deg) translateY(0)"
+                            : "perspective(1400px) rotateY(-5deg) translateY(20px)",
+                        transition: "transform 1.1s cubic-bezier(0.16,1,0.3,1) 0.5s",
                     }}>
-                        {/* Chrome bar deco */}
+
+                        {/* Ambient glow */}
                         <div style={{
-                            height: "32px",
-                            background: "#F9FAFB",
-                            borderBottom: "1px solid rgba(0,0,0,0.05)",
+                            position: "absolute",
+                            inset: "-24px",
+                            background: "radial-gradient(ellipse at 45% 50%, rgba(204,85,0,0.13) 0%, transparent 62%)",
+                            borderRadius: "24px",
+                            pointerEvents: "none",
+                            zIndex: 0,
+                        }} />
+
+                        {/* Drop shadow */}
+                        <div style={{
+                            position: "absolute",
+                            top: "40px", bottom: "0",
+                            left: "20px", right: "20px",
+                            background: "rgba(0,0,0,0.65)",
+                            filter: "blur(60px)",
+                            borderRadius: "16px",
+                            zIndex: -1,
+                        }} />
+
+                        {/* Browser card */}
+                        <div style={{
+                            position: "relative",
+                            zIndex: 1,
+                            borderRadius: "12px",
+                            overflow: "hidden",
+                            border: "1px solid rgba(255,255,255,0.09)",
+                            boxShadow: "0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)",
+                        }}>
+                            {/* Chrome bar */}
+                            <div style={{
+                                height: "36px",
+                                background: "#111111",
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "6px",
+                                padding: "0 16px",
+                                borderBottom: "1px solid rgba(255,255,255,0.07)",
+                                flexShrink: 0,
+                            }}>
+                                {["#FF5F57", "#FFBD2E", "#28C840"].map((c, i) => (
+                                    <div key={i} style={{ width: "9px", height: "9px", borderRadius: "50%", background: c }} />
+                                ))}
+                                {/* URL pill */}
+                                <div style={{
+                                    flex: 1,
+                                    height: "22px",
+                                    background: "rgba(255,255,255,0.06)",
+                                    borderRadius: "4px",
+                                    marginLeft: "14px",
+                                    marginRight: "10px",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    paddingLeft: "10px",
+                                    gap: "7px",
+                                }}>
+                                    <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#28C840", flexShrink: 0 }} />
+                                    <span style={{
+                                        fontFamily: "Nexa, sans-serif",
+                                        fontSize: "9px",
+                                        color: "rgba(255,255,255,0.25)",
+                                        letterSpacing: "0.02em",
+                                    }}>
+                                        app.captus.ai / dashboard
+                                    </span>
+                                </div>
+                            </div>
+
+                            {/* Dashboard image — fills full card width */}
+                            <Image
+                                src="/image.png"
+                                alt="Captus Platform Dashboard"
+                                width={900}
+                                height={560}
+                                style={{ width: "100%", height: "auto", display: "block" }}
+                                priority
+                            />
+                        </div>
+
+                        {/* "Live Platform" badge */}
+                        <div style={{
+                            position: "absolute",
+                            top: "-14px",
+                            left: "20px",
+                            zIndex: 2,
+                            background: "#CC5500",
+                            color: "#fff",
+                            fontFamily: "'Good Times', sans-serif",
+                            fontSize: "7.5px",
+                            letterSpacing: "0.2em",
+                            textTransform: "uppercase",
+                            padding: "5px 12px",
+                            borderRadius: "2px",
+                            boxShadow: "0 4px 18px rgba(204,85,0,0.5)",
                             display: "flex",
                             alignItems: "center",
                             gap: "6px",
-                            padding: "0 16px",
-                            marginBottom: "8px",
                         }}>
-                            <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#E5E7EB" }} />
-                            <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#E5E7EB" }} />
-                            <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#E5E7EB" }} />
+                            <div style={{
+                                width: "5px", height: "5px", borderRadius: "50%",
+                                background: "#fff",
+                                animation: "dotPulse 2s ease-in-out infinite",
+                            }} />
+                            Live Platform
                         </div>
-
-                        <img
-                            src="/image.png"
-                            alt="Captus Platform Mockup"
-                            style={{
-                                width: "100%",
-                                height: "auto",
-                                borderRadius: "12px",
-                                display: "block",
-                            }}
-                        />
-
-                        {/* Glossy overlay */}
-                        <div style={{
-                            position: "absolute",
-                            inset: 0,
-                            background: "linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%)",
-                            pointerEvents: "none",
-                        }} />
                     </div>
                 </div>
             </div>
 
-            {/* Bottom vignette */}
-            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "160px", background: "linear-gradient(to top, #FFFFFF, transparent)", pointerEvents: "none" }} />
+            {/* Scroll hint */}
+            <div style={{
+                position: "absolute",
+                bottom: "28px",
+                left: "50%",
+                transform: "translateX(-50%)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "7px",
+                zIndex: 10,
+                opacity: visible ? 0.45 : 0,
+                transition: "opacity 1s ease 1.3s",
+            }}>
+                <span style={{
+                    fontFamily: "'Good Times', sans-serif",
+                    fontSize: "7px",
+                    letterSpacing: "0.28em",
+                    textTransform: "uppercase",
+                    color: "rgba(255,255,255,0.5)",
+                }}>
+                    Scroll
+                </span>
+                <div className="scroll-indicator">
+                    <svg width="13" height="17" viewBox="0 0 13 17" fill="none">
+                        <rect x="4.5" y="0" width="4" height="8" rx="2" fill="rgba(255,255,255,0.35)" />
+                        <path d="M0 11.5L6.5 17L13 11.5" stroke="rgba(255,255,255,0.35)" strokeWidth="1.4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                </div>
+            </div>
+
+            <style>{`
+                @keyframes dotPulse {
+                    0%, 100% { opacity: 1; transform: scale(1); }
+                    50% { opacity: 0.4; transform: scale(0.8); }
+                }
+            `}</style>
         </section>
     );
 }
