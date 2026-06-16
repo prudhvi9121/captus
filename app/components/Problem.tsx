@@ -54,6 +54,22 @@ export default function Problem() {
     const [headerRef, headerVisible] = useInView(0.2);
     const [panelsRef, panelsVisible] = useInView(0.05);
     const [active, setActive] = useState(1);
+    const [hasRevealed, setHasRevealed] = useState(false);
+
+    useEffect(() => {
+        if (panelsVisible) {
+            const t = setTimeout(() => setHasRevealed(true), 1200);
+            return () => clearTimeout(t);
+        }
+    }, [panelsVisible]);
+
+    useEffect(() => {
+        if (!panelsVisible) return;
+        const interval = setInterval(() => {
+            setActive((prev) => (prev + 1) % PANELS.length);
+        }, 4000);
+        return () => clearInterval(interval);
+    }, [panelsVisible, active]);
 
     return (
         <section
@@ -165,30 +181,55 @@ export default function Problem() {
             </div>
 
             {/* ── Three-panel image strip ── */}
+            <style>{`
+                .problem-grid {
+                    display: grid;
+                    grid-template-columns: ${PANELS.map((_, i) => i === active ? "1.8fr" : "1fr").join(" ")};
+                    min-height: clamp(400px, 55vw, 680px);
+                }
+                @media (max-width: 768px) {
+                    .problem-grid {
+                        display: block !important;
+                        position: relative !important;
+                        min-height: 520px !important;
+                        height: 520px !important;
+                    }
+                    .problem-panel {
+                        position: absolute !important;
+                        inset: 0 !important;
+                        opacity: 0 !important;
+                        pointer-events: none !important;
+                        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out !important;
+                        transform: scale(0.98) !important;
+                    }
+                    .problem-panel.active {
+                        opacity: ${panelsVisible ? "1" : "0"} !important;
+                        pointer-events: ${panelsVisible ? "auto" : "none"} !important;
+                        transform: scale(${panelsVisible ? "1" : "0.98"}) !important;
+                    }
+                }
+            `}</style>
             <div
                 ref={panelsRef}
+                className="problem-grid"
                 style={{
                     maxWidth: "1440px",
                     margin: "0 auto",
                     paddingLeft: "clamp(24px, 6vw, 96px)",
                     paddingRight: "clamp(24px, 6vw, 96px)",
-                    display: "grid",
-                    gridTemplateColumns: PANELS.map((_, i) =>
-                        i === active ? "1.8fr" : "1fr"
-                    ).join(" "),
                     gap: "16px",
-                    transition: "grid-template-columns 0.6s cubic-bezier(0.16,1,0.3,1)",
-                    minHeight: "clamp(400px, 55vw, 680px)",
+                    transition: "all 0.85s cubic-bezier(0.16,1,0.3,1)",
                 }}
             >
                 {PANELS.map((panel, i) => {
                     const isActive = i === active;
-                    const delay = panelsVisible ? i * 0.12 : 0;
+                    const delay = !hasRevealed && panelsVisible ? i * 0.12 : 0;
 
                     return (
                         <div
                             key={panel.id}
                             onClick={() => setActive(i)}
+                            className={`problem-panel ${isActive ? "active" : ""}`}
                             style={{
                                 position: "relative",
                                 borderRadius: "8px",
@@ -246,131 +287,135 @@ export default function Problem() {
                             </div>
 
                             {/* Inactive state — just show category name at bottom */}
-                            {!isActive && (
+                            <div style={{
+                                position: "absolute",
+                                bottom: "24px",
+                                left: "20px",
+                                right: "20px",
+                                opacity: isActive ? 0 : 1,
+                                pointerEvents: isActive ? "none" : "auto",
+                                transition: "opacity 0.4s ease-in-out, transform 0.4s ease-in-out",
+                                transform: isActive ? "translateY(10px)" : "translateY(0)",
+                            }}>
                                 <div style={{
-                                    position: "absolute",
-                                    bottom: "24px",
-                                    left: "20px",
-                                    right: "20px",
+                                    fontFamily: "'Good Times', sans-serif",
+                                    fontSize: "clamp(11px, 1.2vw, 13px)",
+                                    color: "#111111",
+                                    letterSpacing: "0.04em",
+                                    lineHeight: 1.3,
+                                    textShadow: "0 1px 8px rgba(255,255,255,0.8)",
                                 }}>
-                                    <div style={{
-                                        fontFamily: "'Good Times', sans-serif",
-                                        fontSize: "clamp(11px, 1.2vw, 13px)",
-                                        color: "#111111",
-                                        letterSpacing: "0.04em",
-                                        lineHeight: 1.3,
-                                        textShadow: "0 1px 8px rgba(255,255,255,0.8)",
-                                    }}>
-                                        {panel.headline}
-                                    </div>
+                                    {panel.headline}
                                 </div>
-                            )}
+                            </div>
 
                             {/* Active panel — full content panel */}
-                            {isActive && (
+                            <div style={{
+                                position: "absolute",
+                                bottom: 0, left: 0, right: 0,
+                                padding: "clamp(20px, 4vw, 32px) clamp(20px, 4vw, 28px)",
+                                background: "linear-gradient(to top, rgba(255,250,245,0.99) 60%, transparent 100%)",
+                                opacity: isActive ? 1 : 0,
+                                pointerEvents: isActive ? "auto" : "none",
+                                transform: isActive ? "translateY(0)" : "translateY(15px)",
+                                transition: "opacity 0.5s ease-in-out, transform 0.5s cubic-bezier(0.16,1,0.3,1)",
+                            }}>
+                                {/* Orange rule */}
                                 <div style={{
-                                    position: "absolute",
-                                    bottom: 0, left: 0, right: 0,
-                                    padding: "32px 28px",
-                                    background: "linear-gradient(to top, rgba(255,250,245,0.99) 60%, transparent 100%)",
+                                    width: "32px", height: "2px",
+                                    background: "#CC5500",
+                                    marginBottom: "16px",
+                                }} />
+
+                                <h3 style={{
+                                    fontFamily: "'Good Times', sans-serif",
+                                    fontSize: "clamp(15px, 1.6vw, 22px)",
+                                    color: "#111111",
+                                    lineHeight: 1.15,
+                                    letterSpacing: "0.02em",
+                                    marginBottom: "14px",
+                                    textTransform: "uppercase",
                                 }}>
-                                    {/* Orange rule */}
-                                    <div style={{
-                                        width: "32px", height: "2px",
-                                        background: "#CC5500",
-                                        marginBottom: "16px",
-                                    }} />
+                                    {panel.headline}
+                                </h3>
 
-                                    <h3 style={{
-                                        fontFamily: "'Good Times', sans-serif",
-                                        fontSize: "clamp(15px, 1.6vw, 22px)",
-                                        color: "#111111",
-                                        lineHeight: 1.15,
-                                        letterSpacing: "0.02em",
-                                        marginBottom: "14px",
-                                        textTransform: "uppercase",
-                                    }}>
-                                        {panel.headline}
-                                    </h3>
+                                <p style={{
+                                    fontFamily: "Nexa, sans-serif",
+                                    fontSize: "clamp(12px, 0.95vw, 14px)",
+                                    color: "rgba(0,0,0,0.55)",
+                                    lineHeight: 1.75,
+                                    fontWeight: 300,
+                                    marginBottom: "24px",
+                                    maxWidth: "440px",
+                                }}>
+                                    {panel.body}
+                                </p>
 
-                                    <p style={{
-                                        fontFamily: "Nexa, sans-serif",
-                                        fontSize: "clamp(12px, 0.95vw, 14px)",
-                                        color: "rgba(0,0,0,0.55)",
-                                        lineHeight: 1.75,
-                                        fontWeight: 300,
-                                        marginBottom: "24px",
-                                        maxWidth: "440px",
-                                    }}>
-                                        {panel.body}
-                                    </p>
-
-                                    <div style={{
-                                        display: "flex",
-                                        alignItems: "center",
-                                        gap: "24px",
-                                        flexWrap: "wrap",
-                                    }}>
-                                        {/* Stat */}
-                                        <div>
-                                            <div style={{
-                                                fontFamily: "'Good Times', sans-serif",
-                                                fontSize: "clamp(18px, 2vw, 28px)",
-                                                color: "#CC5500",
-                                                lineHeight: 1,
-                                                marginBottom: "3px",
-                                            }}>
-                                                {panel.stat}
-                                            </div>
-                                            <div style={{
-                                                fontFamily: "Nexa, sans-serif",
-                                                fontSize: "10px",
-                                                color: "rgba(0,0,0,0.38)",
-                                                letterSpacing: "0.05em",
-                                                fontWeight: 300,
-                                            }}>
-                                                {panel.statLabel}
-                                            </div>
+                                <div style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "24px",
+                                    flexWrap: "wrap",
+                                }}>
+                                    {/* Stat */}
+                                    <div>
+                                        <div style={{
+                                            fontFamily: "'Good Times', sans-serif",
+                                            fontSize: "clamp(18px, 2vw, 28px)",
+                                            color: "#CC5500",
+                                            lineHeight: 1,
+                                            marginBottom: "3px",
+                                        }}>
+                                            {panel.stat}
                                         </div>
-
-                                        {/* Learn more */}
-                                        <Link
-                                            href="/book-demo"
-                                            style={{ textDecoration: "none", marginLeft: "auto" }}
-                                            onClick={e => e.stopPropagation()}
-                                        >
-                                            <span style={{
-                                                display: "inline-flex",
-                                                alignItems: "center",
-                                                gap: "8px",
-                                                fontFamily: "'Good Times', sans-serif",
-                                                fontSize: "9px",
-                                                letterSpacing: "0.18em",
-                                                textTransform: "uppercase",
-                                                color: "#111111",
-                                                border: "1px solid rgba(0,0,0,0.2)",
-                                                padding: "10px 18px",
-                                                borderRadius: "2px",
-                                                transition: "all 0.25s ease",
-                                            }}
-                                                onMouseEnter={e => {
-                                                    (e.currentTarget as HTMLElement).style.borderColor = "#CC5500";
-                                                    (e.currentTarget as HTMLElement).style.color = "#CC5500";
-                                                }}
-                                                onMouseLeave={e => {
-                                                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,0,0,0.2)";
-                                                    (e.currentTarget as HTMLElement).style.color = "#111111";
-                                                }}
-                                            >
-                                                Learn More
-                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                                                    <path d="M2 5h6M6 3l2 2-2 2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                                                </svg>
-                                            </span>
-                                        </Link>
+                                        <div style={{
+                                            fontFamily: "Nexa, sans-serif",
+                                            fontSize: "10px",
+                                            color: "rgba(0,0,0,0.38)",
+                                            letterSpacing: "0.05em",
+                                            fontWeight: 300,
+                                        }}>
+                                            {panel.statLabel}
+                                        </div>
                                     </div>
+
+                                    {/* Learn more */}
+                                    <Link
+                                        href="/book-demo"
+                                        style={{ textDecoration: "none", marginLeft: "auto" }}
+                                        onClick={e => e.stopPropagation()}
+                                    >
+                                        <span style={{
+                                            display: "inline-flex",
+                                            alignItems: "center",
+                                            gap: "8px",
+                                            fontFamily: "'Good Times', sans-serif",
+                                            fontSize: "9px",
+                                            letterSpacing: "0.18em",
+                                            textTransform: "uppercase",
+                                            color: "#111111",
+                                            border: "1px solid rgba(0,0,0,0.2)",
+                                            padding: "10px 18px",
+                                            borderRadius: "2px",
+                                            transition: "all 0.25s ease",
+                                        }}
+                                            onMouseEnter={e => {
+                                                (e.currentTarget as HTMLElement).style.borderColor = "#CC5500";
+                                                (e.currentTarget as HTMLElement).style.color = "#CC5500";
+                                            }}
+                                            onMouseLeave={e => {
+                                                (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,0,0,0.2)";
+                                                (e.currentTarget as HTMLElement).style.color = "#111111";
+                                            }}
+                                        >
+                                            Learn More
+                                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                                                <path d="M2 5h6M6 3l2 2-2 2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                                            </svg>
+                                        </span>
+                                    </Link>
                                 </div>
-                            )}
+                            </div>
 
                             {/* Hover indicator for inactive panels */}
                             {!isActive && (
