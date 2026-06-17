@@ -1,0 +1,285 @@
+/* Main Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    box-shadow: none;
+
+    /* Theme colors */
+    --nav-link-color: rgba(255, 255, 255, 0.85);
+    --nav-link-active-color: #FF7B1A;
+    --nav-link-hover-color: #FF7B1A;
+    --nav-login-color: rgba(255, 255, 255, 0.7);
+    --hamburger-bar-color: #FFFFFF;
+}
+
+.navbarSolid {
+    background: #FFFFFF;
+    border-bottom: 1px solid #E2E2E0;
+
+    --nav-link-color: #111111;
+    --nav-link-active-color: #CC5500;
+    --nav-link-hover-color: #CC5500;
+    --nav-login-color: #111111;
+    --hamburger-bar-color: #111111;
+}
+
+.navbarScrolled {
+    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.07);
+}
+
+.navContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    max-width: 1400px;
+    margin: 0 auto;
+    transition: padding 0.35s ease;
+    padding-left: clamp(20px, 5vw, 80px);
+    padding-right: clamp(20px, 5vw, 80px);
+}
+
+.navContainerScrolled {
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+/* Logos */
+.logoDesktop {
+    height: 52px;
+    width: auto;
+    object-fit: contain;
+    transition: height 0.35s ease;
+}
+
+.logoDesktopScrolled {
+    height: 44px;
+}
+
+.logoMobile {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logoInvert {
+    filter: brightness(0) invert(1);
+}
+
+/* Desktop Nav Links */
+.desktopNavLinks {
+    align-items: center;
+    gap: 36px;
+}
+
+.desktopNavLink {
+    font-family: 'Good Times', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--nav-link-color);
+    text-decoration: none;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.desktopNavLinkActive {
+    color: var(--nav-link-active-color);
+    border-bottom: 2px solid var(--nav-link-active-color);
+}
+
+.desktopNavLink:hover {
+    color: var(--nav-link-hover-color);
+    border-bottom-color: var(--nav-link-hover-color);
+}
+
+/* Desktop CTA */
+.desktopCtaContainer {
+    align-items: center;
+    gap: 16px;
+}
+
+.desktopCtaLogin {
+    font-family: 'Good Times', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--nav-login-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.desktopCtaLogin:hover {
+    color: #CC5500;
+}
+
+.desktopBookDemoBtn {
+    padding: 10px 22px;
+    font-size: 10px;
+}
+
+/* Hamburger Menu Button */
+.hamburger {
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 0;
+}
+
+.hamburgerBar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: var(--hamburger-bar-color);
+    transition: all 0.3s ease;
+}
+
+.barOpen0 {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.barOpen1 {
+    opacity: 0;
+}
+
+.barOpen2 {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile full-screen overlay */
+.mobileOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #FFFFFF;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 112px clamp(24px, 6vw, 96px) 60px clamp(24px, 6vw, 96px);
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobileOverlayOpen {
+    transform: translateX(0);
+}
+
+.mobileOverlayHeader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 88px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(24px, 6vw, 96px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.mobileCloseBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Middle links */
+.mobileLinksContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+.mobileNavLink {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'Good Times', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #111111;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.mobileNavLinkActive {
+    color: #CC5500;
+}
+
+.mobileNavLinkNumber {
+    font-size: 11px;
+    color: #CC5500;
+    opacity: 0.7;
+    width: 24px;
+    font-family: 'Good Times', sans-serif;
+}
+
+/* Bottom Actions */
+.mobileCtaContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.mobileDivider {
+    width: 100%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.08);
+    margin-bottom: 8px;
+}
+
+.mobileLoginBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Good Times', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #111111;
+    text-decoration: none;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    padding: 14px;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.mobileLoginBtn:hover {
+    border-color: #CC5500;
+    color: #CC5500;
+}
+
+.mobileBookDemoBtn {
+    padding: 15px;
+    font-size: 11px;
+    display: block;
+    text-align: center;
+    width: 100%;
+    border-radius: 3px;
+    letter-spacing: 0.14em;
+}
