@@ -1,0 +1,227 @@
+/* --- Section and Containers --- */
+.section {
+    background-color: #FFFFFF;
+    background-image: 
+        linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+        linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.012) 1px, transparent 1px),
+        linear-gradient(rgba(0, 0, 0, 0.012) 1px, transparent 1px);
+    background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px;
+    position: relative;
+    overflow: hidden;
+    padding-top: clamp(60px, 8vw, 110px);
+    padding-bottom: clamp(60px, 8vw, 110px);
+}
+
+.bgGlowSpotlight {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bgGlowSpotlightInner {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(204,85,0,0.06) 0%, transparent 80%);
+}
+
+.contentContainer {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left: clamp(24px, 6vw, 96px);
+    padding-right: clamp(24px, 6vw, 96px);
+}
+
+/* --- Section Header --- */
+.header {
+    text-align: center;
+    margin-bottom: clamp(40px, 5vw, 64px);
+    transition: all 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+
+.headerTitle {
+    font-family: 'Good Times', sans-serif;
+    font-size: clamp(26px, 3.5vw, 44px);
+    color: #111111;
+    letter-spacing: -0.5px;
+    line-height: 1.05;
+}
+
+.highlightText {
+    color: #FF7B1A;
+}
+
+/* --- Interactive Tabs (Left Column) --- */
+.tabCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 22px 26px;
+    border-radius: 8px;
+    border: 1px solid;
+    cursor: pointer;
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+}
+
+.tabCardActive {
+    background: #FFFFFF;
+    border-color: rgba(255, 123, 26, 0.22);
+    box-shadow: 0 10px 30px rgba(204, 85, 0, 0.06), inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.tabCardInactive {
+    background: rgba(209, 209, 209, 0.65);
+    border-color: rgba(0, 0, 0, 0.05);
+    box-shadow: none;
+}
+
+.tabCard:hover {
+    background: rgba(0, 0, 0, 0.015);
+}
+
+.tabHeader {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.iconBox {
+    width: 38px;
+    height: 38px;
+    border-radius: 6px;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.iconBoxActive {
+    background: var(--icon-bg);
+    border-color: var(--icon-border);
+    color: var(--icon-color);
+}
+
+.iconBoxInactive {
+    background: rgba(0,0,0,0.02);
+    border-color: rgba(0,0,0,0.06);
+    color: rgba(0,0,0,0.35);
+}
+
+.statText {
+    font-family: 'Good Times', sans-serif;
+    font-size: clamp(26px, 3.2vw, 38px);
+    line-height: 1;
+    letter-spacing: -1px;
+    transition: color 0.3s ease;
+}
+
+.statTextActive {
+    color: var(--stat-color);
+}
+
+.statTextInactive {
+    color: rgba(0,0,0,0.65);
+}
+
+.tabLabel {
+    font-family: 'Good Times', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    line-height: 1.3;
+    transition: color 0.3s ease;
+}
+
+.tabLabelActive {
+    color: #111111;
+}
+
+.tabLabelInactive {
+    color: rgba(0,0,0,0.75);
+}
+
+.tabSublabel {
+    font-size: 12px;
+    font-family: Nexa, sans-serif;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+.tabSublabelActive {
+    color: rgba(0,0,0,0.55);
+}
+
+.tabSublabelInactive {
+    color: rgba(0,0,0,0.4);
+}
+
+.progressBar {
+    height: 2.5px;
+    background: linear-gradient(90deg, var(--stat-color), #FF7B1A);
+    width: 0%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: progressAnimation 2s linear forwards;
+}
+
+@keyframes progressAnimation {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+/* --- Right Column: Preview Area --- */
+.previewWrapper {
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    position: relative;
+}
+
+.previewGlow {
+    position: absolute;
+    inset: -40px;
+    background: radial-gradient(circle, rgba(255, 123, 26, 0.08) 0%, transparent 70%) ;
+    filter: blur(24px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.browserFrame {
+    position: relative;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.02);
+    z-index: 1;
+}
+
+.mockupScreen {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.2;
+}
+
+.mockupSlide {
+    position: absolute;
+    inset: 0;
+    transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+
+.mockupSlideActive {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 2;
+}
+
+.mockupSlideInactive {
+    opacity: 0;
+    transform: scale(1.025);
+    z-index: 1;
+}

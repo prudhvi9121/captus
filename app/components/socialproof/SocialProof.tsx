@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import styles from "./SocialProof.module.css";
 
 /* ── Animated counter hook ── */
 function useCounter(target: number | null, duration = 1500, active = false) {
@@ -90,47 +91,32 @@ function StatTab({ stat, index, isActive, visible, onClick }: StatTabProps) {
     return (
         <div
             onClick={onClick}
+            className={`${styles.tabCard} ${isActive ? styles.tabCardActive : styles.tabCardInactive}`}
             style={{
-                position: "relative",
-                display: "flex",
-                flexDirection: "column",
-                padding: "22px 26px",
-                borderRadius: "8px",
-                background: isActive ? "#FFFFFF" : "rgba(209, 209, 209, 0.65)",
-                border: "1px solid",
-                borderColor: isActive ? "rgba(255, 123, 26, 0.22)" : "rgba(0, 0, 0, 0.05)",
-                boxShadow: isActive ? "0 10px 30px rgba(204, 85, 0, 0.06), inset 0 1px 0 rgba(255,255,255,0.8)" : "none",
-                cursor: "pointer",
-                transition: "background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
-                overflow: "hidden",
                 opacity: visible ? 1 : 0,
                 transform: visible ? "translateY(0)" : "translateY(24px)",
             }}
-            className="group hover:bg-[rgba(0,0,0,0.015)]"
         >
-            <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "12px" }}>
+            <div className={styles.tabHeader}>
                 {/* Icon Box */}
-                <div style={{
-                    width: "38px", height: "38px",
-                    borderRadius: "6px",
-                    background: isActive ? `${stat.color}20` : "rgba(0,0,0,0.02)",
-                    border: `1px solid ${isActive ? `${stat.color}35` : "rgba(0,0,0,0.06)"}`,
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    color: isActive ? stat.color : "rgba(0,0,0,0.35)",
-                    transition: "all 0.3s ease",
-                }}>
+                <div
+                    className={`${styles.iconBox} ${isActive ? styles.iconBoxActive : styles.iconBoxInactive}`}
+                    style={{
+                        "--icon-bg": `${stat.color}20`,
+                        "--icon-border": `${stat.color}35`,
+                        "--icon-color": stat.color,
+                    } as React.CSSProperties}
+                >
                     {stat.icon}
                 </div>
 
                 {/* Stat value */}
-                <div style={{
-                    fontFamily: "'Good Times', sans-serif",
-                    fontSize: "clamp(26px, 3.2vw, 38px)",
-                    lineHeight: 1,
-                    color: isActive ? stat.color : "rgba(0,0,0,0.65)",
-                    letterSpacing: "-1px",
-                    transition: "color 0.3s ease",
-                }}>
+                <div
+                    className={`${styles.statText} ${isActive ? styles.statTextActive : styles.statTextInactive}`}
+                    style={{
+                        "--stat-color": stat.color,
+                    } as React.CSSProperties}
+                >
                     {stat.isNumeric
                         ? `${(isActive ? count : (stat.numericValue ?? 0)).toLocaleString()}${stat.suffix}`
                         : stat.displayText
@@ -139,27 +125,12 @@ function StatTab({ stat, index, isActive, visible, onClick }: StatTabProps) {
             </div>
 
             {/* Title */}
-            <div style={{
-                fontFamily: "'Good Times', sans-serif",
-                fontSize: "11px",
-                color: isActive ? "#111111" : "rgba(0,0,0,0.75)",
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-                marginBottom: "4px",
-                lineHeight: 1.3,
-                transition: "color 0.3s ease",
-            }}>
+            <div className={`${styles.tabLabel} ${isActive ? styles.tabLabelActive : styles.tabLabelInactive}`}>
                 {stat.label}
             </div>
 
             {/* Sublabel */}
-            <div style={{
-                fontSize: "12px",
-                color: isActive ? "rgba(0,0,0,0.55)" : "rgba(0,0,0,0.4)",
-                fontFamily: "Nexa, sans-serif",
-                lineHeight: 1.4,
-                transition: "color 0.3s ease",
-            }}>
+            <div className={`${styles.tabSublabel} ${isActive ? styles.tabSublabelActive : styles.tabSublabelInactive}`}>
                 {stat.sublabel}
             </div>
 
@@ -167,15 +138,10 @@ function StatTab({ stat, index, isActive, visible, onClick }: StatTabProps) {
             {isActive && visible && (
                 <div
                     key={index} // Force remount to restart animation when tab index changes
+                    className={styles.progressBar}
                     style={{
-                        height: "2.5px",
-                        background: `linear-gradient(90deg, ${stat.color}, #FF7B1A)`,
-                        width: "0%",
-                        position: "absolute",
-                        bottom: 0,
-                        left: 0,
-                        animation: "progressAnimation 2s linear forwards",
-                    }}
+                        "--stat-color": stat.color,
+                    } as React.CSSProperties}
                 />
             )}
         </div>
@@ -211,59 +177,27 @@ export default function SocialProof() {
     };
 
     return (
-        <section
-            ref={sectionRef}
-            style={{
-                backgroundColor: "#FFFFFF",
-                backgroundImage: `
-                    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-                    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(0, 0, 0, 0.012) 1px, transparent 1px),
-                    linear-gradient(rgba(0, 0, 0, 0.012) 1px, transparent 1px)
-                `,
-                backgroundSize: "80px 80px, 80px 80px, 20px 20px, 20px 20px",
-                position: "relative",
-                overflow: "hidden",
-                paddingTop: "clamp(60px, 8vw, 110px)",
-                paddingBottom: "clamp(60px, 8vw, 110px)",
-            }}
-        >
-            <style>{`
-                @keyframes progressAnimation {
-                    0% { width: 0%; }
-                    100% { width: 100%; }
-                }
-            `}</style>
-
+        <section ref={sectionRef} className={styles.section}>
             {/* Background Glow spotlight */}
-            <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}>
-                <div style={{
-                    position: "absolute", inset: 0,
-                    background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(204,85,0,0.06) 0%, transparent 80%)",
-                }} />
+            <div className={styles.bgGlowSpotlight}>
+                <div className={styles.bgGlowSpotlightInner} />
             </div>
 
             {/* Content Container */}
-            <div style={{ position: "relative", zIndex: 1, maxWidth: "1400px", margin: "0 auto", paddingLeft: "clamp(20px, 5vw, 80px)", paddingRight: "clamp(20px, 5vw, 80px)" }}>
+            <div className={styles.contentContainer}>
 
                 {/* Section Header */}
-                <div style={{
-                    textAlign: "center",
-                    marginBottom: "clamp(40px, 5vw, 64px)",
-                    opacity: visible ? 1 : 0,
-                    transform: visible ? "translateY(0)" : "translateY(20px)",
-                    transition: "all 0.7s cubic-bezier(0.16,1,0.3,1)",
-                }}>
+                <div
+                    className={styles.header}
+                    style={{
+                        opacity: visible ? 1 : 0,
+                        transform: visible ? "translateY(0)" : "translateY(20px)",
+                    }}
+                >
                     <span className="section-tag">Proven at Scale</span>
-                    <h2 style={{
-                        fontFamily: "'Good Times', sans-serif",
-                        fontSize: "clamp(26px, 3.5vw, 44px)",
-                        color: "#111111",
-                        letterSpacing: "-0.5px",
-                        lineHeight: 1.05,
-                    }}>
+                    <h2 className={styles.headerTitle}>
                         MEASURABLE{" "}
-                        <span style={{ color: "#FF7B1A" }}>IMPACT</span>
+                        <span className={styles.highlightText}>IMPACT</span>
                     </h2>
                 </div>
 
@@ -286,48 +220,24 @@ export default function SocialProof() {
 
                     {/* Right Column: Dynamic Mockup Preview */}
                     <div
-                        className="lg:col-span-7 order-1 lg:order-2"
+                        className={`lg:col-span-7 order-1 lg:order-2 ${styles.previewWrapper}`}
                         style={{
                             opacity: visible ? 1 : 0,
                             transform: visible ? "translateY(0)" : "translateY(30px)",
-                            transition: "opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1)",
-                            position: "relative",
                         }}
                     >
                         {/* Orange glow spotlight behind the browser mockup */}
-                        <div style={{
-                            position: "absolute",
-                            inset: "-40px",
-                            background: "radial-gradient(circle, rgba(255, 123, 26, 0.08) 0%, transparent 70%)",
-                            filter: "blur(24px)",
-                            pointerEvents: "none",
-                            zIndex: 0,
-                        }} />
+                        <div className={styles.previewGlow} />
 
                         {/* High-fidelity browser frame (Light Mode) */}
-                        <div style={{
-                            position: "relative",
-                            width: "100%",
-                            borderRadius: "12px",
-                            overflow: "hidden",
-                            border: "1px solid rgba(0, 0, 0, 0.08)",
-                            boxShadow: "0 24px 50px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.02)",
-                            zIndex: 1,
-                        }}>
+                        <div className={styles.browserFrame}>
 
                             {/* Mockup screen slot */}
-                            <div style={{ position: "relative", width: "100%", aspectRatio: "1.5" }}>
+                            <div className={styles.mockupScreen}>
                                 {STATS.map((stat, idx) => (
                                     <div
                                         key={idx}
-                                        style={{
-                                            position: "absolute",
-                                            inset: 0,
-                                            opacity: activeTab === idx ? 1 : 0,
-                                            transform: activeTab === idx ? "scale(1)" : "scale(1.025)",
-                                            transition: "opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1)",
-                                            zIndex: activeTab === idx ? 2 : 1,
-                                        }}
+                                        className={`${styles.mockupSlide} ${activeTab === idx ? styles.mockupSlideActive : styles.mockupSlideInactive}`}
                                     >
                                         <Image
                                             src={stat.image}

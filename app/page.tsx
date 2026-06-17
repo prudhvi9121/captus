@@ -1,12 +1,12 @@
 "use client";
 
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Hero from "./components/Hero";
-import SocialProof from "./components/SocialProof";
-import Problem from "./components/Problem";
+import Navbar from "./components/navbar/Navbar";
+import Footer from "./components/footer/Footer";
+import Hero from "./components/hero/Hero";
+import SocialProof from "./components/socialproof/SocialProof";
+import Problem from "./components/problem/Problem";
 import Solution from "./components/Solution";
-import OwnerValue from "./components/OwnerValue";
+import OwnerValue from "./components/ownervalue/OwnerValue";
 import CaseStudy from "./components/CaseStudy";
 import Testimonial from "./components/Testimonial";
 import CTA from "./components/CTA";
