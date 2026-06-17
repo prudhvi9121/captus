@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import Image from "next/image";
 
@@ -21,24 +22,90 @@ export default function OwnerValue() {
         },
     ];
 
+    const slides = [
+        { src: "/ownerValue/ownerValueImage.png", alt: "Captus platform — owner view" },
+        { src: "/ownerValue/ownerValueImage1.png", alt: "Captus platform — owner view" },
+        { src: "/ownerValue/ownerValueImage2.png", alt: "Captus platform — owner view" }
+    ];
+
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const [isHovered, setIsHovered] = useState(false);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % slides.length);
+        }, 5000);
+        return () => clearInterval(timer);
+    }, [slides.length]);
+
+    const nextSlide = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        setCurrentSlide((prev) => (prev + 1) % slides.length);
+    };
+
+    const prevSlide = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    };
+
     return (
         <section
+            className="owner-value-section"
             style={{
                 position: "relative",
                 overflow: "hidden",
-                background: "#FFFFFF",
+                backgroundColor: "#FFFFFF",
+                backgroundImage: `
+                    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 0, 0, 0.012) 1px, transparent 1px),
+                    linear-gradient(rgba(0, 0, 0, 0.012) 1px, transparent 1px)
+                `,
+                backgroundSize: "80px 80px, 80px 80px, 20px 20px, 20px 20px",
             }}
         >
+            <style>{`
+                @media (min-width: 768px) {
+                    .owner-value-section {
+                        background-image:
+                            linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                            linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(0, 0, 0, 0.012) 1px, transparent 1px),
+                            linear-gradient(rgba(0, 0, 0, 0.012) 1px, transparent 1px),
+                            linear-gradient(90deg, #FFFFFF 50%, var(--surface-1) 50%) !important;
+                        background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px, auto !important;
+                    }
+                    .owner-value-container {
+                        max-width: 1440px !important;
+                        margin: 0 auto !important;
+                        flex-wrap: nowrap !important;
+                    }
+                    .owner-value-left {
+                        flex: 0 0 50% !important;
+                        min-height: 600px !important;
+                    }
+                    .owner-value-right {
+                        flex: 0 0 50% !important;
+                        background-color: transparent !important;
+                        background-image: none !important;
+                    }
+                }
+            `}</style>
             <div
+                className="owner-value-container"
                 style={{
                     display: "flex",
                     flexDirection: "row" as const,
                     flexWrap: "wrap" as const,
                     minHeight: "600px",
+                    width: "100%",
                 }}
             >
-                {/* ── LEFT: Image panel ── */}
+                {/* ── LEFT: Image panel with Carousel ── */}
                 <div
+                    className="owner-value-left"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
                     style={{
                         flex: "1 1 380px",
                         position: "relative",
@@ -46,37 +113,167 @@ export default function OwnerValue() {
                         overflow: "hidden",
                     }}
                 >
-                    <Image
-                        src="/Admin.png"
-                        alt="Captus platform — owner view"
-                        fill
-                        style={{ objectFit: "cover", objectPosition: "center top" }}
-                    />
+                    <div
+                        style={{
+                            display: "flex",
+                            width: "100%",
+                            height: "100%",
+                            transition: "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
+                            transform: `translateX(-${currentSlide * 100}%)`,
+                        }}
+                    >
+                        {slides.map((slide, idx) => (
+                            <div
+                                key={idx}
+                                style={{
+                                    flex: "0 0 100%",
+                                    width: "100%",
+                                    height: "100%",
+                                    position: "relative",
+                                }}
+                            >
+                                <Image
+                                    src={slide.src}
+                                    alt={slide.alt}
+                                    fill
+                                    style={{ objectFit: "cover", objectPosition: "center top" }}
+                                />
+                            </div>
+                        ))}
+                    </div>
+
                     {/* Gradient overlay */}
                     <div style={{
                         position: "absolute", inset: 0,
                         background: "linear-gradient(105deg, rgba(10,10,10,0.18) 0%, rgba(10,10,10,0.05) 100%)",
+                        zIndex: 2,
+                        pointerEvents: "none",
                     }} />
+
+                    {/* Navigation Arrows */}
+                    <button
+                        onClick={prevSlide}
+                        style={{
+                            position: "absolute",
+                            left: "16px",
+                            top: "50%",
+                            transform: "translateY(-50%)",
+                            width: "40px",
+                            height: "40px",
+                            borderRadius: "50%",
+                            background: "rgba(255, 255, 255, 0.15)",
+                            backdropFilter: "blur(8px)",
+                            border: "1px solid rgba(255, 255, 255, 0.25)",
+                            color: "#FFFFFF",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            cursor: "pointer",
+                            transition: "all 0.3s ease",
+                            opacity: isHovered ? 1 : 0,
+                            pointerEvents: isHovered ? "auto" : "none",
+                            zIndex: 3,
+                        }}
+                    >
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
+                    </button>
+
+                    <button
+                        onClick={nextSlide}
+                        style={{
+                            position: "absolute",
+                            right: "16px",
+                            top: "50%",
+                            transform: "translateY(-50%)",
+                            width: "40px",
+                            height: "40px",
+                            borderRadius: "50%",
+                            background: "rgba(255, 255, 255, 0.15)",
+                            backdropFilter: "blur(8px)",
+                            border: "1px solid rgba(255, 255, 255, 0.25)",
+                            color: "#FFFFFF",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            cursor: "pointer",
+                            transition: "all 0.3s ease",
+                            opacity: isHovered ? 1 : 0,
+                            pointerEvents: isHovered ? "auto" : "none",
+                            zIndex: 3,
+                        }}
+                    >
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="9 18 15 12 9 6" />
+                        </svg>
+                    </button>
+
+                    {/* Dots indicators */}
+                    <div style={{
+                        position: "absolute",
+                        bottom: "20px",
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        display: "flex",
+                        gap: "8px",
+                        zIndex: 3,
+                        background: "rgba(10, 10, 10, 0.25)",
+                        backdropFilter: "blur(8px)",
+                        padding: "6px 12px",
+                        borderRadius: "20px",
+                        border: "1px solid rgba(255, 255, 255, 0.08)",
+                    }}>
+                        {slides.map((_, idx) => (
+                            <button
+                                key={idx}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setCurrentSlide(idx);
+                                }}
+                                style={{
+                                    width: idx === currentSlide ? "24px" : "6px",
+                                    height: "6px",
+                                    borderRadius: "3px",
+                                    background: idx === currentSlide ? "#CC5500" : "rgba(255, 255, 255, 0.4)",
+                                    border: "none",
+                                    cursor: "pointer",
+                                    padding: 0,
+                                    transition: "all 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
+                                }}
+                            />
+                        ))}
+                    </div>
+
                     {/* Orange accent bar at bottom */}
                     <div style={{
                         position: "absolute", bottom: 0, left: 0, right: 0,
                         height: "4px",
                         background: "linear-gradient(90deg, #CC5500, #FF7B1A)",
+                        zIndex: 4,
                     }} />
                 </div>
 
                 {/* ── RIGHT: Content ── */}
                 <div
+                    className="owner-value-right"
                     style={{
                         flex: "1 1 380px",
                         display: "flex",
                         flexDirection: "column" as const,
                         justifyContent: "center",
                         padding: "clamp(56px, 8vw, 100px) clamp(32px, 5vw, 80px)",
-                        background: "var(--surface-1)",
+                        backgroundColor: "var(--surface-1)",
+                        backgroundImage: `
+                            linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                            linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(0, 0, 0, 0.012) 1px, transparent 1px),
+                            linear-gradient(rgba(0, 0, 0, 0.012) 1px, transparent 1px)
+                        `,
+                        backgroundSize: "80px 80px, 80px 80px, 20px 20px, 20px 20px",
                     }}
                 >
-                    <div ref={ref} className="reveal">
+                    <div ref={ref} className="reveal" data-revealed="true">
                         <span className="section-tag">For Construction Owners</span>
 
                         <h2
@@ -126,7 +323,7 @@ export default function OwnerValue() {
                                         gap: "20px",
                                         paddingTop: "24px",
                                         paddingBottom: "24px",
-                                        borderBottom: i < features.length - 1 ? "1px solid rgba(0,0,0,0.08)" : "none",
+                                        borderBottom: i < features.length - 1 ? "1px solid #cc550030" : "none",
                                     }}
                                 >
                                     {/* Orange check */}
