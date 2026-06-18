@@ -24,7 +24,7 @@
 .bgGradientLeft {
     position: absolute;
     inset: 0;
-    background: linear-gradient(108deg, rgba(8, 8, 8, 0.97) 0%, rgba(8, 8, 8, 0.92) 35%, rgba(8, 8, 8, 0.65) 58%, rgba(8, 8, 8, 0.22) 100%);
+    background: linear-gradient(108deg, rgba(8, 8, 8, 0.85) 0%, rgba(8, 8, 8, 0.70) 35%, rgba(8, 8, 8, 0.35) 60%, rgba(8, 8, 8, 0.05) 100%);
 }
 
 .bgNoise {

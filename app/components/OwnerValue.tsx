@@ -136,6 +136,7 @@ export default function OwnerValue() {
                                     src={slide.src}
                                     alt={slide.alt}
                                     fill
+                                    sizes="(max-width: 768px) 100vw, 50vw"
                                     style={{ objectFit: "cover", objectPosition: "center top" }}
                                 />
                             </div>

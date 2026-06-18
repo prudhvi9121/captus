@@ -4,28 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "./SocialProof.module.css";
 
-/* ── Animated counter hook ── */
-function useCounter(target: number | null, duration = 1500, active = false) {
-    const [value, setValue] = useState(0);
-    useEffect(() => {
-        if (!active || target === null) {
-            setValue(0);
-            return;
-        }
-        let start: number | null = null;
-        const step = (ts: number) => {
-            if (!start) start = ts;
-            const p = Math.min((ts - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - p, 3);
-            setValue(Math.floor(eased * target));
-            if (p < 1) requestAnimationFrame(step);
-            else setValue(target);
-        };
-        const animId = requestAnimationFrame(step);
-        return () => cancelAnimationFrame(animId);
-    }, [active, target, duration]);
-    return value;
-}
+
 
 const STATS = [
     {
@@ -86,8 +65,6 @@ interface StatTabProps {
 }
 
 function StatTab({ stat, index, isActive, visible, onClick }: StatTabProps) {
-    const count = useCounter(stat.numericValue, 1500, visible && isActive);
-
     return (
         <div
             onClick={onClick}
@@ -118,7 +95,7 @@ function StatTab({ stat, index, isActive, visible, onClick }: StatTabProps) {
                     } as React.CSSProperties}
                 >
                     {stat.isNumeric
-                        ? `${(isActive ? count : (stat.numericValue ?? 0)).toLocaleString()}${stat.suffix}`
+                        ? `${(stat.numericValue ?? 0).toLocaleString()}${stat.suffix}`
                         : stat.displayText
                     }
                 </div>
@@ -168,7 +145,7 @@ export default function SocialProof() {
         if (!visible) return;
         const interval = setInterval(() => {
             setActiveTab((prev) => (prev + 1) % STATS.length);
-        }, 2000);
+        }, 5000);
         return () => clearInterval(interval);
     }, [visible, activeTab]);
 

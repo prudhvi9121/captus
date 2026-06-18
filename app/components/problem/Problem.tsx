@@ -27,7 +27,7 @@ const PANELS = [
         category: "Financial Risk",
         headline: "Hidden Capital Exposure Across Every Project",
         body: "Fragmented contracts, unchecked change orders, and billing discrepancies silently erode owner returns. By the time the numbers surface, the damage is already compounding.",
-        image: "/problem-images/p11.png",
+        image: "/problem-images/prrof11.png",
         stat: "5–20%",
         statLabel: "Value lost to rework",
     },
@@ -36,7 +36,7 @@ const PANELS = [
         category: "Operational Risk",
         headline: "Field Decisions Without Financial Visibility",
         body: "Superintendents make daily decisions with no view into cost implications. Operational gaps become financial liabilities before any report is ever filed.",
-        image: "/problem-images/p22.png",
+        image: "/problem-images/proof12.png",
         stat: "100×",
         statLabel: "Cost escalation if caught late",
     },
@@ -45,16 +45,19 @@ const PANELS = [
         category: "Early Detection",
         headline: "The Most Important Thing Is Seeing It First",
         body: "Traditional tools are rearview mirrors. Captus surfaces conflicts before they become crises — giving owners the intelligence edge that protects capital at every stage.",
-        image: "/problem-images/p33.png",
+        image: "/problem-images/proof13.png",
         stat: "Real-Time",
         statLabel: "Risk intelligence",
     },
 ];
 
+const PANELS_9 = [...PANELS, ...PANELS, ...PANELS];
+
 export default function Problem() {
     const [headerRef, headerVisible] = useInView(0.2);
     const [panelsRef, panelsVisible] = useInView(0.05);
-    const [active, setActive] = useState(1);
+    const [vActive, setVActive] = useState(4); // Start with Operational Risk (middle copy)
+    const [isTransitioning, setIsTransitioning] = useState(true);
     const [hasRevealed, setHasRevealed] = useState(false);
 
     useEffect(() => {
@@ -67,10 +70,42 @@ export default function Problem() {
     useEffect(() => {
         if (!panelsVisible) return;
         const interval = setInterval(() => {
-            setActive((prev) => (prev + 1) % PANELS.length);
-        }, 4000);
+            setVActive((prev) => {
+                const next = prev + 1;
+                const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+                if (isMobile) {
+                    return next >= 6 ? 3 : next;
+                }
+                return next;
+            });
+        }, 6000);
         return () => clearInterval(interval);
-    }, [panelsVisible, active]);
+    }, [panelsVisible]);
+
+    useEffect(() => {
+        if (!isTransitioning) {
+            // Force a reflow so browser applies jump instantly without animation
+            const reflow = document.body.offsetHeight;
+            setIsTransitioning(true);
+        }
+    }, [isTransitioning]);
+
+    const handleTransitionEnd = (e: React.TransitionEvent) => {
+        if (e.target === e.currentTarget && e.propertyName === "transform") {
+            const realIndex = vActive % 3;
+            if (vActive < 3) {
+                setIsTransitioning(false);
+                setVActive(realIndex + 3);
+            } else if (vActive >= 6) {
+                setIsTransitioning(false);
+                setVActive(realIndex + 3);
+            }
+        }
+    };
+
+    const handlePanelClick = (index: number) => {
+        setVActive(index);
+    };
 
     return (
         <section className={styles.section}>
@@ -118,104 +153,115 @@ export default function Problem() {
                 </div>
             </div>
 
-            {/* ── Three-panel image strip ── */}
-            <div
-                ref={panelsRef}
-                className={styles.problemGrid}
-                style={{
-                    "--grid-cols": PANELS.map((_, i) => i === active ? "1.8fr" : "1fr").join(" "),
-                } as React.CSSProperties}
-            >
-                {PANELS.map((panel, i) => {
-                    const isActive = i === active;
-                    const delay = !hasRevealed && panelsVisible ? i * 0.12 : 0;
+            {/* ── Three-panel image strip with Infinite Scroll ── */}
+            <div className={styles.trackWrapper}>
+                <div className={styles.clipContainer}>
+                    <div
+                        ref={panelsRef}
+                        className={`${styles.problemGrid} ${!isTransitioning ? styles.noTransition : ""}`}
+                        onTransitionEnd={handleTransitionEnd}
+                        style={{
+                            "--active-index": vActive,
+                            transform: `translateX(calc(-1 * (var(--card-width) / 2) - var(--active-index) * (var(--card-width) + var(--card-gap))))`,
+                            transition: isTransitioning ? "transform 1.2s cubic-bezier(0.16, 1, 0.3, 1)" : "none",
+                        } as React.CSSProperties}
+                    >
+                        {PANELS_9.map((panel, i) => {
+                            const isActive = i === vActive;
+                            const delay = !hasRevealed && panelsVisible ? (i % 3) * 0.12 : 0;
 
-                    return (
-                        <div
-                            key={panel.id}
-                            onClick={() => setActive(i)}
-                            className={`${styles.problemPanel} ${isActive ? styles.problemPanelActive : styles.problemPanelInactive}`}
-                            style={{
-                                opacity: panelsVisible ? 1 : 0,
-                                transform: panelsVisible ? "translateY(0)" : "translateY(40px)",
-                                "--panel-delay": `${delay}s`,
-                                "--panels-visible-opacity": panelsVisible ? "1" : "0",
-                                "--panels-visible-pointer-events": panelsVisible ? "auto" : "none",
-                                "--panels-visible-scale": panelsVisible ? "1" : "0.98",
-                            } as React.CSSProperties}
-                        >
-                            {/* Full-bleed photo */}
-                            <Image
-                                src={panel.image}
-                                alt={panel.category}
-                                fill
-                                className={`${styles.problemPanelImage} ${isActive ? styles.problemPanelImageActive : styles.problemPanelImageInactive}`}
-                            />
+                            return (
+                                <div
+                                    key={`${panel.id}-${i}`}
+                                    onClick={() => handlePanelClick(i)}
+                                    className={`${styles.problemPanel} ${isActive ? styles.problemPanelActive : styles.problemPanelInactive}`}
+                                    style={{
+                                        opacity: panelsVisible ? 1 : 0,
+                                        transform: panelsVisible ? "translateY(0) scale(var(--panel-scale))" : "translateY(40px) scale(0.98)",
+                                        "--panel-delay": `${delay}s`,
+                                        "--panels-visible-opacity": panelsVisible ? "1" : "0",
+                                        "--panels-visible-pointer-events": panelsVisible ? "auto" : "none",
+                                        "--panels-visible-scale": panelsVisible ? "1" : "0.98",
+                                    } as React.CSSProperties}
+                                >
+                                    {/* Full-bleed photo */}
+                                    <Image
+                                        src={panel.image}
+                                        alt={panel.category}
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 420px"
+                                        className={`${styles.problemPanelImage} ${isActive ? styles.problemPanelImageActive : styles.problemPanelImageInactive}`}
+                                        style={{
+                                            transition: isTransitioning ? undefined : "none",
+                                        }}
+                                    />
 
-                            {/* Gradient overlay — only at the bottom for text legibility */}
-                            <div className={`${styles.gradientOverlay} ${isActive ? styles.gradientOverlayActive : styles.gradientOverlayInactive}`} />
+                                    {/* Gradient overlay — only at the bottom for text legibility */}
+                                    <div className={`${styles.gradientOverlay} ${isActive ? styles.gradientOverlayActive : styles.gradientOverlayInactive}`} />
 
-                            {/* Category tag — always visible */}
-                            <div className={styles.categoryTag}>
-                                <span className={`${styles.categoryText} ${isActive ? styles.categoryTextActive : styles.categoryTextInactive}`}>
-                                    {panel.category}
-                                </span>
-                            </div>
+                                    {/* Category tag — always visible */}
+                                    <div className={styles.categoryTag}>
+                                        <span className={`${styles.categoryText} ${isActive ? styles.categoryTextActive : styles.categoryTextInactive}`}>
+                                            {panel.category}
+                                        </span>
+                                    </div>
 
-                            {/* Inactive state — just show category name at bottom */}
-                            <div className={styles.inactiveContent}>
-                                <div className={styles.inactiveHeadline}>
-                                    {panel.headline}
-                                </div>
-                            </div>
-
-                            {/* Active panel — full content panel */}
-                            <div className={styles.activeContent}>
-                                {/* Orange rule */}
-                                <div className={styles.orangeRule} />
-
-                                <h3 className={styles.activeHeadline}>
-                                    {panel.headline}
-                                </h3>
-
-                                <p className={styles.activeBodyText}>
-                                    {panel.body}
-                                </p>
-
-                                <div className={styles.activeFooterRow}>
-                                    {/* Stat */}
-                                    <div>
-                                        <div className={styles.statValue}>
-                                            {panel.stat}
-                                        </div>
-                                        <div className={styles.statLabel}>
-                                            {panel.statLabel}
+                                    {/* Inactive state — just show category name at bottom */}
+                                    <div className={styles.inactiveContent}>
+                                        <div className={styles.inactiveHeadline}>
+                                            {panel.headline}
                                         </div>
                                     </div>
 
-                                    {/* Learn more */}
-                                    <Link
-                                        href="/book-demo"
-                                        className={styles.learnMoreLink}
-                                        onClick={e => e.stopPropagation()}
-                                    >
-                                        <span className={styles.learnMoreButton}>
-                                            Learn More
-                                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                                                <path d="M2 5h6M6 3l2 2-2 2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                                            </svg>
-                                        </span>
-                                    </Link>
-                                </div>
-                            </div>
+                                    {/* Active panel — full content panel */}
+                                    <div className={styles.activeContent}>
+                                        {/* Orange rule */}
+                                        <div className={styles.orangeRule} />
 
-                            {/* Hover indicator for inactive panels */}
-                            {!isActive && (
-                                <div className={styles.hoverIndicator} />
-                            )}
-                        </div>
-                    );
-                })}
+                                        <h3 className={styles.activeHeadline}>
+                                            {panel.headline}
+                                        </h3>
+
+                                        <p className={styles.activeBodyText}>
+                                            {panel.body}
+                                        </p>
+
+                                        <div className={styles.activeFooterRow}>
+                                            {/* Stat */}
+                                            <div>
+                                                <div className={styles.statValue}>
+                                                    {panel.stat}
+                                                </div>
+                                                <div className={styles.statLabel}>
+                                                    {panel.statLabel}
+                                                </div>
+                                            </div>
+
+                                            {/* Learn more */}
+                                            <Link
+                                                href="/book-demo"
+                                                className={styles.learnMoreLink}
+                                                onClick={e => e.stopPropagation()}
+                                            >
+                                                <span className={styles.learnMoreButton}>
+                                                    Learn More
+                                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                                                        <path d="M2 5h6M6 3l2 2-2 2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                                                    </svg>
+                                                </span>
+                                            </Link>
+                                        </div>
+                                    </div>
+
+                                    {/* Hover indicator for inactive panels */}
+                                    {!isActive && (
+                                        <div className={styles.hoverIndicator} />
+                                    )}
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
             </div>
 
             {/* ── Panel selector dots ── */}
@@ -223,8 +269,8 @@ export default function Problem() {
                 {PANELS.map((_, i) => (
                     <button
                         key={i}
-                        onClick={() => setActive(i)}
-                        className={`${styles.dot} ${i === active ? styles.dotActive : styles.dotInactive}`}
+                        onClick={() => handlePanelClick(i + 3)}
+                        className={`${styles.dot} ${i === (vActive % 3) ? styles.dotActive : styles.dotInactive}`}
                     />
                 ))}
             </div>
