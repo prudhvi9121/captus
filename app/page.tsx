@@ -7,7 +7,6 @@ import SocialProof from "./components/socialproof/SocialProof";
 import Problem from "./components/problem/Problem";
 import Solution from "./components/Solution";
 import OwnerValue from "./components/ownervalue/OwnerValue";
-import CaseStudy from "./components/CaseStudy";
 import Testimonial from "./components/Testimonial";
 import CTA from "./components/CTA";
 
@@ -30,7 +29,6 @@ export default function Home() {
         <SocialProof />
         <Solution />
         <OwnerValue />
-        <CaseStudy />
         <Testimonial />
         <CTA />
       </main>

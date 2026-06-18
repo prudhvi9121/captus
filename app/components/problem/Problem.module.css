@@ -1,4 +1,9 @@
 /* --- Sections and containers --- */
+.noTransition,
+.noTransition * {
+    transition: none !important;
+}
+
 .section {
     position: relative;
     background-color: #FFFFFF;
@@ -51,11 +56,12 @@
     align-items: center;
     gap: 8px;
     font-family: 'Good Times', sans-serif;
-    font-size: 9px;
+    font-size: 12px;
     letter-spacing: 0.26em;
     text-transform: uppercase;
     color: #CC5500;
     margin-bottom: 20px;
+    font-weight: 700;
 }
 
 .eyebrowLine {
@@ -86,65 +92,91 @@
 .subcopy {
     font-family: Nexa, sans-serif;
     font-size: clamp(13px, 1.1vw, 16px);
-    color: rgba(0,0,0,0.50);
+    color: rgba(0, 0, 0, 0.749);
     line-height: 1.8;
-    font-weight: 300;
+    font-weight: 500;
     max-width: 380px;
     transition: all 0.8s cubic-bezier(0.16,1,0.3,1) 0.25s;
 }
 
 /* --- Panel Grid and items --- */
-.problemGrid {
-    display: grid;
-    grid-template-columns: var(--grid-cols);
-    min-height: clamp(400px, 55vw, 680px);
+.trackWrapper {
     max-width: 1440px;
     margin: 0 auto;
-    padding-left: clamp(24px, 6vw, 96px);
-    padding-right: clamp(24px, 6vw, 96px);
-    gap: 16px;
-    transition: all 0.85s cubic-bezier(0.16,1,0.3,1);
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+.clipContainer {
+    margin-left: clamp(24px, 6vw, 96px);
+    margin-right: clamp(24px, 6vw, 96px);
+    overflow: hidden; /* Clips EXACTLY at the content margins! */
+    position: relative;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.problemGrid {
+    position: relative;
+    left: 50%;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: var(--card-gap);
+    margin: 0;
+    padding: 0;
+    --card-width: clamp(280px, 25vw, 420px);
+    --card-gap: 24px;
 }
 
 .problemPanel {
     position: relative;
+    flex: 0 0 var(--card-width);
+    width: var(--card-width);
+    height: clamp(420px, 42vw, 600px);
     border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
-    transition: opacity 0.8s ease var(--panel-delay), transform 0.8s cubic-bezier(0.16,1,0.3,1) var(--panel-delay);
-    min-width: 0;
+    transition: opacity 1.2s ease var(--panel-delay), transform 1.2s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease;
+    transform: translateZ(0); /* Fix border-radius clipping bug in WebKit/Blink during 3D transform */
 }
 
 .problemPanelInactive {
+    --panel-scale: 0.95;
+    z-index: 1;
     box-shadow: 0 2px 16px rgba(0,0,0,0.06);
 }
 
 .problemPanelActive {
-    box-shadow: 0 8px 40px rgba(0,0,0,0.12), 0 2px 12px rgba(0,0,0,0.08);
+    --panel-scale: 1.12;
+    z-index: 5;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.16), 0 4px 16px rgba(0,0,0,0.08);
 }
 
 .problemPanelImage {
-    transition: transform 0.7s cubic-bezier(0.16,1,0.3,1), filter 0.5s ease;
+    object-fit: cover;
+    border-radius: 8px; /* Force border radius directly on the image */
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s ease;
 }
 
 .problemPanelImageActive {
-    transform: scale(1.02);
+    transform: scale(1.15) translateX(-15px);
     filter: brightness(1.0) saturate(1.1);
 }
 
 .problemPanelImageInactive {
-    transform: scale(1.06);
+    transform: scale(1.0) translateX(0);
     filter: brightness(0.88) saturate(0.95);
 }
 
 .gradientOverlay {
     position: absolute;
     inset: 0;
-    transition: background 0.5s ease;
+    transition: background 1.2s ease;
 }
 
 .gradientOverlayActive {
-    background: linear-gradient(to top, rgba(255,252,248,0.98) 0%, rgba(255,252,248,0.80) 28%, rgba(255,252,248,0.15) 55%, transparent 100%);
+background: linear-gradient(to top, rgba(255,252,248,0.98) 0%, rgba(255,252,248,0.80) 28%, rgba(255,252,248,0.15) 55%, transparent 100%);
 }
 
 .gradientOverlayInactive {
@@ -180,7 +212,7 @@
     bottom: 24px;
     left: 20px;
     right: 20px;
-    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
 }
 
 .problemPanelActive .inactiveContent {
@@ -211,8 +243,10 @@
     left: 0;
     right: 0;
     padding: clamp(20px, 4vw, 32px) clamp(20px, 4vw, 28px);
-    background: linear-gradient(to top, rgba(255,250,245,0.99) 60%, transparent 100%);
-    transition: opacity 0.5s ease-in-out, transform 0.5s cubic-bezier(0.16,1,0.3,1);
+    background: linear-gradient(to top, rgba(255, 252, 248, 0.72) 0%, rgba(255, 252, 248, 0.42) 60%, transparent 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: opacity 0.8s ease-in-out, transform 0.8s cubic-bezier(0.16,1,0.3,1);
 }
 
 .problemPanelActive .activeContent {
@@ -272,9 +306,10 @@
 .statLabel {
     font-family: Nexa, sans-serif;
     font-size: 10px;
-    color: rgba(0,0,0,0.38);
+    color: rgba(0,0,0,0.45);
     letter-spacing: 0.05em;
     font-weight: 300;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 .learnMoreLink {
@@ -344,11 +379,25 @@
 
 /* --- Mobile specific overrides (max-width: 768px) --- */
 @media (max-width: 768px) {
+    /* Hide the duplicated panels on mobile so they don't stack or affect anything */
+    .problemPanel:nth-child(-n+3),
+    .problemPanel:nth-child(n+7) {
+        display: none !important;
+    }
+    .clipContainer {
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+    }
     .problemGrid {
         display: block !important;
         position: relative !important;
-        min-height: 520px !important;
-        height: 520px !important;
+        min-height: 440px !important;
+        height: 440px !important;
+        transform: none !important;
+        transition: none !important;
+        width: 100% !important;
+        left: 0 !important;
     }
     .problemPanel {
         position: absolute !important;
@@ -356,6 +405,7 @@
         bottom: 0 !important;
         left: clamp(24px, 6vw, 96px) !important;
         right: clamp(24px, 6vw, 96px) !important;
+        width: auto !important;
         opacity: 0 !important;
         pointer-events: none !important;
         transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out !important;
@@ -365,5 +415,8 @@
         opacity: var(--panels-visible-opacity) !important;
         pointer-events: var(--panels-visible-pointer-events) !important;
         transform: scale(var(--panels-visible-scale)) !important;
+    }
+    .dotsContainer {
+        margin-top: 16px !important;
     }
 }
