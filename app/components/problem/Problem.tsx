@@ -121,7 +121,7 @@ export default function Problem() {
                     {/* Left: headline block */}
                     <div className={styles.headlineBlock}>
                         <span className={styles.eyebrow}>
-                            <span className={styles.eyebrowLine} />
+                            {/* <span className={styles.eyebrowLine} /> */}
                             The Problem
                         </span>
 

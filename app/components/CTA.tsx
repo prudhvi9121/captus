@@ -36,7 +36,7 @@ export default function CTA() {
             {/* Full-bleed background */}
             <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
                 <Image
-                    src="/500image.png"
+                    src="/demo-img.png"
                     alt="Construction site"
                     fill
                     style={{ objectFit: "cover", objectPosition: "center 60%" }}

@@ -25,9 +25,8 @@ export default function Hero() {
     const [ref, visible] = useInView(0.01);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const heroImages = [
-        "/image.png",
-        "/risk-heatmap.png",
-        "/Admin.png"
+        "/hero-images/1.png",
+        "/hero-images/2.png",
     ];
 
     useEffect(() => {
@@ -142,7 +141,7 @@ export default function Hero() {
                                                 src={src}
                                                 alt={`Captus Platform View ${idx + 1}`}
                                                 fill
-                                                style={{ objectFit: "cover" }}
+                                                style={{ objectFit: "cover", objectPosition: "top center" }}
                                                 sizes="(max-width: 1024px) 100vw, 50vw"
                                                 priority={idx === 0}
                                             />

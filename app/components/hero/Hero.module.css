@@ -260,7 +260,9 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    aspect-ratio: 900 / 560;
+    /* Exactly matches the 1670×912 image dimensions — no black bars */
+    aspect-ratio: 1670 / 912;
+    background: #0d0d0d;
 }
 
 .sliderTrack {

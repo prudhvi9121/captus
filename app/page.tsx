@@ -28,7 +28,7 @@ export default function Home() {
         <Problem />
         <SocialProof />
         <Solution />
-        <OwnerValue />
+        {/* <OwnerValue /> */}
         <Testimonial />
         <CTA />
       </main>

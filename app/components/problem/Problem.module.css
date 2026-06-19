@@ -111,10 +111,24 @@
 .clipContainer {
     margin-left: clamp(24px, 6vw, 96px);
     margin-right: clamp(24px, 6vw, 96px);
-    overflow: hidden; /* Clips EXACTLY at the content margins! */
+    overflow: hidden;
     position: relative;
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding: 40px 0;
+    /* Soft gradient fade at edges instead of a hard clip */
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 7%,
+        black 93%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 7%,
+        black 93%,
+        transparent 100%
+    );
 }
 
 .problemGrid {
@@ -133,12 +147,15 @@
     position: relative;
     flex: 0 0 var(--card-width);
     width: var(--card-width);
-    height: clamp(420px, 42vw, 600px);
+    /* Reduced height — shows less card, more breathing room */
+    height: clamp(360px, 36vw, 480px);
     border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
     transition: opacity 1.2s ease var(--panel-delay), transform 1.2s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease;
-    transform: translateZ(0); /* Fix border-radius clipping bug in WebKit/Blink during 3D transform */
+    transform: translateZ(0);
 }
 
 .problemPanelInactive {
@@ -171,22 +188,40 @@
 
 .gradientOverlay {
     position: absolute;
-    inset: 0;
+    /* Only cover the top portion — bottom is reserved for the solid text zone */
+    top: 0;
+    left: 0;
+    right: 0;
+    /* stops just before the content area so image is never behind text */
+    bottom: 0;
     transition: background 1.2s ease;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .gradientOverlayActive {
-background: linear-gradient(to top, rgba(255,252,248,0.98) 0%, rgba(255,252,248,0.80) 28%, rgba(255,252,248,0.15) 55%, transparent 100%);
+    background: linear-gradient(to bottom,
+        rgba(0,0,0,0.08) 0%,
+        transparent 35%,
+        transparent 55%,
+        rgba(20,15,10,0.45) 100%
+    );
 }
 
 .gradientOverlayInactive {
-    background: linear-gradient(to top, rgba(255,252,248,0.92) 0%, rgba(255,252,248,0.40) 35%, rgba(255,252,248,0.05) 60%, transparent 100%);
+    background: linear-gradient(to bottom,
+        rgba(0,0,0,0.12) 0%,
+        transparent 30%,
+        transparent 50%,
+        rgba(20,15,10,0.55) 100%
+    );
 }
 
 .categoryTag {
     position: absolute;
     top: 20px;
     left: 20px;
+    z-index: 3;
 }
 
 .categoryText {
@@ -199,19 +234,27 @@ background: linear-gradient(to top, rgba(255,252,248,0.98) 0%, rgba(255,252,248,
 
 .categoryTextActive {
     color: #CC5500;
+    text-shadow: 0 1px 3px rgba(255,255,255,0.6);
 }
 
 .categoryTextInactive {
-    color: rgba(255,255,255,0.85);
-    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    color: rgba(255,255,255,0.92);
+    text-shadow: 0 1px 6px rgba(0,0,0,0.6);
 }
 
 /* Inactive State elements */
 .inactiveContent {
     position: absolute;
-    bottom: 24px;
-    left: 20px;
-    right: 20px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 22px 24px;
+    background: linear-gradient(to top,
+        rgba(15,10,5,0.88) 0%,
+        rgba(15,10,5,0.60) 60%,
+        transparent 100%
+    );
+    z-index: 2;
     transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
 }
 
@@ -229,11 +272,11 @@ background: linear-gradient(to top, rgba(255,252,248,0.98) 0%, rgba(255,252,248,
 
 .inactiveHeadline {
     font-family: 'Good Times', sans-serif;
-    font-size: clamp(11px, 1.2vw, 13px);
-    color: #111111;
+    font-size: clamp(11px, 1.2vw, 14px);
+    color: #ffffff;
     letter-spacing: 0.04em;
-    line-height: 1.3;
-    text-shadow: 0 1px 8px rgba(255,255,255,0.8);
+    line-height: 1.35;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
 }
 
 /* Active State Content Box */
@@ -242,10 +285,13 @@ background: linear-gradient(to top, rgba(255,252,248,0.98) 0%, rgba(255,252,248,
     bottom: 0;
     left: 0;
     right: 0;
-    padding: clamp(20px, 4vw, 32px) clamp(20px, 4vw, 28px);
-    background: linear-gradient(to top, rgba(255, 252, 248, 0.72) 0%, rgba(255, 252, 248, 0.42) 60%, transparent 100%);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    /* Very slim padding — maximises visible image area */
+    padding: 10px 16px 12px;
+    background: rgba(252, 249, 245, 0.97);
+    border-top: 1px solid rgba(204, 85, 0, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 3;
     transition: opacity 0.8s ease-in-out, transform 0.8s cubic-bezier(0.16,1,0.3,1);
 }
 
@@ -262,45 +308,45 @@ background: linear-gradient(to top, rgba(255,252,248,0.98) 0%, rgba(255,252,248,
 }
 
 .orangeRule {
-    width: 32px;
+    width: 24px;
     height: 2px;
     background: #CC5500;
-    margin-bottom: 16px;
+    margin-bottom: 6px;
 }
 
 .activeHeadline {
     font-family: 'Good Times', sans-serif;
-    font-size: clamp(15px, 1.6vw, 22px);
+    font-size: clamp(11px, 1.1vw, 15px);
     color: #111111;
-    line-height: 1.15;
+    line-height: 1.1;
     letter-spacing: 0.02em;
-    margin-bottom: 14px;
+    margin-bottom: 5px;
     text-transform: uppercase;
 }
 
 .activeBodyText {
     font-family: Nexa, sans-serif;
-    font-size: clamp(12px, 0.95vw, 14px);
-    color: rgba(0,0,0,0.55);
-    line-height: 1.75;
-    font-weight: 300;
-    margin-bottom: 24px;
+    font-size: clamp(10.5px, 0.8vw, 12px);
+    color: rgba(0,0,0,0.75);
+    line-height: 1.55;
+    font-weight: 400;
+    margin-bottom: 8px;
     max-width: 440px;
 }
 
 .activeFooterRow {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 14px;
     flex-wrap: wrap;
 }
 
 .statValue {
     font-family: 'Good Times', sans-serif;
-    font-size: clamp(18px, 2vw, 28px);
+    font-size: clamp(15px, 1.6vw, 22px);
     color: #CC5500;
     line-height: 1;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
 }
 
 .statLabel {
@@ -384,39 +430,95 @@ background: linear-gradient(to top, rgba(255,252,248,0.98) 0%, rgba(255,252,248,
     .problemPanel:nth-child(n+7) {
         display: none !important;
     }
+
     .clipContainer {
         margin: 0 !important;
         padding: 0 !important;
         overflow: visible !important;
     }
+
+    /* Give the grid enough height to match the smaller card */
     .problemGrid {
         display: block !important;
         position: relative !important;
-        min-height: 440px !important;
-        height: 440px !important;
+        min-height: 400px !important;
+        height: 400px !important;
         transform: none !important;
         transition: none !important;
         width: 100% !important;
         left: 0 !important;
     }
+
     .problemPanel {
         position: absolute !important;
         top: 0 !important;
         bottom: 0 !important;
-        left: clamp(24px, 6vw, 96px) !important;
-        right: clamp(24px, 6vw, 96px) !important;
+        left: clamp(16px, 5vw, 32px) !important;
+        right: clamp(16px, 5vw, 32px) !important;
         width: auto !important;
+        height: 100% !important;
         opacity: 0 !important;
         pointer-events: none !important;
         transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out !important;
         transform: scale(0.98) !important;
     }
+
     .problemPanel.problemPanelActive {
         opacity: var(--panels-visible-opacity) !important;
         pointer-events: var(--panels-visible-pointer-events) !important;
-        transform: scale(var(--panels-visible-scale)) !important;
+        transform: scale(1) !important;
     }
+
+    /* Ensure text panel uses full available width */
+    .activeContent {
+        padding: 18px 18px 20px !important;
+    }
+
+    .activeHeadline {
+        font-size: clamp(14px, 4vw, 18px) !important;
+        margin-bottom: 10px !important;
+    }
+
+    .activeBodyText {
+        font-size: 13px !important;
+        line-height: 1.65 !important;
+        margin-bottom: 16px !important;
+    }
+
+    .statValue {
+        font-size: clamp(20px, 5vw, 26px) !important;
+    }
+
+    .inactiveContent {
+        padding: 16px 18px 20px !important;
+    }
+
+    .inactiveHeadline {
+        font-size: 12px !important;
+    }
+
     .dotsContainer {
-        margin-top: 16px !important;
+        margin-top: 20px !important;
+    }
+}
+
+/* --- Small phones (max-width: 480px) --- */
+@media (max-width: 480px) {
+    .problemGrid {
+        min-height: 420px !important;
+        height: 420px !important;
+    }
+
+    .activeContent {
+        padding: 16px 16px 18px !important;
+    }
+
+    .activeBodyText {
+        font-size: 12.5px !important;
+    }
+
+    .activeFooterRow {
+        gap: 14px !important;
+        flex-wrap: wrap !important;
     }
 }
