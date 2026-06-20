@@ -11,19 +11,31 @@ export default function Footer() {
                 <div className={styles.contentGrid}>
                     {/* LEFT SECTION - Logo & Pitch */}
                     <div className={styles.leftCol}>
-                        <img
-                            src="/Captus Logo_A7.png"
-                            alt="Captus Logo"
-                            className="h-8 sm:h-9"
-                        />
+                        <div className={styles.logoContainer}>
+                            <span className={styles.logoText}>CAPTUS</span>
+                            <span className={styles.logoDotAi}>.AI</span>
+                        </div>
                         <p className={styles.pitchText}>
-                            Predictive risk intelligence platform for construction owners.
-                            Intercepting financial exposure before it materializes in the field.
+                            Early warning intelligence for capital projects.<br />
+                            See financial and operational risk before it<br />
+                            becomes a problem.
                         </p>
                     </div>
 
                     {/* RIGHT SECTION - Links Grid */}
                     <div className={styles.linksGrid}>
+                        {/* PRODUCT */}
+                        <div className={styles.linkCol}>
+                            <span className={styles.colHeader}>
+                                Product
+                            </span>
+                            <div className={styles.linkList}>
+                                <Link href="/" className={styles.footerLink}>Platform</Link>
+                                <Link href="#how-it-works" className={styles.footerLink}>How it works</Link>
+                                <Link href="/" className={styles.footerLink}>Risk Dashboard</Link>
+                            </div>
+                        </div>
+
                         {/* COMPANY */}
                         <div className={styles.linkCol}>
                             <span className={styles.colHeader}>
@@ -36,39 +48,19 @@ export default function Footer() {
                             </div>
                         </div>
 
-                        {/* LEGAL */}
+                        {/* GET STARTED */}
                         <div className={styles.linkCol}>
                             <span className={styles.colHeader}>
-                                Legal
+                                Get Started
                             </span>
                             <div className={styles.linkList}>
-                                <Link href="/privacy-policy" className={styles.footerLink}>Privacy Policy</Link>
-                                <Link href="/terms-and-conditions" className={styles.footerLink}>Terms and Conditions</Link>
-                            </div>
-                        </div>
-
-                        {/* CONTACT */}
-                        <div className={styles.contactCol}>
-                            <span className={styles.colHeader}>
-                                Contact
-                            </span>
-                            <div className={styles.linkList}>
-                                <a href="mailto:info@captus.ai" className={styles.footerLink}>info@captus.ai</a>
-                                <Link href="/book-demo" className={styles.footerLink}>Book a Demo</Link>
+                                <Link href="/book-demo" className={styles.footerLink}>Book a demo</Link>
+                                <a href="https://app.captus.ai/login" className={styles.footerLink}>Log in</a>
+                                <a href="mailto:hello@captus.ai" className={styles.footerLink}>hello@captus.ai</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            {/* BACKGROUND BRAND TEXT */}
-            <div className={styles.brandTextContainer}>
-                <h1
-                    className={styles.brandText}
-                    style={{ fontSize: "clamp(5rem, 18vw, 18rem)" }}
-                >
-                    CAPTUS
-                </h1>
             </div>
 
             {/* BOTTOM BAR — sits above brand text */}

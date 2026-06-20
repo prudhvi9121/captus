@@ -110,7 +110,7 @@ export default function Team() {
                                         }}
                                     >
                                         <Image
-                                            src="/Anatoly-51 - Anatoly Khen.jpg"
+                                            src="/Anatoly.jpg"
                                             alt="Anatoly Khen - Founder & CEO"
                                             fill
                                             style={{ objectFit: "cover" }}
