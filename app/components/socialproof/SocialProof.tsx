@@ -222,22 +222,49 @@ export default function SocialProof() {
                                         key={idx}
                                         className={`${styles.mockupSlide} ${activeTab === idx ? styles.mockupSlideActive : styles.mockupSlideInactive}`}
                                     >
-                                        <Image
-                                            src={stat.image}
-                                            alt={stat.label}
-                                            fill
-                                            style={{ objectFit: "cover" }}
-                                            sizes="(max-width: 1024px) 100vw, 50vw"
-                                            priority={idx === 0}
-                                        />
-                                        
-                                        {/* Bottom shadow overlay for legibility */}
-                                        <div className={styles.captionOverlay} />
-                                        
-                                        {/* Image Caption Text */}
-                                        <p className={styles.imageCaption}>
-                                            {stat.imageCaption}
-                                        </p>
+                                        {idx === 0 ? (
+                                            <div className={styles.quoteCardContainer}>
+                                                <span className={styles.quoteEyebrow}>WHAT PARTNERS SAY</span>
+                                                <div className={styles.quoteEyebrowLine} />
+                                                <blockquote className={styles.quoteBody}>
+                                                    &ldquo;We're doing about half a billion dollars of development and construction. I had the best data at my fingertips, especially when it came to risk, timing and budget.&rdquo;
+                                                </blockquote>
+                                                <div className={styles.quoteAuthorBlock}>
+                                                    <div className={styles.quoteAvatar}>
+                                                        <Image
+                                                            src="/Anatoly.jpg"
+                                                            alt="Anthony Maher"
+                                                            width={48}
+                                                            height={48}
+                                                            className={styles.quoteAvatarImage}
+                                                        />
+                                                    </div>
+                                                    <div className={styles.quoteAuthorInfo}>
+                                                        <div className={styles.quoteAuthorName}>ANTHONY MAHER</div>
+                                                        <div className={styles.quoteAuthorTitle}>Owner and Developer, University Place Associates</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <>
+                                                <Image
+                                                    src={stat.image}
+                                                    alt={stat.label}
+                                                    fill
+                                                    style={{ objectFit: "cover" }}
+                                                    sizes="(max-width: 1024px) 100vw, 50vw"
+                                                    priority={idx === 0}
+                                                />
+                                                
+                                                {/* Bottom shadow overlay for legibility */}
+                                                <div className={styles.captionOverlay} />
+                                                
+                                                {/* Image Caption Text */}
+                                                <p className={styles.imageCaption}>
+                                                    {stat.imageCaption}
+                                                </p>
+                                            </>
+                                        )}
                                     </div>
                                 ))}
                             </div>

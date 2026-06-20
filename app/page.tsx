@@ -6,7 +6,6 @@ import Hero from "./components/hero/Hero";
 import SocialProof from "./components/socialproof/SocialProof";
 import Problem from "./components/problem/Problem";
 import Solution from "./components/solution/Solution";
-import Testimonial from "./components/testimonial/Testimonial";
 import CTA from "./components/cta/CTA";
 export default function Home() {
   return (
@@ -26,8 +25,6 @@ export default function Home() {
         <Problem />
         <Solution />
         <SocialProof />
-        {/* <OwnerValue /> */}
-        <Testimonial />
         <CTA />
       </main>
 
