@@ -28,7 +28,7 @@
   --orange: #CC5500;
   --orange-light: #FF7B1A;
   --orange-dark: #A34400;
-  --bg: #FFFFFF;
+  --bg: rgb(246, 243, 238);
   --surface-1: #F4F4F2;
   --surface-2: #EBEBEB;
   --surface-3: #E2E2E0;
@@ -42,6 +42,13 @@
   --section-pad-v: clamp(80px, 10vw, 140px);
   --section-pad-h: clamp(20px, 6vw, 96px);
   --max-w: 1400px;
+  --section-radius: 48px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-radius: 32px;
+  }
 }
 
 *,
@@ -233,7 +240,9 @@ h6,
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: #CC5500;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   margin-bottom: 20px;
 }
 
@@ -243,8 +252,17 @@ h6,
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.5);
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   margin-bottom: 20px;
+}
+
+.eyebrow-line {
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: #CC5500;
 }
 
 /* ─── Split layouts ─── */
@@ -405,4 +423,21 @@ h6,
   height: 3px;
   background: #CC5500;
   margin-bottom: 24px;
+}
+
+/* ─── Curved Sections Utility ─── */
+.curved-section {
+  position: relative !important;
+  margin-top: -48px !important;
+  border-top-left-radius: 48px !important;
+  border-top-right-radius: 48px !important;
+  overflow: hidden !important;
+}
+
+@media (max-width: 768px) {
+  .curved-section {
+    margin-top: -32px !important;
+    border-top-left-radius: 32px !important;
+    border-top-right-radius: 32px !important;
+  }
 }

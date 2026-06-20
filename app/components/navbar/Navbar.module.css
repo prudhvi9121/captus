@@ -19,7 +19,7 @@
 }
 
 .navbarSolid {
-    background: #FFFFFF;
+    background: rgb(246, 243, 238);
     border-bottom: 1px solid #E2E2E0;
 
     --nav-link-color: #111111;
@@ -164,7 +164,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #FFFFFF;
+    background-color: rgb(246, 243, 238);
     z-index: 2000;
     display: flex;
     flex-direction: column;

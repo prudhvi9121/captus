@@ -108,7 +108,7 @@ export default function Problem() {
     };
 
     return (
-        <section className={styles.section}>
+        <section className={`curved-section ${styles.section}`} style={{ zIndex: 10 }}>
             {/* Subtle top separator */}
             <div className={styles.topSeparator} />
 
@@ -117,39 +117,22 @@ export default function Problem() {
 
             {/* ── Section header ── */}
             <div ref={headerRef} className={styles.headerContainer}>
-                <div className={styles.headerFlex}>
-                    {/* Left: headline block */}
-                    <div className={styles.headlineBlock}>
-                        <span className={styles.eyebrow}>
-                            {/* <span className={styles.eyebrowLine} /> */}
-                            The Problem
-                        </span>
+                {/* Left: headline block */}
+                <div className={styles.headlineBlock}>
+                    <span className={styles.eyebrow}>
+                        <span className={styles.eyebrowLine} />
+                        The Problem
+                    </span>
 
-                        <h2
-                            className={styles.headline}
-                            style={{
-                                opacity: headerVisible ? 1 : 0,
-                                transform: headerVisible ? "translateY(0)" : "translateY(28px)",
-                            }}
-                        >
-                            <span className={styles.headlineBlockSpan}>Solving Problems</span>
-                            <span className={styles.headlineBlockSpan}>
-                                <span className={styles.headlineHighlight}>Before</span> They Happen
-                            </span>
-                        </h2>
-                    </div>
-
-                    {/* Right: sub-copy */}
-                    <p
-                        className={styles.subcopy}
+                    <h2
+                        className={styles.headline}
                         style={{
                             opacity: headerVisible ? 1 : 0,
-                            transform: headerVisible ? "translateY(0)" : "translateY(20px)",
+                            transform: headerVisible ? "translateY(0)" : "translateY(28px)",
                         }}
                     >
-                        We combine predictive intelligence and connected project data to identify
-                        financial and operational risks — saving capital on every project.
-                    </p>
+                        Solving Problems <br></br> <span className={styles.headlineHighlight}>Before</span> They Happen
+                    </h2>
                 </div>
             </div>
 
@@ -184,49 +167,37 @@ export default function Problem() {
                                         "--panels-visible-scale": panelsVisible ? "1" : "0.98",
                                     } as React.CSSProperties}
                                 >
-                                    {/* Full-bleed photo */}
-                                    <Image
-                                        src={panel.image}
-                                        alt={panel.category}
-                                        fill
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 420px"
-                                        className={`${styles.problemPanelImage} ${isActive ? styles.problemPanelImageActive : styles.problemPanelImageInactive}`}
-                                        style={{
-                                            transition: isTransitioning ? undefined : "none",
-                                        }}
-                                    />
-
-                                    {/* Gradient overlay — only at the bottom for text legibility */}
-                                    <div className={`${styles.gradientOverlay} ${isActive ? styles.gradientOverlayActive : styles.gradientOverlayInactive}`} />
-
-                                    {/* Category tag — always visible */}
-                                    <div className={styles.categoryTag}>
-                                        <span className={`${styles.categoryText} ${isActive ? styles.categoryTextActive : styles.categoryTextInactive}`}>
+                                    {/* Top Image Container */}
+                                    <div className={styles.imageContainer}>
+                                        <Image
+                                            src={panel.image}
+                                            alt={panel.category}
+                                            fill
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 420px"
+                                            className={`${styles.problemPanelImage} ${isActive ? styles.problemPanelImageActive : styles.problemPanelImageInactive}`}
+                                            style={{
+                                                transition: isTransitioning ? undefined : "none",
+                                            }}
+                                        />
+                                        
+                                        {/* Category Badge on Top-Left of Image */}
+                                        <div className={styles.categoryBadge}>
                                             {panel.category}
-                                        </span>
-                                    </div>
-
-                                    {/* Inactive state — just show category name at bottom */}
-                                    <div className={styles.inactiveContent}>
-                                        <div className={styles.inactiveHeadline}>
-                                            {panel.headline}
                                         </div>
                                     </div>
 
-                                    {/* Active panel — full content panel */}
-                                    <div className={styles.activeContent}>
-                                        {/* Orange rule */}
-                                        <div className={styles.orangeRule} />
-
-                                        <h3 className={styles.activeHeadline}>
+                                    {/* Bottom Content Area */}
+                                    <div className={styles.cardContent}>
+                                        <h3 className={styles.cardHeadline}>
                                             {panel.headline}
                                         </h3>
 
-                                        <p className={styles.activeBodyText}>
+                                        <p className={styles.cardBodyText}>
                                             {panel.body}
                                         </p>
 
-                                        <div className={styles.activeFooterRow}>
+                                        {/* Collapsible Stats and Footer row */}
+                                        <div className={`${styles.cardFooterRow} ${isActive ? styles.footerActive : styles.footerInactive}`}>
                                             {/* Stat */}
                                             <div>
                                                 <div className={styles.statValue}>

@@ -5,11 +5,9 @@ import Footer from "./components/footer/Footer";
 import Hero from "./components/hero/Hero";
 import SocialProof from "./components/socialproof/SocialProof";
 import Problem from "./components/problem/Problem";
-import Solution from "./components/Solution";
-import OwnerValue from "./components/ownervalue/OwnerValue";
-import Testimonial from "./components/Testimonial";
-import CTA from "./components/CTA";
-
+import Solution from "./components/solution/Solution";
+import Testimonial from "./components/testimonial/Testimonial";
+import CTA from "./components/cta/CTA";
 export default function Home() {
   return (
     <div
@@ -26,8 +24,8 @@ export default function Home() {
         <Hero />
 
         <Problem />
-        <SocialProof />
         <Solution />
+        <SocialProof />
         {/* <OwnerValue /> */}
         <Testimonial />
         <CTA />

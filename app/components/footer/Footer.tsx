@@ -5,7 +5,7 @@ import styles from "./Footer.module.css";
 
 export default function Footer() {
     return (
-        <footer className={styles.footerSection}>
+        <footer className={`curved-section ${styles.footerSection}`} style={{ zIndex: 15 }}>
             {/* MAIN FOOTER */}
             <div className={styles.mainContainer}>
                 <div className={styles.contentGrid}>

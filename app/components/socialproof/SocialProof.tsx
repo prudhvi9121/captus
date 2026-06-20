@@ -15,6 +15,7 @@ const STATS = [
         isNumeric: true,
         color: "#FF7B1A",
         image: "/socialProofImages/socialProof1.png",
+        imageCaption: "Captus protects over $500M+ in active construction and development portfolios.",
         icon: (
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="7" width="20" height="14" rx="2" />
@@ -30,6 +31,7 @@ const STATS = [
         isNumeric: true,
         color: "#CC5500",
         image: "/socialProofImages/socialProof2.png",
+        imageCaption: "Preventing up to 100× cost escalation by resolving operational conflicts early.",
         icon: (
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
@@ -46,6 +48,7 @@ const STATS = [
         displayText: "Early",
         color: "#FF7B1A",
         image: "/socialProofImages/socialProof3.png",
+        imageCaption: "Early risk detection intercepts capital loss before it materializes.",
         icon: (
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10" />
@@ -154,7 +157,7 @@ export default function SocialProof() {
     };
 
     return (
-        <section ref={sectionRef} className={styles.section}>
+        <section ref={sectionRef} className={`curved-section ${styles.section}`} style={{ zIndex: 12 }}>
             {/* Background Glow spotlight */}
             <div className={styles.bgGlowSpotlight}>
                 <div className={styles.bgGlowSpotlightInner} />
@@ -171,7 +174,10 @@ export default function SocialProof() {
                         transform: visible ? "translateY(0)" : "translateY(20px)",
                     }}
                 >
-                    <span className="section-tag">Proven at Scale</span>
+                    <span className="section-tag">
+                        <span className="eyebrow-line" />
+                        Proven at Scale
+                    </span>
                     <h2 className={styles.headerTitle}>
                         MEASURABLE{" "}
                         <span className={styles.highlightText}>IMPACT</span>
@@ -179,7 +185,7 @@ export default function SocialProof() {
                 </div>
 
                 {/* Interactive Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center lg:items-stretch">
 
                     {/* Left Column: Vertical tabs stack */}
                     <div className="lg:col-span-5 flex flex-col gap-4 order-2 lg:order-1">
@@ -224,6 +230,14 @@ export default function SocialProof() {
                                             sizes="(max-width: 1024px) 100vw, 50vw"
                                             priority={idx === 0}
                                         />
+                                        
+                                        {/* Bottom shadow overlay for legibility */}
+                                        <div className={styles.captionOverlay} />
+                                        
+                                        {/* Image Caption Text */}
+                                        <p className={styles.imageCaption}>
+                                            {stat.imageCaption}
+                                        </p>
                                     </div>
                                 ))}
                             </div>
