@@ -136,6 +136,15 @@ export default function SocialProof() {
     useEffect(() => {
         const el = sectionRef.current;
         if (!el) return;
+
+        // Synchronous check if element is already in viewport on mount
+        const rect = el.getBoundingClientRect();
+        const inViewport = rect.top < (window.innerHeight || document.documentElement.clientHeight) && rect.bottom > 0;
+        if (inViewport) {
+            setVisible(true);
+            return;
+        }
+
         const obs = new IntersectionObserver(
             ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
             { threshold: 0.15 }

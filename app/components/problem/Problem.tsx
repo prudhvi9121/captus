@@ -11,6 +11,15 @@ function useInView(threshold = 0.1) {
     useEffect(() => {
         const el = ref.current;
         if (!el) return;
+
+        // Synchronous check if element is already in viewport on mount
+        const rect = el.getBoundingClientRect();
+        const inViewport = rect.top < (window.innerHeight || document.documentElement.clientHeight) && rect.bottom > 0;
+        if (inViewport) {
+            setVisible(true);
+            return;
+        }
+
         const obs = new IntersectionObserver(
             ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
             { threshold }
@@ -55,7 +64,7 @@ const PANELS_9 = [...PANELS, ...PANELS, ...PANELS];
 
 export default function Problem() {
     const [headerRef, headerVisible] = useInView(0.2);
-    const [panelsRef, panelsVisible] = useInView(0.05);
+    const [panelsRef, panelsVisible] = useInView(0.01);
     const [vActive, setVActive] = useState(4); // Start with Operational Risk (middle copy)
     const [isTransitioning, setIsTransitioning] = useState(true);
     const [hasRevealed, setHasRevealed] = useState(false);
