@@ -1,0 +1,96 @@
+.section {
+    position: relative;
+    padding: clamp(80px, 10vw, 140px) clamp(24px, 6vw, 96px);
+    background-image: 
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(135deg, #cc5500ac 0%, #ae4800ff 100%);
+    background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px, auto;
+    z-index: 13;
+}
+
+.quoteMark {
+    position: absolute;
+    top: -20px;
+    left: clamp(24px, 6vw, 96px);
+    font-family: Georgia, serif;
+    fontSize: clamp(200px, 22vw, 320px);
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.36);
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+}
+
+.contentContainer {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    text-align: left;
+}
+
+.eyebrowLineLight {
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.testimonialItem {
+    max-width: 900px;
+}
+
+.blockquote {
+    font-family: Nexa, sans-serif;
+    font-size: clamp(20px, 2.8vw, 32px);
+    line-height: 1.5;
+    font-weight: 300;
+    color: #FFFFFF;
+    font-style: italic;
+    margin-bottom: 48px;
+    letter-spacing: -0.2px;
+}
+
+.attributionBlock {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-family: 'Good Times', sans-serif;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.info {
+    text-align: left;
+}
+
+.authorName {
+    font-family: 'Good Times', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+}
+
+.authorTitle {
+    font-family: Nexa, sans-serif;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+}

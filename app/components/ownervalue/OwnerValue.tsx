@@ -50,7 +50,7 @@ export default function OwnerValue() {
     };
 
     return (
-        <section className={styles.section}>
+        <section className={`curved-section ${styles.section}`} style={{ zIndex: 12 }}>
             {/* ── Full-bleed background construction photo from CaseStudy ── */}
             <div className={styles.bgImageContainer}>
                 <Image

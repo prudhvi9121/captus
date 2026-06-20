@@ -1,0 +1,110 @@
+.section {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    z-index: 14;
+}
+
+.bgWrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.bgImage {
+    object-fit: cover;
+    object-position: center 60%;
+}
+
+.darkOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.88) 0%, rgba(10, 10, 10, 0.75) 100%);
+}
+
+.orangeGlow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(204, 85, 0, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.contentContainer {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: clamp(80px, 10vw, 140px) clamp(24px, 6vw, 96px);
+    text-align: left;
+}
+
+.eyebrowLineLight {
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.headline {
+    font-family: 'Good Times', sans-serif;
+    font-size: clamp(32px, 5.5vw, 72px);
+    color: #FFFFFF;
+    line-height: 1.0;
+    letter-spacing: -1px;
+    margin-bottom: 28px;
+}
+
+.highlightText {
+    color: #CC5500;
+}
+
+.subcopy {
+    font-family: Nexa, sans-serif;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: clamp(14px, 1.5vw, 18px);
+    line-height: 1.75;
+    max-width: 520px;
+    margin: 0 0 48px;
+}
+
+.buttonsRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.btnOverride {
+    padding: 16px 40px;
+    font-size: 11px;
+}
+
+.bottomDivider {
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.ruleLine {
+    flex: 1;
+    max-width: 120px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.brandingText {
+    font-family: 'Good Times', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.25);
+}

@@ -1,14 +1,13 @@
 /* --- Section and Containers --- */
 .section {
-    background-color: #FFFFFF;
+    position: relative;
+    background-color: rgb(246, 243, 238);
     background-image: 
         linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
         linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0, 0, 0, 0.012) 1px, transparent 1px),
         linear-gradient(rgba(0, 0, 0, 0.012) 1px, transparent 1px);
     background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px;
-    position: relative;
-    overflow: hidden;
     padding-top: clamp(60px, 8vw, 110px);
     padding-bottom: clamp(60px, 8vw, 110px);
 }
@@ -35,18 +34,17 @@
     padding-right: clamp(24px, 6vw, 96px);
 }
 
-/* --- Section Header --- */
 .header {
-    text-align: center;
+    text-align: left;
     margin-bottom: clamp(40px, 5vw, 64px);
     transition: all 0.7s cubic-bezier(0.16,1,0.3,1);
 }
 
 .headerTitle {
     font-family: 'Good Times', sans-serif;
-    font-size: clamp(26px, 3.5vw, 44px);
+    font-size: clamp(28px, 4vw, 58px);
     color: #111111;
-    letter-spacing: -0.5px;
+    letter-spacing: 0.01em;
     line-height: 1.05;
 }
 
@@ -60,27 +58,26 @@
     display: flex;
     flex-direction: column;
     padding: 22px 26px;
-    border-radius: 8px;
-    border: 1px solid;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
     cursor: pointer;
+    background: #FFFFFF;
     transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     overflow: hidden;
 }
 
 .tabCardActive {
-    background: #FFFFFF;
-    border-color: rgba(255, 123, 26, 0.22);
-    box-shadow: 0 10px 30px rgba(204, 85, 0, 0.06), inset 0 1px 0 rgba(255,255,255,0.8);
+    border: 2px solid #CC5500 !important;
+    box-shadow: 0 10px 30px rgba(204, 85, 0, 0.06);
 }
 
 .tabCardInactive {
-    background: rgba(209, 209, 209, 0.65);
-    border-color: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.06);
     box-shadow: none;
 }
 
 .tabCard:hover {
-    background: rgba(0, 0, 0, 0.015);
+    background: rgba(204, 85, 0, 0.01);
 }
 
 .tabHeader {
@@ -163,18 +160,19 @@
 }
 
 .progressBar {
-    height: 2.5px;
+    height: 3px;
     background: linear-gradient(90deg, var(--stat-color), #FF7B1A);
     width: 0%;
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: 12px;
+    left: 26px;
+    border-radius: 2px;
     animation: progressAnimation 5s linear forwards;
 }
 
 @keyframes progressAnimation {
     0% { width: 0%; }
-    100% { width: 100%; }
+    100% { width: calc(100% - 52px); }
 }
 
 /* --- Right Column: Preview Area --- */
@@ -195,23 +193,24 @@
 .browserFrame {
     position: relative;
     width: 100%;
-    border-radius: 12px;
+    border-radius: 24px;
     overflow: hidden;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.06);
     z-index: 1;
 }
 
 .mockupScreen {
     position: relative;
     width: 100%;
-    aspect-ratio: 1.2;
+    aspect-ratio: 1;
 }
 
 .mockupSlide {
     position: absolute;
     inset: 0;
     transition: opacity 1.0s cubic-bezier(0.16,1,0.3,1), transform 1.0s cubic-bezier(0.16,1,0.3,1);
+    overflow: hidden;
 }
 
 .mockupSlideActive {
@@ -224,4 +223,52 @@
     opacity: 0;
     transform: scale(1.025);
     z-index: 1;
+}
+
+.captionOverlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to top, rgba(10, 10, 10, 0.85) 0%, rgba(10, 10, 10, 0.4) 50%, transparent 100%);
+    z-index: 3;
+    pointer-events: none;
+}
+
+.imageCaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px 28px;
+    color: #FFFFFF;
+    font-family: Nexa, sans-serif;
+    font-size: clamp(12px, 1.1vw, 14.5px);
+    line-height: 1.55;
+    z-index: 4;
+    margin: 0;
+    font-weight: 300;
+}
+
+@media (min-width: 1024px) {
+    .previewWrapper {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .browserFrame {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .mockupScreen {
+        flex: 1;
+        width: 100%;
+        height: 100%;
+        aspect-ratio: auto; /* Allow height to stretch instead of locking as square */
+    }
 }

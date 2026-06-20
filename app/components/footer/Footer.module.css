@@ -4,7 +4,6 @@
     background-color: #0A0A0A;
     color: #FFFFFF;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    overflow: hidden;
 }
 
 /* Main inner container */
@@ -150,7 +149,6 @@
     margin-bottom: -12px;
     pointer-events: none;
     user-select: none;
-    opacity: 0.05;
 }
 
 @media (min-width: 640px) {
@@ -164,7 +162,7 @@
     color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
-    background-image: linear-gradient(to bottom, #FFFFFF, transparent);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%);
     letter-spacing: -0.05em;
     text-align: center;
 }

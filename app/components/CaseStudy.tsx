@@ -26,11 +26,11 @@ export default function CaseStudy() {
     return (
         <section
             id="case-study"
+            className="curved-section"
             style={{
-                position: "relative",
-                overflow: "hidden",
                 minHeight: "560px",
                 display: "flex",
+                zIndex: 12,
             }}
         >
             {/* ── Full-bleed background ── */}
