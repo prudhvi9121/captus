@@ -112,30 +112,37 @@ export default function Solution() {
 
             {/* ── Dashboard Mockup ── */}
             <div className={styles.mockupContainer}>
-                <div className={styles.browserCard}>
-                    {/* Chrome header bar */}
-                    <div className={styles.chromeBar}>
-                        {["#FF5F57", "#FFBD2E", "#28C840"].map((c, i) => (
-                            <div key={i} className={styles.chromeDot} style={{ background: c }} />
-                        ))}
-                        {/* URL Pill */}
-                        <div className={styles.chromeUrlPill}>
-                            <div className={styles.chromeUrlDot} />
-                            <span className={styles.chromeUrlText}>
-                                app.captus.ai / dashboard
-                            </span>
-                        </div>
+                <div className={styles.mockupInner}>
+                    <div className={styles.mockupHeader}>
+                        <span className={styles.mockupEyebrow}>PRODUCT SNAPSHOT</span>
+                        <h3 className={styles.mockupTitle}>RISK DASHBOARD</h3>
                     </div>
 
-                    <div className={styles.imageWrapper}>
-                        <Image
-                            src="/hero-images/1.png"
-                            alt="Captus Dashboard View"
-                            width={1670}
-                            height={912}
-                            priority
-                            className={styles.mockupImage}
-                        />
+                    <div className={styles.browserCard}>
+                        {/* Chrome header bar */}
+                        <div className={styles.chromeBar}>
+                            {["#FF5F57", "#FFBD2E", "#28C840"].map((c, i) => (
+                                <div key={i} className={styles.chromeDot} style={{ background: c }} />
+                            ))}
+                            {/* URL Pill */}
+                            <div className={styles.chromeUrlPill}>
+                                <div className={styles.chromeUrlDot} />
+                                <span className={styles.chromeUrlText}>
+                                    app.captus.ai / dashboard
+                                </span>
+                            </div>
+                        </div>
+
+                        <div className={styles.imageWrapper}>
+                            <Image
+                                src="/hero-images/1.png"
+                                alt="Captus Dashboard View"
+                                width={1670}
+                                height={912}
+                                priority
+                                className={styles.mockupImage}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
