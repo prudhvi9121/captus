@@ -272,3 +272,88 @@
         aspect-ratio: auto; /* Allow height to stretch instead of locking as square */
     }
 }
+
+.quoteCardContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: #0E0E0E;
+    padding: clamp(24px, 5vw, 56px);
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.quoteEyebrow {
+    font-family: Nexa, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #FF7B1A;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.quoteEyebrowLine {
+    width: 36px;
+    height: 2px;
+    background: #FF7B1A;
+    margin-bottom: clamp(16px, 3vw, 32px);
+}
+
+.quoteBody {
+    font-family: Nexa, sans-serif;
+    font-style: italic;
+    font-size: clamp(15px, 2vw, 24px);
+    line-height: 1.6;
+    color: #FFFFFF;
+    font-weight: 300;
+    margin: 0;
+    margin-bottom: clamp(24px, 4vw, 40px);
+}
+
+.quoteAuthorBlock {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.quoteAvatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+    position: relative;
+}
+
+.quoteAvatarImage {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.quoteAuthorInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.quoteAuthorName {
+    font-family: Nexa, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: #FFFFFF;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.quoteAuthorTitle {
+    font-family: Nexa, sans-serif;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 300;
+}

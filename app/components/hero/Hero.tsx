@@ -23,18 +23,6 @@ function useInView(threshold = 0.1) {
 
 export default function Hero() {
     const [ref, visible] = useInView(0.01);
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const heroImages = [
-        "/hero-images/1.png",
-        "/hero-images/2.png",
-    ];
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-        }, 4000);
-        return () => clearInterval(timer);
-    }, [heroImages.length]);
 
     return (
         <section id="hero" ref={ref} className={styles.heroSection}>
@@ -95,69 +83,17 @@ export default function Hero() {
                             See How It Works
                         </a>
                     </div>
-                </div>
 
-                {/* RIGHT — Platform mockup */}
-                <div className={styles.rightCol}>
-                    <div className={styles.mockupWrapper}>
-                        {/* Ambient glow */}
-                        <div className={styles.mockupGlow} />
-
-                        {/* Drop shadow */}
-                        <div className={styles.mockupShadow} />
-
-                        {/* Browser card */}
-                        <div className={styles.browserCard}>
-                            {/* Chrome header bar */}
-                            <div className={styles.chromeBar}>
-                                {["#FF5F57", "#FFBD2E", "#28C840"].map((c, i) => (
-                                    <div key={i} className={styles.chromeDot} style={{ background: c }} />
-                                ))}
-                                {/* URL Pill */}
-                                <div className={styles.chromeUrlPill}>
-                                    <div className={styles.chromeUrlDot} />
-                                    <span className={styles.chromeUrlText}>
-                                        app.captus.ai / dashboard
-                                    </span>
-                                </div>
-                            </div>
-
-                            {/* Sliding Images Container */}
-                            <div className={styles.sliderContainer}>
-                                <div
-                                    className={styles.sliderTrack}
-                                    style={{
-                                        width: `${heroImages.length * 100}%`,
-                                        transform: `translateX(-${currentImageIndex * (100 / heroImages.length)}%)`
-                                    }}
-                                >
-                                    {heroImages.map((src, idx) => (
-                                        <div
-                                            key={idx}
-                                            className={styles.sliderSlide}
-                                            style={{ width: `${100 / heroImages.length}%` }}
-                                        >
-                                            <Image
-                                                src={src}
-                                                alt={`Captus Platform View ${idx + 1}`}
-                                                fill
-                                                style={{ objectFit: "cover", objectPosition: "top center" }}
-                                                sizes="(max-width: 1024px) 100vw, 50vw"
-                                                priority={idx === 0}
-                                            />
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Live Badge */}
-                        <div className={styles.liveBadge}>
-                            <div className={styles.pulseDot} />
-                            Live Platform
-                        </div>
+                    {/* Trusted Proof */}
+                    <div className={styles.trustedDivider} />
+                    <div className={styles.trustedContainer}>
+                        <span className={styles.trustedLabel}>TRUSTED ON</span>
+                        <span className={styles.trustedValue}>$500M+</span>
+                        <span className={styles.trustedSub}>in active development</span>
                     </div>
                 </div>
+
+
             </div>
 
             {/* Scroll Hint */}
