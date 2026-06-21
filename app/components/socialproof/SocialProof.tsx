@@ -8,12 +8,13 @@ import styles from "./SocialProof.module.css";
 
 const STATS = [
     {
-        numericValue: 500,
-        suffix: "M+",
+        numericValue: null,
+        suffix: "",
         label: "Projects Under Management",
         sublabel: "Capital deployed across active portfolios",
-        isNumeric: true,
-        color: "#FF7B1A",
+        isNumeric: false,
+        displayText: "$500M+",
+        color: "#CC5500",
         image: "/socialProofImages/socialProof1.png",
         imageCaption: "Captus protects over $500M+ in active construction and development portfolios.",
         icon: (
@@ -24,36 +25,38 @@ const STATS = [
         ),
     },
     {
-        numericValue: 100,
-        suffix: "×",
-        label: "Cost Escalation Prevented",
-        sublabel: "Before issues reach the field",
-        isNumeric: true,
+        numericValue: null,
+        suffix: "",
+        label: "Life Sciences Building",
+        sublabel: "3.0 University Place Associates",
+        isNumeric: false,
+        displayText: "$300M",
         color: "#CC5500",
-        image: "/socialProofImages/socialProof2.png",
-        imageCaption: "Preventing up to 100× cost escalation by resolving operational conflicts early.",
+        image: "/new/socialproof2.avif",
+        imageCaption: "3.0 University Place — a $300M life sciences building for University Place Associates.",
         icon: (
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
-                <polyline points="16 7 22 7 22 13" />
+                <path d="M6 3h12" />
+                <path d="M14 9V3H10v6L4 19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2L14 9Z" />
             </svg>
         ),
     },
     {
         numericValue: null,
         suffix: "",
-        label: "Risk Detection Before Capital Loss",
-        sublabel: "Predictive, not reactive intelligence",
+        label: "Precast Concrete Parking Garage",
+        sublabel: "5.0 University Place Associates",
         isNumeric: false,
-        displayText: "Early",
-        color: "#FF7B1A",
-        image: "/socialProofImages/socialProof3.png",
-        imageCaption: "Early risk detection intercepts capital loss before it materializes.",
+        displayText: "$40M",
+        color: "#CC5500",
+        image: "/new/socialproof3.avif",
+        imageCaption: "5.0 University Place — a $40M precast concrete parking garage for University Place Associates.",
         icon: (
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="12" y1="8" x2="12" y2="12" />
-                <line x1="12" y1="16" x2="12.01" y2="16" />
+                <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />
+                <circle cx="7" cy="17" r="2" />
+                <path d="M9 17h6" />
+                <circle cx="17" cy="17" r="2" />
             </svg>
         ),
     },
@@ -184,13 +187,26 @@ export default function SocialProof() {
                     }}
                 >
                     <span className="section-tag">
-                        <span className="eyebrow-line" />
-                        Proven at Scale
+                        Trusted on Real Capital
                     </span>
                     <h2 className={styles.headerTitle}>
-                        MEASURABLE{" "}
-                        <span className={styles.highlightText}>IMPACT</span>
+                        SELECTED <span className={styles.highlightText}>PROJECTS</span>
                     </h2>
+                    <p
+                        style={{
+                            fontFamily: "Nexa, sans-serif",
+                            fontSize: "clamp(14px, 1.4vw, 16.5px)",
+                            color: "var(--text-secondary)",
+                            lineHeight: 1.6,
+                            maxWidth: "520px",
+                            marginTop: "18px",
+                            marginBottom: "0",
+                        }}
+                    >
+                        Captus runs on live capital projects across the University Place Associates portfolio &mdash; from parking structures to life sciences.
+                        <br /><br />
+                        Select one to explore.
+                    </p>
                 </div>
 
                 {/* Interactive Grid */}
@@ -241,7 +257,7 @@ export default function SocialProof() {
                                                 <div className={styles.quoteAuthorBlock}>
                                                     <div className={styles.quoteAvatar}>
                                                         <Image
-                                                            src="/Anatoly.jpg"
+                                                            src="/new/testimonial_person.avif"
                                                             alt="Anthony Maher"
                                                             width={48}
                                                             height={48}
@@ -264,10 +280,10 @@ export default function SocialProof() {
                                                     sizes="(max-width: 1024px) 100vw, 50vw"
                                                     priority={idx === 0}
                                                 />
-                                                
+
                                                 {/* Bottom shadow overlay for legibility */}
                                                 <div className={styles.captionOverlay} />
-                                                
+
                                                 {/* Image Caption Text */}
                                                 <p className={styles.imageCaption}>
                                                     {stat.imageCaption}

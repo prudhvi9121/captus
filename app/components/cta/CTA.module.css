@@ -108,3 +108,25 @@
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.25);
 }
+
+.buttonLink {
+    width: auto;
+}
+
+@media (max-width: 767px) {
+    .buttonsRow {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 12px;
+    }
+    .buttonLink {
+        width: 100%;
+    }
+    .btnOverride {
+        display: block;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+}

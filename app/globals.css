@@ -26,7 +26,7 @@
 
 :root {
   --orange: #CC5500;
-  --orange-light: #FF7B1A;
+  --orange-light: #CC5500;
   --orange-dark: #A34400;
   --bg: rgb(246, 243, 238);
   --surface-1: #F4F4F2;
@@ -51,12 +51,14 @@
   }
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 html {
@@ -125,7 +127,7 @@ h6,
 
 /* ─── Gradient text ─── */
 .gradient-text {
-  background: linear-gradient(135deg, #111827 0%, #CC5500 50%, #FF7B1A 100%);
+  background: linear-gradient(135deg, #111827 0%, #CC5500 50%, #CC5500 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -324,8 +326,8 @@ h6,
 }
 
 .nav-enterprise-link-white:hover {
-  color: #FF7B1A;
-  border-bottom-color: #FF7B1A;
+  color: #CC5500;
+  border-bottom-color: #CC5500;
 }
 
 /* ─── Scroll indicator ─── */
@@ -393,7 +395,7 @@ h6,
 
 /* Subtle stat number shimmer */
 .stat-value {
-  background: linear-gradient(90deg, #CC5500 0%, #FF7B1A 50%, #CC5500 100%);
+  background: linear-gradient(90deg, #CC5500 0%, #CC5500 50%, #CC5500 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

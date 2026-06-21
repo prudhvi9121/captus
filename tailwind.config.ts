@@ -11,7 +11,7 @@ const config: Config = {
             colors: {
                 orange: {
                     DEFAULT: "#CC5500",
-                    light: "#FF7B1A",
+                    light: "#CC5500",
                     dark: "#A34400",
                     muted: "#CC55001A",
                 },

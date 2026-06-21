@@ -86,7 +86,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #CC5500, #FF7B1A);
+    background: linear-gradient(90deg, #CC5500, #A34400);
     z-index: 4;
 }
 
@@ -324,8 +324,8 @@
 }
 
 .ctaButton:hover {
-    background: #FF7B1A;
-    border-color: #FF7B1A;
+    background: #A34400;
+    border-color: #A34400;
     box-shadow: 0 6px 16px rgba(204,85,0,0.45);
     transform: translateY(-1px);
 }

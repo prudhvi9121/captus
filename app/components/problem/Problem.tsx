@@ -36,7 +36,7 @@ const PANELS = [
         category: "Financial Risk",
         headline: "Hidden Capital Exposure Across Every Project",
         body: "Fragmented contracts, unchecked change orders, and billing discrepancies silently erode owner returns. By the time the numbers surface, the damage is already compounding.",
-        image: "/problem-images/prrof11.png",
+        image: "/new/financial_risk.avif",
         stat: "5–20%",
         statLabel: "Value lost to rework",
     },
@@ -45,7 +45,7 @@ const PANELS = [
         category: "Operational Risk",
         headline: "Field Decisions Without Financial Visibility",
         body: "Superintendents make daily decisions with no view into cost implications. Operational gaps become financial liabilities before any report is ever filed.",
-        image: "/problem-images/proof12.png",
+        image: "/new/operational_risk.avif",
         stat: "100×",
         statLabel: "Cost escalation if caught late",
     },
@@ -54,7 +54,7 @@ const PANELS = [
         category: "Early Detection",
         headline: "The Most Important Thing Is Seeing It First",
         body: "Traditional tools are rearview mirrors. Captus surfaces conflicts before they become crises — giving owners the intelligence edge that protects capital at every stage.",
-        image: "/problem-images/proof13.png",
+        image: "/new/early_detection.avif",
         stat: "Real-Time",
         statLabel: "Risk intelligence",
     },
@@ -129,7 +129,6 @@ export default function Problem() {
                 {/* Left: headline block */}
                 <div className={styles.headlineBlock}>
                     <span className={styles.eyebrow}>
-                        <span className={styles.eyebrowLine} />
                         The Problem
                     </span>
 
@@ -146,10 +145,9 @@ export default function Problem() {
             </div>
 
             {/* ── Three-panel image strip with Infinite Scroll ── */}
-            <div className={styles.trackWrapper}>
+            <div ref={panelsRef} className={styles.trackWrapper}>
                 <div className={styles.clipContainer}>
                     <div
-                        ref={panelsRef}
                         className={`${styles.problemGrid} ${!isTransitioning ? styles.noTransition : ""}`}
                         onTransitionEnd={handleTransitionEnd}
                         style={{
@@ -188,7 +186,7 @@ export default function Problem() {
                                                 transition: isTransitioning ? undefined : "none",
                                             }}
                                         />
-                                        
+
                                         {/* Category Badge on Top-Left of Image */}
                                         <div className={styles.categoryBadge}>
                                             {panel.category}

@@ -11,10 +11,12 @@ export default function Footer() {
                 <div className={styles.contentGrid}>
                     {/* LEFT SECTION - Logo & Pitch */}
                     <div className={styles.leftCol}>
-                        <div className={styles.logoContainer}>
-                            <span className={styles.logoText}>CAPTUS</span>
-                            <span className={styles.logoDotAi}>.AI</span>
-                        </div>
+                        <Link href="/" className={styles.logoLink}>
+                            <div className={styles.logoContainer}>
+                                <span className={styles.logoText}>CAPTUS</span>
+                                <span className={styles.logoDotAi}>.AI</span>
+                            </div>
+                        </Link>
                         <p className={styles.pitchText}>
                             Early warning intelligence for capital projects.<br />
                             See financial and operational risk before it<br />
@@ -24,18 +26,6 @@ export default function Footer() {
 
                     {/* RIGHT SECTION - Links Grid */}
                     <div className={styles.linksGrid}>
-                        {/* PRODUCT */}
-                        <div className={styles.linkCol}>
-                            <span className={styles.colHeader}>
-                                Product
-                            </span>
-                            <div className={styles.linkList}>
-                                <Link href="/" className={styles.footerLink}>Platform</Link>
-                                <Link href="#how-it-works" className={styles.footerLink}>How it works</Link>
-                                <Link href="/" className={styles.footerLink}>Risk Dashboard</Link>
-                            </div>
-                        </div>
-
                         {/* COMPANY */}
                         <div className={styles.linkCol}>
                             <span className={styles.colHeader}>
@@ -48,15 +38,25 @@ export default function Footer() {
                             </div>
                         </div>
 
-                        {/* GET STARTED */}
+                        {/* LEGAL */}
                         <div className={styles.linkCol}>
                             <span className={styles.colHeader}>
-                                Get Started
+                                Legal
                             </span>
                             <div className={styles.linkList}>
-                                <Link href="/book-demo" className={styles.footerLink}>Book a demo</Link>
-                                <a href="https://app.captus.ai/login" className={styles.footerLink}>Log in</a>
-                                <a href="mailto:hello@captus.ai" className={styles.footerLink}>hello@captus.ai</a>
+                                <Link href="/privacy-policy" className={styles.footerLink}>Privacy Policy</Link>
+                                <Link href="/terms-and-conditions" className={styles.footerLink}>Terms and Conditions</Link>
+                            </div>
+                        </div>
+
+                        {/* CONTACT */}
+                        <div className={styles.linkCol}>
+                            <span className={styles.colHeader}>
+                                Contact
+                            </span>
+                            <div className={styles.linkList}>
+                                <a href="mailto:info@captus.ai" className={styles.footerLink}>info@captus.ai</a>
+                                <Link href="/book-demo" className={styles.footerLink}>Book a Demo</Link>
                             </div>
                         </div>
                     </div>

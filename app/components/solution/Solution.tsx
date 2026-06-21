@@ -20,7 +20,7 @@ const STEPS = [
         desc: "We map relationships between scope, trades, schedule dependencies, and communication records to surface inconsistencies instantly — before they become claims.",
         stat: "100K+",
         statLabel: "Document Relationships Mapped",
-        color: "#FF7B1A",
+        color: "#CC5500",
     },
     {
         number: "03",
@@ -46,7 +46,6 @@ export default function Solution() {
             <div className={styles.headerContainer}>
                 {/* Eyebrow */}
                 <div className={styles.eyebrow}>
-                    <span className={styles.eyebrowLine} />
                     Platform
                 </div>
 
@@ -111,7 +110,7 @@ export default function Solution() {
             </div>
 
             {/* ── Dashboard Mockup ── */}
-            <div className={styles.mockupContainer}>
+            <div id="risk-dashboard" className={styles.mockupContainer}>
                 <div className={styles.mockupInner}>
                     <div className={styles.mockupHeader}>
                         <span className={styles.mockupEyebrow}>PRODUCT SNAPSHOT</span>
@@ -135,7 +134,7 @@ export default function Solution() {
 
                         <div className={styles.imageWrapper}>
                             <Image
-                                src="/hero-images/1.png"
+                                src="/new/platform.avif"
                                 alt="Captus Dashboard View"
                                 width={1670}
                                 height={912}

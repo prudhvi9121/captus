@@ -59,7 +59,7 @@
 }
 
 .logoText {
-    color: #FF7B1A;
+    color: #CC5500;
 }
 
 .logoDotAi {
@@ -131,7 +131,7 @@
 }
 
 .footerLink:hover {
-    color: #FF7B1A;
+    color: #CC5500;
 }
 
 /* Bottom Bar */
@@ -139,7 +139,7 @@
     margin: 0;
     border-top: 1px solid rgba(204, 85, 0, 0.25);
     border-bottom: 1px solid rgba(204, 85, 0, 0.25);
-    background: linear-gradient(90deg, rgba(204, 85, 0, 0.08) 0%, rgba(255, 123, 26, 0.04) 50%, rgba(204, 85, 0, 0.08) 100%);
+    background: linear-gradient(90deg, rgba(204, 85, 0, 0.08) 0%, rgba(204, 85, 0, 0.04) 50%, rgba(204, 85, 0, 0.08) 100%);
 }
 
 .bottomBarContainer {
@@ -197,4 +197,9 @@
     background: #CC5500;
     color: #FFFFFF;
     border-color: #CC5500;
+}
+
+.logoLink {
+    text-decoration: none;
+    outline: none;
 }

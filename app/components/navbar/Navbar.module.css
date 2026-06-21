@@ -12,8 +12,8 @@
 
     /* Theme colors */
     --nav-link-color: rgba(255, 255, 255, 0.85);
-    --nav-link-active-color: #FF7B1A;
-    --nav-link-hover-color: #FF7B1A;
+    --nav-link-active-color: #CC5500;
+    --nav-link-hover-color: #CC5500;
     --nav-login-color: rgba(255, 255, 255, 0.7);
     --hamburger-bar-color: #FFFFFF;
 }

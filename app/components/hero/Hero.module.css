@@ -99,14 +99,14 @@
     left: 0;
     width: 0%;
     height: 2px;
-    background: linear-gradient(90deg, #CC5500 0%, #FF7B1A 55%, rgba(255, 123, 26, 0.25) 100%);
+    background: linear-gradient(90deg, #CC5500 0%, #CC5500 55%, rgba(204, 85, 0, 0.25) 100%);
     border-radius: 2px;
     transition: width 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.85s;
     pointer-events: none;
 }
 
 .highlightText {
-    background: linear-gradient(90deg, #FF7B1A 0%, #CC5500 100%);
+    background: linear-gradient(90deg, #CC5500 0%, #A34400 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -238,6 +238,37 @@
     letter-spacing: 0.28em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.5);
+}
+
+.ctaLink {
+    width: auto;
+}
+
+.ctaBtn,
+.ctaBtnGhost {
+    padding: 15px 36px;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    display: inline-block;
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    .ctaContainer {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 12px;
+    }
+    .ctaLink {
+        width: 100%;
+    }
+    .ctaBtn,
+    .ctaBtnGhost {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
 }
 
 

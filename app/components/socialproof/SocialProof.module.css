@@ -2,7 +2,7 @@
 .section {
     position: relative;
     background-color: rgb(246, 243, 238);
-    background-image: 
+    background-image:
         linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
         linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0, 0, 0, 0.012) 1px, transparent 1px),
@@ -22,7 +22,7 @@
 .bgGlowSpotlightInner {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(204,85,0,0.06) 0%, transparent 80%);
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(204, 85, 0, 0.06) 0%, transparent 80%);
 }
 
 .contentContainer {
@@ -37,7 +37,7 @@
 .header {
     text-align: left;
     margin-bottom: clamp(40px, 5vw, 64px);
-    transition: all 0.7s cubic-bezier(0.16,1,0.3,1);
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .headerTitle {
@@ -49,7 +49,7 @@
 }
 
 .highlightText {
-    color: #FF7B1A;
+    color: #CC5500;
 }
 
 /* --- Interactive Tabs (Left Column) --- */
@@ -105,9 +105,9 @@
 }
 
 .iconBoxInactive {
-    background: rgba(0,0,0,0.02);
-    border-color: rgba(0,0,0,0.06);
-    color: rgba(0,0,0,0.35);
+    background: rgba(0, 0, 0, 0.02);
+    border-color: rgba(0, 0, 0, 0.06);
+    color: rgba(0, 0, 0, 0.35);
 }
 
 .statText {
@@ -123,7 +123,7 @@
 }
 
 .statTextInactive {
-    color: rgba(0,0,0,0.65);
+    color: rgba(0, 0, 0, 0.65);
 }
 
 .tabLabel {
@@ -141,7 +141,7 @@
 }
 
 .tabLabelInactive {
-    color: rgba(0,0,0,0.75);
+    color: rgba(0, 0, 0, 0.75);
 }
 
 .tabSublabel {
@@ -152,16 +152,16 @@
 }
 
 .tabSublabelActive {
-    color: rgba(0,0,0,0.55);
+    color: rgba(0, 0, 0, 0.55);
 }
 
 .tabSublabelInactive {
-    color: rgba(0,0,0,0.4);
+    color: rgba(0, 0, 0, 0.4);
 }
 
 .progressBar {
     height: 3px;
-    background: linear-gradient(90deg, var(--stat-color), #FF7B1A);
+    background: linear-gradient(90deg, var(--stat-color), #CC5500);
     width: 0%;
     position: absolute;
     bottom: 12px;
@@ -171,20 +171,25 @@
 }
 
 @keyframes progressAnimation {
-    0% { width: 0%; }
-    100% { width: calc(100% - 52px); }
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: calc(100% - 52px);
+    }
 }
 
 /* --- Right Column: Preview Area --- */
 .previewWrapper {
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
 }
 
 .previewGlow {
     position: absolute;
     inset: -40px;
-    background: radial-gradient(circle, rgba(255, 123, 26, 0.08) 0%, transparent 70%) ;
+    background: radial-gradient(circle, rgba(255, 123, 26, 0.08) 0%, transparent 70%);
     filter: blur(24px);
     pointer-events: none;
     z-index: 0;
@@ -209,7 +214,7 @@
 .mockupSlide {
     position: absolute;
     inset: 0;
-    transition: opacity 1.0s cubic-bezier(0.16,1,0.3,1), transform 1.0s cubic-bezier(0.16,1,0.3,1);
+    transition: opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1), transform 1.0s cubic-bezier(0.16, 1, 0.3, 1);
     overflow: hidden;
 }
 
@@ -269,7 +274,8 @@
         flex: 1;
         width: 100%;
         height: 100%;
-        aspect-ratio: auto; /* Allow height to stretch instead of locking as square */
+        aspect-ratio: auto;
+        /* Allow height to stretch instead of locking as square */
     }
 }
 
@@ -289,7 +295,7 @@
     font-family: Nexa, sans-serif;
     font-size: 11px;
     font-weight: 700;
-    color: #FF7B1A;
+    color: #CC5500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     margin-bottom: 8px;
@@ -298,7 +304,7 @@
 .quoteEyebrowLine {
     width: 36px;
     height: 2px;
-    background: #FF7B1A;
+    background: #CC5500;
     margin-bottom: clamp(16px, 3vw, 32px);
 }
 

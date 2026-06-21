@@ -29,7 +29,7 @@ export default function CTA() {
             {/* Full-bleed background */}
             <div className={styles.bgWrapper}>
                 <Image
-                    src="/demo-img.png"
+                    src="/new/book-demo.avif"
                     alt="Construction site"
                     fill
                     className={styles.bgImage}
@@ -52,7 +52,6 @@ export default function CTA() {
                 }}
             >
                 <span className="section-tag-light">
-                    <span className={styles.eyebrowLineLight} />
                     Get Started
                 </span>
 
@@ -68,7 +67,7 @@ export default function CTA() {
                 </p>
 
                 <div className={styles.buttonsRow}>
-                    <Link href="/book-demo" style={{ textDecoration: "none" }}>
+                    <Link href="/book-demo" style={{ textDecoration: "none" }} className={styles.buttonLink}>
                         <span className={`btn-enterprise ${styles.btnOverride}`}>
                             Book a Demo
                         </span>
@@ -79,15 +78,6 @@ export default function CTA() {
                     >
                         Contact Us
                     </a>
-                </div>
-
-                {/* Bottom divider */}
-                <div className={styles.bottomDivider}>
-                    <div className={styles.ruleLine} />
-                    <span className={styles.brandingText}>
-                        captus.ai
-                    </span>
-                    <div className={styles.ruleLine} />
                 </div>
             </div>
         </section>

@@ -38,7 +38,7 @@ export default function Hero() {
             {/* ── Background ── */}
             <div className={styles.bgContainer}>
                 <Image
-                    src="/hero.png"
+                    src="/new/hero.avif"
                     alt="Construction site"
                     fill
                     className={styles.bgImage}
@@ -83,12 +83,12 @@ export default function Hero() {
 
                     {/* CTA Actions */}
                     <div className={styles.ctaContainer}>
-                        <Link href="/book-demo" style={{ textDecoration: "none" }}>
-                            <span className="btn-enterprise" style={{ padding: "15px 36px", fontSize: "10px", letterSpacing: "0.16em", display: "inline-block" }}>
+                        <Link href="/book-demo" style={{ textDecoration: "none" }} className={styles.ctaLink}>
+                            <span className={`btn-enterprise ${styles.ctaBtn}`}>
                                 Schedule a Demo
                             </span>
                         </Link>
-                        <a href="#how-it-works" className="btn-enterprise-ghost" style={{ padding: "15px 36px", fontSize: "10px", letterSpacing: "0.16em", display: "inline-block" }}>
+                        <a href="#how-it-works" className={`btn-enterprise-ghost ${styles.ctaBtnGhost}`}>
                             See How It Works
                         </a>
                     </div>

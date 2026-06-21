@@ -6,10 +6,27 @@ import { useScrollReveal } from "../hooks/useScrollReveal";
 import Image from "next/image";
 
 const teamMembers = [
-    // { name: "Jonathan Kruljac", role: "Mentor & Advisor", type: "advisor" },
-    { name: "Alley (Tong) Wu", role: "Founding AI Engineer", type: "founding" },
-    { name: "Khanak Agrawal", role: "Founding AI Engineer", type: "engineer" },
-    { name: "Youssef Benaouda", role: "AI Engineer", type: "engineer" },
+    {
+        name: "Alley (Tong) Wu",
+        role: "Founding AI Engineer",
+        image: "/Alley.avif",
+        linkedin: "https://www.linkedin.com/in/alley-wu/",
+        bio: "Alley is a Founding AI Engineer at Captus, where she designs the agentic systems that turn fragmented project data into clear, early risk signals. She works across the full stack of the platform, from retrieval and reasoning pipelines to the dashboards teams rely on every day. She is drawn to problems where messy, real-world data meets rigorous engineering, and focuses on making the agent both accurate and genuinely useful in the field. Outside of shipping product, she is a strong advocate for thoughtful, human-centered AI."
+    },
+    {
+        name: "Khanak Agrawal",
+        role: "Founding AI Engineer",
+        image: "/Khanak.avif",
+        linkedin: "https://www.linkedin.com/in/khanak-agrawal/",
+        bio: "Khanak is a Founding AI Engineer at Captus, focused on the data infrastructure and machine learning that power the platform's knowledge base. She builds the pipelines that ingest emails, documents, and project records and make them queryable in seconds. With a sharp eye for reliability and detail, she ensures the answers Captus surfaces are trustworthy enough for high-stakes capital decisions. She is energized by early-stage building and the chance to shape a product from the ground up."
+    },
+    {
+        name: "Youssef Benaouda",
+        role: "AI Engineer",
+        image: "/Youssef.avif",
+        linkedin: "https://www.linkedin.com/in/youssef-benaouda-09327b233/",
+        bio: "Youssef is an AI Engineer at Captus, working on the models and integrations that connect Captus to the tools project teams already use. He builds and refines the agent's reasoning capabilities, helping it understand the nuances of budgets, schedules, and operational risk. He thrives on fast iteration and shipping features that make a measurable difference for users. Curious and collaborative, he is always looking for the next way to make the platform smarter."
+    }
 ];
 
 function Section({ children }: { children: React.ReactNode }) {
@@ -34,7 +51,7 @@ export default function Team() {
             <Navbar />
 
             <main
-                className="px-6 sm:px-10 md:px-12"
+                className="px-4 sm:px-10 md:px-12"
                 style={{
                     flex: 1,
                     paddingTop: "120px",
@@ -82,7 +99,7 @@ export default function Team() {
                     <Section>
                         <div style={{ marginBottom: "clamp(56px, 8vw, 80px)" }}>
                             <p
-                                className="text-center md:text-left"
+                                className="text-center lg:text-left"
                                 style={{
                                     fontSize: "12px",
                                     fontWeight: 700,
@@ -95,12 +112,12 @@ export default function Team() {
                                 Leadership
                             </p>
 
-                            <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 md:gap-12 items-start w-full">
+                            <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-6 lg:gap-12 items-start w-full">
 
                                 {/* Left: portrait */}
-                                <div className="flex flex-col items-center md:items-start gap-4">
+                                <div className="flex flex-col items-center lg:items-start gap-4">
                                     <div
-                                        className="w-[85%] sm:w-2/3 md:w-full mx-auto md:mx-0 relative"
+                                        className="w-full max-w-[280px] sm:max-w-[320px] lg:max-w-none mx-auto lg:mx-0 relative"
                                         style={{
                                             aspectRatio: "1/1",
                                             background: "var(--surface-2)",
@@ -117,7 +134,7 @@ export default function Team() {
                                         />
                                     </div>
 
-                                    <div className="text-center md:text-left">
+                                    <div className="text-center lg:text-left">
                                         <h2
                                             className="font-display"
                                             style={{
@@ -147,7 +164,7 @@ export default function Team() {
                                                 gap: "10px",
                                                 marginTop: "24px",
                                             }}
-                                            className="justify-center md:justify-start"
+                                            className="justify-center lg:justify-start"
                                         >
                                             <a
                                                 href="https://www.linkedin.com/in/anatolykhen/"
@@ -249,7 +266,7 @@ export default function Team() {
 
                                 {/* Right: bio */}
                                 <div
-                                    className="w-full max-w-[720px] mx-auto md:mx-0 px-2 sm:px-0 text-left"
+                                    className="w-full max-w-[720px] mx-auto lg:mx-0 px-2 sm:px-0 text-left"
                                     style={{
                                         display: "flex",
                                         flexDirection: "column",
@@ -258,8 +275,6 @@ export default function Team() {
                                 >
                                     <p
                                         style={{
-                                            paddingLeft: "20px",
-                                            paddingRight: "20px",
                                             color: "var(--text-secondary)",
                                             fontSize: "clamp(15px, 1.5vw, 17px)",
                                             lineHeight: 1.75,
@@ -274,8 +289,6 @@ export default function Team() {
 
                                     <p
                                         style={{
-                                            paddingLeft: "20px",
-                                            paddingRight: "20px",
                                             color: "var(--text-secondary)",
                                             fontSize: "clamp(15px, 1.5vw, 17px)",
                                             lineHeight: 1.75,
@@ -344,103 +357,158 @@ export default function Team() {
 
                     {/* Team Section */}
                     <Section>
-                        <div>
+                        <div style={{ marginBottom: "clamp(56px, 8vw, 80px)" }}>
                             <p
-                                className="text-center md:text-center"
+                                className="text-center"
                                 style={{
                                     fontSize: "12px",
                                     fontWeight: 700,
                                     letterSpacing: "0.12em",
                                     textTransform: "uppercase",
                                     color: "#CC5500",
-                                    marginBottom: "24px",
+                                    marginBottom: "16px",
                                 }}
                             >
                                 The Team
                             </p>
 
-                            <div
+                            <p
+                                className="text-center px-2 sm:px-0"
                                 style={{
-                                    paddingLeft: "clamp(20px, 5vw, 60px)",
-                                    paddingRight: "clamp(20px, 5vw, 60px)",
-                                    display: "grid",
-                                    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-                                    gap: "24px",
-                                    width: "100%",
-                                    maxWidth: "1100px",
-                                    margin: "0 auto",
-                                    justifyItems: "center",
+                                    color: "var(--text-secondary)",
+                                    fontSize: "clamp(15px, 1.5vw, 18px)",
+                                    lineHeight: 1.6,
+                                    maxWidth: "600px",
+                                    margin: "0 auto clamp(48px, 6vw, 64px) auto",
                                 }}
                             >
-                                {teamMembers.map((member, i) => (
-                                    <div
-                                        key={i}
-                                        className="glass reveal-child w-full"
-                                        style={{
-                                            maxWidth: "320px",
-                                            padding: "clamp(24px, 4vw, 32px)",
-                                            borderRadius: "14px",
-                                            border: "1px solid var(--border)",
-                                            display: "flex",
-                                            flexDirection: "column",
-                                            alignItems: "center",
-                                            textAlign: "center",
-                                            transition:
-                                                "transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease",
-                                            animationDelay: `${i * 100}ms`,
-                                        }}
-                                    >
+                                The engineers building the intelligence behind Captus — turning
+                                fragmented project data into early, actionable risk signals.
+                            </p>
+
+                            <div
+                                style={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    gap: "clamp(48px, 6vw, 64px)",
+                                    width: "100%",
+                                    margin: "0 auto",
+                                }}
+                            >
+                                {teamMembers.map((member, i) => {
+                                    const isOdd = i % 2 === 1;
+                                    return (
                                         <div
-                                            style={{
-                                                width: "80px",
-                                                height: "80px",
-                                                borderRadius: "50%",
-                                                background: "rgba(204,85,0,0.07)",
-                                                border: "1px solid rgba(204,85,0,0.2)",
-                                                marginBottom: "20px",
-                                                display: "flex",
-                                                alignItems: "center",
-                                                justifyContent: "center",
-                                                color: "#CC5500",
-                                            }}
+                                            key={i}
+                                            className={`grid grid-cols-1 ${
+                                                isOdd
+                                                    ? "lg:grid-cols-[1.8fr_1.2fr]"
+                                                    : "lg:grid-cols-[1.2fr_1.8fr]"
+                                            } gap-6 lg:gap-16 items-center w-full`}
                                         >
-                                            <svg
-                                                width="28"
-                                                height="28"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                strokeWidth="1.5"
+                                            {/* Image Column */}
+                                            <div
+                                                className={`w-full max-w-[280px] sm:max-w-[320px] lg:max-w-none mx-auto lg:mx-0 relative ${
+                                                    isOdd ? "lg:order-2" : "lg:order-1"
+                                                }`}
+                                                style={{
+                                                    aspectRatio: "4/5",
+                                                    background: "var(--surface-2)",
+                                                    borderRadius: "16px",
+                                                    border: "1px solid var(--border)",
+                                                    overflow: "hidden",
+                                                }}
                                             >
-                                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                                                <circle cx="12" cy="7" r="4" />
-                                            </svg>
+                                                <Image
+                                                    src={member.image}
+                                                    alt={`${member.name} - ${member.role}`}
+                                                    fill
+                                                    style={{ objectFit: "cover" }}
+                                                />
+                                            </div>
+
+                                            {/* Text Column */}
+                                            <div
+                                                className={`w-full flex flex-col gap-4 text-left sm:px-0 ${
+                                                    isOdd ? "lg:order-1" : "lg:order-2"
+                                                }`}
+                                            >
+                                                <div className="text-center lg:text-left">
+                                                    <h3
+                                                        className="font-display"
+                                                        style={{
+                                                            fontSize: "clamp(20px, 2.5vw, 28px)",
+                                                            color: "var(--text-primary)",
+                                                            textTransform: "uppercase",
+                                                            marginBottom: "4px",
+                                                        }}
+                                                    >
+                                                        {member.name}
+                                                    </h3>
+
+                                                    <p
+                                                        style={{
+                                                            color: "#CC5500",
+                                                            fontWeight: 700,
+                                                            fontSize: "13px",
+                                                            textTransform: "uppercase",
+                                                            letterSpacing: "0.08em",
+                                                        }}
+                                                    >
+                                                        {member.role}
+                                                    </p>
+                                                </div>
+
+                                                <p
+                                                    style={{
+                                                        color: "var(--text-secondary)",
+                                                        fontSize: "clamp(15px, 1.5vw, 17px)",
+                                                        lineHeight: 1.75,
+                                                    }}
+                                                >
+                                                    {member.bio}
+                                                </p>
+
+                                                <div className="flex justify-center lg:justify-start">
+                                                    <a
+                                                        href={member.linkedin}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        style={{
+                                                            display: "inline-flex",
+                                                            alignItems: "center",
+                                                            gap: "6px",
+                                                            color: "#CC5500",
+                                                            textDecoration: "none",
+                                                            fontWeight: 700,
+                                                            fontSize: "12px",
+                                                            letterSpacing: "0.08em",
+                                                            marginTop: "8px",
+                                                            transition: "opacity 0.25s ease",
+                                                        }}
+                                                        className="hover:opacity-80"
+                                                    >
+                                                        <svg
+                                                            width="14"
+                                                            height="14"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            strokeWidth="2.5"
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                        >
+                                                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                                            <rect x="2" y="9" width="4" height="12"></rect>
+                                                            <circle cx="4" cy="4" r="2"></circle>
+                                                        </svg>
+                                                        <span>LINKEDIN</span>
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
-
-                                        <h3
-                                            className="font-display whitespace-nowrap"
-                                            style={{
-                                                fontSize: "clamp(14px, 2vw, 16px)",
-                                                color: "var(--text-primary)",
-                                                marginBottom: "6px",
-                                            }}
-                                        >
-                                            {member.name}
-                                        </h3>
-
-                                        <p
-                                            style={{
-                                                color: "#CC5500",
-                                                fontWeight: 700,
-                                                fontSize: "12px",
-                                                textTransform: "uppercase",
-                                                letterSpacing: "0.06em",
-                                            }}
-                                        >
-                                            {member.role}
-                                        </p>
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </div>
                     </Section>
