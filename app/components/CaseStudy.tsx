@@ -40,6 +40,8 @@ export default function CaseStudy() {
                     alt="Construction site"
                     fill
                     style={{ objectFit: "cover", objectPosition: "center 40%" }}
+                    sizes="100vw"
+                    quality={60}
                 />
                 {/* Dark overlay — heavier on the left */}
                 <div style={{

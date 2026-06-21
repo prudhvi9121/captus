@@ -14,7 +14,7 @@ const STATS = [
         sublabel: "Capital deployed across active portfolios",
         isNumeric: false,
         displayText: "$500M+",
-        color: "#CC5500",
+        color: "#C44B00",
         image: "/socialProofImages/socialProof1.png",
         imageCaption: "Captus protects over $500M+ in active construction and development portfolios.",
         icon: (
@@ -31,7 +31,7 @@ const STATS = [
         sublabel: "3.0 University Place Associates",
         isNumeric: false,
         displayText: "$300M",
-        color: "#CC5500",
+        color: "#C44B00",
         image: "/new/socialproof2.avif",
         imageCaption: "3.0 University Place — a $300M life sciences building for University Place Associates.",
         icon: (
@@ -48,7 +48,7 @@ const STATS = [
         sublabel: "5.0 University Place Associates",
         isNumeric: false,
         displayText: "$40M",
-        color: "#CC5500",
+        color: "#C44B00",
         image: "/new/socialproof3.avif",
         imageCaption: "5.0 University Place — a $40M precast concrete parking garage for University Place Associates.",
         icon: (
@@ -139,14 +139,6 @@ export default function SocialProof() {
     useEffect(() => {
         const el = sectionRef.current;
         if (!el) return;
-
-        // Synchronous check if element is already in viewport on mount
-        const rect = el.getBoundingClientRect();
-        const inViewport = rect.top < (window.innerHeight || document.documentElement.clientHeight) && rect.bottom > 0;
-        if (inViewport) {
-            setVisible(true);
-            return;
-        }
 
         const obs = new IntersectionObserver(
             ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
@@ -262,6 +254,7 @@ export default function SocialProof() {
                                                             width={48}
                                                             height={48}
                                                             className={styles.quoteAvatarImage}
+                                                            quality={60}
                                                         />
                                                     </div>
                                                     <div className={styles.quoteAuthorInfo}>
@@ -277,8 +270,9 @@ export default function SocialProof() {
                                                     alt={stat.label}
                                                     fill
                                                     style={{ objectFit: "cover" }}
-                                                    sizes="(max-width: 1024px) 100vw, 50vw"
-                                                    priority={idx === 0}
+                                                    sizes="(max-width: 1024px) 90vw, (max-width: 1440px) 50vw, 680px"
+                                                    priority={false}
+                                                    quality={60}
                                                 />
 
                                                 {/* Bottom shadow overlay for legibility */}

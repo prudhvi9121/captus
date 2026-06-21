@@ -25,9 +25,9 @@
 }
 
 :root {
-  --orange: #CC5500;
-  --orange-light: #CC5500;
-  --orange-dark: #A34400;
+  --orange: #C44B00;
+  --orange-light: #C44B00;
+  --orange-dark: #9E3C00;
   --bg: rgb(246, 243, 238);
   --surface-1: #F4F4F2;
   --surface-2: #EBEBEB;
@@ -85,8 +85,8 @@ h6,
 }
 
 ::selection {
-  background: rgba(204, 85, 0, 0.15);
-  color: #CC5500;
+  background: rgba(196, 75, 0, 0.15);
+  color: var(--orange);
 }
 
 /* Scrollbar */
@@ -127,7 +127,7 @@ h6,
 
 /* ─── Gradient text ─── */
 .gradient-text {
-  background: linear-gradient(135deg, #111827 0%, #CC5500 50%, #CC5500 100%);
+  background: linear-gradient(135deg, #111827 0%, var(--orange) 50%, var(--orange) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -135,7 +135,7 @@ h6,
 
 /* ─── Buttons ─── */
 .btn-primary {
-  background: #CC5500;
+  background: var(--orange);
   color: #fff;
   border: none;
   border-radius: 9999px;
@@ -154,7 +154,7 @@ h6,
 
 /* Enterprise sharp-corner button */
 .btn-enterprise {
-  background: #CC5500;
+  background: var(--orange);
   color: #fff;
   border: none;
   border-radius: 3px;
@@ -241,7 +241,7 @@ h6,
   font-size: 10px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #CC5500;
+  color: var(--orange);
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -264,7 +264,7 @@ h6,
   display: inline-block;
   width: 20px;
   height: 1px;
-  background: #CC5500;
+  background: var(--orange);
 }
 
 /* ─── Split layouts ─── */
@@ -309,8 +309,8 @@ h6,
 
 .nav-enterprise-link:hover,
 .nav-enterprise-link.active {
-  color: #CC5500;
-  border-bottom-color: #CC5500;
+  color: var(--orange);
+  border-bottom-color: var(--orange);
 }
 
 .nav-enterprise-link-white {
@@ -326,8 +326,8 @@ h6,
 }
 
 .nav-enterprise-link-white:hover {
-  color: #CC5500;
-  border-bottom-color: #CC5500;
+  color: var(--orange);
+  border-bottom-color: var(--orange);
 }
 
 /* ─── Scroll indicator ─── */
@@ -395,7 +395,7 @@ h6,
 
 /* Subtle stat number shimmer */
 .stat-value {
-  background: linear-gradient(90deg, #CC5500 0%, #CC5500 50%, #CC5500 100%);
+  background: linear-gradient(90deg, var(--orange) 0%, var(--orange) 50%, var(--orange) 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -423,7 +423,7 @@ h6,
   display: block;
   width: 48px;
   height: 3px;
-  background: #CC5500;
+  background: var(--orange);
   margin-bottom: 24px;
 }
 

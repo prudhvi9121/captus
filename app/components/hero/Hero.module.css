@@ -106,10 +106,7 @@
 }
 
 .highlightText {
-    background: linear-gradient(90deg, #CC5500 0%, #A34400 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--orange);
 }
 
 .bodyText {

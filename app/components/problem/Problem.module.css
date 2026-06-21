@@ -58,7 +58,7 @@
     font-size: 12px;
     letter-spacing: 0.26em;
     text-transform: uppercase;
-    color: #CC5500;
+    color: var(--orange);
     margin-bottom: 20px;
     font-weight: 700;
 }
@@ -67,7 +67,7 @@
     display: inline-block;
     width: 20px;
     height: 1px;
-    background: #CC5500;
+    background: var(--orange);
 }
 
 .headline {
@@ -85,7 +85,7 @@
 }
 
 .headlineHighlight {
-    color: #CC5500;
+    color: var(--orange);
 }
 
 .subcopy {
@@ -264,7 +264,7 @@
 .statValue {
     font-family: 'Good Times', sans-serif;
     font-size: clamp(14px, 1.5vw, 20px);
-    color: #CC5500;
+    color: var(--orange);
     line-height: 1;
     margin-bottom: 2px;
 }
@@ -272,7 +272,7 @@
 .statLabel {
     font-family: Nexa, sans-serif;
     font-size: 9.5px;
-    color: rgba(0,0,0,0.45);
+    color: rgba(0, 0, 0, 0.6);
     letter-spacing: 0.04em;
     font-weight: 300;
 }
@@ -297,8 +297,19 @@
 }
 
 .learnMoreButton:hover {
-    border-color: #CC5500;
-    color: #CC5500;
+    border-color: var(--orange);
+    color: var(--orange);
+}
+
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
 
 .hoverIndicator {
@@ -333,7 +344,7 @@
 
 .dotActive {
     width: 28px;
-    background: #CC5500;
+    background: var(--orange);
 }
 
 .dotInactive {

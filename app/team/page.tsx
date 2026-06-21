@@ -131,6 +131,8 @@ export default function Team() {
                                             alt="Anatoly Khen - Founder & CEO"
                                             fill
                                             style={{ objectFit: "cover" }}
+                                            sizes="(max-width: 768px) 320px, 320px"
+                                            quality={60}
                                         />
                                     </div>
 
@@ -424,6 +426,8 @@ export default function Team() {
                                                     alt={`${member.name} - ${member.role}`}
                                                     fill
                                                     style={{ objectFit: "cover" }}
+                                                    sizes="(max-width: 768px) 320px, 320px"
+                                                    quality={60}
                                                 />
                                             </div>
 

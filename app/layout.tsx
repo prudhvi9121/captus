@@ -21,6 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/App_icon.png" />
+        <link rel="preload" href="/fonts/Good Times Rg.otf" as="font" type="font/otf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/Nexa Light.otf" as="font" type="font/otf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/Nexa Bold.otf" as="font" type="font/otf" crossOrigin="anonymous" />
       </head>
       <body className="antialiased font-sans">{children}</body>
     </html>

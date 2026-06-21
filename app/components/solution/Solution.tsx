@@ -138,8 +138,9 @@ export default function Solution() {
                                 alt="Captus Dashboard View"
                                 width={1670}
                                 height={912}
-                                priority
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                                 className={styles.mockupImage}
+                                quality={60}
                             />
                         </div>
                     </div>

@@ -12,14 +12,6 @@ function useInView(threshold = 0.1) {
         const el = ref.current;
         if (!el) return;
 
-        // Synchronous check if element is already in viewport on mount
-        const rect = el.getBoundingClientRect();
-        const inViewport = rect.top < (window.innerHeight || document.documentElement.clientHeight) && rect.bottom > 0;
-        if (inViewport) {
-            setVisible(true);
-            return;
-        }
-
         const obs = new IntersectionObserver(
             ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
             { threshold }
@@ -93,9 +85,17 @@ export default function Problem() {
 
     useEffect(() => {
         if (!isTransitioning) {
-            // Force a reflow so browser applies jump instantly without animation
-            const reflow = document.body.offsetHeight;
-            setIsTransitioning(true);
+            let rAFId1: number;
+            let rAFId2: number;
+            rAFId1 = requestAnimationFrame(() => {
+                rAFId2 = requestAnimationFrame(() => {
+                    setIsTransitioning(true);
+                });
+            });
+            return () => {
+                cancelAnimationFrame(rAFId1);
+                if (rAFId2) cancelAnimationFrame(rAFId2);
+            };
         }
     }, [isTransitioning]);
 
@@ -180,11 +180,12 @@ export default function Problem() {
                                             src={panel.image}
                                             alt={panel.category}
                                             fill
-                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 420px"
+                                            sizes="(max-width: 480px) 280px, (max-width: 768px) 340px, (max-width: 1024px) 340px, (max-width: 1440px) 400px, 500px"
                                             className={`${styles.problemPanelImage} ${isActive ? styles.problemPanelImageActive : styles.problemPanelImageInactive}`}
                                             style={{
                                                 transition: isTransitioning ? undefined : "none",
                                             }}
+                                            quality={60}
                                         />
 
                                         {/* Category Badge on Top-Left of Image */}
@@ -220,9 +221,11 @@ export default function Problem() {
                                                 href="/book-demo"
                                                 className={styles.learnMoreLink}
                                                 onClick={e => e.stopPropagation()}
+                                                aria-label={`Learn more about ${panel.category}`}
                                             >
                                                 <span className={styles.learnMoreButton}>
                                                     Learn More
+                                                    <span className={styles.srOnly}> about {panel.category.toLowerCase()}</span>
                                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
                                                         <path d="M2 5h6M6 3l2 2-2 2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                                                     </svg>
@@ -249,6 +252,7 @@ export default function Problem() {
                         key={i}
                         onClick={() => handlePanelClick(i + 3)}
                         className={`${styles.dot} ${i === (vActive % 3) ? styles.dotActive : styles.dotInactive}`}
+                        aria-label={`Go to panel ${i + 1}`}
                     />
                 ))}
             </div>

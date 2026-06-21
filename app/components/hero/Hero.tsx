@@ -12,14 +12,6 @@ function useInView(threshold = 0.1) {
         const el = ref.current;
         if (!el) return;
 
-        // Synchronous check if element is already in viewport on mount
-        const rect = el.getBoundingClientRect();
-        const inViewport = rect.top < (window.innerHeight || document.documentElement.clientHeight) && rect.bottom > 0;
-        if (inViewport) {
-            setVisible(true);
-            return;
-        }
-
         const obs = new IntersectionObserver(
             ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
             { threshold }
@@ -41,9 +33,10 @@ export default function Hero() {
                     src="/new/hero.avif"
                     alt="Construction site"
                     fill
+                    sizes="100vw"
                     className={styles.bgImage}
                     priority
-                    quality={90}
+                    quality={60}
                 />
                 {/* Dark-left gradient */}
                 <div className={styles.bgGradientLeft} />

@@ -32,8 +32,9 @@ export default function CTA() {
                     src="/new/book-demo.avif"
                     alt="Construction site"
                     fill
+                    sizes="100vw"
                     className={styles.bgImage}
-                    priority
+                    quality={60}
                 />
                 {/* Heavy dark overlay */}
                 <div className={styles.darkOverlay} />

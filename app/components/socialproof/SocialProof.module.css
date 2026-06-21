@@ -49,7 +49,7 @@
 }
 
 .highlightText {
-    color: #CC5500;
+    color: var(--orange);
 }
 
 /* --- Interactive Tabs (Left Column) --- */
@@ -67,8 +67,8 @@
 }
 
 .tabCardActive {
-    border: 2px solid #CC5500 !important;
-    box-shadow: 0 10px 30px rgba(204, 85, 0, 0.06);
+    border: 2px solid var(--orange) !important;
+    box-shadow: 0 10px 30px rgba(196, 75, 0, 0.06);
 }
 
 .tabCardInactive {
@@ -156,12 +156,12 @@
 }
 
 .tabSublabelInactive {
-    color: rgba(0, 0, 0, 0.4);
+    color: rgba(0, 0, 0, 0.58);
 }
 
 .progressBar {
     height: 3px;
-    background: linear-gradient(90deg, var(--stat-color), #CC5500);
+    background: linear-gradient(90deg, var(--stat-color), var(--orange));
     width: 0%;
     position: absolute;
     bottom: 12px;
@@ -295,7 +295,7 @@
     font-family: Nexa, sans-serif;
     font-size: 11px;
     font-weight: 700;
-    color: #CC5500;
+    color: var(--orange);
     letter-spacing: 0.18em;
     text-transform: uppercase;
     margin-bottom: 8px;
@@ -304,7 +304,7 @@
 .quoteEyebrowLine {
     width: 36px;
     height: 2px;
-    background: #CC5500;
+    background: var(--orange);
     margin-bottom: clamp(16px, 3vw, 32px);
 }
 

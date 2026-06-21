@@ -59,7 +59,7 @@ export default function OwnerValue() {
                     fill
                     style={{ objectFit: "cover", objectPosition: "center 40%" }}
                     sizes="100vw"
-                    priority
+                    quality={60}
                 />
                 {/* Heavy dark overlay for contrast */}
                 <div className={styles.bgOverlay} />
@@ -72,10 +72,10 @@ export default function OwnerValue() {
                 <div className={styles.leftCol}>
                     <div className={styles.carouselContainer}>
                         <div
-                            className={styles.carouselTrack}
-                            style={{
-                                "--current-slide": currentSlide,
-                            } as React.CSSProperties}
+                             className={styles.carouselTrack}
+                             style={{
+                                 "--current-slide": currentSlide,
+                             } as React.CSSProperties}
                         >
                             {slides.map((slide, idx) => (
                                 <div key={idx} className={styles.slide}>
@@ -85,6 +85,7 @@ export default function OwnerValue() {
                                         fill
                                         sizes="(max-width: 768px) 100vw, 50vw"
                                         style={{ objectFit: "cover", objectPosition: "center top" }}
+                                        quality={60}
                                     />
                                 </div>
                             ))}
