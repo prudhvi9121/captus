@@ -132,7 +132,7 @@ export default function Investors() {
                 backgroundColor: "var(--bg)",
             }}>
                 <div 
-                    className="w-full max-w-[1100px] grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center"
+                    className="w-full max-w-[1100px] grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-start"
                 >
                     {/* Left Column */}
                     <div style={{ display: "flex", flexDirection: "column" }}>
