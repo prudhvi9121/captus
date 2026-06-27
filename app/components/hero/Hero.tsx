@@ -30,7 +30,7 @@ export default function Hero() {
             {/* ── Background ── */}
             <div className={styles.bgContainer}>
                 <Image
-                    src="/new/hero.avif"
+                    src="/new/heroPageImage.jpeg"
                     alt="Construction site"
                     fill
                     sizes="100vw"
