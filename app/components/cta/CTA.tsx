@@ -29,7 +29,7 @@ export default function CTA() {
             {/* Full-bleed background */}
             <div className={styles.bgWrapper}>
                 <Image
-                    src="/new/book-demo.avif"
+                    src="/new/CTA_Image.jpeg"
                     alt="Construction site"
                     fill
                     sizes="100vw"
