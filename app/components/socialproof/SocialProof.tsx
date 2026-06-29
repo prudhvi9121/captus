@@ -32,7 +32,7 @@ const STATS = [
         isNumeric: false,
         displayText: "$300M",
         color: "#C44B00",
-        image: "/new/socialproof2.avif",
+        image: "/new/socialproof3.avif",
         imageCaption: "3.0 University Place — a $300M life sciences building for University Place Associates.",
         icon: (
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -49,7 +49,7 @@ const STATS = [
         isNumeric: false,
         displayText: "$40M",
         color: "#C44B00",
-        image: "/new/socialproof3.avif",
+        image: "/new/socialproof2.avif",
         imageCaption: "5.0 University Place — a $40M precast concrete parking garage for University Place Associates.",
         icon: (
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

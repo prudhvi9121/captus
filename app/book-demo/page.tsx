@@ -209,12 +209,11 @@ export default function BookDemo() {
                         </div>
 
                         <h1 style={{
-                            fontFamily: '"Courier New", Courier, monospace',
-                            fontSize: "clamp(36px, 5.5vw, 60px)",
+                            fontSize: "clamp(28px, 4vw, 48px)",
                             fontWeight: "normal",
                             color: "#111111",
                             lineHeight: 1.1,
-                            letterSpacing: "-0.02em",
+                            letterSpacing: "-0.01em",
                             marginBottom: "24px"
                         }}>
                             Book a 30-minute call

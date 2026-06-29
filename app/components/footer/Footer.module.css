@@ -73,6 +73,30 @@
     font-weight: 300;
 }
 
+/* LinkedIn Button */
+.linkedinBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #CC5500;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 9999px;
+    border: 1px solid #CC5500;
+    transition: all 0.25s ease;
+    letter-spacing: 0.03em;
+}
+
+.linkedinBtn:hover {
+    background: #A34400;
+    border-color: #A34400;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(204, 85, 0, 0.3);
+}
+
 /* Links Columns */
 .linksGrid {
     display: grid;
@@ -202,4 +226,23 @@
 .logoLink {
     text-decoration: none;
     outline: none;
+}
+
+/* Bottom bar links (Privacy & Terms) */
+.bottomLinks {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.bottomLink {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.bottomLink:hover {
+    color: #CC5500;
 }

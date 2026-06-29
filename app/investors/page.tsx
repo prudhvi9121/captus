@@ -142,12 +142,11 @@ export default function Investors() {
                         </div>
 
                         <h1 style={{
-                            fontFamily: '"Courier New", Courier, monospace',
-                            fontSize: "clamp(36px, 6vw, 64px)",
+                            fontSize: "clamp(28px, 4vw, 48px)",
                             fontWeight: "normal",
                             color: "#111111",
                             lineHeight: 1.1,
-                            letterSpacing: "-0.02em",
+                            letterSpacing: "-0.01em",
                             marginBottom: "24px"
                         }}>
                             Thank you.
@@ -269,9 +268,8 @@ export default function Investors() {
                             </div>
 
                             <h2 style={{
-                                fontFamily: '"Courier New", Courier, monospace',
                                 fontSize: "clamp(22px, 3.5vw, 28px)",
-                                fontWeight: "bold",
+                                fontWeight: "normal",
                                 color: "#111111",
                                 marginBottom: "16px"
                             }}>

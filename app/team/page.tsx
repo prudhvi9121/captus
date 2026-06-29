@@ -516,6 +516,194 @@ export default function Team() {
                             </div>
                         </div>
                     </Section>
+
+                    {/* ── Careers & Investors Cards ── */}
+                    <div
+                        style={{
+                            marginTop: "clamp(48px, 7vw, 80px)",
+                            display: "grid",
+                            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                            gap: "24px",
+                            paddingBottom: "8px",
+                        }}
+                    >
+                        {/* Careers Card */}
+                        <div
+                            style={{
+                                background: "var(--surface-1, #fff)",
+                                border: "1px solid var(--border, #e8e0d8)",
+                                borderRadius: "16px",
+                                padding: "clamp(28px, 4vw, 40px)",
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "16px",
+                            }}
+                        >
+                            <p
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "10px",
+                                    fontSize: "11px",
+                                    fontWeight: 700,
+                                    letterSpacing: "0.12em",
+                                    textTransform: "uppercase",
+                                    color: "#CC5500",
+                                    margin: 0,
+                                }}
+                            >
+                                <span
+                                    style={{
+                                        display: "inline-block",
+                                        width: "28px",
+                                        height: "2px",
+                                        background: "#CC5500",
+                                        borderRadius: "2px",
+                                    }}
+                                />
+                                Careers
+                            </p>
+
+                            <h2
+                                className="font-display"
+                                style={{
+                                    fontSize: "clamp(22px, 3vw, 32px)",
+                                    color: "var(--text-primary)",
+                                    margin: 0,
+                                    lineHeight: 1.15,
+                                }}
+                            >
+                                Build with us
+                            </h2>
+
+                            <p
+                                style={{
+                                    color: "var(--text-secondary)",
+                                    fontSize: "clamp(14px, 1.4vw, 16px)",
+                                    lineHeight: 1.65,
+                                    margin: 0,
+                                    flex: 1,
+                                }}
+                            >
+                                We&apos;re a small team taking on a problem the construction
+                                industry has lived with for decades. If you want real ownership
+                                and work that ships to real projects, let&apos;s talk.
+                            </p>
+
+                            <a
+                                href="/careers"
+                                style={{
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    gap: "6px",
+                                    color: "#CC5500",
+                                    textDecoration: "none",
+                                    fontWeight: 700,
+                                    fontSize: "12px",
+                                    letterSpacing: "0.1em",
+                                    textTransform: "uppercase",
+                                    marginTop: "8px",
+                                    transition: "opacity 0.2s ease",
+                                }}
+                                className="hover:opacity-70"
+                            >
+                                See Open Roles
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
+                                </svg>
+                            </a>
+                        </div>
+
+                        {/* Investors Card */}
+                        <div
+                            style={{
+                                background: "var(--surface-1, #fff)",
+                                border: "1px solid var(--border, #e8e0d8)",
+                                borderRadius: "16px",
+                                padding: "clamp(28px, 4vw, 40px)",
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "16px",
+                            }}
+                        >
+                            <p
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "10px",
+                                    fontSize: "11px",
+                                    fontWeight: 700,
+                                    letterSpacing: "0.12em",
+                                    textTransform: "uppercase",
+                                    color: "#CC5500",
+                                    margin: 0,
+                                }}
+                            >
+                                <span
+                                    style={{
+                                        display: "inline-block",
+                                        width: "28px",
+                                        height: "2px",
+                                        background: "#CC5500",
+                                        borderRadius: "2px",
+                                    }}
+                                />
+                                Investors
+                            </p>
+
+                            <h2
+                                className="font-display"
+                                style={{
+                                    fontSize: "clamp(22px, 3vw, 32px)",
+                                    color: "var(--text-primary)",
+                                    margin: 0,
+                                    lineHeight: 1.15,
+                                }}
+                            >
+                                Backed to build
+                            </h2>
+
+                            <p
+                                style={{
+                                    color: "var(--text-secondary)",
+                                    fontSize: "clamp(14px, 1.4vw, 16px)",
+                                    lineHeight: 1.65,
+                                    margin: 0,
+                                    flex: 1,
+                                }}
+                            >
+                                Our pre-seed round was oversubscribed by partners who bet
+                                on early visibility into capital risk. See what we&apos;re building next
+                                and hear from us first.
+                            </p>
+
+                            <a
+                                href="/investors"
+                                style={{
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    gap: "6px",
+                                    color: "#CC5500",
+                                    textDecoration: "none",
+                                    fontWeight: 700,
+                                    fontSize: "12px",
+                                    letterSpacing: "0.1em",
+                                    textTransform: "uppercase",
+                                    marginTop: "8px",
+                                    transition: "opacity 0.2s ease",
+                                }}
+                                className="hover:opacity-70"
+                            >
+                                Read the Announcement
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
             </main>
 
