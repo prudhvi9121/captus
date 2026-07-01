@@ -54,44 +54,48 @@ export default function Hero() {
                 <div className={styles.leftCol}>
                     {/* Headline */}
                     <h1 className={styles.headline}>
-                        <span style={{ display: "block" }}>Identify Financial</span>
-                        <span style={{ display: "block" }}>&amp; Operational Risk</span>
+                        <span style={{ display: "block" }}>Deliver every project</span>
 
                         {/* Highlighted line */}
                         <span style={{ display: "block", position: "relative", paddingBottom: "10px", marginTop: "2px" }}>
                             {/* Animated underline */}
                             <span className={styles.underline} />
                             <span className={styles.highlightText}>
-                                Before It Materializes.
+                                on time
+                            </span>
+                            {" "}and{" "}
+                            <span className={styles.highlightText}>
+                                on budget
                             </span>
                         </span>
                     </h1>
 
                     {/* Body text */}
                     <p className={styles.bodyText}>
-                        Captus connects fragmented project data to surface financial and
-                        operational conflicts before they become costly problems. Protect
-                        your capital with AI-powered early warning intelligence.
+                        Captus is an AI early-warning system for commercial construction. It
+                        surfaces cost, schedule, and labor risk across your projects{" "}
+                        <span style={{ color: "var(--orange)" }}>before it becomes a problem</span>,
+                        so owners and developers can act in time.
                     </p>
 
                     {/* CTA Actions */}
                     <div className={styles.ctaContainer}>
                         <Link href="/book-demo" style={{ textDecoration: "none" }} className={styles.ctaLink}>
                             <span className={`btn-enterprise ${styles.ctaBtn}`}>
-                                Schedule a Demo
+                                Book a demo
                             </span>
                         </Link>
                         <a href="#how-it-works" className={`btn-enterprise-ghost ${styles.ctaBtnGhost}`}>
-                            See How It Works
+                            See how it works
                         </a>
                     </div>
 
                     {/* Trusted Proof */}
                     <div className={styles.trustedDivider} />
                     <div className={styles.trustedContainer}>
-                        <span className={styles.trustedLabel}>TRUSTED ON</span>
+                        <span className={styles.trustedLabel}>MONITORING RISK ACROSS</span>
                         <span className={styles.trustedValue}>$500M+</span>
-                        <span className={styles.trustedSub}>in active development</span>
+                        <span className={styles.trustedSub}>in active capital projects</span>
                     </div>
                 </div>
 

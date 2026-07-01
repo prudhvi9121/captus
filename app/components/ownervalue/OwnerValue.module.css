@@ -183,7 +183,7 @@
 }
 
 .bodyText {
-    font-family: Nexa, sans-serif;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
     color: rgba(255,255,255,0.7);
     font-size: clamp(14px, 1.2vw, 16px);
     line-height: 1.75;
@@ -237,7 +237,7 @@
 }
 
 .featureDesc {
-    font-family: Nexa, sans-serif;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 13px;
     color: rgba(255,255,255,0.55);
     line-height: 1.6;
@@ -293,7 +293,7 @@
 }
 
 .caseStudyText {
-    font-family: Nexa, sans-serif;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 13px;
     color: rgba(255,255,255,0.5);
     line-height: 1.65;

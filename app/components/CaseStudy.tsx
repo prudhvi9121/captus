@@ -111,7 +111,7 @@ export default function CaseStudy() {
 
                     <p
                         style={{
-                            fontFamily: "Nexa, sans-serif",
+                            fontFamily: "IBM Plex Mono, ui-monospace, monospace",
                             color: "rgba(255,255,255,0.65)",
                             fontSize: "clamp(14px, 1.4vw, 17px)",
                             lineHeight: 1.75,
@@ -169,7 +169,7 @@ export default function CaseStudy() {
 
                     <p
                         style={{
-                            fontFamily: "Nexa, sans-serif",
+                            fontFamily: "IBM Plex Mono, ui-monospace, monospace",
                             color: "rgba(255,255,255,0.5)",
                             fontSize: "14px",
                             lineHeight: 1.7,

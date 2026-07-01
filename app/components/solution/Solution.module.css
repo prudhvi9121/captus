@@ -70,7 +70,7 @@
 }
 
 .subcopy {
-    font-family: Nexa, sans-serif;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: clamp(13px, 1.1vw, 16px);
     color: rgba(255, 255, 255, 0.4);
     max-width: 460px;
@@ -156,7 +156,7 @@
 }
 
 .cardDesc {
-    font-family: Nexa, sans-serif;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: clamp(13px, 1vw, 14.5px);
     color: rgba(255, 255, 255, 0.45);
     line-height: 1.8;
@@ -179,7 +179,7 @@
 }
 
 .cardStatLabel {
-    font-family: Nexa, sans-serif;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 10.5px;
     color: rgba(255, 255, 255, 0.25);
     letter-spacing: 0.06em;
@@ -211,7 +211,7 @@
 }
 
 .mockupEyebrow {
-    font-family: Nexa, sans-serif;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 11px;
     font-weight: 700;
     color: #CC5500;
@@ -223,11 +223,13 @@
 
 .mockupTitle {
     font-family: 'Good Times', sans-serif;
-    font-size: clamp(20px, 2.2vw, 28px);
+    font-size: clamp(20px, 2.5vw, 34px);
     color: #FFFFFF;
     margin: 0;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .browserCard {
@@ -281,7 +283,7 @@
 }
 
 .chromeUrlText {
-    font-family: Nexa, sans-serif;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 9px;
     color: var(--text-secondary);
     letter-spacing: 0.02em;

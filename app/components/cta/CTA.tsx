@@ -53,32 +53,34 @@ export default function CTA() {
                 }}
             >
                 <span className="section-tag-light">
-                    Get Started
+                    <span style={{ display: "inline-block", width: "20px", height: "1px", background: "rgba(255,255,255,0.5)", marginRight: "8px", verticalAlign: "middle" }} />
+                    Protect your capital
                 </span>
 
                 <h2 className={styles.headline}>
-                    EVALUATE OUR
+                    See the risk{" "}
+                    <span className={styles.highlightText}>before</span>
                     <br />
-                    <span className={styles.highlightText}>PLATFORM</span>
+                    it costs you
                 </h2>
 
                 <p className={styles.subcopy}>
-                    Qualified owners and developers can request a private demo to evaluate how
-                    predictive risk intelligence can strengthen portfolio performance.
+                    Bring your project data into one clear risk picture. We will show
+                    you how Captus surfaces financial and operational risk on your own portfolio.
                 </p>
 
                 <div className={styles.buttonsRow}>
                     <Link href="/book-demo" style={{ textDecoration: "none" }} className={styles.buttonLink}>
                         <span className={`btn-enterprise ${styles.btnOverride}`}>
-                            Book a Demo
+                            Book a demo
                         </span>
                     </Link>
-                    <a
-                        href="mailto:info@captus.ai"
+                    <Link
+                        href="/book-demo"
                         className={`btn-enterprise-ghost ${styles.btnOverride}`}
                     >
-                        Contact Us
-                    </a>
+                        Join the waitlist
+                    </Link>
                 </div>
             </div>
         </section>

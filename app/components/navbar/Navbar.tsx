@@ -32,10 +32,9 @@ export default function Navbar() {
     }, [isMenuOpen]);
 
     const navLinks = [
-        { label: "Home", href: "/" },
-        { label: "Team", href: "/team" },
-        { label: "Careers", href: "/careers" },
-        { label: "Investors", href: "/investors" },
+        { label: "Platform", href: "/#platform" },
+        { label: "How It Works", href: "/#how-it-works" },
+        { label: "About", href: "/team" },
     ];
 
     const isSolidNavbar = scrolled || isMenuOpen || pathname !== "/";

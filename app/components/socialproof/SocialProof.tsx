@@ -186,7 +186,7 @@ export default function SocialProof() {
                     </h2>
                     <p
                         style={{
-                            fontFamily: "Nexa, sans-serif",
+                            fontFamily: "IBM Plex Mono, ui-monospace, monospace",
                             fontSize: "clamp(14px, 1.4vw, 16.5px)",
                             color: "var(--text-secondary)",
                             lineHeight: 1.6,

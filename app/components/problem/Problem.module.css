@@ -1,53 +1,35 @@
-/* --- Sections and containers --- */
-.noTransition,
-.noTransition * {
-    transition: none !important;
-}
-
 .section {
+    background: var(--bg);
     position: relative;
-    background-color: rgb(246, 243, 238);
-    background-image: 
-        linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-        linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.012) 1px, transparent 1px),
-        linear-gradient(rgba(0, 0, 0, 0.012) 1px, transparent 1px);
-    background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px;
-    padding-bottom: clamp(80px, 10vw, 140px);
+    z-index: 10;
+    padding-bottom: clamp(72px, 9vw, 120px);
 }
 
 .topSeparator {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border) 30%, var(--border) 70%, transparent);
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(204,85,0,0.25) 40%, rgba(204,85,0,0.25) 60%, transparent);
 }
 
 .backgroundTexture {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(204,85,0,0.04) 0%, transparent 70%);
+    background-image:
+        radial-gradient(circle at 10% 80%, rgba(196, 75, 0, 0.035) 0%, transparent 50%),
+        radial-gradient(circle at 90% 10%, rgba(196, 75, 0, 0.025) 0%, transparent 40%);
     pointer-events: none;
 }
 
+/* ── Header ── */
 .headerContainer {
-    max-width: 1440px;
+    max-width: var(--max-w);
     margin: 0 auto;
-    padding: clamp(64px, 9vw, 120px) clamp(24px, 6vw, 96px) clamp(56px, 7vw, 90px);
-}
-
-.headerFlex {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 32px;
-}
-
-.headlineBlock {
-    max-width: none;
+    padding: clamp(64px, 9vw, 110px) clamp(24px, 6vw, 96px) clamp(48px, 5vw, 72px);
+    position: relative;
+    z-index: 1;
 }
 
 .eyebrow {
@@ -55,385 +37,147 @@
     align-items: center;
     gap: 8px;
     font-family: 'Good Times', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.26em;
+    font-size: 10px;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--orange);
     margin-bottom: 20px;
-    font-weight: 700;
 }
 
-.eyebrowLine {
+.eyebrow::before {
+    content: '';
     display: inline-block;
     width: 20px;
     height: 1px;
     background: var(--orange);
+    flex-shrink: 0;
 }
 
 .headline {
     font-family: 'Good Times', sans-serif;
-    font-size: clamp(22px, 2.8vw, 46px);
-    line-height: 1.0;
-    letter-spacing: 0.01em;
-    color: #111111;
+    font-size: clamp(28px, 3.8vw, 54px);
+    color: var(--text-primary);
+    line-height: 1.1;
     margin: 0;
-    transition: all 0.85s cubic-bezier(0.16,1,0.3,1) 0.1s;
-}
-
-.headlineBlockSpan {
-    display: block;
+    letter-spacing: -0.01em;
 }
 
 .headlineHighlight {
     color: var(--orange);
 }
 
-.subcopy {
-    font-family: Nexa, sans-serif;
-    font-size: clamp(13px, 1.1vw, 16px);
-    color: rgba(0, 0, 0, 0.749);
-    line-height: 1.8;
-    font-weight: 500;
-    max-width: 380px;
-    transition: all 0.8s cubic-bezier(0.16,1,0.3,1) 0.25s;
-}
-
-/* --- Panel Grid and items --- */
-.trackWrapper {
-    max-width: 1440px;
+/* ── Cards Grid ── */
+.cardsGrid {
+    max-width: var(--max-w);
     margin: 0 auto;
-    width: 100%;
+    padding: 0 clamp(24px, 6vw, 96px) 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(16px, 2vw, 24px);
     position: relative;
-    z-index: 10;
+    z-index: 1;
 }
 
-.clipContainer {
-    margin-left: clamp(24px, 6vw, 96px);
-    margin-right: clamp(24px, 6vw, 96px);
-    overflow: hidden;
-    position: relative;
-    padding: 40px 0;
-    /* Soft gradient fade at edges instead of a hard clip */
-    -webkit-mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        black 7%,
-        black 93%,
-        transparent 100%
-    );
-    mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        black 7%,
-        black 93%,
-        transparent 100%
-    );
+@media (max-width: 900px) {
+    .cardsGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 }
 
-.problemGrid {
-    position: relative;
-    left: 50%;
-    display: flex;
-    flex-wrap: nowrap;
-    gap: var(--card-gap);
-    margin: 0;
-    padding: 0;
-    --card-width: clamp(350px, 34vw, 500px);
-    --card-gap: 24px;
+@media (min-width: 600px) and (max-width: 900px) {
+    .cardsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.problemPanel {
-    position: relative;
-    flex: 0 0 var(--card-width);
-    width: var(--card-width);
-    height: clamp(380px, 36vw, 440px);
-    border-radius: 20px;
-    background-color: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-    cursor: pointer;
+/* ── Single card ── */
+.card {
     display: flex;
     flex-direction: column;
-    transition: opacity 0.8s ease var(--panel-delay), transform 0.8s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease, border-color 0.3s ease;
-    transform: translateZ(0);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
 }
 
-.problemPanelInactive {
-    --panel-scale: 0.95;
-    z-index: 1;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.03);
-    opacity: 0.85;
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(196, 75, 0, 0.08);
+    border-color: rgba(196, 75, 0, 0.3);
 }
 
-.problemPanelActive {
-    --panel-scale: 1.05;
-    z-index: 5;
-    box-shadow: 0 20px 48px rgba(0,0,0,0.08);
-    opacity: 1;
-    border-color: rgba(204, 85, 0, 0.18);
-}
-
+/* ── Image area ── */
 .imageContainer {
     position: relative;
-    width: 100%;
-    height: 46%;
+    aspect-ratio: 4 / 3;
     overflow: hidden;
 }
 
-.problemPanelImage {
+.cardImage {
     object-fit: cover;
-    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.problemPanelImageActive {
-    transform: scale(1.08);
-    filter: brightness(1.0) saturate(1.05);
+.card:hover .cardImage {
+    transform: scale(1.04);
 }
 
-.problemPanelImageInactive {
-    transform: scale(1.0);
-    filter: brightness(0.92) saturate(0.95);
-}
-
-.categoryBadge {
+.imageOverlay {
     position: absolute;
-    top: 18px;
-    left: 18px;
-    z-index: 2;
-    background: rgba(17, 17, 17, 0.72);
-    color: #FFFFFF;
-    padding: 6px 14px;
-    border-radius: 9999px;
-    font-family: 'Good Times', sans-serif;
-    font-size: 8px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(10, 10, 10, 0.2) 0%,
+        rgba(10, 10, 10, 0.1) 50%,
+        rgba(10, 10, 10, 0.35) 100%
+    );
+    pointer-events: none;
 }
 
+.badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: rgba(10, 10, 10, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-family: 'Good Times', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+/* ── Content area ── */
 .cardContent {
-    padding: 24px 24px 28px;
+    padding: clamp(20px, 2.5vw, 28px);
+    flex: 1;
     display: flex;
     flex-direction: column;
-    flex: 1;
-    background: #FFFFFF;
+    gap: 10px;
 }
 
 .cardHeadline {
     font-family: 'Good Times', sans-serif;
-    font-size: clamp(12.5px, 1.2vw, 15px);
-    color: #111111;
-    line-height: 1.35;
-    letter-spacing: 0.02em;
-    margin: 0 0 12px;
-    text-transform: uppercase;
-}
-
-.cardBodyText {
-    font-family: Nexa, sans-serif;
-    font-size: clamp(11.5px, 0.9vw, 13px);
-    color: #555555;
-    line-height: 1.6;
+    font-size: clamp(15px, 1.4vw, 18px);
+    color: var(--text-primary);
+    line-height: 1.25;
     margin: 0;
-    font-weight: 400;
+    letter-spacing: 0.01em;
 }
 
-.cardFooterRow {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: auto;
-    width: 100%;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.footerActive {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-.footerInactive {
-    opacity: 0;
-    transform: translateY(8px);
-    pointer-events: none;
-}
-
-.statValue {
-    font-family: 'Good Times', sans-serif;
-    font-size: clamp(14px, 1.5vw, 20px);
-    color: var(--orange);
-    line-height: 1;
-    margin-bottom: 2px;
-}
-
-.statLabel {
-    font-family: Nexa, sans-serif;
-    font-size: 9.5px;
-    color: rgba(0, 0, 0, 0.6);
-    letter-spacing: 0.04em;
+.cardBody {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: clamp(13px, 1vw, 14px);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
     font-weight: 300;
-}
-
-.learnMoreLink {
-    text-decoration: none;
-}
-
-.learnMoreButton {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: 'Good Times', sans-serif;
-    font-size: 8.5px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #111111;
-    border: 1px solid rgba(0,0,0,0.18);
-    padding: 8px 16px;
-    border-radius: 3px;
-    transition: all 0.25s ease;
-}
-
-.learnMoreButton:hover {
-    border-color: var(--orange);
-    color: var(--orange);
-}
-
-.srOnly {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-}
-
-.hoverIndicator {
-    position: absolute;
-    inset: 0;
-    border: 1px solid rgba(204,85,0,0);
-    border-radius: 8px;
-    transition: border-color 0.3s ease;
-}
-
-.hoverIndicator:hover {
-    border-color: rgba(204,85,0,0.35);
-}
-
-/* Dots and indicators */
-.dotsContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-top: 32px;
-}
-
-.dot {
-    height: 7px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
-}
-
-.dotActive {
-    width: 28px;
-    background: var(--orange);
-}
-
-.dotInactive {
-    width: 7px;
-    background: rgba(0,0,0,0.18);
-}
-
-/* --- Mobile specific overrides (max-width: 768px) --- */
-@media (max-width: 768px) {
-    /* Hide the duplicated panels on mobile so they don't stack or affect anything */
-    .problemPanel:nth-child(-n+3),
-    .problemPanel:nth-child(n+7) {
-        display: none !important;
-    }
-
-    .clipContainer {
-        margin: 0 !important;
-        padding: 0 !important;
-        overflow: visible !important;
-    }
-
-    /* Give the grid enough height to match the smaller card */
-    .problemGrid {
-        display: block !important;
-        position: relative !important;
-        min-height: 400px !important;
-        height: 400px !important;
-        transform: none !important;
-        transition: none !important;
-        width: 100% !important;
-        left: 0 !important;
-    }
-
-    .problemPanel {
-        position: absolute !important;
-        top: 0 !important;
-        bottom: 0 !important;
-        left: clamp(16px, 5vw, 32px) !important;
-        right: clamp(16px, 5vw, 32px) !important;
-        width: auto !important;
-        height: 100% !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out !important;
-        transform: scale(0.98) !important;
-    }
-
-    .problemPanel.problemPanelActive {
-        opacity: var(--panels-visible-opacity) !important;
-        pointer-events: var(--panels-visible-pointer-events) !important;
-        transform: scale(1) !important;
-    }
-
-    /* Ensure text panel uses full available width */
-    .cardContent {
-        padding: 16px 16px 20px !important;
-    }
-
-    .cardHeadline {
-        font-size: clamp(13px, 4vw, 15px) !important;
-        margin-bottom: 8px !important;
-    }
-
-    .cardBodyText {
-        font-size: 11.5px !important;
-        line-height: 1.5 !important;
-    }
-
-    .statValue {
-        font-size: clamp(16px, 5vw, 20px) !important;
-    }
-
-    .dotsContainer {
-        margin-top: 20px !important;
-    }
-}
-
-/* --- Small phones (max-width: 480px) --- */
-@media (max-width: 480px) {
-    .problemGrid {
-        min-height: 440px !important;
-        height: 440px !important;
-    }
-
-    .cardContent {
-        padding: 14px 14px 16px !important;
-    }
-
-    .cardBodyText {
-        font-size: 11px !important;
-    }
 }

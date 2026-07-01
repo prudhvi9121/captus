@@ -65,7 +65,7 @@
 }
 
 .subcopy {
-    font-family: Nexa, sans-serif;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
     color: rgba(255, 255, 255, 0.6);
     font-size: clamp(14px, 1.5vw, 18px);
     line-height: 1.75;
