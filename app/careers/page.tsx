@@ -4,412 +4,510 @@ import { useState } from "react";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/footer/Footer";
 
+const MONO = '"IBM Plex Mono", monospace';
+const SANS = '"IBM Plex Sans", sans-serif';
+
 export default function Careers() {
-    const [success, setSuccess] = useState(false);
-    const [aboutText, setAboutText] = useState("");
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [superpower, setSuperpower] = useState("");
+    const [about, setAbout] = useState("");
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState("");
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        // Simulate a successful form submission
-        setSuccess(true);
-        e.currentTarget.reset();
-        setAboutText("");
+        const trimmedName = name.trim();
+        const trimmedEmail = email.trim();
 
-        // Auto-dismiss success after 5 seconds
-        setTimeout(() => setSuccess(false), 5000);
+        if (!trimmedName) {
+            setError("Please enter your name.");
+            return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
+            setError("Please enter a valid email address.");
+            return;
+        }
+
+        // Simulating form submission
+        setSubmitted(true);
+        setError("");
+    };
+
+    const handleReset = () => {
+        setName("");
+        setEmail("");
+        setSuperpower("");
+        setAbout("");
+        setSubmitted(false);
+        setError("");
     };
 
     return (
-        <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "var(--bg)" }}>
+        <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "#ffffff" }}>
             <Navbar />
-            
-            {/* SUCCESS POPUP */}
-            {success && (
-                <div style={{
-                    position: "fixed",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                    background: "rgba(0,0,0,0.4)",
-                    backdropFilter: "blur(4px)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    zIndex: 9999,
-                }}>
-                    <div style={{
-                        background: "#FFFFFF",
-                        padding: "32px",
-                        borderRadius: "16px",
-                        width: "90%",
-                        maxWidth: "400px",
-                        textAlign: "center",
-                        border: "1px solid rgba(204, 85, 0, 0.1)",
-                        boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)"
-                    }}>
-                        <h3 style={{
-                            marginBottom: "12px",
-                            color: "#CC5500",
-                            fontFamily: '"Good Times", system-ui, sans-serif',
-                            fontSize: "18px"
-                        }}>
-                            ✅ REACHED OUT
-                        </h3>
 
-                        <p style={{
-                            fontSize: "14px",
-                            color: "var(--text-secondary)",
-                            marginBottom: "24px",
-                            lineHeight: 1.5
-                        }}>
-                            Thank you! Your introduction has been received. We'll be in touch soon.
-                        </p>
-
-                        <button
-                            onClick={() => setSuccess(false)}
-                            style={{
-                                padding: "10px 24px",
-                                fontSize: "12px",
-                                background: "#CC5500",
-                                color: "#FFFFFF",
-                                border: "none",
-                                borderRadius: "8px",
-                                cursor: "pointer",
-                                fontFamily: '"Good Times", system-ui, sans-serif'
-                            }}
-                        >
-                            CLOSE
-                        </button>
-                    </div>
-                </div>
-            )}
+            <style dangerouslySetInnerHTML={{ __html: `
+                .car-input:focus, .car-textarea:focus {
+                    outline: none;
+                    border-color: #CC5500 !important;
+                    box-shadow: 0 0 0 3px rgba(204, 85, 0, 0.12);
+                }
+                @media (max-width: 980px) {
+                    .car-formwrap {
+                        grid-template-columns: 1fr !important;
+                        gap: 48px !important;
+                    }
+                }
+            ` }} />
 
             <main style={{
                 flex: 1,
-                paddingTop: "140px",
+                position: "relative",
+                overflow: "hidden",
+                background: "rgb(246, 243, 238)",
+                paddingTop: "120px",
                 paddingBottom: "100px",
-                paddingLeft: "clamp(24px, 6vw, 80px)",
-                paddingRight: "clamp(24px, 6vw, 80px)",
                 display: "flex",
-                justifyContent: "center",
                 alignItems: "center",
-                backgroundImage: `
-                    linear-gradient(to right, rgba(204, 85, 0, 0.04) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(204, 85, 0, 0.04) 1px, transparent 1px)
-                `,
-                backgroundSize: "56px 56px",
-                backgroundColor: "var(--bg)",
             }}>
+                {/* Grid Background */}
+                <div style={{
+                    position: "absolute",
+                    inset: 0,
+                    pointerEvents: "none",
+                    backgroundImage: `
+                        linear-gradient(rgba(26, 23, 20, 0.043) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(26, 23, 20, 0.043) 1px, transparent 1px)
+                    `,
+                    backgroundSize: "62px 62px",
+                    backgroundPosition: "center top",
+                }} />
+
+                {/* Orange radial glow on the left */}
+                <div style={{
+                    position: "absolute",
+                    left: "-160px",
+                    top: "60px",
+                    width: "520px",
+                    height: "520px",
+                    pointerEvents: "none",
+                    background: "radial-gradient(circle, rgba(204, 85, 0, 0.07) 0%, rgba(204, 85, 0, 0) 68%)",
+                }} />
+
                 <div 
-                    className="w-full max-w-[1100px] grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-start"
+                    className="cap-x w-full"
+                    style={{
+                        position: "relative",
+                        zIndex: 1,
+                        maxWidth: "1180px",
+                        margin: "0 auto",
+                        paddingLeft: "56px",
+                        paddingRight: "56px",
+                    }}
                 >
-                    {/* Left Column */}
-                    <div style={{ display: "flex", flexDirection: "column" }}>
-                        <div className="section-tag" style={{ marginBottom: "16px" }}>
-                            <span className="eyebrow-line" style={{ background: "#CC5500" }}></span>
-                            Careers
-                        </div>
+                    <div 
+                        className="car-formwrap"
+                        style={{
+                            display: "grid",
+                            gridTemplateColumns: "1fr 470px",
+                            gap: "80px",
+                            alignItems: "start",
+                        }}
+                    >
+                        {/* ─── LEFT COLUMN ─── */}
+                        <div>
+                            {/* Eyebrow tag */}
+                            <div style={{ display: "flex", alignItems: "center", gap: "13px" }}>
+                                <div style={{ width: "34px", height: "2px", background: "rgb(204, 85, 0)" }} />
+                                <div style={{
+                                    fontSize: "12px",
+                                    fontWeight: 600,
+                                    letterSpacing: "0.2em",
+                                    textTransform: "uppercase",
+                                    color: "rgb(204, 85, 0)",
+                                    fontFamily: SANS,
+                                }}>
+                                    Careers
+                                </div>
+                            </div>
 
-                        <h1 style={{
-                            fontSize: "clamp(28px, 4vw, 44px)",
-                            fontWeight: "400",
-                            fontFamily: '"IBM Plex Sans", system-ui, sans-serif',
-                            color: "#111111",
-                            lineHeight: 1.1,
-                            letterSpacing: "-0.01em",
-                            marginBottom: "24px"
-                        }}>
-                            Build with us
-                        </h1>
+                            {/* Heading */}
+                            <h1 style={{
+                                margin: "26px 0px 0px",
+                                fontFamily: MONO,
+                                fontSize: "54px",
+                                fontWeight: 400,
+                                lineHeight: 1.08,
+                                letterSpacing: "0.002em",
+                                color: "rgb(21, 17, 14)",
+                            }}>
+                                Build with us
+                            </h1>
 
-                        <div style={{ marginBottom: "32px" }}>
+                            {/* Status tag */}
                             <div style={{
                                 display: "inline-flex",
                                 alignItems: "center",
-                                gap: "8px",
-                                background: "#F5EBE1",
-                                color: "#A34400",
-                                padding: "8px 16px",
-                                borderRadius: "20px",
-                                fontSize: "13px",
-                                fontWeight: "600",
+                                gap: "11px",
+                                marginTop: "24px",
+                                background: "rgb(246, 230, 216)",
+                                border: "1px solid rgb(234, 208, 187)",
+                                padding: "10px 18px",
+                                borderRadius: "9999px",
                             }}>
-                                <span style={{ color: "#CC5500", fontSize: "14px" }}>●</span>
-                                Hiring in Seattle & Remote
-                            </div>
-                        </div>
-
-                        <p style={{
-                            color: "#4B5563",
-                            fontSize: "16px",
-                            lineHeight: 1.6,
-                            marginBottom: "40px",
-                            maxWidth: "480px",
-                            fontFamily: '"IBM Plex Sans", system-ui, sans-serif'
-                        }}>
-                            We're a small team taking on a problem the construction industry has lived with for decades. If you want real ownership and work that ships to real projects, we should talk.
-                        </p>
-
-                        {/* Values list */}
-                        <div style={{ display: "flex", flexDirection: "column", gap: "28px", maxWidth: "520px" }}>
-                            
-                            {/* Value 1 */}
-                            <div style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
-                                <div style={{ 
-                                    background: "rgba(204, 85, 0, 0.08)", 
-                                    padding: "10px", 
-                                    borderRadius: "8px",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    flexShrink: 0
+                                <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "rgb(204, 85, 0)" }} />
+                                <span style={{
+                                    fontSize: "13.5px",
+                                    fontWeight: 600,
+                                    letterSpacing: "0.02em",
+                                    color: "rgb(154, 63, 0)",
+                                    fontFamily: SANS,
                                 }}>
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CC5500" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                                    </svg>
-                                </div>
-                                <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-                                    <h4 style={{ fontSize: "15px", fontWeight: "600", color: "#111111", fontFamily: '"IBM Plex Sans", system-ui, sans-serif' }}>
-                                        Ownership from day one
-                                    </h4>
-                                    <p style={{ fontSize: "14px", color: "#6B7280", lineHeight: 1.5, fontFamily: '"IBM Plex Sans", system-ui, sans-serif' }}>
-                                        Early team, early equity, and a direct hand in what we build.
-                                    </p>
-                                </div>
+                                    Hiring in Seattle &amp; Remote
+                                </span>
                             </div>
 
-                            {/* Value 2 */}
-                            <div style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
-                                <div style={{ 
-                                    background: "rgba(204, 85, 0, 0.08)", 
-                                    padding: "10px", 
-                                    borderRadius: "8px",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    flexShrink: 0
-                                }}>
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CC5500" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
-                                        <polyline points="16 7 22 7 22 13"></polyline>
-                                    </svg>
-                                </div>
-                                <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-                                    <h4 style={{ fontSize: "15px", fontWeight: "600", color: "#111111", fontFamily: '"IBM Plex Sans", system-ui, sans-serif' }}>
-                                        Real work, real projects
-                                    </h4>
-                                    <p style={{ fontSize: "14px", color: "#6B7280", lineHeight: 1.5, fontFamily: '"IBM Plex Sans", system-ui, sans-serif' }}>
-                                        What you ship goes straight to teams running active capital projects.
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* Value 3 */}
-                            <div style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
-                                <div style={{ 
-                                    background: "rgba(204, 85, 0, 0.08)", 
-                                    padding: "10px", 
-                                    borderRadius: "8px",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    flexShrink: 0
-                                }}>
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CC5500" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                        <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A5.5 5.5 0 0 0 7.5 8c0 1.3.5 2.6 1.5 3.5.8.8 1.3 1.5 1.5 2.5"></path>
-                                        <line x1="9" y1="18" x2="15" y2="18"></line>
-                                        <line x1="10" y1="22" x2="14" y2="22"></line>
-                                    </svg>
-                                </div>
-                                <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-                                    <h4 style={{ fontSize: "15px", fontWeight: "600", color: "#111111", fontFamily: '"IBM Plex Sans", system-ui, sans-serif' }}>
-                                        Founding-team culture
-                                    </h4>
-                                    <p style={{ fontSize: "14px", color: "#6B7280", lineHeight: 1.5, fontFamily: '"IBM Plex Sans", system-ui, sans-serif' }}>
-                                        Low ego, high trust, and a bias toward shipping.
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    {/* Right Column (Form Card) */}
-                    <div className="flex justify-center lg:justify-end w-full">
-                        <div style={{
-                            background: "#FFFFFF",
-                            borderRadius: "24px",
-                            border: "1px solid rgba(226, 226, 224, 0.8)",
-                            boxShadow: "0 20px 40px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.01)",
-                            padding: "clamp(24px, 4vw, 40px)",
-                            maxWidth: "460px",
-                            width: "100%",
-                        }}>
-                            <div className="section-tag" style={{ marginBottom: "12px" }}>
-                                <span className="eyebrow-line" style={{ background: "#CC5500", width: "16px" }}></span>
-                                Get In Touch
-                            </div>
-
-                            <h2 style={{
-                                fontSize: "clamp(22px, 3.5vw, 28px)",
-                                fontWeight: "normal",
-                                color: "#111111",
-                                marginBottom: "16px",
-                                fontFamily: '"IBM Plex Mono", ui-monospace, monospace'
-                            }}>
-                                Introduce yourself
-                            </h2>
-
+                            {/* Description paragraph */}
                             <p style={{
-                                fontSize: "14px",
-                                lineHeight: 1.6,
-                                color: "#6B7280",
-                                marginBottom: "28px",
-                                fontFamily: '"IBM Plex Sans", system-ui, sans-serif'
+                                margin: "26px 0px 0px",
+                                fontSize: "19px",
+                                lineHeight: 1.64,
+                                fontWeight: 300,
+                                color: "rgb(74, 70, 66)",
+                                maxWidth: "520px",
+                                fontFamily: SANS,
                             }}>
-                                Leave your details and we'll be in touch.
+                                We&apos;re a small team taking on a problem the construction industry has lived with for decades. If you want real ownership and work that ships to real projects, we should talk.
                             </p>
 
-                            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-                                {/* Full Name */}
-                                <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                                    <label style={{ fontSize: "11px", fontWeight: "700", color: "#6B7280", letterSpacing: "0.05em" }}>
-                                        FULL NAME
-                                    </label>
-                                    <input 
-                                        required 
-                                        type="text" 
-                                        name="fullname"
-                                        placeholder="Jane Builder"
-                                        style={{ 
-                                            padding: "12px 16px", 
-                                            borderRadius: "8px", 
-                                            border: "1px solid #E5E7EB", 
-                                            background: "#FFFFFF", 
-                                            fontSize: "14px", 
-                                            color: "#111111",
-                                            outline: "none",
-                                            transition: "border-color 0.2s"
-                                        }}
-                                        className="focus:border-orange focus:outline-none"
-                                    />
-                                </div>
-
-                                {/* Email */}
-                                <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                                    <label style={{ fontSize: "11px", fontWeight: "700", color: "#6B7280", letterSpacing: "0.05em" }}>
-                                        EMAIL
-                                    </label>
-                                    <input 
-                                        required 
-                                        type="email" 
-                                        name="email"
-                                        placeholder="jane@email.com"
-                                        style={{ 
-                                            padding: "12px 16px", 
-                                            borderRadius: "8px", 
-                                            border: "1px solid #E5E7EB", 
-                                            background: "#FFFFFF", 
-                                            fontSize: "14px", 
-                                            color: "#111111",
-                                            outline: "none",
-                                            transition: "border-color 0.2s"
-                                        }}
-                                        className="focus:border-orange focus:outline-none"
-                                    />
-                                </div>
-
-                                {/* What's your superpower? */}
-                                <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                                    <label style={{ fontSize: "11px", fontWeight: "700", color: "#6B7280", letterSpacing: "0.05em" }}>
-                                        WHAT'S YOUR SUPERPOWER?
-                                    </label>
-                                    <input 
-                                        required
-                                        type="text" 
-                                        name="superpower"
-                                        placeholder="The one thing you're unreasonably good at"
-                                        style={{ 
-                                            padding: "12px 16px", 
-                                            borderRadius: "8px", 
-                                            border: "1px solid #E5E7EB", 
-                                            background: "#FFFFFF", 
-                                            fontSize: "14px", 
-                                            color: "#111111",
-                                            outline: "none",
-                                            transition: "border-color 0.2s"
-                                        }}
-                                        className="focus:border-orange focus:outline-none"
-                                    />
-                                </div>
-
-                                {/* Tell us about yourself */}
-                                <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                                        <label style={{ fontSize: "11px", fontWeight: "700", color: "#6B7280", letterSpacing: "0.05em" }}>
-                                            TELL US ABOUT YOURSELF
-                                        </label>
-                                        <span style={{ fontSize: "11px", color: "#9CA3AF" }}>
-                                            {aboutText.length}/250
-                                        </span>
+                            {/* Points list */}
+                            <div style={{ display: "flex", flexDirection: "column", gap: "18px", marginTop: "38px", maxWidth: "480px" }}>
+                                
+                                {/* Point 1 */}
+                                <div style={{ display: "flex", gap: "14px", alignItems: "flex-start" }}>
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#CC5500" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ flex: "0 0 auto", marginTop: "2px" }}>
+                                        <path d="M13 2 3 14h9l-1 8 10-12h-9z" />
+                                    </svg>
+                                    <div>
+                                        <div style={{ fontSize: "15.5px", fontWeight: 600, color: "rgb(21, 17, 14)", fontFamily: SANS }}>
+                                            Ownership from day one
+                                        </div>
+                                        <div style={{ marginTop: "3px", fontSize: "14.5px", lineHeight: "1.55", fontWeight: 300, color: "rgb(87, 81, 75)", fontFamily: SANS }}>
+                                            Early team, early equity, and a direct hand in what we build.
+                                        </div>
                                     </div>
-                                    <textarea 
-                                        required
-                                        name="about"
-                                        maxLength={250}
-                                        value={aboutText}
-                                        onChange={(e) => setAboutText(e.target.value)}
-                                        placeholder="A few lines on who you are and what you'd love to work on."
-                                        rows={4}
-                                        style={{ 
-                                            padding: "12px 16px", 
-                                            borderRadius: "8px", 
-                                            border: "1px solid #E5E7EB", 
-                                            background: "#FFFFFF", 
-                                            fontSize: "14px", 
-                                            color: "#111111",
-                                            outline: "none",
-                                            resize: "none",
-                                            transition: "border-color 0.2s"
-                                        }}
-                                        className="focus:border-orange focus:outline-none"
-                                    />
                                 </div>
 
-                                {/* Submit Button */}
-                                <button 
-                                    type="submit" 
-                                    style={{ 
-                                        padding: "14px", 
-                                        fontSize: "14px", 
-                                        fontWeight: "bold",
-                                        background: "#CC5500", 
-                                        color: "#FFFFFF",
-                                        border: "none",
-                                        borderRadius: "8px", 
-                                        cursor: "pointer",
-                                        marginTop: "8px",
-                                        transition: "background-color 0.2s, transform 0.1s"
-                                    }}
-                                    className="hover:bg-orange-dark active:scale-[0.98]"
-                                >
-                                    Reach out to us
-                                </button>
-                            </form>
+                                {/* Point 2 */}
+                                <div style={{ display: "flex", gap: "14px", alignItems: "flex-start" }}>
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#CC5500" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ flex: "0 0 auto", marginTop: "2px" }}>
+                                        <path d="M3 3v18h18" />
+                                        <path d="m7 14 4-4 3 3 5-6" />
+                                    </svg>
+                                    <div>
+                                        <div style={{ fontSize: "15.5px", fontWeight: 600, color: "rgb(21, 17, 14)", fontFamily: SANS }}>
+                                            Real work, real projects
+                                        </div>
+                                        <div style={{ marginTop: "3px", fontSize: "14.5px", lineHeight: "1.55", fontWeight: 300, color: "rgb(87, 81, 75)", fontFamily: SANS }}>
+                                            What you ship goes straight to teams running active capital projects.
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <div style={{ 
-                                marginTop: "24px", 
-                                textAlign: "center", 
-                                fontSize: "10px", 
-                                letterSpacing: "0.18em", 
-                                color: "#9CA3AF",
-                                fontFamily: '"Good Times", system-ui, sans-serif'
-                            }}>
-                                ELIGE EXIMIUS ESSE
+                                {/* Point 3 */}
+                                <div style={{ display: "flex", gap: "14px", alignItems: "flex-start" }}>
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#CC5500" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ flex: "0 0 auto", marginTop: "2px" }}>
+                                        <path d="M12 2a7 7 0 0 0-4 12.7V18h8v-3.3A7 7 0 0 0 12 2z" />
+                                        <path d="M9 22h6" />
+                                    </svg>
+                                    <div>
+                                        <div style={{ fontSize: "15.5px", fontWeight: 600, color: "rgb(21, 17, 14)", fontFamily: SANS }}>
+                                            Founding-team culture
+                                        </div>
+                                        <div style={{ marginTop: "3px", fontSize: "14.5px", lineHeight: "1.55", fontWeight: 300, color: "rgb(87, 81, 75)", fontFamily: SANS }}>
+                                            Low ego, high trust, and a bias toward shipping.
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
+
+                        {/* ─── RIGHT COLUMN (FORM CARD) ─── */}
+                        <div style={{
+                            background: "rgb(255, 255, 255)",
+                            border: "1px solid rgb(236, 233, 229)",
+                            borderRadius: "24px",
+                            padding: "38px",
+                            boxShadow: "rgba(40, 30, 20, 0.1) 0px 14px 44px, rgba(206, 84, 0, 0.13) 0px 4px 16px",
+                            width: "100%",
+                        }}>
+                            {!submitted ? (
+                                <>
+                                    <div style={{ display: "flex", alignItems: "center", gap: "11px" }}>
+                                        <div style={{ width: "34px", height: "2px", background: "rgb(204, 85, 0)" }} />
+                                        <div style={{
+                                            fontSize: "11.5px",
+                                            fontWeight: 600,
+                                            letterSpacing: "0.18em",
+                                            textTransform: "uppercase",
+                                            color: "rgb(204, 85, 0)",
+                                            fontFamily: SANS,
+                                        }}>
+                                            Get in touch
+                                        </div>
+                                    </div>
+                                    
+                                    <h2 style={{
+                                        margin: "16px 0px 0px",
+                                        fontFamily: MONO,
+                                        fontSize: "24px",
+                                        fontWeight: 400,
+                                        lineHeight: 1.16,
+                                        color: "rgb(21, 17, 14)",
+                                    }}>
+                                        Introduce yourself
+                                    </h2>
+                                    
+                                    <p style={{
+                                        margin: "16px 0px 0px",
+                                        fontSize: "15.5px",
+                                        lineHeight: 1.6,
+                                        fontWeight: 300,
+                                        color: "rgb(74, 70, 66)",
+                                        fontFamily: SANS,
+                                    }}>
+                                        Leave your details and we&apos;ll be in touch.
+                                    </p>
+
+                                    <form onSubmit={handleSubmit} style={{ marginTop: "28px" }}>
+                                        {/* Full Name */}
+                                        <div style={{ marginBottom: "16px" }}>
+                                            <label style={{
+                                                display: "block",
+                                                fontSize: "11.5px",
+                                                fontWeight: 600,
+                                                letterSpacing: "0.1em",
+                                                textTransform: "uppercase",
+                                                color: "rgb(87, 81, 75)",
+                                                marginBottom: "9px",
+                                                fontFamily: SANS,
+                                            }}>
+                                                Full name
+                                            </label>
+                                            <input 
+                                                type="text" 
+                                                placeholder="Jane Builder" 
+                                                value={name}
+                                                onChange={(e) => { setName(e.target.value); setError(""); }}
+                                                className="car-input"
+                                                style={{
+                                                    width: "100%",
+                                                    border: "1px solid rgb(216, 211, 204)",
+                                                    borderRadius: "10px",
+                                                    padding: "13px 15px",
+                                                    fontFamily: SANS,
+                                                    fontSize: "15px",
+                                                    color: "rgb(21, 17, 14)",
+                                                    background: "rgb(255, 255, 255)",
+                                                    transition: "all 0.2s",
+                                                }}
+                                            />
+                                        </div>
+
+                                        {/* Email */}
+                                        <div style={{ marginBottom: "16px" }}>
+                                            <label style={{
+                                                display: "block",
+                                                fontSize: "11.5px",
+                                                fontWeight: 600,
+                                                letterSpacing: "0.1em",
+                                                textTransform: "uppercase",
+                                                color: "rgb(87, 81, 75)",
+                                                marginBottom: "9px",
+                                                fontFamily: SANS,
+                                            }}>
+                                                Email
+                                            </label>
+                                            <input 
+                                                type="email" 
+                                                placeholder="jane@email.com" 
+                                                value={email}
+                                                onChange={(e) => { setEmail(e.target.value); setError(""); }}
+                                                className="car-input"
+                                                style={{
+                                                    width: "100%",
+                                                    border: "1px solid rgb(216, 211, 204)",
+                                                    borderRadius: "10px",
+                                                    padding: "13px 15px",
+                                                    fontFamily: SANS,
+                                                    fontSize: "15px",
+                                                    color: "rgb(21, 17, 14)",
+                                                    background: "rgb(255, 255, 255)",
+                                                    transition: "all 0.2s",
+                                                }}
+                                            />
+                                        </div>
+
+                                        {/* Superpower */}
+                                        <div style={{ marginBottom: "16px" }}>
+                                            <label style={{
+                                                display: "block",
+                                                fontSize: "11.5px",
+                                                fontWeight: 600,
+                                                letterSpacing: "0.1em",
+                                                textTransform: "uppercase",
+                                                color: "rgb(87, 81, 75)",
+                                                marginBottom: "9px",
+                                                fontFamily: SANS,
+                                            }}>
+                                                What&apos;s your superpower?
+                                            </label>
+                                            <input 
+                                                type="text" 
+                                                placeholder="The one thing you're unreasonably good at" 
+                                                value={superpower}
+                                                onChange={(e) => setSuperpower(e.target.value)}
+                                                className="car-input"
+                                                style={{
+                                                    width: "100%",
+                                                    border: "1px solid rgb(216, 211, 204)",
+                                                    borderRadius: "10px",
+                                                    padding: "13px 15px",
+                                                    fontFamily: SANS,
+                                                    fontSize: "15px",
+                                                    color: "rgb(21, 17, 14)",
+                                                    background: "rgb(255, 255, 255)",
+                                                    transition: "all 0.2s",
+                                                }}
+                                            />
+                                        </div>
+
+                                        {/* About yourself */}
+                                        <div style={{ marginBottom: "16px" }}>
+                                            <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: "9px" }}>
+                                                <label style={{
+                                                    fontSize: "11.5px",
+                                                    fontWeight: 600,
+                                                    letterSpacing: "0.1em",
+                                                    textTransform: "uppercase",
+                                                    color: "rgb(87, 81, 75)",
+                                                    fontFamily: SANS,
+                                                }}>
+                                                    Tell us about yourself
+                                                </label>
+                                                <span style={{ fontSize: "11.5px", fontWeight: 400, color: "rgb(168, 162, 155)", fontFamily: SANS }}>
+                                                    {about.length}/250
+                                                </span>
+                                            </div>
+                                            <textarea 
+                                                maxLength={250}
+                                                rows={4}
+                                                placeholder="A few lines on who you are and what you'd love to work on."
+                                                value={about}
+                                                onChange={(e) => setAbout(e.target.value.slice(0, 250))}
+                                                className="car-textarea"
+                                                style={{
+                                                    width: "100%",
+                                                    resize: "none",
+                                                    border: "1px solid rgb(216, 211, 204)",
+                                                    borderRadius: "10px",
+                                                    padding: "13px 15px",
+                                                    fontFamily: SANS,
+                                                    fontSize: "15px",
+                                                    lineHeight: "1.5",
+                                                    color: "rgb(21, 17, 14)",
+                                                    background: "rgb(255, 255, 255)",
+                                                    transition: "all 0.2s",
+                                                }}
+                                            />
+                                        </div>
+
+                                        {error && (
+                                            <p style={{ color: "#CC5500", fontSize: "13px", marginTop: "12px", fontFamily: SANS }}>
+                                                {error}
+                                            </p>
+                                        )}
+
+                                        <button 
+                                            type="submit" 
+                                            style={{
+                                                width: "100%",
+                                                marginTop: "24px",
+                                                background: "rgb(204, 85, 0)",
+                                                color: "rgb(255, 255, 255)",
+                                                border: "none",
+                                                cursor: "pointer",
+                                                fontFamily: SANS,
+                                                fontSize: "15px",
+                                                fontWeight: 600,
+                                                letterSpacing: "0.02em",
+                                                padding: "15px 24px",
+                                                borderRadius: "10px",
+                                                transition: "background 0.2s, transform 0.1s"
+                                            }}
+                                            className="hover:bg-[#B54A00] active:scale-[0.98]"
+                                        >
+                                            Reach out to us
+                                        </button>
+                                        
+                                        <div style={{
+                                            marginTop: "20px",
+                                            textAlign: "center",
+                                            fontFamily: MONO,
+                                            fontSize: "10px",
+                                            letterSpacing: "0.34em",
+                                            color: "rgb(204, 85, 0)",
+                                        }}>
+                                            ELIGE EXIMIUS ESSE
+                                        </div>
+                                    </form>
+                                </>
+                            ) : (
+                                <div style={{ textAlign: "center", padding: "20px 0" }}>
+                                    <div style={{
+                                        width: "48px",
+                                        height: "48px",
+                                        borderRadius: "50%",
+                                        background: "rgba(204, 85, 0, 0.08)",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        color: "rgb(204, 85, 0)",
+                                        fontSize: "24px",
+                                        marginBottom: "16px",
+                                        marginLeft: "auto",
+                                        marginRight: "auto"
+                                    }}>
+                                        ✓
+                                    </div>
+                                    <h4 style={{ fontSize: "20px", fontWeight: 600, color: "rgb(21, 17, 14)", marginBottom: "8px", fontFamily: SANS }}>
+                                        Sent successfully!
+                                    </h4>
+                                    <p style={{ fontSize: "14.5px", color: "rgb(74, 70, 66)", lineHeight: 1.5, marginBottom: "24px", fontFamily: SANS }}>
+                                        Thanks {name.split(" ")[0]}! We have received your details and we&apos;ll be in touch soon.
+                                    </p>
+                                    <button 
+                                        onClick={handleReset}
+                                        style={{
+                                            padding: "10px 24px",
+                                            border: "1px solid rgb(216, 211, 204)",
+                                            borderRadius: "8px",
+                                            background: "#FFFFFF",
+                                            color: "rgb(87, 81, 75)",
+                                            fontSize: "13px",
+                                            cursor: "pointer",
+                                            fontFamily: SANS
+                                        }}
+                                    >
+                                        Back
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+
                     </div>
                 </div>
             </main>

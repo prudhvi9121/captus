@@ -2,8 +2,9 @@
 
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/footer/Footer";
-import { useScrollReveal } from "../hooks/useScrollReveal";
-import Image from "next/image";
+
+const MONO = '"IBM Plex Mono", monospace';
+const SANS = '"IBM Plex Sans", sans-serif';
 
 const teamMembers = [
     {
@@ -11,696 +12,345 @@ const teamMembers = [
         role: "Founding AI Engineer",
         image: "/Alley.avif",
         linkedin: "https://www.linkedin.com/in/alley-wu/",
-        bio: "Alley is a Founding AI Engineer at Captus, where she designs the agentic systems that turn fragmented project data into clear, early risk signals. She works across the full stack of the platform, from retrieval and reasoning pipelines to the dashboards teams rely on every day. She is drawn to problems where messy, real-world data meets rigorous engineering, and focuses on making the agent both accurate and genuinely useful in the field. Outside of shipping product, she is a strong advocate for thoughtful, human-centered AI."
+        bio: "Alley is a Founding AI Engineer at Captus, where she designs the agentic systems that turn fragmented project data into clear, early risk signals. She works across the full stack of the platform, from retrieval and reasoning pipelines to the dashboards teams rely on every day. She is drawn to problems where messy, real-world data meets rigorous engineering, and focuses on making the agent both accurate and genuinely useful in the field. Outside of shipping product, she is a strong advocate for thoughtful, human-centered AI.",
     },
     {
         name: "Khanak Agrawal",
         role: "Founding AI Engineer",
         image: "/Khanak.avif",
         linkedin: "https://www.linkedin.com/in/khanak-agrawal/",
-        bio: "Khanak is a Founding AI Engineer at Captus, focused on the data infrastructure and machine learning that power the platform's knowledge base. She builds the pipelines that ingest emails, documents, and project records and make them queryable in seconds. With a sharp eye for reliability and detail, she ensures the answers Captus surfaces are trustworthy enough for high-stakes capital decisions. She is energized by early-stage building and the chance to shape a product from the ground up."
+        bio: "Khanak is a Founding AI Engineer at Captus, focused on the data infrastructure and machine learning that power the platform's knowledge base. She builds the pipelines that ingest emails, documents, and project records and make them queryable in seconds. With a sharp eye for reliability and detail, she ensures the answers Captus surfaces are trustworthy enough for high-stakes capital decisions. She is energized by early-stage building and the chance to shape a product from the ground up.",
     },
     {
         name: "Youssef Benaouda",
         role: "AI Engineer",
         image: "/Youssef.avif",
         linkedin: "https://www.linkedin.com/in/youssef-benaouda-09327b233/",
-        bio: "Youssef is an AI Engineer at Captus, working on the models and integrations that connect Captus to the tools project teams already use. He builds and refines the agent's reasoning capabilities, helping it understand the nuances of budgets, schedules, and operational risk. He thrives on fast iteration and shipping features that make a measurable difference for users. Curious and collaborative, he is always looking for the next way to make the platform smarter."
-    }
+        bio: "Youssef is an AI Engineer at Captus, working on the models and integrations that connect Captus to the tools project teams already use. He builds and refines the agent's reasoning capabilities, helping it understand the nuances of budgets, schedules, and operational risk. He thrives on fast iteration and shipping features that make a measurable difference for users. Curious and collaborative, he is always looking for the next way to make the platform smarter.",
+    },
 ];
-
-function Section({ children }: { children: React.ReactNode }) {
-    const ref = useScrollReveal<HTMLDivElement>({ threshold: 0.1 });
-    return (
-        <div ref={ref} className="reveal">
-            {children}
-        </div>
-    );
-}
 
 export default function Team() {
     return (
-        <div
-            style={{
-                minHeight: "100vh",
-                display: "flex",
-                flexDirection: "column",
-                background: "var(--bg)",
-            }}
-        >
+        <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "#ffffff" }}>
             <Navbar />
 
-            <main
-                className="px-4 sm:px-10 md:px-12"
-                style={{
-                    flex: 1,
-                    paddingTop: "120px",
-                    paddingBottom: "80px",
-                    display: "flex",
-                    justifyContent: "center",
-                }}
-            >
-                <div className="w-full max-w-[1000px]">
+            <style dangerouslySetInnerHTML={{ __html: `
+                @media (max-width: 980px) {
+                    .cap-lead {
+                        grid-template-columns: 1fr !important;
+                        gap: 32px !important;
+                    }
+                    .cap-leadphoto {
+                        max-width: 380px !important;
+                        margin: 0 auto !important;
+                    }
+                    .cap-prow, .cap-prow-r {
+                        grid-template-columns: 1fr !important;
+                        gap: 26px !important;
+                        max-width: 460px;
+                        margin-left: auto !important;
+                        margin-right: auto !important;
+                    }
+                    .cap-prow-img {
+                        order: -1 !important;
+                    }
+                    .cap-grid2 {
+                        grid-template-columns: 1fr !important;
+                        gap: 24px !important;
+                    }
+                }
+            ` }} />
 
-                    {/* ── Page Header ── */}
-                    <div
-                        style={{
-                            textAlign: "center",
-                            marginBottom: "clamp(48px, 6vw, 72px)",
-                        }}
-                    >
-                        <h1
-                            className="font-display"
-                            style={{
-                                fontSize: "clamp(28px, 5vw, 48px)",
-                                color: "var(--text-primary)",
-                                marginBottom: "16px",
-                            }}
-                        >
-                            Our Team
-                        </h1>
+            <main style={{
+                flex: 1,
+                position: "relative",
+                overflow: "hidden",
+                background: "rgb(246, 243, 238)",
+                paddingTop: "60px",
+                paddingBottom: "100px",
+            }}>
+                {/* Grid Background */}
+                <div style={{
+                    position: "absolute",
+                    inset: 0,
+                    pointerEvents: "none",
+                    backgroundImage: `
+                        linear-gradient(rgba(26, 23, 20, 0.043) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(26, 23, 20, 0.043) 1px, transparent 1px)
+                    `,
+                    backgroundSize: "62px 62px",
+                    backgroundPosition: "center top",
+                }} />
 
-                        <p
-                            className="px-2 sm:px-0"
-                            style={{
-                                color: "var(--text-secondary)",
-                                fontSize: "clamp(15px, 1.5vw, 18px)",
-                                lineHeight: 1.6,
-                                maxWidth: "600px",
-                                margin: "0 auto",
-                            }}
-                        >
-                            Captus is led by experienced industry operators with deep
-                            expertise in AI, data systems, and complex construction workflows.
-                        </p>
+                {/* Left glow */}
+                <div style={{
+                    position: "absolute",
+                    left: "-160px",
+                    top: "80px",
+                    width: "520px",
+                    height: "520px",
+                    pointerEvents: "none",
+                    background: "radial-gradient(circle, rgba(204, 85, 0, 0.07) 0%, rgba(204, 85, 0, 0) 68%)",
+                }} />
+
+                {/* Right glow */}
+                <div style={{
+                    position: "absolute",
+                    right: "-180px",
+                    top: "880px",
+                    width: "520px",
+                    height: "520px",
+                    pointerEvents: "none",
+                    background: "radial-gradient(circle, rgba(204, 85, 0, 0.05) 0%, rgba(204, 85, 0, 0) 68%)",
+                }} />
+
+                <div style={{ position: "relative", zIndex: 1 }}>
+
+                    {/* ─── Leadership Section ─── */}
+                    <div className="cap-x" style={{ maxWidth: "1180px", margin: "0 auto", padding: "64px 56px 0" }}>
+                        <div style={{
+                            fontSize: "12px",
+                            fontWeight: 700,
+                            letterSpacing: "0.16em",
+                            textTransform: "uppercase",
+                            color: "rgb(204, 85, 0)",
+                            fontFamily: SANS,
+                        }}>
+                            Leadership
+                        </div>
+
+                        <div className="cap-lead" style={{ display: "grid", gridTemplateColumns: "404px 1fr", gap: "56px", alignItems: "start", marginTop: "32px" }}>
+                            <div className="cap-leadphoto" style={{ width: "100%" }}>
+                                <img 
+                                    src="/Anatoly.jpg" 
+                                    alt="Anatoly Khen" 
+                                    style={{ 
+                                        display: "block", 
+                                        width: "100%", 
+                                        aspectRatio: "1 / 1.12", 
+                                        objectFit: "cover", 
+                                        objectPosition: "center 38%", 
+                                        borderRadius: "16px", 
+                                        border: "1px solid rgb(236, 233, 229)" 
+                                    }} 
+                                />
+                                <h2 style={{ fontFamily: MONO, fontSize: "29px", fontWeight: 400, lineHeight: 1.1, color: "rgb(21, 17, 14)", marginTop: "30px" }}>
+                                    Anatoly Khen
+                                </h2>
+                                <div style={{ fontSize: "14px", fontWeight: 600, color: "rgb(204, 85, 0)", marginTop: "12px", fontFamily: SANS }}>
+                                    Founder &amp; CEO
+                                </div>
+                                <div style={{ display: "flex", gap: "12px", marginTop: "24px", flexWrap: "wrap" }}>
+                                    <a 
+                                        href="https://www.linkedin.com/in/anatolykhen/" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
+                                        style={{ 
+                                            display: "inline-flex", 
+                                            alignItems: "center", 
+                                            gap: "9px", 
+                                            background: "rgb(204, 85, 0)", 
+                                            color: "rgb(255, 255, 255)", 
+                                            fontSize: "12px", 
+                                            fontWeight: 600, 
+                                            letterSpacing: "0.05em", 
+                                            textTransform: "uppercase", 
+                                            padding: "11px 20px", 
+                                            borderRadius: "8px", 
+                                            textDecoration: "none",
+                                            fontFamily: SANS,
+                                            transition: "background 0.2s"
+                                        }}
+                                        className="hover:bg-[#B54A00]"
+                                    >
+                                        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">
+                                            <path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3 0-2.95-1.8-2.95s-2.08 1.4-2.08 2.85V21H9z" />
+                                        </svg>
+                                        LinkedIn
+                                    </a>
+                                    <a 
+                                        href="https://anatoly.ai" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
+                                        style={{ 
+                                            display: "inline-flex", 
+                                            alignItems: "center", 
+                                            gap: "9px", 
+                                            background: "rgb(204, 85, 0)", 
+                                            color: "rgb(255, 255, 255)", 
+                                            fontSize: "12px", 
+                                            fontWeight: 600, 
+                                            letterSpacing: "0.05em", 
+                                            textTransform: "uppercase", 
+                                            padding: "11px 20px", 
+                                            borderRadius: "8px", 
+                                            textDecoration: "none",
+                                            fontFamily: SANS,
+                                            transition: "background 0.2s"
+                                        }}
+                                        className="hover:bg-[#B54A00]"
+                                    >
+                                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true">
+                                            <circle cx="12" cy="12" r="9" />
+                                            <path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18" />
+                                        </svg>
+                                        anatoly.ai
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div style={{ paddingTop: "6px", maxWidth: "620px" }}>
+                                <p style={{ fontSize: "17px", lineHeight: 1.66, fontWeight: 300, color: "rgb(74, 70, 66)", margin: 0, fontFamily: SANS }}>
+                                    Captus is led by Anatoly Khen, Founder and CEO, with a proven background in product and go-to-market strategy across leading AI and technology organizations. He brings deep experience from past roles at innovative companies including Revelen.ai, Axon, Paylocity, and VIEVU.
+                                </p>
+                                <p style={{ fontSize: "17px", lineHeight: 1.66, fontWeight: 300, color: "rgb(74, 70, 66)", margin: "22px 0 0", fontFamily: SANS }}>
+                                    With an Executive MBA from MIT, Anatoly blends rigorous academic frameworks with practical operational expertise to solve complex systemic issues within the construction industry. He recognizes that owner returns are fundamentally eroded by preventable risk and has focused Captus exclusively on solving this upstream visibility problem.
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
-                    {/* ── Founder Section ── */}
-                    <Section>
-                        <div style={{ marginBottom: "clamp(56px, 8vw, 80px)" }}>
-                            <p
-                                className="text-center lg:text-left"
-                                style={{
-                                    fontSize: "12px",
-                                    fontWeight: 700,
-                                    letterSpacing: "0.12em",
-                                    textTransform: "uppercase",
-                                    color: "#CC5500",
-                                    marginBottom: "24px",
-                                }}
-                            >
-                                Leadership
-                            </p>
-
-                            <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-6 lg:gap-12 items-start w-full">
-
-                                {/* Left: portrait */}
-                                <div className="flex flex-col items-center lg:items-start gap-4">
-                                    <div
-                                        className="w-full max-w-[280px] sm:max-w-[320px] lg:max-w-none mx-auto lg:mx-0 relative"
-                                        style={{
-                                            aspectRatio: "1/1",
-                                            background: "var(--surface-2)",
-                                            borderRadius: "16px",
-                                            border: "1px solid var(--border)",
-                                            overflow: "hidden",
-                                        }}
-                                    >
-                                        <Image
-                                            src="/Anatoly.jpg"
-                                            alt="Anatoly Khen - Founder & CEO"
-                                            fill
-                                            style={{ objectFit: "cover" }}
-                                            sizes="(max-width: 768px) 320px, 320px"
-                                            quality={60}
-                                        />
-                                    </div>
-
-                                    <div className="text-center lg:text-left">
-                                        <h2
-                                            className="font-display"
-                                            style={{
-                                                fontSize: "clamp(18px, 2.5vw, 24px)",
-                                                color: "var(--text-primary)",
-                                            }}
-                                        >
-                                            Anatoly Khen
-                                        </h2>
-
-                                        <p
-                                            style={{
-                                                color: "#CC5500",
-                                                fontWeight: 700,
-                                                fontSize: "15px",
-                                                marginTop: "4px",
-                                            }}
-                                        >
-                                            Founder & CEO
-                                        </p>
-
-                                        <div
-                                            style={{
-                                                display: "flex",
-                                                alignItems: "center",
-                                                flexWrap: "wrap",
-                                                gap: "10px",
-                                                marginTop: "24px",
-                                            }}
-                                            className="justify-center lg:justify-start"
-                                        >
-                                            <a
-                                                href="https://www.linkedin.com/in/anatolykhen/"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                style={{
-                                                    padding: "8px 16px",
-                                                    borderRadius: "50px",
-                                                    background: "#CC5500",
-                                                    display: "flex",
-                                                    alignItems: "center",
-                                                    gap: "8px",
-                                                    color: "#FFFFFF",
-                                                    textDecoration: "none",
-                                                    fontSize: "11px",
-                                                    fontFamily: '"Good Times", system-ui, sans-serif',
-                                                    letterSpacing: "0.03em",
-                                                    transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
-                                                    boxShadow: "0 4px 12px rgba(204, 85, 0, 0.12)",
-                                                }}
-                                                onMouseEnter={(e) => {
-                                                    e.currentTarget.style.transform = "translateY(-2px)";
-                                                    e.currentTarget.style.backgroundColor = "#A34400";
-                                                    e.currentTarget.style.boxShadow = "0 6px 16px rgba(204, 85, 0, 0.2)";
-                                                }}
-                                                onMouseLeave={(e) => {
-                                                    e.currentTarget.style.transform = "translateY(0)";
-                                                    e.currentTarget.style.backgroundColor = "#CC5500";
-                                                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(204, 85, 0, 0.12)";
-                                                }}
-                                                title="LinkedIn"
-                                            >
-                                                <svg
-                                                    width="14"
-                                                    height="14"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    strokeWidth="2.5"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                >
-                                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                                    <rect x="2" y="9" width="4" height="12"></rect>
-                                                    <circle cx="4" cy="4" r="2"></circle>
-                                                </svg>
-                                                <span style={{ paddingTop: "1px" }}>LINKEDIN</span>
-                                            </a>
-                                            <a
-                                                href="https://anatoly.ai/"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                style={{
-                                                    padding: "8px 16px",
-                                                    borderRadius: "50px",
-                                                    background: "#CC5500",
-                                                    display: "flex",
-                                                    alignItems: "center",
-                                                    gap: "8px",
-                                                    color: "#FFFFFF",
-                                                    textDecoration: "none",
-                                                    fontSize: "11px",
-                                                    fontFamily: '"Good Times", system-ui, sans-serif',
-                                                    letterSpacing: "0.03em",
-                                                    transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
-                                                    boxShadow: "0 4px 12px rgba(204, 85, 0, 0.12)",
-                                                }}
-                                                onMouseEnter={(e) => {
-                                                    e.currentTarget.style.transform = "translateY(-2px)";
-                                                    e.currentTarget.style.backgroundColor = "#A34400";
-                                                    e.currentTarget.style.boxShadow = "0 6px 16px rgba(204, 85, 0, 0.2)";
-                                                }}
-                                                onMouseLeave={(e) => {
-                                                    e.currentTarget.style.transform = "translateY(0)";
-                                                    e.currentTarget.style.backgroundColor = "#CC5500";
-                                                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(204, 85, 0, 0.12)";
-                                                }}
-                                                title="Personal Website"
-                                            >
-                                                <svg
-                                                    width="14"
-                                                    height="14"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    strokeWidth="2.5"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                >
-                                                    <circle cx="12" cy="12" r="10"></circle>
-                                                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                                                </svg>
-                                                <span style={{ paddingTop: "1px" }}>ANATOLY.AI</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Right: bio */}
-                                <div
-                                    className="w-full max-w-[720px] mx-auto lg:mx-0 px-2 sm:px-0 text-left"
-                                    style={{
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        gap: "18px",
-                                    }}
-                                >
-                                    <p
-                                        style={{
-                                            color: "var(--text-secondary)",
-                                            fontSize: "clamp(15px, 1.5vw, 17px)",
-                                            lineHeight: 1.75,
-                                        }}
-                                    >
-                                        Captus is led by Anatoly Khen, Founder and CEO, with a
-                                        proven background in product and go-to-market strategy
-                                        across leading AI and technology organizations. He brings
-                                        deep experience from past roles at innovative companies
-                                        including Revelen.ai, Axon, Paylocity, and VIEVU.
-                                    </p>
-
-                                    <p
-                                        style={{
-                                            color: "var(--text-secondary)",
-                                            fontSize: "clamp(15px, 1.5vw, 17px)",
-                                            lineHeight: 1.75,
-                                        }}
-                                    >
-                                        With an Executive MBA from MIT, Anatoly blends rigorous
-                                        academic frameworks with practical operational expertise to
-                                        solve complex systemic issues within the construction
-                                        industry. He recognizes that owner returns are
-                                        fundamentally eroded by preventable risk and has focused
-                                        Captus exclusively on solving this upstream visibility
-                                        problem.
-                                    </p>
-
-                                    {/* <div
-                                        style={{
-                                            padding: "clamp(16px, 3vw, 24px)",
-                                            background: "var(--surface-1)",
-                                            borderRadius: "10px",
-                                            border: "1px solid var(--border)",
-                                            marginTop: "8px",
-                                        }}
-                                    >
-                                        <h3
-                                            className="font-display"
-                                            style={{
-                                                fontSize: "clamp(14px, 1.8vw, 16px)",
-                                                color: "var(--text-primary)",
-                                                marginBottom: "12px",
-                                            }}
-                                        >
-                                            Professional Background
-                                        </h3>
-
-                                        <ul
-                                            style={{
-                                                color: "var(--text-secondary)",
-                                                fontSize: "clamp(14px, 1.4vw, 15px)",
-                                                lineHeight: 1.7,
-                                                paddingLeft: "20px",
-                                                display: "flex",
-                                                flexDirection: "column",
-                                                gap: "6px",
-                                            }}
-                                        >
-                                            <li><strong>MIT</strong> - Executive MBA</li>
-                                            <li><strong>Revelen.ai</strong> - Leadership & Strategy</li>
-                                            <li><strong>Axon</strong> - Product & Market Growth</li>
-                                            <li><strong>Paylocity</strong> - Technology & Scale</li>
-                                            <li><strong>VIEVU</strong> - Go-to-Market Expansion</li>
-                                        </ul>
-                                    </div> */}
-                                </div>
-                            </div>
-                        </div>
-                    </Section>
-
                     {/* Divider */}
-                    <div
-                        style={{
-                            height: "1px",
-                            background: "var(--border)",
-                            marginBottom: "clamp(48px, 6vw, 64px)",
-                        }}
-                    />
+                    <div className="cap-x" style={{ maxWidth: "1180px", margin: "72px auto 0", padding: "0 56px" }}>
+                        <div style={{ height: "1px", background: "rgb(236, 233, 229)" }} />
+                    </div>
 
-                    {/* Team Section */}
-                    <Section>
-                        <div style={{ marginBottom: "clamp(56px, 8vw, 80px)" }}>
-                            <p
-                                className="text-center"
-                                style={{
-                                    fontSize: "12px",
-                                    fontWeight: 700,
-                                    letterSpacing: "0.12em",
-                                    textTransform: "uppercase",
-                                    color: "#CC5500",
-                                    marginBottom: "16px",
-                                }}
-                            >
-                                The Team
-                            </p>
+                    {/* ─── Team Members Section ─── */}
+                    <div className="cap-x" style={{ maxWidth: "1180px", margin: "0 auto", padding: "56px 56px 88px" }}>
+                        <div style={{ textAlign: "center", fontSize: "12px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgb(204, 85, 0)", fontFamily: SANS }}>
+                            The Team
+                        </div>
+                        <p style={{ textAlign: "center", maxWidth: "560px", margin: "16px auto 0", fontSize: "16px", lineHeight: 1.6, fontWeight: 300, color: "rgb(107, 101, 95)", fontFamily: SANS }}>
+                            The engineers building the intelligence behind Captus — turning fragmented project data into early, actionable risk signals.
+                        </p>
 
-                            <p
-                                className="text-center px-2 sm:px-0"
-                                style={{
-                                    color: "var(--text-secondary)",
-                                    fontSize: "clamp(15px, 1.5vw, 18px)",
-                                    lineHeight: 1.6,
-                                    maxWidth: "600px",
-                                    margin: "0 auto clamp(48px, 6vw, 64px) auto",
-                                }}
-                            >
-                                The engineers building the intelligence behind Captus — turning
-                                fragmented project data into early, actionable risk signals.
-                            </p>
-
-                            <div
-                                style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    gap: "clamp(48px, 6vw, 64px)",
-                                    width: "100%",
-                                    margin: "0 auto",
-                                }}
-                            >
-                                {teamMembers.map((member, i) => {
-                                    const isOdd = i % 2 === 1;
-                                    return (
-                                        <div
-                                            key={i}
-                                            className={`grid grid-cols-1 ${
-                                                isOdd
-                                                    ? "lg:grid-cols-[1.8fr_1.2fr]"
-                                                    : "lg:grid-cols-[1.2fr_1.8fr]"
-                                            } gap-6 lg:gap-16 items-center w-full`}
-                                        >
-                                            {/* Image Column */}
-                                            <div
-                                                className={`w-full max-w-[280px] sm:max-w-[320px] lg:max-w-none mx-auto lg:mx-0 relative ${
-                                                    isOdd ? "lg:order-2" : "lg:order-1"
-                                                }`}
-                                                style={{
-                                                    aspectRatio: "4/5",
-                                                    background: "var(--surface-2)",
-                                                    borderRadius: "16px",
-                                                    border: "1px solid var(--border)",
-                                                    overflow: "hidden",
+                        {/* List grid */}
+                        <div style={{ display: "flex", flexDirection: "column", gap: "68px" }}>
+                            {teamMembers.map((member, i) => {
+                                const isOdd = i % 2 === 1;
+                                return (
+                                    <div 
+                                        key={i} 
+                                        className={isOdd ? "cap-prow cap-prow-r" : "cap-prow"}
+                                        style={{ 
+                                            display: "grid", 
+                                            gridTemplateColumns: isOdd ? "1fr 440px" : "440px 1fr", 
+                                            gap: "56px", 
+                                            alignItems: "center", 
+                                            marginTop: i === 0 ? "56px" : "0" 
+                                        }}
+                                    >
+                                        <img 
+                                            className="cap-prow-img" 
+                                            src={member.image} 
+                                            alt={member.name} 
+                                            style={{ 
+                                                order: isOdd ? 2 : 1,
+                                                display: "block", 
+                                                width: "100%", 
+                                                aspectRatio: "5 / 6", 
+                                                objectFit: "cover", 
+                                                objectPosition: "center top", 
+                                                borderRadius: "16px", 
+                                                border: "1px solid rgb(236, 233, 229)" 
+                                            }} 
+                                        />
+                                        <div style={{ order: isOdd ? 1 : 2 }}>
+                                            <h3 style={{ fontFamily: MONO, fontSize: "25px", fontWeight: 400, lineHeight: 1.12, color: "rgb(21, 17, 14)" }}>
+                                                {member.name}
+                                            </h3>
+                                            <div style={{ fontSize: "12px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgb(204, 85, 0)", marginTop: "11px", fontFamily: SANS }}>
+                                                {member.role}
+                                            </div>
+                                            <p style={{ fontSize: "16px", lineHeight: 1.64, fontWeight: 300, color: "rgb(74, 70, 66)", margin: "18px 0 0", fontFamily: SANS }}>
+                                                {member.bio}
+                                            </p>
+                                            <a 
+                                                href={member.linkedin} 
+                                                target="_blank" 
+                                                rel="noopener noreferrer" 
+                                                style={{ 
+                                                    display: "inline-flex", 
+                                                    alignItems: "center", 
+                                                    gap: "8px", 
+                                                    marginTop: "20px", 
+                                                    color: "rgb(204, 85, 0)", 
+                                                    fontSize: "12px", 
+                                                    fontWeight: 600, 
+                                                    letterSpacing: "0.05em", 
+                                                    textTransform: "uppercase", 
+                                                    textDecoration: "none",
+                                                    fontFamily: SANS 
                                                 }}
+                                                className="hover:underline"
                                             >
-                                                <Image
-                                                    src={member.image}
-                                                    alt={`${member.name} - ${member.role}`}
-                                                    fill
-                                                    style={{ objectFit: "cover" }}
-                                                    sizes="(max-width: 768px) 320px, 320px"
-                                                    quality={60}
-                                                />
-                                            </div>
-
-                                            {/* Text Column */}
-                                            <div
-                                                className={`w-full flex flex-col gap-4 text-left sm:px-0 ${
-                                                    isOdd ? "lg:order-1" : "lg:order-2"
-                                                }`}
-                                            >
-                                                <div className="text-center lg:text-left">
-                                                    <h3
-                                                        className="font-display"
-                                                        style={{
-                                                            fontSize: "clamp(20px, 2.5vw, 28px)",
-                                                            color: "var(--text-primary)",
-                                                            textTransform: "uppercase",
-                                                            marginBottom: "4px",
-                                                        }}
-                                                    >
-                                                        {member.name}
-                                                    </h3>
-
-                                                    <p
-                                                        style={{
-                                                            color: "#CC5500",
-                                                            fontWeight: 700,
-                                                            fontSize: "13px",
-                                                            textTransform: "uppercase",
-                                                            letterSpacing: "0.08em",
-                                                        }}
-                                                    >
-                                                        {member.role}
-                                                    </p>
-                                                </div>
-
-                                                <p
-                                                    style={{
-                                                        color: "var(--text-secondary)",
-                                                        fontSize: "clamp(15px, 1.5vw, 17px)",
-                                                        lineHeight: 1.75,
-                                                    }}
-                                                >
-                                                    {member.bio}
-                                                </p>
-
-                                                <div className="flex justify-center lg:justify-start">
-                                                    <a
-                                                        href={member.linkedin}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        style={{
-                                                            display: "inline-flex",
-                                                            alignItems: "center",
-                                                            gap: "6px",
-                                                            color: "#CC5500",
-                                                            textDecoration: "none",
-                                                            fontWeight: 700,
-                                                            fontSize: "12px",
-                                                            letterSpacing: "0.08em",
-                                                            marginTop: "8px",
-                                                            transition: "opacity 0.25s ease",
-                                                        }}
-                                                        className="hover:opacity-80"
-                                                    >
-                                                        <svg
-                                                            width="14"
-                                                            height="14"
-                                                            viewBox="0 0 24 24"
-                                                            fill="none"
-                                                            stroke="currentColor"
-                                                            strokeWidth="2.5"
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round"
-                                                        >
-                                                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                                            <rect x="2" y="9" width="4" height="12"></rect>
-                                                            <circle cx="4" cy="4" r="2"></circle>
-                                                        </svg>
-                                                        <span>LINKEDIN</span>
-                                                    </a>
-                                                </div>
-                                            </div>
+                                                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">
+                                                    <path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3 0-2.95-1.8-2.95s-2.08 1.4-2.08 2.85V21H9z" />
+                                                </svg>
+                                                LinkedIn
+                                            </a>
                                         </div>
-                                    );
-                                })}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+
+                    {/* ─── Careers & Investors Bottom Cards ─── */}
+                    <div style={{ background: "rgb(246, 243, 238)" }}>
+                        <div className="cap-x" style={{ maxWidth: "1180px", margin: "0 auto", padding: "0 56px 100px" }}>
+                            <div style={{ height: "1px", background: "rgb(236, 233, 229)", marginBottom: "64px" }} />
+                            
+                            <div className="cap-grid2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px", alignItems: "stretch" }}>
+                                
+                                {/* Careers Card */}
+                                <a href="/careers" style={{ display: "flex", flexDirection: "column", background: "rgb(255, 255, 255)", border: "1px solid rgb(236, 233, 229)", borderRadius: "20px", padding: "40px 40px 36px", textDecoration: "none", boxShadow: "rgba(0, 0, 0, 0.04) 0px 1px 3px" }}>
+                                    <div style={{ display: "flex", alignItems: "center", gap: "13px" }}>
+                                        <div style={{ width: "34px", height: "2px", background: "rgb(204, 85, 0)" }} />
+                                        <div style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgb(204, 85, 0)", fontFamily: SANS }}>
+                                            Careers
+                                        </div>
+                                    </div>
+                                    <h3 style={{ margin: "22px 0 0", fontFamily: MONO, fontSize: "28px", fontWeight: 400, lineHeight: 1.12, color: "rgb(21, 17, 14)" }}>
+                                        Build with us
+                                    </h3>
+                                    <p style={{ margin: "16px 0 0", fontSize: "16px", lineHeight: 1.62, fontWeight: 300, color: "rgb(74, 70, 66)", fontFamily: SANS }}>
+                                        We&apos;re a small team taking on a problem the construction industry has lived with for decades. If you want real ownership and work that ships to real projects, let&apos;s talk.
+                                    </p>
+                                    <span style={{ display: "inline-flex", alignItems: "center", gap: "9px", marginTop: "auto", paddingTop: "30px", fontSize: "13px", fontWeight: 600, letterSpacing: "0.04em", textTransform: "uppercase", color: "rgb(204, 85, 0)", fontFamily: SANS }}>
+                                        See open roles
+                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M5 12h14" />
+                                            <path d="m12 5 7 7-7 7" />
+                                        </svg>
+                                    </span>
+                                </a>
+
+                                {/* Investors Card */}
+                                <a href="/investors" style={{ display: "flex", flexDirection: "column", background: "rgb(255, 255, 255)", border: "1px solid rgb(236, 233, 229)", borderRadius: "20px", padding: "40px 40px 36px", textDecoration: "none", boxShadow: "rgba(0, 0, 0, 0.04) 0px 1px 3px" }}>
+                                    <div style={{ display: "flex", alignItems: "center", gap: "13px" }}>
+                                        <div style={{ width: "34px", height: "2px", background: "rgb(204, 85, 0)" }} />
+                                        <div style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgb(204, 85, 0)", fontFamily: SANS }}>
+                                            Investors
+                                        </div>
+                                    </div>
+                                    <h3 style={{ margin: "22px 0 0", fontFamily: MONO, fontSize: "28px", fontWeight: 400, lineHeight: 1.12, color: "rgb(21, 17, 14)" }}>
+                                        Backed to build
+                                    </h3>
+                                    <p style={{ margin: "16px 0 0", fontSize: "16px", lineHeight: 1.62, fontWeight: 300, color: "rgb(74, 70, 66)", fontFamily: SANS }}>
+                                        Our pre-seed round was oversubscribed by partners who bet on early visibility into capital risk. See what we&apos;re building next and hear from us first.
+                                    </p>
+                                    <span style={{ display: "inline-flex", alignItems: "center", gap: "9px", marginTop: "auto", paddingTop: "30px", fontSize: "13px", fontWeight: 600, letterSpacing: "0.04em", textTransform: "uppercase", color: "rgb(204, 85, 0)", fontFamily: SANS }}>
+                                        Read the announcement
+                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M5 12h14" />
+                                            <path d="m12 5 7 7-7 7" />
+                                        </svg>
+                                    </span>
+                                </a>
+
                             </div>
-                        </div>
-                    </Section>
-
-                    {/* ── Careers & Investors Cards ── */}
-                    <div
-                        style={{
-                            marginTop: "clamp(48px, 7vw, 80px)",
-                            display: "grid",
-                            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-                            gap: "24px",
-                            paddingBottom: "8px",
-                        }}
-                    >
-                        {/* Careers Card */}
-                        <div
-                            style={{
-                                background: "var(--surface-1, #fff)",
-                                border: "1px solid var(--border, #e8e0d8)",
-                                borderRadius: "16px",
-                                padding: "clamp(28px, 4vw, 40px)",
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: "16px",
-                            }}
-                        >
-                            <p
-                                style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    gap: "10px",
-                                    fontSize: "11px",
-                                    fontWeight: 700,
-                                    letterSpacing: "0.12em",
-                                    textTransform: "uppercase",
-                                    color: "#CC5500",
-                                    margin: 0,
-                                }}
-                            >
-                                <span
-                                    style={{
-                                        display: "inline-block",
-                                        width: "28px",
-                                        height: "2px",
-                                        background: "#CC5500",
-                                        borderRadius: "2px",
-                                    }}
-                                />
-                                Careers
-                            </p>
-
-                            <h2
-                                className="font-display"
-                                style={{
-                                    fontSize: "clamp(22px, 3vw, 32px)",
-                                    color: "var(--text-primary)",
-                                    margin: 0,
-                                    lineHeight: 1.15,
-                                }}
-                            >
-                                Build with us
-                            </h2>
-
-                            <p
-                                style={{
-                                    color: "var(--text-secondary)",
-                                    fontSize: "clamp(14px, 1.4vw, 16px)",
-                                    lineHeight: 1.65,
-                                    margin: 0,
-                                    flex: 1,
-                                }}
-                            >
-                                We&apos;re a small team taking on a problem the construction
-                                industry has lived with for decades. If you want real ownership
-                                and work that ships to real projects, let&apos;s talk.
-                            </p>
-
-                            <a
-                                href="/careers"
-                                style={{
-                                    display: "inline-flex",
-                                    alignItems: "center",
-                                    gap: "6px",
-                                    color: "#CC5500",
-                                    textDecoration: "none",
-                                    fontWeight: 700,
-                                    fontSize: "12px",
-                                    letterSpacing: "0.1em",
-                                    textTransform: "uppercase",
-                                    marginTop: "8px",
-                                    transition: "opacity 0.2s ease",
-                                }}
-                                className="hover:opacity-70"
-                            >
-                                See Open Roles
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                    <line x1="5" y1="12" x2="19" y2="12" />
-                                    <polyline points="12 5 19 12 12 19" />
-                                </svg>
-                            </a>
-                        </div>
-
-                        {/* Investors Card */}
-                        <div
-                            style={{
-                                background: "var(--surface-1, #fff)",
-                                border: "1px solid var(--border, #e8e0d8)",
-                                borderRadius: "16px",
-                                padding: "clamp(28px, 4vw, 40px)",
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: "16px",
-                            }}
-                        >
-                            <p
-                                style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    gap: "10px",
-                                    fontSize: "11px",
-                                    fontWeight: 700,
-                                    letterSpacing: "0.12em",
-                                    textTransform: "uppercase",
-                                    color: "#CC5500",
-                                    margin: 0,
-                                }}
-                            >
-                                <span
-                                    style={{
-                                        display: "inline-block",
-                                        width: "28px",
-                                        height: "2px",
-                                        background: "#CC5500",
-                                        borderRadius: "2px",
-                                    }}
-                                />
-                                Investors
-                            </p>
-
-                            <h2
-                                className="font-display"
-                                style={{
-                                    fontSize: "clamp(22px, 3vw, 32px)",
-                                    color: "var(--text-primary)",
-                                    margin: 0,
-                                    lineHeight: 1.15,
-                                }}
-                            >
-                                Backed to build
-                            </h2>
-
-                            <p
-                                style={{
-                                    color: "var(--text-secondary)",
-                                    fontSize: "clamp(14px, 1.4vw, 16px)",
-                                    lineHeight: 1.65,
-                                    margin: 0,
-                                    flex: 1,
-                                }}
-                            >
-                                Our pre-seed round was oversubscribed by partners who bet
-                                on early visibility into capital risk. See what we&apos;re building next
-                                and hear from us first.
-                            </p>
-
-                            <a
-                                href="/investors"
-                                style={{
-                                    display: "inline-flex",
-                                    alignItems: "center",
-                                    gap: "6px",
-                                    color: "#CC5500",
-                                    textDecoration: "none",
-                                    fontWeight: 700,
-                                    fontSize: "12px",
-                                    letterSpacing: "0.1em",
-                                    textTransform: "uppercase",
-                                    marginTop: "8px",
-                                    transition: "opacity 0.2s ease",
-                                }}
-                                className="hover:opacity-70"
-                            >
-                                Read the Announcement
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                    <line x1="5" y1="12" x2="19" y2="12" />
-                                    <polyline points="12 5 19 12 12 19" />
-                                </svg>
-                            </a>
                         </div>
                     </div>
 

@@ -429,3 +429,83 @@ h6,
     border-top-right-radius: 32px !important;
   }
 }
+
+@media (max-width: 980px) {
+  .bk-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+}
+
+/* ── Home Page & Subpages Layout Consistency — Alignment, Colors, Responsiveness ── */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #14110f;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 400;
+  font-synthesis: none;
+}
+
+.cap-h1, .cap-h2 {
+  font-weight: 600 !important;
+}
+
+image-slot {
+  display: block;
+}
+
+@keyframes captusCue {
+  0%, 100% { transform: translateY(0); opacity: 0.4; }
+  50%      { transform: translateY(8px); opacity: 1; }
+}
+
+@keyframes captusReveal {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@supports (animation-timeline: view()) {
+  [data-reveal] {
+    animation: captusReveal both;
+    animation-timeline: view();
+    animation-range: entry 4% cover 32%;
+  }
+}
+
+@media (max-width: 860px) {
+  .cap-x {
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+  }
+  .cap-mhide {
+    display: none !important;
+  }
+  .cap-grid3 {
+    grid-template-columns: 1fr !important;
+  }
+  .cap-grid2 {
+    grid-template-columns: 1fr !important;
+  }
+  .cap-btns {
+    flex-wrap: wrap !important;
+  }
+  .cap-h1 {
+    font-size: 34px !important;
+  }
+  .cap-h2 {
+    font-size: 30px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .cap-h1 {
+    font-size: 28px !important;
+    line-height: 1.14 !important;
+  }
+  .cap-h2 {
+    font-size: 25px !important;
+  }
+}

@@ -7,16 +7,16 @@ import Footer from "../components/footer/Footer";
 const MONO = '"IBM Plex Mono", monospace';
 const SANS = '"IBM Plex Sans", sans-serif';
 
-export default function Investors() {
+export default function Waitlist() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [firm, setFirm] = useState("");
+    const [company, setCompany] = useState("");
+    const [role, setRole] = useState("");
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState("");
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
         const trimmedName = name.trim();
         const trimmedEmail = email.trim();
 
@@ -29,39 +29,15 @@ export default function Investors() {
             return;
         }
 
-        const formData = new FormData();
-        formData.append("entry.1060124428", trimmedName);
-        formData.append("entry.12194182", trimmedEmail);
-        formData.append("entry.177650040", firm.trim() || "N/A");
-        formData.append("entry.1529888000", "Investor updates subscription request");
-
-        const searchParams = new URLSearchParams();
-        formData.forEach((value, key) => {
-            searchParams.append(key, value as string);
-        });
-
-        try {
-            await fetch(
-                "https://docs.google.com/forms/d/e/1FAIpQLSftxNyomG9aPvMlFCWlXM63X341Wa-fCWGRrzJVQoPY8f0T4Q/formResponse",
-                {
-                    method: "POST",
-                    mode: "no-cors",
-                    body: searchParams,
-                }
-            );
-
-            setSubmitted(true);
-            setError("");
-        } catch (err) {
-            console.error(err);
-            setError("Something went wrong. Please try again.");
-        }
+        setError("");
+        setSubmitted(true);
     };
 
     const handleReset = () => {
         setName("");
         setEmail("");
-        setFirm("");
+        setCompany("");
+        setRole("");
         setSubmitted(false);
         setError("");
     };
@@ -71,15 +47,19 @@ export default function Investors() {
             <Navbar />
 
             <style dangerouslySetInnerHTML={{ __html: `
-                .inv-input:focus {
+                .wt-input:focus, .wt-select:focus {
                     outline: none;
                     border-color: #CC5500 !important;
                     box-shadow: 0 0 0 3px rgba(204, 85, 0, 0.12);
                 }
                 @media (max-width: 980px) {
+                    .wt-x {
+                        padding-left: 24px !important;
+                        padding-right: 24px !important;
+                    }
                     .inv-formwrap {
                         grid-template-columns: 1fr !important;
-                        gap: 48px !important;
+                        gap: 36px !important;
                     }
                 }
             ` }} />
@@ -89,10 +69,8 @@ export default function Investors() {
                 position: "relative",
                 overflow: "hidden",
                 background: "rgb(246, 243, 238)",
-                paddingTop: "120px",
+                paddingTop: "60px",
                 paddingBottom: "100px",
-                display: "flex",
-                alignItems: "center",
             }}>
                 {/* Grid Background */}
                 <div style={{
@@ -107,7 +85,7 @@ export default function Investors() {
                     backgroundPosition: "center top",
                 }} />
 
-                {/* Orange radial glow on the left */}
+                {/* Orange glow */}
                 <div style={{
                     position: "absolute",
                     left: "-160px",
@@ -119,25 +97,17 @@ export default function Investors() {
                 }} />
 
                 <div 
-                    className="cap-x w-full"
+                    className="wt-x"
                     style={{
                         position: "relative",
                         zIndex: 1,
                         maxWidth: "1180px",
                         margin: "0 auto",
-                        paddingLeft: "56px",
-                        paddingRight: "56px",
+                        padding: "96px 56px 108px",
                     }}
                 >
-                    <div 
-                        className="inv-formwrap"
-                        style={{
-                            display: "grid",
-                            gridTemplateColumns: "1fr 470px",
-                            gap: "80px",
-                            alignItems: "start",
-                        }}
-                    >
+                    <div className="inv-formwrap" style={{ display: "grid", gridTemplateColumns: "1fr 470px", gap: "80px", alignItems: "start" }}>
+                        
                         {/* ─── LEFT COLUMN ─── */}
                         <div>
                             {/* Eyebrow tag */}
@@ -151,24 +121,24 @@ export default function Investors() {
                                     color: "rgb(204, 85, 0)",
                                     fontFamily: SANS,
                                 }}>
-                                    Investors
+                                    Early access
                                 </div>
                             </div>
 
                             {/* Heading */}
                             <h1 style={{
-                                margin: "26px 0 0",
+                                margin: "26px 0px 0px",
                                 fontFamily: MONO,
-                                fontSize: "clamp(36px, 6vw, 60px)",
+                                fontSize: "58px",
                                 fontWeight: 400,
-                                lineHeight: 1.06,
+                                lineHeight: 1.07,
                                 letterSpacing: "0.002em",
                                 color: "rgb(21, 17, 14)",
                             }}>
-                                Thank&nbsp;you.
+                                Get early<br />access
                             </h1>
 
-                            {/* Status tag */}
+                            {/* Badge */}
                             <div style={{
                                 display: "inline-flex",
                                 alignItems: "center",
@@ -187,101 +157,71 @@ export default function Investors() {
                                     color: "rgb(154, 63, 0)",
                                     fontFamily: SANS,
                                 }}>
-                                    Pre-seed round oversubscribed
+                                    First cohort is limited
                                 </span>
                             </div>
 
-                            {/* Description paragraph */}
+                            {/* Subtitle */}
                             <p style={{
-                                margin: "26px 0 0",
+                                margin: "26px 0px 0px",
                                 fontSize: "19px",
                                 lineHeight: 1.64,
                                 fontWeight: 300,
                                 color: "rgb(74, 70, 66)",
-                                maxWidth: "560px",
+                                maxWidth: "520px",
                                 fontFamily: SANS,
                             }}>
-                                To everyone who backed us this early: thank you. The real work starts now, and we&apos;re glad you&apos;re in it with us.
+                                We&apos;re rolling out Captus to a small group of owners and builders. Join the waitlist and we&apos;ll reach out as spots open in the first cohort.
                             </p>
 
-                            {/* Blockquote quote */}
-                            <blockquote style={{
-                                margin: "52px 0 0",
-                                paddingLeft: "24px",
-                                borderLeft: "2px solid rgba(204, 85, 0, 0.55)",
-                                maxWidth: "560px",
-                                fontFamily: SANS,
-                                fontWeight: 300,
-                                fontSize: "22px",
-                                lineHeight: 1.5,
-                                letterSpacing: "-0.005em",
-                                color: "rgb(43, 38, 34)",
-                            }}>
-                                Captus oversubscribed our pre-seed round. Thank you to the old and new friends who bet on our early vision:{" "}
-                                <span style={{ color: "rgb(181, 74, 0)" }}>
-                                    helping CRE developers and owners finish projects on time and on budget.
-                                </span>
-                            </blockquote>
-
-                            {/* Founder signature footer */}
-                            <div style={{ display: "flex", alignItems: "center", gap: "24px", flexWrap: "wrap", marginTop: "34px" }}>
-                                <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-                                    <img 
-                                        src="/Anatoly.jpg" 
-                                        alt="Anatoly Khen" 
-                                        style={{ 
-                                            width: "48px", 
-                                            height: "48px", 
-                                            borderRadius: "50%", 
-                                            objectFit: "cover", 
-                                            objectPosition: "center 30%", 
-                                            border: "1px solid rgb(236, 233, 229)" 
-                                        }} 
-                                    />
+                            {/* Feature list */}
+                            <div style={{ display: "flex", flexDirection: "column", gap: "18px", marginTop: "38px", maxWidth: "480px" }}>
+                                
+                                {/* Point 1 */}
+                                <div style={{ display: "flex", gap: "14px", alignItems: "flex-start" }}>
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#CC5500" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ flex: "0 0 auto", marginTop: "2px" }}>
+                                        <path d="M20 6 9 17l-5-5" />
+                                    </svg>
                                     <div>
-                                        <div style={{
-                                            fontSize: "13px",
-                                            fontWeight: 600,
-                                            letterSpacing: "0.06em",
-                                            textTransform: "uppercase",
-                                            color: "rgb(21, 17, 14)",
-                                            fontFamily: SANS,
-                                        }}>
-                                            Anatoly Khen
+                                        <div style={{ fontSize: "15.5px", fontWeight: 600, color: "rgb(21, 17, 14)", fontFamily: SANS }}>
+                                            Hands-on onboarding
                                         </div>
-                                        <div style={{
-                                            marginTop: "4px",
-                                            fontSize: "13px",
-                                            fontWeight: 300,
-                                            color: "rgb(138, 133, 126)",
-                                            fontFamily: SANS,
-                                        }}>
-                                            Co-Founder &amp; CEO, Captus.ai
+                                        <div style={{ marginTop: "3px", fontSize: "14.5px", lineHeight: "1.55", fontWeight: 300, color: "rgb(87, 81, 75)", fontFamily: SANS }}>
+                                            We set Captus up around your projects with you, not a help doc.
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <a 
-                                    href="https://www.linkedin.com/company/captus-ai/" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer" 
-                                    style={{
-                                        display: "inline-flex",
-                                        alignItems: "center",
-                                        gap: "8px",
-                                        color: "rgb(87, 81, 75)",
-                                        fontSize: "13px",
-                                        fontWeight: 500,
-                                        letterSpacing: "0.02em",
-                                        textDecoration: "none",
-                                        fontFamily: SANS,
-                                    }}
-                                >
-                                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">
-                                        <path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3 0-2.95-1.8-2.95s-2.08 1.4-2.08 2.85V21H9z" />
+
+                                {/* Point 2 */}
+                                <div style={{ display: "flex", gap: "14px", alignItems: "flex-start" }}>
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#CC5500" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ flex: "0 0 auto", marginTop: "2px" }}>
+                                        <path d="M20 6 9 17l-5-5" />
                                     </svg>
-                                    Read the announcement
-                                </a>
+                                    <div>
+                                        <div style={{ fontSize: "15.5px", fontWeight: 600, color: "rgb(21, 17, 14)", fontFamily: SANS }}>
+                                            A direct line to the roadmap
+                                        </div>
+                                        <div style={{ marginTop: "3px", fontSize: "14.5px", lineHeight: "1.55", fontWeight: 300, color: "rgb(87, 81, 75)", fontFamily: SANS }}>
+                                            Early members shape what we build next.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Point 3 */}
+                                <div style={{ display: "flex", gap: "14px", alignItems: "flex-start" }}>
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#CC5500" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ flex: "0 0 auto", marginTop: "2px" }}>
+                                        <path d="M20 6 9 17l-5-5" />
+                                    </svg>
+                                    <div>
+                                        <div style={{ fontSize: "15.5px", fontWeight: 600, color: "rgb(21, 17, 14)", fontFamily: SANS }}>
+                                            Founding-user pricing
+                                        </div>
+                                        <div style={{ marginTop: "3px", fontSize: "14.5px", lineHeight: "1.55", fontWeight: 300, color: "rgb(87, 81, 75)", fontFamily: SANS }}>
+                                            Preferred terms that carry past launch.
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
@@ -296,6 +236,7 @@ export default function Investors() {
                         }}>
                             {!submitted ? (
                                 <>
+                                    {/* Eyebrow tag */}
                                     <div style={{ display: "flex", alignItems: "center", gap: "11px" }}>
                                         <div style={{ width: "34px", height: "2px", background: "rgb(204, 85, 0)" }} />
                                         <div style={{
@@ -306,10 +247,10 @@ export default function Investors() {
                                             color: "rgb(204, 85, 0)",
                                             fontFamily: SANS,
                                         }}>
-                                            Investor updates
+                                            Join the waitlist
                                         </div>
                                     </div>
-                                    
+
                                     <h2 style={{
                                         margin: "16px 0px 0px",
                                         fontFamily: MONO,
@@ -318,9 +259,8 @@ export default function Investors() {
                                         lineHeight: 1.16,
                                         color: "rgb(21, 17, 14)",
                                     }}>
-                                        Hear from us first
+                                        Request your spot
                                     </h2>
-                                    
                                     <p style={{
                                         margin: "16px 0px 0px",
                                         fontSize: "15.5px",
@@ -329,7 +269,7 @@ export default function Investors() {
                                         color: "rgb(74, 70, 66)",
                                         fontFamily: SANS,
                                     }}>
-                                        We send a short update a few times a year: a new milestone, what we&apos;re focused on, and early word when we open our next round.
+                                        Tell us a bit about you and we&apos;ll be in touch as spots open up.
                                     </p>
 
                                     <form onSubmit={handleSubmit} style={{ marginTop: "28px" }}>
@@ -349,10 +289,10 @@ export default function Investors() {
                                             </label>
                                             <input 
                                                 type="text" 
-                                                placeholder="Jane Investor" 
+                                                placeholder="Jane Builder"
                                                 value={name}
                                                 onChange={(e) => { setName(e.target.value); setError(""); }}
-                                                className="inv-input"
+                                                className="wt-input"
                                                 style={{
                                                     width: "100%",
                                                     border: "1px solid rgb(216, 211, 204)",
@@ -362,12 +302,12 @@ export default function Investors() {
                                                     fontSize: "15px",
                                                     color: "rgb(21, 17, 14)",
                                                     background: "rgb(255, 255, 255)",
-                                                    transition: "all 0.2s",
+                                                    transition: "all 0.2s"
                                                 }}
                                             />
                                         </div>
 
-                                        {/* Email */}
+                                        {/* Work Email */}
                                         <div style={{ marginBottom: "16px" }}>
                                             <label style={{
                                                 display: "block",
@@ -379,14 +319,14 @@ export default function Investors() {
                                                 marginBottom: "9px",
                                                 fontFamily: SANS,
                                             }}>
-                                                Email
+                                                Work email
                                             </label>
                                             <input 
                                                 type="email" 
-                                                placeholder="jane@firm.com" 
+                                                placeholder="jane@company.com"
                                                 value={email}
                                                 onChange={(e) => { setEmail(e.target.value); setError(""); }}
-                                                className="inv-input"
+                                                className="wt-input"
                                                 style={{
                                                     width: "100%",
                                                     border: "1px solid rgb(216, 211, 204)",
@@ -396,12 +336,12 @@ export default function Investors() {
                                                     fontSize: "15px",
                                                     color: "rgb(21, 17, 14)",
                                                     background: "rgb(255, 255, 255)",
-                                                    transition: "all 0.2s",
+                                                    transition: "all 0.2s"
                                                 }}
                                             />
                                         </div>
 
-                                        {/* Firm */}
+                                        {/* Company */}
                                         <div style={{ marginBottom: "16px" }}>
                                             <label style={{
                                                 display: "block",
@@ -413,14 +353,14 @@ export default function Investors() {
                                                 marginBottom: "9px",
                                                 fontFamily: SANS,
                                             }}>
-                                                Firm <span style={{ textTransform: "none", letterSpacing: "0px", fontWeight: 300, color: "rgb(168, 162, 155)" }}>(optional)</span>
+                                                Company
                                             </label>
                                             <input 
                                                 type="text" 
-                                                placeholder="Acme Ventures" 
-                                                value={firm}
-                                                onChange={(e) => setFirm(e.target.value)}
-                                                className="inv-input"
+                                                placeholder="Acme Construction"
+                                                value={company}
+                                                onChange={(e) => setCompany(e.target.value)}
+                                                className="wt-input"
                                                 style={{
                                                     width: "100%",
                                                     border: "1px solid rgb(216, 211, 204)",
@@ -430,9 +370,67 @@ export default function Investors() {
                                                     fontSize: "15px",
                                                     color: "rgb(21, 17, 14)",
                                                     background: "rgb(255, 255, 255)",
-                                                    transition: "all 0.2s",
+                                                    transition: "all 0.2s"
                                                 }}
                                             />
+                                        </div>
+
+                                        {/* Role */}
+                                        <div style={{ marginBottom: "16px" }}>
+                                            <label style={{
+                                                display: "block",
+                                                fontSize: "11.5px",
+                                                fontWeight: 600,
+                                                letterSpacing: "0.1em",
+                                                textTransform: "uppercase",
+                                                color: "rgb(87, 81, 75)",
+                                                marginBottom: "9px",
+                                                fontFamily: SANS,
+                                            }}>
+                                                Your role <span style={{ textTransform: "none", letterSpacing: "0px", fontWeight: 300, color: "rgb(168, 162, 155)" }}>(optional)</span>
+                                            </label>
+                                            <div style={{ position: "relative" }}>
+                                                <select 
+                                                    value={role}
+                                                    onChange={(e) => setRole(e.target.value)}
+                                                    className="wt-select"
+                                                    style={{
+                                                        width: "100%",
+                                                        appearance: "none",
+                                                        border: "1px solid rgb(216, 211, 204)",
+                                                        borderRadius: "10px",
+                                                        padding: "13px 15px",
+                                                        fontFamily: SANS,
+                                                        fontSize: "15px",
+                                                        color: "rgb(21, 17, 14)",
+                                                        background: "rgb(255, 255, 255)",
+                                                        transition: "all 0.2s",
+                                                        cursor: "pointer"
+                                                    }}
+                                                >
+                                                    <option value="">Select one</option>
+                                                    <option value="Owner / Developer">Owner / Developer</option>
+                                                    <option value="General Contractor">General Contractor</option>
+                                                    <option value="Construction Manager">Construction Manager</option>
+                                                    <option value="Architect / Engineer">Architect / Engineer</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                                {/* Down chevron arrow */}
+                                                <div style={{
+                                                    position: "absolute",
+                                                    right: "15px",
+                                                    top: "50%",
+                                                    transform: "translateY(-50%)",
+                                                    pointerEvents: "none",
+                                                    color: "rgb(140, 134, 128)",
+                                                    display: "flex",
+                                                    alignItems: "center"
+                                                }}>
+                                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                                        <polyline points="6 9 12 15 18 9" />
+                                                    </svg>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         {error && (
@@ -460,7 +458,7 @@ export default function Investors() {
                                             }}
                                             className="hover:bg-[#B54A00] active:scale-[0.98]"
                                         >
-                                            Add me to the list
+                                            Request access
                                         </button>
                                     </form>
                                 </>
@@ -483,10 +481,10 @@ export default function Investors() {
                                         ✓
                                     </div>
                                     <h4 style={{ fontSize: "20px", fontWeight: 600, color: "rgb(21, 17, 14)", marginBottom: "8px", fontFamily: SANS }}>
-                                        Added to list!
+                                        Spot Requested!
                                     </h4>
                                     <p style={{ fontSize: "14.5px", color: "rgb(74, 70, 66)", lineHeight: 1.5, marginBottom: "24px", fontFamily: SANS }}>
-                                        Thanks {name.split(" ")[0]}! You have been successfully added to our investor updates list. We look forward to sharing milestones with you.
+                                        Thanks {name.split(" ")[0]}! We have added you to the waitlist and we&apos;ll be in touch as soon as a spot opens.
                                     </p>
                                     <button 
                                         onClick={handleReset}
@@ -501,7 +499,7 @@ export default function Investors() {
                                             fontFamily: SANS
                                         }}
                                     >
-                                        Add another investor
+                                        Back
                                     </button>
                                 </div>
                             )}

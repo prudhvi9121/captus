@@ -76,7 +76,7 @@ export default function CTA() {
                     <Link href="/book-demo" className={styles.btnPrimary}>
                         Book a demo
                     </Link>
-                    <Link href="/book-demo" className={styles.btnGhost}>
+                    <Link href="/waitlist" className={styles.btnGhost}>
                         Join the waitlist
                     </Link>
                 </div>

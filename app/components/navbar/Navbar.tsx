@@ -43,12 +43,10 @@ export default function Navbar() {
     return (
         <>
             {/* ── Main nav ── */}
-            <nav
-                className={`${styles.navbar} ${isSolidNavbar ? styles.navbarSolid : ""} ${scrolled ? styles.navbarScrolled : ""}`}
-            >
+            <nav className={`${styles.navbar} ${isSolidNavbar ? styles.navbarSolid : ""} ${scrolled ? styles.navbarScrolled : ""}`}>
                 <div className={`${styles.navContainer} ${scrolled ? styles.navContainerScrolled : ""}`}>
                     {/* Logo */}
-                    <Link href="/" className={styles.linkReset} style={{ zIndex: 1001 }}>
+                    <Link href="/" style={{ display: "inline-flex", alignItems: "center", textDecoration: "none", zIndex: 1001 }}>
                         {/* Desktop logo */}
                         <Image
                             src="/Captus Logo_A7.png"
@@ -90,10 +88,8 @@ export default function Navbar() {
                         <a href="https://app.captus.ai/login" className={styles.desktopCtaLogin}>
                             Login
                         </a>
-                        <Link href="/book-demo" className={styles.linkReset}>
-                            <span className={`btn-enterprise ${styles.desktopBookDemoBtn}`}>
-                                Book Demo
-                            </span>
+                        <Link href="/book-demo" className={styles.desktopBookDemoBtn}>
+                            Book Demo
                         </Link>
                     </div>
 
@@ -117,7 +113,7 @@ export default function Navbar() {
             <div className={`${styles.mobileOverlay} ${isMenuOpen ? styles.mobileOverlayOpen : ""}`}>
                 {/* Top header bar inside overlay */}
                 <div className={styles.mobileOverlayHeader}>
-                    <Link href="/" className={styles.linkReset} onClick={() => setIsMenuOpen(false)}>
+                    <Link href="/" style={{ display: "inline-flex", alignItems: "center", textDecoration: "none" }} onClick={() => setIsMenuOpen(false)}>
                         <Image
                             src="/Captus Logo_A7.png"
                             alt="Captus Logo"
@@ -167,8 +163,8 @@ export default function Navbar() {
                         Login
                     </a>
 
-                    <Link href="/book-demo" onClick={() => setIsMenuOpen(false)} className={styles.linkReset} style={{ width: "100%" }}>
-                        <span className={`btn-enterprise ${styles.mobileBookDemoBtn}`}>
+                    <Link href="/book-demo" onClick={() => setIsMenuOpen(false)} style={{ width: "100%", textDecoration: "none" }}>
+                        <span className={styles.mobileBookDemoBtn}>
                             Book Demo
                         </span>
                     </Link>

@@ -26,7 +26,7 @@ const PROJECTS = [
         label: "Life Sciences Building",
         sublabel: "3.0 University Place Associates",
         rightPanel: "image",
-        image: "/new/socialproof3.avif",
+        image: "/300m.jpg",
         imageCaption: "3.0 University Place — a $300M life sciences building for University Place Associates.",
         icon: (
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#CC5500" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -41,7 +41,7 @@ const PROJECTS = [
         label: "Precast Concrete Parking Garage",
         sublabel: "5.0 University Place Associates",
         rightPanel: "image",
-        image: "/new/socialproof2.avif",
+        image: "/40m.jpg",
         imageCaption: "5.0 University Place — a $40M precast concrete parking garage for University Place Associates.",
         icon: (
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#CC5500" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
