@@ -1,226 +1,37 @@
-/* Footer container */
+/* ============================================================
+   Footer Section — matches reference screenshot exactly
+   ============================================================ */
+
 .footerSection {
     position: relative;
-    background-color: #0A0A0A;
-    color: #FFFFFF;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgb(10, 7, 5);
+    color: rgb(255, 255, 255);
+    width: 100%;
 }
 
 /* Main inner container */
 .mainContainer {
-    padding: 64px clamp(24px, 6vw, 96px) 56px clamp(24px, 6vw, 96px);
-    position: relative;
-    z-index: 10;
+    padding: 80px 56px 60px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .contentGrid {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: space-between;
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    gap: 64px;
+    align-items: flex-start;
+    gap: 60px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
 }
 
-@media (min-width: 1024px) {
-    .contentGrid {
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 40px;
-    }
-}
-
-/* Branding Column */
+/* Left Column: Branding */
 .leftCol {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 20px;
-    max-width: 440px;
-}
-
-@media (min-width: 1024px) {
-    .leftCol {
-        align-items: flex-start;
-        text-align: left;
-    }
-}
-
-.logoContainer {
-    display: flex;
-    align-items: center;
-    font-family: 'Good Times', sans-serif;
-    font-size: clamp(18px, 1.8vw, 22px);
-    letter-spacing: 0.05em;
-    user-select: none;
-}
-
-.logoText {
-    color: #CC5500;
-}
-
-.logoDotAi {
-    color: #FFFFFF;
-}
-
-.pitchText {
-    color: #9CA3AF;
-    font-size: 14px;
-    line-height: 1.7;
-    font-weight: 300;
-}
-
-/* LinkedIn Button */
-.linkedinBtn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #CC5500;
-    color: #FFFFFF;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 700;
-    padding: 10px 20px;
-    border-radius: 9999px;
-    border: 1px solid #CC5500;
-    transition: all 0.25s ease;
-    letter-spacing: 0.03em;
-}
-
-.linkedinBtn:hover {
-    background: #A34400;
-    border-color: #A34400;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(204, 85, 0, 0.3);
-}
-
-/* Links Columns */
-.linksGrid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 48px;
-    row-gap: 40px;
-}
-
-@media (min-width: 640px) {
-    .linksGrid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-}
-
-.linkCol {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-}
-
-@media (min-width: 1024px) {
-    .linkCol {
-        align-items: flex-start;
-    }
-}
-
-
-
-.colHeader {
-    font-family: 'Good Times', sans-serif;
-    font-size: 9px;
-    letter-spacing: 0.22em;
-    color: rgba(255, 255, 255, 0.6);
-    text-transform: uppercase;
-}
-
-.linkList {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-}
-
-@media (min-width: 1024px) {
-    .linkList {
-        align-items: flex-start;
-    }
-}
-
-.footerLink {
-    font-size: 14px;
-    color: #9CA3AF;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.footerLink:hover {
-    color: #CC5500;
-}
-
-/* Bottom Bar */
-.bottomBar {
-    margin: 0;
-    border-top: 1px solid rgba(204, 85, 0, 0.25);
-    border-bottom: 1px solid rgba(204, 85, 0, 0.25);
-    background: linear-gradient(90deg, rgba(204, 85, 0, 0.08) 0%, rgba(204, 85, 0, 0.04) 50%, rgba(204, 85, 0, 0.08) 100%);
-}
-
-.bottomBarContainer {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 10px clamp(24px, 6vw, 96px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-}
-
-@media (min-width: 640px) {
-    .bottomBarContainer {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-}
-
-.copyrightText {
-    color: rgba(255, 255, 255, 0.75);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    text-align: center;
-}
-
-@media (min-width: 640px) {
-    .copyrightText {
-        text-align: left;
-    }
-}
-
-.socialContainer {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.socialLink {
-    color: #CC5500;
-    font-size: 11px;
-    padding: 7px 16px;
-    border-radius: 9999px;
-    border: 1px solid rgba(204, 85, 0, 0.45);
-    background: rgba(204, 85, 0, 0.08);
-    transition: all 0.2s ease;
-    text-decoration: none;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 600;
-}
-
-.socialLink:hover {
-    background: #CC5500;
-    color: #FFFFFF;
-    border-color: #CC5500;
+    align-items: flex-start;
+    gap: 24px;
+    max-width: 360px;
 }
 
 .logoLink {
@@ -228,7 +39,127 @@
     outline: none;
 }
 
-/* Bottom bar links (Privacy & Terms) */
+.logoImage {
+    height: 36px;
+    width: auto;
+    object-fit: contain;
+}
+
+.pitchText {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14.5px;
+    line-height: 1.6;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.52);
+    margin: 0;
+}
+
+/* LinkedIn Button */
+.linkedinBtn {
+    display: inline-flex;
+    align-items: center;
+    background: rgb(204, 85, 0);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.linkedinBtn:hover {
+    background: rgb(180, 75, 0);
+}
+
+.linkedinIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    background: rgb(255, 255, 255);
+    color: rgb(204, 85, 0);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12.5px;
+    font-weight: 800;
+    border-radius: 3px;
+    margin-right: 8px;
+    line-height: 1;
+    padding-bottom: 2px;
+    box-sizing: border-box;
+}
+
+.linkedinText {
+    line-height: 1;
+}
+
+/* Right Columns: Links Grid */
+.linksGrid {
+    display: flex;
+    gap: 90px;
+    flex-wrap: wrap;
+}
+
+.linkCol {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 120px;
+}
+
+.colHeader {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 22px;
+}
+
+.linkList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footerLink {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footerLink:hover {
+    color: rgb(204, 85, 0);
+}
+
+/* Bottom Bar */
+.bottomBar {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 32px;
+}
+
+.bottomBarContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.copyrightText {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.38);
+    margin: 0;
+}
+
 .bottomLinks {
     display: flex;
     align-items: center;
@@ -236,13 +167,40 @@
 }
 
 .bottomLink {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 12px;
-    letter-spacing: 0.08em;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.38);
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 .bottomLink:hover {
-    color: #CC5500;
+    color: rgb(204, 85, 0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 860px) {
+    .mainContainer {
+        padding: 56px 22px 48px;
+    }
+
+    .contentGrid {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 48px;
+        margin-bottom: 40px;
+    }
+
+    .linksGrid {
+        gap: 40px;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .bottomBarContainer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
 }

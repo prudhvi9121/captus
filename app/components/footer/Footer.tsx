@@ -1,21 +1,26 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
     return (
-        <footer className={`curved-section ${styles.footerSection}`} style={{ zIndex: 15 }}>
+        <footer className={styles.footerSection} style={{ zIndex: 15 }}>
             {/* MAIN FOOTER */}
             <div className={styles.mainContainer}>
                 <div className={styles.contentGrid}>
-                    {/* LEFT SECTION - Logo & Pitch */}
+                    {/* LEFT COLUMN - Logo & Pitch */}
                     <div className={styles.leftCol}>
                         <Link href="/" className={styles.logoLink}>
-                            <div className={styles.logoContainer}>
-                                <span className={styles.logoText}>CAPTUS</span>
-                                <span className={styles.logoDotAi}>.AI</span>
-                            </div>
+                            <Image
+                                src="/captus-footer-logo.png"
+                                alt="Captus Logo"
+                                width={150}
+                                height={38}
+                                className={styles.logoImage}
+                                priority
+                            />
                         </Link>
                         <p className={styles.pitchText}>
                             The early-warning platform for construction. See<br />
@@ -29,16 +34,12 @@ export default function Footer() {
                             rel="noopener noreferrer"
                             className={styles.linkedinBtn}
                         >
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                                <rect x="2" y="9" width="4" height="12" />
-                                <circle cx="4" cy="4" r="2" />
-                            </svg>
-                            Follow on LinkedIn
+                            <span className={styles.linkedinIcon}>in</span>
+                            <span className={styles.linkedinText}>Follow on LinkedIn</span>
                         </a>
                     </div>
 
-                    {/* RIGHT SECTION - Links Grid */}
+                    {/* RIGHT COLUMN - Links Grid */}
                     <div className={styles.linksGrid}>
                         {/* PRODUCT */}
                         <div className={styles.linkCol}>
@@ -72,20 +73,20 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-            </div>
 
-            {/* BOTTOM BAR */}
-            <div className={styles.bottomBar}>
-                <div className={styles.bottomBarContainer}>
-                    {/* Copyright */}
-                    <p className={styles.copyrightText}>
-                        © {new Date().getFullYear()} Captus AI. All rights reserved.
-                    </p>
+                {/* BOTTOM BAR */}
+                <div className={styles.bottomBar}>
+                    <div className={styles.bottomBarContainer}>
+                        {/* Copyright */}
+                        <p className={styles.copyrightText}>
+                            © {new Date().getFullYear()} Captus AI. All rights reserved.
+                        </p>
 
-                    {/* Privacy & Terms */}
-                    <div className={styles.bottomLinks}>
-                        <Link href="/privacy-policy" className={styles.bottomLink}>Privacy</Link>
-                        <Link href="/terms-and-conditions" className={styles.bottomLink}>Terms</Link>
+                        {/* Privacy & Terms */}
+                        <div className={styles.bottomLinks}>
+                            <Link href="/privacy-policy" className={styles.bottomLink}>Privacy</Link>
+                            <Link href="/terms-and-conditions" className={styles.bottomLink}>Terms</Link>
+                        </div>
                     </div>
                 </div>
             </div>

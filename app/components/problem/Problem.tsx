@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import styles from "./Problem.module.css";
 
 function useInView(threshold = 0.1) {
@@ -39,8 +38,8 @@ const CARDS = [
     {
         id: "detection",
         badge: "Early Detection",
-        headline: "See risks before they compound",
-        body: "Captus surfaces financial and operational threats the moment they appear — not after the damage is done. Act when it still matters.",
+        headline: "See it first, change the outcome",
+        body: "Captus flags risk across schedule, cost, and labor the moment it shows up, so you still have time to change the outcome.",
         image: "/new/problemImage3.jpeg",
     },
 ];
@@ -50,12 +49,11 @@ export default function Problem() {
     const [cardsRef, cardsVisible] = useInView(0.05);
 
     return (
-        <section className={`curved-section ${styles.section}`} style={{ zIndex: 10 }}>
-            {/* Subtle top separator */}
-            <div className={styles.topSeparator} />
-
-            {/* Subtle background texture */}
-            <div className={styles.backgroundTexture} />
+        <section id="problem" className={styles.section}>
+            {/* Grid background texture */}
+            <div className={styles.gridTexture} />
+            {/* Orange radial glow — left */}
+            <div className={styles.glowLeft} />
 
             {/* ── Section header ── */}
             <div
@@ -67,30 +65,31 @@ export default function Problem() {
                     transition: "opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1)",
                 }}
             >
-                <span className={styles.eyebrow}>
-                    The Opportunity
-                </span>
+                {/* Eyebrow row */}
+                <div className={styles.eyebrowRow}>
+                    <div className={styles.eyebrowLine} />
+                    <span className={styles.eyebrow}>The Opportunity</span>
+                </div>
+
                 <h2 className={styles.headline}>
-                    Solve problems{" "}
-                    <span className={styles.headlineHighlight}>before</span>{" "}
-                    they happen
+                    Solve problems<br />
+                    <span className={styles.headlineHighlight}>before</span>{" "}they happen
                 </h2>
             </div>
 
-            {/* ── Three-card static grid ── */}
+            {/* ── Three-card grid ── */}
             <div ref={cardsRef} className={styles.cardsGrid}>
                 {CARDS.map((card, i) => (
-                    <Link
+                    <div
                         key={card.id}
-                        href="/book-demo"
                         className={styles.card}
                         style={{
                             opacity: cardsVisible ? 1 : 0,
                             transform: cardsVisible ? "translateY(0)" : "translateY(32px)",
-                            transition: `opacity 0.65s cubic-bezier(0.16,1,0.3,1) ${i * 0.12}s, transform 0.65s cubic-bezier(0.16,1,0.3,1) ${i * 0.12}s`,
+                            transition: `opacity 0.65s cubic-bezier(0.16,1,0.3,1) ${i * 0.09}s, transform 0.65s cubic-bezier(0.16,1,0.3,1) ${i * 0.09}s`,
                         }}
                     >
-                        {/* Image */}
+                        {/* Image area */}
                         <div className={styles.imageContainer}>
                             <Image
                                 src={card.image}
@@ -98,20 +97,20 @@ export default function Problem() {
                                 fill
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 500px"
                                 className={styles.cardImage}
-                                quality={65}
+                                quality={70}
                             />
-                            {/* Dark overlay */}
+                            {/* Top-fade overlay */}
                             <div className={styles.imageOverlay} />
-                            {/* Badge */}
+                            {/* Badge pill */}
                             <div className={styles.badge}>{card.badge}</div>
                         </div>
 
-                        {/* Content */}
+                        {/* Text content */}
                         <div className={styles.cardContent}>
-                            <h3 className={styles.cardHeadline}>{card.headline}</h3>
+                            <div className={styles.cardHeadline}>{card.headline}</div>
                             <p className={styles.cardBody}>{card.body}</p>
                         </div>
-                    </Link>
+                    </div>
                 ))}
             </div>
         </section>

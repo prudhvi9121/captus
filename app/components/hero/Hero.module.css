@@ -1,15 +1,25 @@
-/* Hero Section */
+/* =====================================================
+   Hero Section — matches reference screenshot exactly
+   ===================================================== */
+
+@keyframes captusCue {
+    0%, 100% { transform: translateY(0); opacity: 0.4; }
+    50%       { transform: translateY(8px); opacity: 1; }
+}
+
+/* ── Section wrapper ── */
 .heroSection {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
+    min-height: 680px;
+    background: rgb(20, 17, 15);
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    background: #080808;
 }
 
-/* Background elements */
+/* ── Background image ── */
 .bgContainer {
     position: absolute;
     inset: 0;
@@ -18,254 +28,233 @@
 
 .bgImage {
     object-fit: cover;
-    object-position: 60% 30%;
+    object-position: center center;
 }
 
+/* Top vignette */
+.bgGradientTop {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        rgba(12, 9, 7, 0.3) 0%,
+        rgba(12, 9, 7, 0.05) 30%,
+        rgba(12, 9, 7, 0.14) 100%
+    );
+}
+
+/* Left darkening overlay */
 .bgGradientLeft {
     position: absolute;
     inset: 0;
-    background: linear-gradient(108deg, rgba(8, 8, 8, 0.85) 0%, rgba(8, 8, 8, 0.70) 35%, rgba(8, 8, 8, 0.35) 60%, rgba(8, 8, 8, 0.05) 100%);
-}
-
-.bgNoise {
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    background-size: 128px 128px;
-    opacity: 0.5;
-    mix-blend-mode: overlay;
     pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        rgba(10, 7, 5, 0.70) 0%,
+        rgba(10, 7, 5, 0.48) 30%,
+        rgba(10, 7, 5, 0.22) 56%,
+        rgba(10, 7, 5, 0.05) 80%,
+        rgba(10, 7, 5, 0.00) 94%
+    );
 }
 
-.bgTransitionBottom {
+/* ── Hero content block ── */
+.heroContent {
     position: absolute;
-    bottom: 0;
+    z-index: 3;
     left: 0;
-    right: 0;
-    height: 200px;
-    background: linear-gradient(to top, #080808 0%, transparent 100%);
-}
-
-.bgGlow {
-    position: absolute;
-    bottom: -100px;
-    left: -100px;
-    width: 700px;
-    height: 700px;
-    background: radial-gradient(circle, rgba(204, 85, 0, 0.09) 0%, transparent 65%);
-    pointer-events: none;
-}
-
-/* Content wrapper grid */
-.contentGrid {
-    position: relative;
-    z-index: 10;
-    flex: 1;
-    align-items: center;
-    row-gap: 48px;
-    max-width: 1440px;
-    width: 100%;
-    margin: 0 auto;
-    padding-left: clamp(24px, 6vw, 96px);
-    padding-right: clamp(24px, 6vw, 96px);
-    padding-top: clamp(100px, 11vw, 140px);
-    padding-bottom: clamp(60px, 7vw, 100px);
-    column-gap: clamp(48px, 6vw, 96px);
-}
-
-/* Left Column Text */
-.leftCol {
+    top: 0;
+    bottom: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
+    padding: 0 56px;
+    max-width: 900px;
 
-.headline {
-    font-family: 'Good Times', sans-serif;
-    font-size: clamp(22px, 2.8vw, 46px);
-    line-height: 1.1;
-    letter-spacing: 0.01em;
-    color: #FFFFFF;
-    margin: 0;
-    margin-bottom: 28px;
+    /* Entrance animation */
     opacity: 0;
     transform: translateY(24px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.underline {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background: linear-gradient(90deg, #CC5500 0%, #CC5500 55%, rgba(204, 85, 0, 0.25) 100%);
-    border-radius: 2px;
-    transition: width 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.85s;
-    pointer-events: none;
+.heroContentVisible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.highlightText {
-    color: var(--orange);
+/* ── Headline ── */
+.headline {
+    margin: 0;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 46px;
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: 0.004em;
+    color: rgb(255, 255, 255);
+    text-shadow: rgba(8, 6, 4, 0.45) 0px 2px 24px;
 }
 
+.highlightOrange {
+    color: rgb(255, 122, 46);
+}
+
+/* ── Body paragraph ── */
 .bodyText {
-    font-family: 'IBM Plex Mono', ui-monospace, monospace;
-    color: rgba(255, 255, 255, 0.55);
-    font-size: clamp(13px, 1.05vw, 16px);
-    line-height: 1.85;
-    font-weight: 300;
-    margin-bottom: 44px;
-    max-width: 460px;
-    opacity: 0;
-    transform: translateY(14px);
-    transition: all 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.28s;
+    margin: 24px 0 0;
+    font-family: 'IBM Plex Sans', 'IBM Plex Mono', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.92);
+    max-width: 560px;
+    text-shadow: rgba(8, 6, 4, 0.7) 0px 1px 10px;
 }
 
-.ctaContainer {
+.bodyHighlight {
+    color: rgb(255, 122, 46);
+    font-weight: 600;
+}
+
+/* ── CTA Buttons ── */
+.ctaRow {
     display: flex;
+    gap: 14px;
+    margin-top: 34px;
     flex-wrap: wrap;
-    gap: 16px;
+}
+
+.ctaBtnPrimary {
+    background: rgb(204, 85, 0);
+    color: rgb(255, 255, 255);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14.5px;
+    font-weight: 500;
+    padding: 15px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-flex;
     align-items: center;
-    opacity: 0;
-    transform: translateY(14px);
-    transition: all 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.42s;
+    transition: background 0.2s ease;
 }
 
-/* Visibility transitions triggered when element in view */
-.visible .headline {
-    opacity: 1;
-    transform: translateY(0);
+.ctaBtnPrimary:hover {
+    background: rgb(180, 75, 0);
 }
 
-.visible .underline {
-    width: 60%;
+.ctaBtnGhost {
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    color: rgb(255, 255, 255);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14.5px;
+    font-weight: 500;
+    padding: 15px 26px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
 }
 
-.visible .bodyText {
-    opacity: 1;
-    transform: translateY(0);
+.ctaBtnGhost:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.7);
 }
 
-.visible .ctaContainer {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.trustedDivider {
+/* ── Social proof strip ── */
+.proofDivider {
     width: 100%;
-    max-width: 460px;
+    max-width: 520px;
     height: 1px;
-    background: rgba(255, 255, 255, 0.08);
-    margin-top: clamp(32px, 5vw, 56px);
-    margin-bottom: 12px;
-    opacity: 0;
-    transform: translateY(14px);
-    transition: all 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.56s;
+    background: rgba(255, 255, 255, 0.16);
+    margin-top: 46px;
 }
 
-.trustedContainer {
+.proofRow {
     display: flex;
     align-items: center;
+    gap: 14px;
+    margin-top: 26px;
     flex-wrap: wrap;
-    gap: 12px;
-    opacity: 0;
-    transform: translateY(14px);
-    transition: all 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.7s;
 }
 
-.trustedLabel {
-    font-family: 'IBM Plex Mono', ui-monospace, monospace;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    color: rgba(255, 255, 255, 0.4);
+.proofLabel {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
 }
 
-.trustedValue {
-    font-family: 'Good Times', sans-serif;
-    font-size: clamp(16px, 1.3vw, 20px);
-    color: #FFFFFF;
-    letter-spacing: 0.05em;
-    font-weight: bold;
-    display: inline-block;
-}
-
-.trustedSub {
+.proofValue {
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+}
+
+.proofSub {
+    font-family: 'IBM Plex Sans', sans-serif;
     font-size: 13px;
-    color: rgba(255, 255, 255, 0.55);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
 }
 
-.visible .trustedDivider {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.visible .trustedContainer {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-
-/* Scroll indicator */
+/* ── Scroll Hint ── */
 .scrollHint {
     position: absolute;
-    bottom: 76px;
+    z-index: 3;
     left: 50%;
+    bottom: 22px;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 7px;
-    z-index: 10;
-    opacity: 0;
-    transition: opacity 1s ease 1.3s;
-}
-
-.visible .scrollHint {
-    opacity: 0.45;
+    text-decoration: none;
 }
 
 .scrollText {
-    font-family: 'Good Times', sans-serif;
-    font-size: 7px;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.ctaLink {
-    width: auto;
-}
-
-.ctaBtn,
-.ctaBtnGhost {
-    padding: 15px 36px;
+    font-family: 'IBM Plex Sans', sans-serif;
     font-size: 10px;
-    letter-spacing: 0.16em;
-    display: inline-block;
-    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
 }
 
-@media (max-width: 767px) {
-    .ctaContainer {
-        flex-direction: column;
-        align-items: stretch;
-        width: 100%;
-        gap: 12px;
+.scrollChevron {
+    animation: captusCue 1.8s ease-in-out infinite;
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+    .heroContent {
+        padding: 0 22px;
+        max-width: 100%;
     }
-    .ctaLink {
-        width: 100%;
+
+    .headline {
+        font-size: 34px;
     }
-    .ctaBtn,
+
+    .bodyText {
+        font-size: 16px;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .headline {
+        font-size: 28px;
+        line-height: 1.14;
+    }
+
+    .bodyText {
+        font-size: 15px;
+    }
+
+    .ctaBtnPrimary,
     .ctaBtnGhost {
-        display: block;
-        width: 100%;
-        box-sizing: border-box;
+        font-size: 13px;
+        padding: 13px 20px;
     }
 }
-
-

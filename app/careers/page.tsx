@@ -114,7 +114,8 @@ export default function Careers() {
 
                         <h1 style={{
                             fontSize: "clamp(28px, 4vw, 44px)",
-                            fontWeight: "normal",
+                            fontWeight: "400",
+                            fontFamily: '"IBM Plex Sans", system-ui, sans-serif',
                             color: "#111111",
                             lineHeight: 1.1,
                             letterSpacing: "-0.01em",
@@ -145,7 +146,8 @@ export default function Careers() {
                             fontSize: "16px",
                             lineHeight: 1.6,
                             marginBottom: "40px",
-                            maxWidth: "480px"
+                            maxWidth: "480px",
+                            fontFamily: '"IBM Plex Sans", system-ui, sans-serif'
                         }}>
                             We're a small team taking on a problem the construction industry has lived with for decades. If you want real ownership and work that ships to real projects, we should talk.
                         </p>
@@ -169,10 +171,10 @@ export default function Careers() {
                                     </svg>
                                 </div>
                                 <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-                                    <h4 style={{ fontSize: "15px", fontWeight: "normal", color: "#111111" }}>
+                                    <h4 style={{ fontSize: "15px", fontWeight: "600", color: "#111111", fontFamily: '"IBM Plex Sans", system-ui, sans-serif' }}>
                                         Ownership from day one
                                     </h4>
-                                    <p style={{ fontSize: "14px", color: "#6B7280", lineHeight: 1.5 }}>
+                                    <p style={{ fontSize: "14px", color: "#6B7280", lineHeight: 1.5, fontFamily: '"IBM Plex Sans", system-ui, sans-serif' }}>
                                         Early team, early equity, and a direct hand in what we build.
                                     </p>
                                 </div>
@@ -195,10 +197,10 @@ export default function Careers() {
                                     </svg>
                                 </div>
                                 <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-                                    <h4 style={{ fontSize: "15px", fontWeight: "normal", color: "#111111" }}>
+                                    <h4 style={{ fontSize: "15px", fontWeight: "600", color: "#111111", fontFamily: '"IBM Plex Sans", system-ui, sans-serif' }}>
                                         Real work, real projects
                                     </h4>
-                                    <p style={{ fontSize: "14px", color: "#6B7280", lineHeight: 1.5 }}>
+                                    <p style={{ fontSize: "14px", color: "#6B7280", lineHeight: 1.5, fontFamily: '"IBM Plex Sans", system-ui, sans-serif' }}>
                                         What you ship goes straight to teams running active capital projects.
                                     </p>
                                 </div>
@@ -222,10 +224,10 @@ export default function Careers() {
                                     </svg>
                                 </div>
                                 <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-                                    <h4 style={{ fontSize: "15px", fontWeight: "normal", color: "#111111" }}>
+                                    <h4 style={{ fontSize: "15px", fontWeight: "600", color: "#111111", fontFamily: '"IBM Plex Sans", system-ui, sans-serif' }}>
                                         Founding-team culture
                                     </h4>
-                                    <p style={{ fontSize: "14px", color: "#6B7280", lineHeight: 1.5 }}>
+                                    <p style={{ fontSize: "14px", color: "#6B7280", lineHeight: 1.5, fontFamily: '"IBM Plex Sans", system-ui, sans-serif' }}>
                                         Low ego, high trust, and a bias toward shipping.
                                     </p>
                                 </div>
@@ -254,7 +256,8 @@ export default function Careers() {
                                 fontSize: "clamp(22px, 3.5vw, 28px)",
                                 fontWeight: "normal",
                                 color: "#111111",
-                                marginBottom: "16px"
+                                marginBottom: "16px",
+                                fontFamily: '"IBM Plex Mono", ui-monospace, monospace'
                             }}>
                                 Introduce yourself
                             </h2>
@@ -263,7 +266,8 @@ export default function Careers() {
                                 fontSize: "14px",
                                 lineHeight: 1.6,
                                 color: "#6B7280",
-                                marginBottom: "28px"
+                                marginBottom: "28px",
+                                fontFamily: '"IBM Plex Sans", system-ui, sans-serif'
                             }}>
                                 Leave your details and we'll be in touch.
                             </p>

@@ -1,10 +1,21 @@
+/* ============================================================
+   CTA Section — matches reference screenshot exactly
+   ============================================================ */
+
+/* ── Section wrapper ── */
 .section {
-    min-height: 60vh;
+    position: relative;
+    z-index: 7;
+    margin-top: -40px;
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    z-index: 14;
+    border-radius: 46px 46px 0 0;
+    overflow: hidden;
+    background: rgb(10, 7, 5);
 }
 
+/* ── Background image ── */
 .bgWrapper {
     position: absolute;
     inset: 0;
@@ -13,120 +24,168 @@
 
 .bgImage {
     object-fit: cover;
-    object-position: center 60%;
+    object-position: center 25%;
 }
 
+/* Left-heavy dark overlay — fades to transparent on right */
 .darkOverlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(10, 10, 10, 0.88) 0%, rgba(10, 10, 10, 0.75) 100%);
+    background: linear-gradient(
+        90deg,
+        rgba(10, 7, 5, 0.88) 0%,
+        rgba(10, 7, 5, 0.72) 35%,
+        rgba(10, 7, 5, 0.38) 60%,
+        rgba(10, 7, 5, 0.10) 80%,
+        rgba(10, 7, 5, 0.00) 100%
+    );
 }
 
-.orangeGlow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(204, 85, 0, 0.15) 0%, transparent 70%);
-    pointer-events: none;
-}
-
+/* ── Content ── */
 .contentContainer {
     position: relative;
-    z-index: 10;
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: clamp(80px, 10vw, 140px) clamp(24px, 6vw, 96px);
-    text-align: left;
+    z-index: 2;
+    padding: 0 56px;
+    max-width: 640px;
 }
 
-.eyebrowLineLight {
-    display: inline-block;
-    width: 20px;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.4);
+/* ── Eyebrow ── */
+.eyebrowRow {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 22px;
 }
 
+.eyebrowLine {
+    width: 34px;
+    height: 2px;
+    background: rgb(204, 85, 0);
+    flex-shrink: 0;
+}
+
+.eyebrow {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgb(204, 85, 0);
+}
+
+/* ── Headline ── */
 .headline {
-    font-family: 'Good Times', sans-serif;
-    font-size: clamp(22px, 2.8vw, 46px);
-    color: #FFFFFF;
-    line-height: 1.0;
-    letter-spacing: 0.01em;
+    margin: 0;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 52px;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: 0.004em;
+    color: rgb(255, 255, 255);
+    text-shadow: rgba(8, 6, 4, 0.5) 0px 2px 20px;
     margin-bottom: 28px;
 }
 
 .highlightText {
-    color: #CC5500;
+    color: rgb(204, 85, 0);
 }
 
+/* ── Subcopy ── */
 .subcopy {
-    font-family: 'IBM Plex Mono', ui-monospace, monospace;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: clamp(14px, 1.5vw, 18px);
-    line-height: 1.75;
-    max-width: 520px;
-    margin: 0 0 48px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.82);
+    max-width: 480px;
+    margin: 0 0 44px;
+    text-shadow: rgba(8, 6, 4, 0.6) 0px 1px 10px;
 }
 
+/* ── Buttons row ── */
 .buttonsRow {
     display: flex;
+    align-items: center;
+    gap: 14px;
     flex-wrap: wrap;
-    gap: 16px;
-    justify-content: flex-start;
+}
+
+/* Solid orange "Book a demo" */
+.btnPrimary {
+    background: rgb(204, 85, 0);
+    color: rgb(255, 255, 255);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14.5px;
+    font-weight: 500;
+    padding: 15px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-flex;
     align-items: center;
+    transition: background 0.2s ease;
+    white-space: nowrap;
 }
 
-.btnOverride {
-    padding: 16px 40px;
-    font-size: 11px;
+.btnPrimary:hover {
+    background: rgb(180, 75, 0);
 }
 
-.bottomDivider {
-    margin-top: 60px;
-    display: flex;
+/* Ghost "Join the waitlist" */
+.btnGhost {
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    color: rgb(255, 255, 255);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14.5px;
+    font-weight: 500;
+    padding: 15px 26px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 16px;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
 }
 
-.ruleLine {
-    flex: 1;
-    max-width: 120px;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.12);
+.btnGhost:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.7);
 }
 
-.brandingText {
-    font-family: 'Good Times', sans-serif;
-    font-size: 9px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.25);
+/* ── Responsive ── */
+@media (max-width: 860px) {
+    .section {
+        border-radius: 32px 32px 0 0;
+        margin-top: -32px;
+        min-height: 80vh;
+    }
+
+    .contentContainer {
+        padding: 72px 22px;
+        max-width: 100%;
+    }
+
+    .headline {
+        font-size: 36px;
+    }
+
+    .subcopy {
+        font-size: 16px;
+    }
 }
 
-.buttonLink {
-    width: auto;
-}
+@media (max-width: 480px) {
+    .headline {
+        font-size: 28px;
+    }
 
-@media (max-width: 767px) {
     .buttonsRow {
         flex-direction: column;
         align-items: stretch;
-        width: 100%;
-        gap: 12px;
     }
-    .buttonLink {
-        width: 100%;
-    }
-    .btnOverride {
-        display: block;
-        width: 100%;
-        text-align: center;
-        box-sizing: border-box;
+
+    .btnPrimary,
+    .btnGhost {
+        justify-content: center;
+        padding: 14px 20px;
     }
 }
